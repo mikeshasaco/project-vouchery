@@ -1,0 +1,29 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//font-awesome
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+@import "~noty/src/themes/sunset.scss";
+@import "~noty/src/themes/relax.scss";
+@import "~noty/src/themes/nest.scss";
+
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.grid-auto {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 40px;
+}

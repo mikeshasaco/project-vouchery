@@ -1,0 +1,77 @@
+#merchantupdatesetting{
+    padding-top:13%;
+}
+#customersettingpass{
+    padding-top: 13%;
+}
+#merchantpassword{
+    padding-top:6%;
+}
+
+#customerclickssection{
+    padding-top:6%;
+
+}
+
+#merchantcouponsetting{
+    padding-top:6%;
+
+}
+#merchantclicksetting{
+    padding-top:6%;
+     padding-bottom:6%;
+}
+
+.search-container .search{
+    margin-top: 10
+}
+
+@media (max-width: 991px){
+    #merchantupdatesetting{
+        padding-top:20%;
+    }
+    #customersettingpass{
+        padding-top: 20%;
+    }
+
+
+}
+
+@media(max-width:768px){
+    .search-container {
+        margin-top: 10%;
+    }
+}
+
+
+@media (max-width: 575px){
+    #merchantupdatesetting{
+        padding-top:48%;
+    }
+    #customersettingpass{
+        padding-top: 48%;
+    }
+    .search-container {
+        margin-top: 21%;
+    }
+
+}
+
+@media (max-width: 430px){
+    #merchantupdatesetting{
+        padding-top:48%;
+    }
+    #customersettingpass{
+        padding-top: 48%;
+    }
+    .search-container {
+        margin-top: 30%;
+    }
+
+}
+
+@media(max-width:320px){
+    .search-container {
+        margin-top: 30%;
+    }
+}

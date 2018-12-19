@@ -1,0 +1,130 @@
+#Vouch-help{
+    background-color: white;
+    padding: 10% 15% 10% 15%;
+
+}
+.vouch-h2-title{
+    text-align: center;
+}
+
+.vouch-merchant-customerh2{
+text-align:center;
+padding-bottom:5%;
+font-weight: bold;
+}
+#Vouch-help p {
+    font-size: 18px;
+}
+
+#Merchant-help{
+    background-color: #FAEBD7;
+    padding: 10% 15% 5% 15%;
+}
+
+#Customer-help{
+    background-color: #fff;
+    padding: 10% 15% 10% 15%;
+
+}
+
+#questions-help{
+    padding: 10% 15% 10% 15%;
+}
+#questions-help p {
+    font-size:24px;
+}
+.custom-createbutton{
+    border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+     background-color: #B35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#B35464), to(#B35464));
+     background-image: -webkit-linear-gradient(top, #B35464, #B35464);
+     background-image: -moz-linear-gradient(top, #B35464, #B35464);
+     background-image: -ms-linear-gradient(top, #B35464, #B35464);
+     background-image: -o-linear-gradient(top, #B35464, #B35464);
+     background-image: linear-gradient(to bottom, #B35464, #B35464);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B35464, endColorstr=#B35464);
+     height: 32px;
+     width: 100px;
+     line-height: 0px;
+     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+     font-size: 12px;
+     text-align: center;
+     margin-left: -10%;
+     margin-top: 7%;
+     cursor: pointer;
+}
+@media (max-width: 991px) {
+    .vouch-merchant-customerh2{
+        font-size: 18px;
+    }
+    #Merchant-help h3{
+        font-size: 14px;
+    }
+    #Customer-help h3{
+        font-size: 14px;
+    }
+    #Vouch-help p{
+        font-size: 14px;
+    }
+    #Merchant-help p{
+        font-size: 14px;
+    }
+    #questions-help p {
+        font-size:14px;
+    }
+    #questions-help h3 {
+        font-size:18px;
+    }
+
+    #Customer-help p{
+        font-size: 14px;
+    }
+    #Vouch-help .row-help{
+        margin-top:30%;
+    }
+
+}
+
+@media (max-width: 575px) {
+    #Customer-help h3{
+        font-size: 8px;
+    }
+    #Vouch-help p{
+        font-size: 10px;
+    }
+    #Merchant-help h3{
+        font-size: 8px;
+    }
+    #Merchant-help p{
+        font-size: 10px;
+    }
+
+    #questions-help p {
+        font-size:10px;
+    }
+
+    #Customer-help p{
+        font-size: 10px;
+    }
+    #Vouch-help .row-help{
+        margin-top:47%;
+    }
+    .vouch-h2-title{
+        text-align: center;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 575px) {
+    #Vouch-help .row-help{
+        margin-top:48%;
+    }
+
+    #Vouch-help p{
+        font-size: 8px;
+    }
+
+    .vouch-h2-title{
+        text-align: center;
+        font-size: 10px;
+    }
+}

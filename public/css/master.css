@@ -1,0 +1,397 @@
+
+.btn{
+border-radius: 0;
+}
+.btn-md {
+border-width: 0;
+outline: none;
+border-radius: 0;
+box-shadow: 2px 2px 2px rgba(0, 0, 0, .6);
+cursor: pointer;
+}
+
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+
+#adpage-banner {
+    background-color: white;
+    padding: 5%;
+    margin-top: 10%;
+}
+
+
+#direct-advert .row{
+    padding-top: 15%;
+    padding-bottom: 15%;
+
+}
+#direct-advert{
+    background-color: #ffba8c;
+
+}
+#moreinfo-instant{
+    background-color: #ff7a5c;
+
+}
+
+#advertisement-referral{
+    background-color: #ffe0c2;
+}
+
+
+#slidershow{
+    position: relative;
+    margin: 25%;
+}
+
+#slidershow .banner-color{
+    background-color: white;
+    margin-top: -1%;
+    border-radius: 3%;
+
+}
+
+#slidershow > div{
+    position: absolute;
+    top: 10%;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+#top-frontbanner{
+    background-color: white
+}
+
+.badges {
+  padding: 1px 9px 2px;
+  font-size: 12.025px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #B35464;
+  background-color: #ffffff;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+
+
+/* profile */
+.main-section{
+	border:1px solid #B35464;
+	background-color: #fff;
+	margin-top: 7%;
+
+}
+.profile-header{
+	background-color: #B35464;
+	height:150px;
+}
+.user-detail{
+	margin:-50px 0px 30px 0px;
+}
+.user-detail img{
+	height:100px;
+	width:100px;
+}
+.user-detail h5{
+	margin:15px 0px 5px 0px;
+}
+.user-social-detail{
+	padding:15px 0px;
+	background-color: #B35464;
+}
+.user-social-detail a i{
+	color:#fff;
+	font-size:23px;
+	padding: 0px 5px;
+}
+
+/* end profile section */
+
+
+
+.navbar .navbar-brand{
+  color: #B35464;
+}
+
+.navbar {
+  background-color: white !important;
+}
+
+
+.navbar-light .navbar-brand:hover{
+    color: #e9b2b2 !important;
+}
+
+
+body{
+  overflow-y: scroll;
+overflow-x: hidden;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+ /* background-color: #FDFAF5; */
+/* background-color: rgba(212, 216, 212, 0.25); */
+background-color: #f2f2f2;
+position:relative;
+width: 100%;
+   height: 100%;
+   margin: 0px;
+   padding: 0px;
+}.overlay,.sideMenu{position:fixed;bottom:0}.overlay{top:0;left:-100%;right:100%;margin:auto;background-color:rgba(0,0,0,.5);z-index:998;transition:all ease 0.2s}.overlay.open{left:0;right:0}.sidebarNavigation{margin-bottom:0;z-index:999;justify-content:flex-start}.sidebarNavigation
+
+.leftNavbarToggler{margin-right:10px;order:-1}.sideMenu{left:-100%;top:52px;transition:all ease 0.5s;overflow:hidden;width:100%;z-index:999;max-width:80%;margin-bottom:0;padding:1rem}.sideMenu.open{left:0;display:block;overflow-y:auto}.sideMenu ul{margin:0;padding:0 15px}
+
+.nav-link {
+  float: left;
+}
+
+.card{
+  border-radius: 10px !important;
+}
+
+.card:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+
+}
+
+
+/* navbar */
+.dropdown-menu.multi-column {
+		min-width: 240px !important;
+		overflow-x: hidden;
+	}
+
+  .dropdown-menu.columns-3 {
+	min-width: 600px;
+}
+
+.dropdown-menu {
+	min-width: 200px;
+}
+
+.dropdown-menu li a {
+	padding: 5px 15px;
+	font-weight: 300;
+}
+.multi-column-dropdown {
+	list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.multi-column-dropdown li a {
+	display: block;
+	clear: both;
+	line-height: 1.428571429;
+	color: #333;
+	white-space: normal;
+}
+
+#testimonial{
+   background: #FFFFFF;
+   padding: 80px 0 80px 0;
+   text-align:center;
+   margin-top:30px;
+ }
+
+#testimonial p{
+  font-size: 32px;
+  font-family: 'Josefin Sans';
+  color: #000;
+}
+
+#testimonial p.founder{
+  font-size:20px;
+  color:#666;
+}
+
+#weekly-display{
+  background: #FFFFFF;
+  padding-top: 6%;
+  padding-bottom: 6%;
+  margin-top: 0px;
+
+
+
+}
+
+#weekly-display img{
+  margin-top: 38px;
+  width: 200px;
+  height: 150px;
+  margin-right: 90%;
+
+}
+#weekly-display .showcase-info .show-title{
+  margin-top: 30px;
+  margin-left: -120%;
+}
+#weekly-display .showcase-info .show-desc{
+  margin-left: -120%;
+  margin-top: 10px;
+}
+
+#weekly-display .showcase-info .show-currentprice{
+  font-weight: bold;
+   float: left;
+   font-size: 14px;
+   margin-left: -120%;
+   margin-top: 10px;
+}
+
+#weekly-display .showcase-info .show-newprice{
+  color:red;
+  font-weight:bold;
+  float: left;
+  font-size: 14px;
+  margin-left: -55%;
+  margin-top: 10px;
+}
+
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+
+
+ .mega-menu{
+   width: 800px;
+   overflow: hidden;
+   padding: 10px;
+ }
+ .mega-menu a{
+   text-decoration: none;
+   color: cadetblue;
+ }
+
+
+ #signup-banner{
+    background: #B35464;
+    padding: 50px 0 30px 0;
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 4%;
+
+ }
+ #signup-banner p{
+     font-size: 32px;
+     font-family: 'Josefin Sans';
+     color: #FFFFFF;
+     padding-top: 8%;
+     padding-bottom: 8%;
+ }
+
+
+
+#randomcat{
+    background-color: #fff;
+    padding-bottom: %;
+    margin-top: 6%;
+}
+
+
+footer {
+    position: fixed;
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    background-color: white;
+    z-index: 100;
+    text-align: center;
+}
+
+.dropdownse {
+    position: relative;
+    display: inline-block;
+        padding: 10px;
+       width:160px;
+       cursor: pointer;
+       background-color: white;
+    width: 45%;
+    border: 1px solid;
+}
+.dropdownse:after{
+  content: '\25BC';
+  position: relative;
+    font-size:14px;
+   float:right;
+
+
+}
+
+.dropdown-contentse {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: inherit;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   top: 39px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+li:hover .listhover {
+    background-color:gray;
+
+}
+
+li:hover .listhover a {
+    color:white;
+
+}
