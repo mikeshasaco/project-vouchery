@@ -8,11 +8,13 @@
             <div class="col-md-3">
                 <h5 style="text-align:center; padding-bottom:0%;"> <b>Trending Categories</b></h5>
                 <ul class="topic" style="margin-top:4%;">
-                    @foreach($categoriess as $cattopic)
+                    @forelse($categoriess as $cattopic)
                     <li class="cat-topic" >
                         <a  href="businesses/{{$cattopic->catslug}}">{{ $cattopic->categoryname }}
                         </a>
                     </li>
+                    @empty
+                    <h6>No records</h6>
                     @endforeach
                 </ul>
 
