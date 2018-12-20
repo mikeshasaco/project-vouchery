@@ -50,21 +50,21 @@ Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
 
 //old admin
-// Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
-//     Route::get('/', function () {
-//         return view('admin.index');
-//     })->name('admin.index');
-//
-//     Route::get('/submission/create', 'SubmissionsController@create')->name('submission.create');
-//     Route::post('/submission/create', 'SubmissionsController@store')->name('submission.store');
-//
-//     Route::DELETE('/users/all/{id}', 'AdminsController@userdestroy');
-//
-//     Route::get('/users/all', 'AdminsController@adminusers')->name('aduser');
-//     Route::get('/instantad', 'AdminsController@Instantadcount')->name('adcount');
-//     Route::get('/category/create', 'CategoryController@create')->name('category.create')->middleware('auth');
-//     Route::post('/category/create', 'CategoryController@store')->middleware('auth');
-// });
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin.index');
+
+    Route::get('/submission/create', 'SubmissionsController@create')->name('submission.create');
+    Route::post('/submission/create', 'SubmissionsController@store')->name('submission.store');
+
+    Route::DELETE('/users/all/{id}', 'AdminsController@userdestroy');
+
+    Route::get('/users/all', 'AdminsController@adminusers')->name('aduser');
+    Route::get('/instantad', 'AdminsController@Instantadcount')->name('adcount');
+    Route::get('/category/create', 'CategoryController@create')->name('category.create')->middleware('auth');
+    Route::post('/category/create', 'CategoryController@store')->middleware('auth');
+});
 
 Route::group(['prefix'=> 'customer'], function () {
 
@@ -101,7 +101,3 @@ Route::group(['prefix'=> 'customer'], function () {
 
 Route::post('/product/{id}/click', 'ClicksController@postClicks');
 
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

@@ -17,8 +17,7 @@
         "laravelcollective/html": "^5.4.0",
         "needim/noty": "^3.1",
         "overtrue/laravel-follow": "^1.1",
-        "stripe/stripe-php": "~5.0",
-        "tcg/voyager": "^1.1"
+        "stripe/stripe-php": "~5.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
