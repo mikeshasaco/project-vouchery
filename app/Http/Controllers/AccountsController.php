@@ -165,7 +165,7 @@ class AccountsController extends Controller
 
 
 
-        return view('account.adcart', compact('user', 'userproduct', 'submissonAds', 'userreferral', 'usertracker', 'userinfo'));
+        return view('account.adcart', compact('user', 'userproduct', 'submissonAds', 'usertracker', 'userinfo'));
     }
 
     public function changepassword(Request $request)

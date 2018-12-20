@@ -102,6 +102,6 @@ Route::group(['prefix'=> 'customer'], function () {
 Route::post('/product/{id}/click', 'ClicksController@postClicks');
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
+Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
