@@ -5,22 +5,8 @@
     <div class="container" >
 
         <div class="row" style="margin-top:10%;">
-            <div class="col-md-3">
-                <h5 style="text-align:center; padding-bottom:0%;"> <b>Trending Categories</b></h5>
-                <ul class="topic" style="margin-top:4%;">
-                    @forelse($categoriess as $cattopic)
-                    <li class="cat-topic" >
-                        <a  href="businesses/{{$cattopic->catslug}}">{{ $cattopic->categoryname }}
-                        </a>
-                    </li>
-                    @empty
-                    <h6>No records</h6>
-                    @endforeach
-                </ul>
 
-            </div>
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
 
                 <div id="demo" class="carousel slide" data-ride="carousel" >
@@ -45,18 +31,6 @@
                   </a>
                 </div>
             </div>
-            {{-- <div class="col-md-3">
-                <h5 style="text-align:center; padding-bottom:0%;"> <b>Trending Categories</b></h5>
-                <ul class="topic" style="margin-top:4%;">
-                    @foreach($categoriess as $cattopic)
-                    <li class="cat-topic" >
-                        <a  href="businesses/{{$cattopic->catslug}}">{{ $cattopic->categoryname }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-
-            </div> --}}
         </div>
     </div>
 
