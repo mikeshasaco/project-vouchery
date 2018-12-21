@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use DB;
 use App\Click;
 use App\Submission;
-use App\Banner;
 use App\Category;
 use App\Product;
 use Carbon\Carbon;
@@ -25,10 +24,6 @@ class PagesController extends Controller
 
         // dd($products);
         $submission = Submission::inRandomOrder()->take(2)->get();
-
-        $banner = Banner::get();
-        // dd($banner);
-
 
         $productlower = Product::join('categoriess', 'categoriess.id', 'products.category_id')
                       ->join('users', 'users.id', '=', 'products.user_id')
@@ -81,7 +76,7 @@ class PagesController extends Controller
 
 
 
-        return view('pages.index', compact('products', 'randoms', 'submission', 'banner'));
+        return view('pages.index', compact('products', 'randoms', 'submission'));
     }
 
     public function getData()

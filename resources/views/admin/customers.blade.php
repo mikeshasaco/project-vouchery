@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
 @section('content')
-        
 
 <div class="container">
     <div class="row">
@@ -9,7 +7,7 @@
          <div class="list-group" style="margin-top:138px;">
          <a href="{{route('admin.dashboard')}}" class="list-group-item ">Dashboard</a>
                 <a href="{{route('aduser')}}" class="list-group-item ">Merchant</a>
-              <a href="{{route('adcustomer')}}" class="list-group-item ">Customer</a>
+         <a href="{{route('adcustomer')}}" class="list-group-item ">Customer</a>
                 <a href="{{route('category.create')}}" class="list-group-item ">Create Category</a>
                 <a href="{{route('adproduct')}}" class="list-group-item ">Coupons</a>
 
@@ -19,9 +17,9 @@
         {{-- @include('admin._sidebar') --}}
 
         <div class="col-md-9">
-              <form  action="{{ route('aduser') }}" method="GET" style="margin-top:17%;">
+              <form  action="{{ route('adcustomer') }}" method="GET" style="margin-top:17%;">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="Msearch" id="" placeholder="Search..." value="{{ request()->input('Msearch') }}" >
+                                <input type="text" class="form-control" name="Qsearch" id="" placeholder="Search..." value="{{ request()->input('Qsearch') }}" >
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
                                         <i class="fa fa-search"></i>
@@ -37,14 +35,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($adminallusers as $ad)
+                        @foreach($customersonadmin as $adcustomer)
                             <tr>
-                                <td>{{ $ad->id }}</td>
-                                <td>{{ $ad->name }}</td>
-                                <td>{{ $ad->company }}</td>
+                                <td>{{ $adcustomer->id }}</td>
+                                <td>{{ $adcustomer->name }}</td>
+                                <td>{{ $adcustomer->username }}</td>
 
                                 <td>
-                                    <form method="POST" action="{{ url('/admin' . '/users/all/' . $ad->id) }}" accept-charset="UTF-8" style="display:inline">
+                                    <form method="POST" action="{{ url('/admin' . '/customers/all/' . $adcustomer->id) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger btn-sm" title="Delete user" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

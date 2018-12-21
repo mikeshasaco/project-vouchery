@@ -51,16 +51,20 @@ Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
 //old admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('admin.index');
 
+    Route::get('/', 'AdminsController@index')->name('admin.dashboard');
     Route::get('/submission/create', 'SubmissionsController@create')->name('submission.create');
     Route::post('/submission/create', 'SubmissionsController@store')->name('submission.store');
 
-    Route::DELETE('/users/all/{id}', 'AdminsController@userdestroy');
+    Route::get('/products/all', 'AdminsController@adminproducts')->name('adproduct');
+    Route::DELETE('/products/all/{id}', 'AdminsController@productdestroy');
 
+    Route::DELETE('/users/all/{id}', 'AdminsController@userdestroy');
     Route::get('/users/all', 'AdminsController@adminusers')->name('aduser');
+
+    Route::get('/customers/all', 'AdminsController@admincustomers')->name('adcustomer');
+    Route::DELETE('/customers/all/{id}', 'AdminsController@customerdestroy');
+
     Route::get('/instantad', 'AdminsController@Instantadcount')->name('adcount');
     Route::get('/category/create', 'CategoryController@create')->name('category.create')->middleware('auth');
     Route::post('/category/create', 'CategoryController@store')->middleware('auth');

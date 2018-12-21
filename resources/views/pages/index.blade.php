@@ -16,12 +16,16 @@
                     <li data-target="#demo" data-slide-to="2"></li>
                   </ul>
                   <div class="carousel-inner">
-                      @foreach($banner as $ban)
+                      {{-- @foreach($banner as $ban)
                      <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                     <a href="{{ $ban->bannerwebsitelink }}" target="_blank">  <img src="{{ Voyager::image($ban->bannerimage) }}" alt=" advertbanner" width="90%"  height="280px"></a>
                     </div>
-                @endforeach
+                @endforeach --}}
+                    <div class="carousel-item">
+                        <a href=""> <img src="/babyco.png" alt=""> </a>
+                        <a href=""> <img src="/banner.jpg" alt=""> </a>
 
+                    </div>
                   </div>
                   <a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
@@ -71,7 +75,7 @@
 
 </section>
 
-<section id="recentlyuploaded">
+<section id="recentlyuploaded" style="margin-bottom:100px;">
     <div class="container">
         <div class="row" >
 
@@ -102,7 +106,7 @@
                         </ul>
                         <div >
                             <span class="badge badge-danger" title="Percentage Off" style="float:right; margin-right:-6%; margin-top:2%; cursor:pointer;">{{$product->percentageoff()}} OFF</span>
-                            <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464; float:right; margin-right:-31%; margin-top:5%"> <small class="badges" title="Category">{{$product->categoryname}}</small> </a>
+                            <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464; float:right; margin-right:-77px; margin-top:12px"> <small class="badges" title="Category">{{$product->categoryname}}</small> </a>
                         </div>
 
 

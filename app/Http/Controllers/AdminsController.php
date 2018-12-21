@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Product;
 use App\Advertisement;
 use Illuminate\Http\Request;
+use App\Customer;
 
 class AdminsController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $adminallcustomers = Customer::paginate(30);
+        $adminallusers = User::paginate(30);
+        $adminusercount = User::count();
+        $admincustomercount = Customer::count();
+        $adminproductcount = Product::count();
+        return view('admin.index', compact('adminallusers', 'adminusercount', 'admincustomercount', 'adminproductcount', 'adminallcustomers'));
     }
 
     public function Instantadcount(Request $request)
@@ -30,9 +37,13 @@ class AdminsController extends Controller
         return view('admin.instantad', compact('instantad'));
     }
 
-    public function adminusers()
+    public function adminusers(Request $request)
     {
-        $adminallusers = User::all();
+        $query = $request->input('Msearch');
+
+        $adminallusers = User::where('name', 'like', "%$query%")
+                             ->orwhere('company', 'like', "%$query%")
+                             ->paginate(30);
 
         return view('admin.users', compact('adminallusers'));
     }
@@ -43,6 +54,35 @@ class AdminsController extends Controller
 
         $userdelete->delete();
 
+        return back();
+    }
+
+    public function productdestroy($id){
+        $productdelete = Product::find($id);
+        $productdelete->delete();
+        return back();
+    }
+
+    public function adminproducts(){
+
+        $adminallproducts = Product::all();
+
+        return view('admin.productsall', compact('adminallproducts'));
+    }
+
+    public function admincustomers(Request $request){
+        $customerquery = $request->input('Qsearch');
+
+        $customersonadmin = Customer::where('name', 'like', "%$customerquery%")
+                            ->orwhere('username', 'like', "%$customerquery%")
+                            ->paginate(30);
+            return view('admin.customers', compact('customersonadmin')); 
+
+    }
+    
+    public function customerdestroy($id){
+        $customerdelete = Customer::find($id);
+        $customerdelete->delete();
         return back();
     }
 }
