@@ -45,7 +45,7 @@
 
                           <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
 
-                          <a href="#" class="nav-link" style="color:red; float:right; margin-top:5%; margin-right:-30%;"> <small class="badges">{{$product->category->categoryname}}</small> </a>
+                          <a href="#" class="nav-link" style="color:red; float:right; margin-top:5%;  margin-right:-68px;"> <small class="badges">{{$product->category->categoryname}}</small> </a>
 
 
                           <h4 class="card-title">

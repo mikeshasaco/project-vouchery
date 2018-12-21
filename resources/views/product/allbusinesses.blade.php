@@ -13,7 +13,7 @@
 @section('content')
 
 
-<section id="albusysection" >
+<section id="albusysection" style="margin-bottom:90px;">
     <?php $cats = DB::table('categoriess')->orderby('categoryname','ASC')->get(); ?>
 
     <div class="container">
@@ -60,7 +60,7 @@
                                     </ul>
                                     <div>
                                         <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
-                                        <a href="#" class="nav-link" style="    color: #B35464;float: right;margin-right: -31%;margin-top: 5%;"> <small class="badges">{{$product->category['categoryname']}}</small> </a>
+                                        <a href="#" class="nav-link" style="    color: #B35464;float: right; margin-right:-68px;margin-top: 5%;"> <small class="badges">{{$product->category['categoryname']}}</small> </a>
                                     </div>
 
                                     <h4 class="card-title" >
@@ -90,7 +90,7 @@
     </div>
 </section>
 
-<section id="advert-section" class="d-none d-md-block">
+<section id="advert-section" class="d-none d-lg-block">
     <div class="container">
         <h4 style=" margin-bottom: 5%; margin-top: 4%;"> <center> <b>Advertised Coupons</b> </center></h4>
 
@@ -121,7 +121,7 @@
 
                         <div>
                             <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
-                            <a  href="#" class="nav-link" style="    color: #B35464;float: right;    margin-right: -31%;    margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
+                            <a  href="#" class="nav-link" style="    color: #B35464;float: right;    margin-right:-68px;    margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
                         </div>
 
                         <h4 class="card-title">

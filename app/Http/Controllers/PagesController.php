@@ -56,18 +56,13 @@ class PagesController extends Controller
         //                     ->get();
 
 // dd($trendingclicks);
-        $randoms = Product::join('categoriess', 'categoriess.id', 'products.category_id')
-            ->join('users', 'users.id', '=', 'products.user_id')
-            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
+  
 
-        // $categoriess = Product::join('categoriess', 'categoriess.id', 'products.category_id')
-        // ->select('products.category_id', DB::raw('count(*) as total'),  'categoriess.categoryname', 'categoriess.catslug')
-        // ->groupBy('category_id')
-        // ->take(5)
-        // ->get();
+        $categoriess = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+        ->select('products.category_id', DB::raw('count(*) as total'),  'categoriess.categoryname', 'categoriess.catslug')
+        ->groupBy('category_id')
+        ->take(5)
+        ->get();
         // $paidad = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
         // ->join('categoriess', 'categoriess.id', 'products.category_id')
         // ->get();
@@ -76,7 +71,7 @@ class PagesController extends Controller
 
 
 
-        return view('pages.index', compact('products', 'randoms', 'submission'));
+        return view('pages.index', compact('products', 'submission', 'categoriess'));
     }
 
     public function getData()

@@ -1,38 +1,39 @@
 @extends('layouts.master')
 @section('content')
 
-<section id="banner-homepage"  class="d-none d-lg-block">
+<section id="banner-homepage" style="margin-top:120px;"  class="d-none d-lg-block">
     <div class="container" >
 
-        <div class="row" style="margin-top:10%;">
-
+         <div class="row">
+        
             <div class="col-md-12">
-                <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
+              <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
 
-                <div id="demo" class="carousel slide" data-ride="carousel" >
-                  <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
-                  </ul>
-                  <div class="carousel-inner">
-                      {{-- @foreach($banner as $ban)
-                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <a href="{{ $ban->bannerwebsitelink }}" target="_blank">  <img src="{{ Voyager::image($ban->bannerimage) }}" alt=" advertbanner" width="90%"  height="280px"></a>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img  src="banner.jpg" width="100%;" height="280px;" alt="First slide">
                     </div>
-                @endforeach --}}
                     <div class="carousel-item">
-                        <a href=""> <img src="/babyco.png" alt=""> </a>
-                        <a href=""> <img src="/banner.jpg" alt=""> </a>
-
+                    <img src="babyco.png"  width="100%;" height="280px;" alt="Second slide">
                     </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                  </a>
+                    <div class="carousel-item">
+                    <img src="chicago.jpg" width="100%;" height="280px;"  alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
                 </div>
             </div>
         </div>
@@ -75,7 +76,7 @@
 
 </section>
 
-<section id="recentlyuploaded" style="margin-bottom:100px;">
+<section id="recentlyuploaded" style="margin-bottom:90px;">
     <div class="container">
         <div class="row" >
 
@@ -106,7 +107,7 @@
                         </ul>
                         <div >
                             <span class="badge badge-danger" title="Percentage Off" style="float:right; margin-right:-6%; margin-top:2%; cursor:pointer;">{{$product->percentageoff()}} OFF</span>
-                            <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464; float:right; margin-right:-77px; margin-top:12px"> <small class="badges" title="Category">{{$product->categoryname}}</small> </a>
+                            <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464; float:right; margin-right:-68px; margin-top:5%"> <small class="badges" title="Category">{{$product->categoryname}}</small> </a>
                         </div>
 
 

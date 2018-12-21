@@ -21,18 +21,7 @@
      cursor: pointer;
 }
 
-/* home page styling */
-/* #banner-homepage{
-    padding: 3%;
-    margin-top: 5%;
-    margin-left: 19%;
-} */
 
-#banner-homepage .list-group{
-    margin-top: 45%;
-    margin-left: -25%;
-    margin-right: -6%;
-}
 
 .topic li{
     display: flex;
@@ -863,8 +852,15 @@ border-radius: 3px;
     font-weight: 400;
     margin-left:52%;
 }
+.nocategoryproducts{
+  margin:20px; 
+  margin-top:260px;
+}
 
 @media (max-width: 991px) {
+    .nocategoryproducts{
+        font-size: 20px;
+    }
 
     .input-email{
         height: 4rem;

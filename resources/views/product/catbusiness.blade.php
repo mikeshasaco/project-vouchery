@@ -11,16 +11,16 @@
 <section>
 
     @if(count($products) == "0")
-    <div class="col-md-12" align="center">
-        <h1 align="center" style="margin:20px; margin-top:18%;">
-      No Products found under <b style="color:red">{{$catbyuser}}</b> Category.</h1>
+    <div class="col-md-12">
+        <h3 class="nocategoryproducts" align="center" >
+      No Products found under <b style="color:red">{{$catbyuser}}</b> Category.</h3>
 
     </div>
 
     @else
 
 
-<section id="catbusysection" >
+<section id="catbusysection" style="margin-bottom:90px;" >
 
         <div class="container">
             <div class="row">
@@ -69,7 +69,7 @@
                                         </ul>
                                         <div>
                                             <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
-                                            <a href="#" class="nav-link" style="    color: #B35464;float: right;margin-right: -31%;margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
+                                            <a href="#" class="nav-link" style="    color: #B35464;float: right; margin-right:-68px;margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
                                         </div>
 
                                         <h4 class="card-title"> <a href="{{ url('account' .'/'. $product->user['slug']) }}">{{$product->title}}</a> </h4>
@@ -98,7 +98,7 @@
         </div>
     </section>
 
-    <section id="advert-section" class="d-none d-md-block">
+    <section id="advert-section" class="d-none d-lg-block">
         <div class="container">
             <h4 style=" margin-bottom: 5%; margin-top: 4%;">
                 <center><b>Advertised Coupons</b></center></h4>
@@ -129,7 +129,7 @@
                             </ul>
                             <div>
                                 <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
-                                <a  href="#" class="nav-link" style="    color: #B35464;float: right;margin-right: -31%;margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
+                                <a  href="#" class="nav-link" style="    color: #B35464;float: right; margin-right:-68px;margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
                             </div>
 
 
