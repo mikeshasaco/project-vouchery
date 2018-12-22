@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Illuminate\Support\Facades\Storage;
 // merchant is user
 class User extends Authenticatable
 {
@@ -77,6 +78,9 @@ class User extends Authenticatable
     }
     public function getCompanyAttribute($value){
         return ucfirst($value);
+    }
+    public function getAvatarAttribute($value){
+        return Storage::url($value);
     }
 
 }

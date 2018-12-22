@@ -18,7 +18,7 @@
 
                 <div class="card profile-info ">
                     <div class="firstinfo">
-                        <img src="{{ Storage::url($user->avatar) }}" class="companyimage" >
+                        <img src="{{$user->avatar }}" class="companyimage" >
 
                         <div class="profileinfo" style=" margin-left:30%;margin-top:-25%;" >
                             <h4 class="profilecompany" > <b style="color:#b35464;"> Company:</b> {{ $user->company }}</h4>
@@ -139,7 +139,7 @@
                                     <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                             </div>
 
-                            <img class="card-img-bottom" src="{{Storage::url($product->image)}}" height="283" width="180">
+                            <img class="card-img-bottom" src="{{$product->image}}" height="283" width="180">
 
                             <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                         </div>
