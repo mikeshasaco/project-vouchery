@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    
     protected $fillable = [ 'accountinfo', 'user_id', 'websitelink' ];
 
     public function user()

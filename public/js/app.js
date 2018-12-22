@@ -50678,7 +50678,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("img", {
                       staticClass: "filter-image",
-                      attrs: { src: "/images/" + product.image }
+                      attrs: { src: product.image }
                     })
                   ])
                 })

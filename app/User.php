@@ -75,6 +75,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Click');
     }
-
+    public function getCompanyAttribute($value){
+        return ucfirst($value);
+    }
 
 }

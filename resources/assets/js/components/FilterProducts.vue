@@ -40,7 +40,7 @@
                           <h5 class="filterold">${{product.currentprice}}</h5>
                            <h5 class="filternew">${{product.newprice}}</h5>
 
-                      <img class="filter-image" :src="'/images/'+product.image ">
+                      <img class="filter-image" :src="product.image">
                     </div>
 
                   </div>

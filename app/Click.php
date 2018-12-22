@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Click extends Model
 {
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    
     protected $fillable = [
         'click_product_id',
         'click_customer_id',

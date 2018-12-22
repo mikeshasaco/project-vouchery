@@ -80,7 +80,7 @@
                                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                                             <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                                     </div>
-                                    <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180">
+                                    <img class="card-img-bottom" src="{{Storage::url($product->image)}}" height="283" width="180">
                                     <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                                 </div>
 
@@ -142,7 +142,7 @@
                             <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                                 <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                         </div>
-                        <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180">
+                        <img class="card-img-bottom" src="{{Storage::url($product->image)}}" height="283" width="180">
                         <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                     </div>
 

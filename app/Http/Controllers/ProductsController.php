@@ -172,9 +172,8 @@ class ProductsController extends Controller
             // $product->image = $filename;
         $extension = $request->file('image')->extension();
         $mimeType = $request->file('image')->getMimeType();
-        $path = Storage::putFileAs('public/couponimages', $request->file('image'), time(). '.'. $extension);
+        $path = Storage::putFileAs('public/images', $request->file('image'), time(). '.'. $extension);
         $product->image = $path;
-
         }
         // using the storage
 

@@ -45,4 +45,8 @@ class Customer extends Authenticatable
         return $this->hasMany('App\Click');
     }
 
+    public function getUsernameAttribute($value){
+        return ucfirst($value);
+    }
+
 }

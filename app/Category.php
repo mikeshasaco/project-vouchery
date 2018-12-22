@@ -23,4 +23,8 @@ class Category extends Model
     {
         return 'slug';
     }
+    public function getCategorynameAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }
