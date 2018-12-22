@@ -6,7 +6,7 @@
 
          <div class="row">
         
-            <div class="col-md-12">
+            <div class="col-md-8 offset-md-2">
               <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -154,22 +154,42 @@
         <div class="row"  style="margin: 7% 0 7%;">
             <div class="col-md-3">
                 <a href="/businesses/beauty">
-                <img src="/sale3.png" alt="" >
+                <img src="/sale3.png" alt="" title="Creative Commons BY 3.0">
                 </a>
                 <h5 style="margin-left:5%;"> <b> Sales</b></h5>
             </div>
             <div class="col-md-3">
-                <img src="/mascara.png" alt="">
+                <img src="/mascara.png" alt="" title="Creative Commons BY 3.0">
                 <h5> <b> Beauty</b></h5>
             </div>
             <div class="col-md-3">
-                <img src="/game-controller.png" alt="">
+                <img src="/game-controller.png" alt="" >
                 <h5> <b> Electronics</b></h5>
             </div>
             <div class="col-md-3">
-                <img src="/coat.png" alt="">
+                <img src="/coat.png" alt="" title="Creative Commons BY 3.0">
                 <h5> <b> Fashion</b></h5>
             </div>
+             <div class="col-md-3">
+                <img src="/automobile.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                <h5> <b> Automotive</b></h5>
+            </div>
+
+              <div class="col-md-3">
+                <img src="/diamonds.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                <h5> <b>Jewelry &amp; Watches</b></h5>
+            </div>
+              <div class="col-md-3">
+                <img src="/bottle.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                <h5> <b>Baby Products</b></h5>
+            </div>
+            
+              <div class="col-md-3">
+                <img src="/painting.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                <h5> <b>Arts &amp; Crafts</b></h5>
+            </div>
+            
+            
 
         </div>
 
