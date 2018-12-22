@@ -485,7 +485,6 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 }
 
 .content .card {
-        min-height: 100px;
         height: 284px;
         width: 538px;
         padding: 20px;
@@ -877,11 +876,22 @@ border-radius: 3px;
         margin-top: 20%;
         font-size: 18px;
     }
-    .card {
+    /* this affects the size of the profile look like the cards coupons */
+    /* .card {
         height: 40rem !important;
         width: 18rem !important;
         margin-left: 3%;
+    } */
+    /* 991 card and margin */
+    .content .card{
+    height: 284px;
+    width: 513px;
     }
+    /* profile  */
+.content{
+    margin-left: 81px;
+    margin-top: 175px;
+}
 
     .mediah5 h5{
         font-size:10px;
@@ -958,12 +968,17 @@ border-radius: 3px;
            margin-top: 21%;
            margin-bottom: 8%;
        }
+       /* profile and margin */
        .content .card {
           height: 248px !important;
          width: 430px !important;
          padding: 20px;
     /* margin-left: -25%; */
         margin-left: -86px;
+}
+.content{
+    margin-left: 250px;
+    margin-top: 175px;
 }
 
 
