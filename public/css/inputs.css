@@ -286,4 +286,19 @@
             width: 89px;
             font-size: 8px;
     }
+    #recentlyuploaded{
+        margin-left: 17px;
+    }
+    #albusysection{
+        margin-left:17px;
+    }
+    #catbusysection{
+    margin-left:17px;
+    }
+    #accountsection {
+        margin-left:17px;
+    }
+    #searchcoupon{
+        margin-left:17px;
+    }
 }

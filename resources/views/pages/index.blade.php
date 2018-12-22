@@ -136,7 +136,7 @@
 
 
             @empty
-            <h3 style="margin-left:40%; padding-top:3%; padding-bottom:3%;"> No Entries</h3>
+            <h3 style="margin-left:40%; padding-top:3%; padding-bottom:3%;"> <i>Create a Coupon</i> </h3>
             @endforelse
         </div>
         <div style="size:10em">

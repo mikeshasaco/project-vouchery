@@ -28,11 +28,11 @@ class ProductsController extends Controller
             ->orderBy('products.created_at', 'DESC')
             ->paginate(36);
         // this function responds to datatable
-        // $users = User::selectRaw('users.*, COUNT(products.id) AS products')
-        //  ->join('products', 'users.id', '=', 'products.user_id')
-        //  ->join('accounts', 'accounts.user_id', 'users.id')
-        //  ->groupBy('users.id')
-        //  ->get();
+        $users = User::selectRaw('users.*, COUNT(products.id) AS products')
+         ->join('products', 'users.id', '=', 'products.user_id')
+         ->join('accounts', 'accounts.user_id', 'users.id')
+         ->groupBy('users.id')
+         ->paginate();
 
         $alladproducts = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
                           ->join('users', 'users.id', 'products.user_id')
@@ -49,7 +49,7 @@ class ProductsController extends Controller
 
         return view('product.allbusinesses')
       ->with('categorycountallbusy', $categorycountallbusy)
-      // ->with('users', $users)
+      ->with('users', $users)
       ->with('products', $products)
       ->with('alladproducts', $alladproducts);
 

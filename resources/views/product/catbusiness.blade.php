@@ -151,36 +151,41 @@
 
 
                 @empty
-                <h2 style="margin-left:40%; padding-top:4%; padding-bottom:4%;"> No Entries</h2>
+            <h4 style="margin-left:40%; padding-top:4%; padding-bottom:4%;"> <i> (No Advertisement Running)</i></h4>
                 @endforelse
             </div>
         </div>
     </section>
 
     {{-- datatable --}}
-    <section style="margin-top:10%; margin-bottom: 4%;" class="d-none d-lg-block">
-           <div class="container">
+   <section style="margin-top:10%; margin-bottom: 4%;" class="d-none d-lg-block">
+    <div class="container">
 
-               <div class="row">
-                   <div class="col-md-12">
-                       <table class="table-border" id="myTable" style="width:100%;">
-                           <thead>
-                               <tr>
-                                   <th>Company Name</th>
-                                   <th>Coupons</th>
-                                   <th>Company Page</th>
-                               </tr>
-                           </thead>
-
-
-                       </table>
-
-                   </div>
-
-               </div>
-               @endif
-           </div>
-       </section>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table-border" id="myTable" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Coupons</th>
+                            <th>Company Page</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->company}} </td>
+                            <td>{{$user->products}} Coupons</td>
+                            <td><a href="{{ url('/account/'.$user->slug) }}" class=""> Visit Page</a> </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @endif
+    </div>
+</section>
 
 
     @endsection
@@ -220,5 +225,9 @@
     });
     </script>
 
-
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable();
+} );
+</script>
     @endsection

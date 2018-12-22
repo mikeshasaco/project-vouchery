@@ -92,7 +92,7 @@
 
 <section id="advert-section" class="d-none d-lg-block">
     <div class="container">
-        <h4 style=" margin-bottom: 5%; margin-top: 4%;"> <center> <b>Advertised Coupons</b> </center></h4>
+        <h2 style=" margin-bottom: 5%; margin-top: 4%;"> <center><b>Advertised Coupons</b></center></h2>
 
         <div class="row">
 
@@ -141,7 +141,7 @@
 
 
             @empty
-            <h2 style="margin-left:40%; padding-top:4%; padding-bottom:4%;"> No Entries</h2>
+            <h4 style="margin-left:40%; padding-top:4%; padding-bottom:4%;"> <i> (No Advertisement Running)</i></h4>
             @endforelse
         </div>
     </div>
@@ -161,21 +161,29 @@
                             <th>Company Page</th>
                         </tr>
                     </thead>
-
-
+                    <tbody>
+                         @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->company}} </td>
+                            <td>{{$user->products}} Coupons</td>
+                            <td><a href="{{ url('/account/'.$user->slug) }}" class=""> Visit Page</a> </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
-
             </div>
-
         </div>
     </div>
 </section>
-
-
-
 @endsection
 
 @section('javascripts')
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable();
+} );
+</script>
+
 
 
 
