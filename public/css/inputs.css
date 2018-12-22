@@ -79,6 +79,7 @@
      bottom: 13%;
 }
 
+
 .websitebutton{
     border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 15px 10px 10px 10px; text-decoration:none; display:inline-block;font-weight:bold; color: white;
      background-color: #b35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#b35464), to(#B35464));
@@ -219,26 +220,17 @@
 
  
     .editaccount{
-        max-height: 15px;
-        max-width: 77px;
-        font-size: 8px;
-        bottom: 16%;
-
+    bottom: 15%;
+    width: 93px;
     }
     .follow_button{
-        max-height: 15px;
-        max-width: 79px;
-        font-size: 7px;
-        bottom: 16%;
-        line-height: 1;
+        bottom: 15%;
+      width: 99px;
     }
 
     .unfollow_button{
-        max-height: 21px;
-        max-width: 78px;
-        font-size: 7px;
-        bottom: 16%;
-        line-height: 1;
+           bottom: 15%;
+           width: 99px;
     }
     .subscriberh6{
         font-size: 10px
@@ -272,4 +264,26 @@
     }
 
 
+}
+@media(max-width: 768px){
+    .unfollow_button{
+    bottom: 15%;
+    width: 106px;
+    }
+}
+
+@media(max-width: 430px){
+    .follow_button{
+         bottom: 18%;
+      width: 89px;
+    }
+    .editaccount{
+    bottom: 18%;
+    width: 93px;
+    }
+      .unfollow_button{
+            bottom: 18%;
+            width: 89px;
+            font-size: 8px;
+    }
 }

@@ -30,7 +30,7 @@
                                   {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">
                                       Edit Account
                                   </button> --}}
-                                  <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount"> Edit Account</a>
+                                  <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount"> Edit</a>
                             @endif
 
                                 @if(Auth::guard('customer')->user())
