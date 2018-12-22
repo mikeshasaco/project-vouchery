@@ -323,7 +323,6 @@
 
 #accountsection .deleteaccount{
     float:right;
-    margin-right:20%;
 }
 
 #accountsection .card{
@@ -855,6 +854,9 @@ border-radius: 3px;
   margin:20px; 
   margin-top:260px;
 }
+.content-button{
+    margin-left: 4px;
+}
 
 @media (max-width: 991px) {
     .nocategoryproducts{
@@ -954,6 +956,9 @@ border-radius: 3px;
 
 }
 @media(max-width:768px){
+    .content-button{
+    margin-left: -13px;
+}
     .logincontainer{
         margin-top:22%;
         margin-bottom:20%
