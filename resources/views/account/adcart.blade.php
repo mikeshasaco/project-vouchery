@@ -44,7 +44,7 @@
 
                   </form>
 
-                  <img src="{{ Storage::url($user->avatar) }}" class="img-updateprofile">
+                  <img src="{{$user->avatar}}" class="img-updateprofile">
 
               </div>
           </div>

@@ -15,12 +15,6 @@ class Product extends Model
     protected $fillable = ['title', 'desc', 'currentprice', 'couponcode','user_id',
           'newprice', 'image', 'url', 'advertboolean', 'expired_date' ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = ['coupon_url'];
 
     public function user()
     {
@@ -60,10 +54,7 @@ class Product extends Model
         return ucfirst($value);
     }
 
-    public function getCouponUrlAttribute(){
-        return  Storage::url($this->image);
-
-    }
+ 
   
     
 }
