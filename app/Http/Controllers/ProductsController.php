@@ -165,18 +165,20 @@ class ProductsController extends Controller
         $product->user_id = Auth::user()->id;
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
-            Image::make($image)->orientate()->save($location);
-            $product->image = $filename;
+            // $image = $request->file('image');
+            // $filename = time() . '.' . $image->getClientOriginalExtension();
+            // $location = public_path('/images/' . $filename);
+            // Image::make($image)->orientate()->save($location);
+            // $product->image = $filename;
+        $extension = $request->file('image')->extension();
+        $mimeType = $request->file('image')->getMimeType();
+        $path = Storage::putFileAs('public/couponimages', $request->file('image'), time(). '.'. $extension);
+        $product->image = $path;
+
         }
         // using the storage
-        // $extension = $request->file('image')->extension();
-        // $mimeType = $request->file('image')->getMimeType();
-        // $path = Storage::putFileAs('uploads', $request->file('image'), time(). ''. $extension);
+
         //
-        // $product->image = $path;
         $saved = $product->save();
         Session::flash('successmessage', 'Coupon Created Successfully');
         return redirect('/account/'. Auth::user()->slug);
