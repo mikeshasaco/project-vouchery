@@ -7,7 +7,7 @@
 
     <div id="search_form" >
       <form action="{{ route('search') }}" method="GET">
-          <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search for latest Deals...">
+          <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search Deals...">
        </form>
     </div>
   </header>
