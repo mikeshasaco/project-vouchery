@@ -38,6 +38,6 @@ class DeleteCoupons extends Command
      */
     public function handle()
     {
-        Product::where('created_at' ,'<', Carbon::now()->subMinute(3));
+        Product::where('created_at' ,'<=', Carbon::now()->subMinute(3))->delete();
     }
 }
