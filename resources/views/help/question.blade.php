@@ -1,18 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+<section style="margin-top:120px;">
+
     <div class="container">
-        {{-- @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-
-            </div>
-        @endif --}}
-
         <div class="row">
             <h4 class="col-lg-8 offset-lg-2" style="margin-top:8%;"><center> Question or Concerns Email US!</center></h4>
 
@@ -56,5 +47,7 @@
 
 
     </div>
+</section>
+
 
 @endsection
