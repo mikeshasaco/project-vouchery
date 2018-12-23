@@ -24,7 +24,7 @@
 
             <div class="row">
 
-              <div v-for="product in products" class="card">
+              <div v-for="product in products" class="card" >
                   <div class="card-header">
                 <h5 style="float:left;"> <b>{{product.company}}</b></h5>
                 <a :href="product.url" target="_blank" class="viewdeal-filter"><i class="fas fa-tags"></i>View Deal</a>

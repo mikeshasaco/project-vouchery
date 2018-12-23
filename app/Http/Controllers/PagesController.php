@@ -74,18 +74,17 @@ class PagesController extends Controller
         return view('pages.index', compact('products', 'submission', 'categoriess'));
     }
 
-    public function getData()
-    {
-        $productlower = DB::table('products')
-                        ->join('categoriess', 'categoriess.id', 'products.category_id')
-                        ->join('users', 'users.id', '=', 'products.user_id')
-                        ->where('newprice', '<', '100')
-                        ->inRandomOrder()
-                      ->take(30)
-                       ->get();
+    // public function getData()
+    // {
+    //     $productlower = DB::table('products')
+    //                     ->join('categoriess', 'categoriess.id', 'products.category_id')
+    //                     ->join('users', 'users.id', '=', 'products.user_id')
+    //                     ->where('newprice', '<', '100')
+    //                     ->inRandomOrder()
+    //                    ->get();
 
-        return $productlower;
-    }
+    //     return $productlower;
+    // }
 
 
 
@@ -98,7 +97,6 @@ class PagesController extends Controller
                             $query->where('newprice', '>', $request->min);
                         })
                         ->inRandomOrder()
-                      ->take(30)
                        ->get();
 
         return $productlower;

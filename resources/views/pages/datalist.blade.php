@@ -4,7 +4,7 @@
        @foreach($productlower as $value)
         <div class="col-lg-6 col-xs-6 col-md-6">
           <div class="showcase-image">
-            <img src="/images/{{ $value->image }}"  >
+          <img src="{{$value->image}}"  >
           </div>
         </div>
 

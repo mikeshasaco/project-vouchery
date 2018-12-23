@@ -78,6 +78,17 @@
 
                     </div>
 
+                         <div class="question-title">
+                        <h3>Are there limits to the amount of coupons I can create?</h3>
+                        <div class="content-main">
+                            <div class="content-inner">
+                                <p>Yes, Merchants are allowed to only create up to 9 coupons, If they want to create another coupon they must delete or wait till one of there previous coupons expire.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
 
 
 

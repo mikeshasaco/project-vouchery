@@ -80,7 +80,7 @@
                         </div>
 
                         @endforeach
-                        @endforeach
+                     @endforeach
                 </div>
                 {{ $products->links() }}
             </div>

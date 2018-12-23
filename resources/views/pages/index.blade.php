@@ -135,7 +135,10 @@
 
 
             @empty
-            <h3 style="margin-left:40%; padding-top:3%; padding-bottom:3%;"> <i>Create a Coupon</i> </h3>
+            <div style="padding:185px 0 185px 0;">
+            <h4> <i>(Currently No Coupons have been Created)<a href="/register" style="color:#B35464; text-decoration:none;">Sign Up Today and Begin your Journey!</a> </i> </h4>
+
+            </div>
             @endforelse
         </div>
         <div style="size:10em">

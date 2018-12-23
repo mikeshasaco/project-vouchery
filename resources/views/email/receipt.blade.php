@@ -8,7 +8,7 @@ Your Coupon Advertisement is Running!, Coupon last up to 7 days from when the co
 | <h3 style="color:green;">Running</h3>       | {{ $advertisement->adname}}       | {{ $advertisement->adprice }}  |
 @endcomponent
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => 'http://localhost:8000/', 'color' => 'red'])
 VoucheryHub
 @endcomponent
 

@@ -147,7 +147,7 @@
                 </div>
             @empty
                 <h4>  <b>Create Your First Coupon Today!</b></h4>
-                <h4> <i>(Click Edit Account to setup your Business Information!)</i> </h4>
+                <h4> <i>(Click Edit to setup your Business Information!)</i> </h4>
             @endforelse
             </div>
         </div>
