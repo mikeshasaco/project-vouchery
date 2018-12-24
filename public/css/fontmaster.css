@@ -938,10 +938,7 @@ border-radius: 3px;
           margin-top:38%;
           margin-bottom:20%
       }
-      .content{
-          margin-left: 53%;
-          margin-top: 22%;
-      }
+    
       #accountsection .btn-customdelete{
               left: 161px;
       }
@@ -954,6 +951,17 @@ border-radius: 3px;
       }
 
 
+}
+
+@media(max-width:800px){
+    .content{
+        margin-left: 199px;
+
+    }
+    .content-button{
+    margin-left: -15px;
+
+    }
 }
 @media(max-width:768px){
     .content-button{
@@ -989,8 +997,9 @@ border-radius: 3px;
 
 }
 
+
 .filter-selecttag{
-    min-width:652px;
+    width: 100%;
     min-height: 45px;
     border-width: 3px;
     border-color: rgba(50, 50, 50, 0.14);
@@ -998,6 +1007,16 @@ border-radius: 3px;
     margin-left: 3%;
 }
 
+
+@media(max-width:670px){
+    .content{
+    margin-left: 141px;
+    }
+    .content-button{
+    margin-left: -15px;
+
+    }
+}
 
 @media (max-width: 575px) {
     .searchonlinebusiness{
