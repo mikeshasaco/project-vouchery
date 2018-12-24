@@ -6,7 +6,7 @@
 
          <div class="row">
         
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-9">
               <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -35,6 +35,20 @@
                     <span class="sr-only">Next</span>
                 </a>
                 </div>
+            </div>
+            <div class="col-md-3">
+                <h5 style="text-align:center; padding-bottom:0%;"> <b>Trending Categories</b></h5>
+                <ul class="topic" style="margin-top:4%;">
+                    @forelse($categoriess as $cattopic)
+                    <li class="cat-topic" >
+                        <a  href="businesses/{{$cattopic->catslug}}">{{ $cattopic->categoryname }}
+                        </a>
+                    </li>
+                    @empty
+                    <h6> <i> (No Categories Currently Trending)</i></h6>
+                    @endforelse
+                </ul>
+
             </div>
         </div>
     </div>

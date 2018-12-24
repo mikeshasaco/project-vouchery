@@ -73,7 +73,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @if(auth()->guard('web')->check())
-                            @if(Auth::user()->admin==1)
+                            @if(Auth::user()->admin== 'admin')
 
                             <a class="dropdown-item" href="{{ url('/admin')}}">
                                             Admin DashBoard</a>
