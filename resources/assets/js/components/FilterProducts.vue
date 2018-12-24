@@ -1,5 +1,5 @@
 <template>
-<div class="d-none d-lg-block" >
+<div>
 
     <div class="container">
         <h5 style=" margin-bottom: 4%; margin-top: 4%;"> <b>Online Businesses Coupons By Price Range</b> </h5>
