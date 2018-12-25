@@ -7,7 +7,7 @@
         <div class="container">
             <h1 style="padding-top:10%;"> <center> Search Results '{{ request()->input('query') }}'</center> </h1>
             {{--allows for the query input to stay on screen  --}}
-            <p style="font-size:16px;">({{ $products->count() }} result(s) for '{{ request()->input('query') }}')</p>
+            <p style="font-size:18px;"> <b> ({{ $products->count() }} result(s) for '{{ request()->input('query') }}')</b></p>
         </div>
 
     <section id="searchcoupon" style="padding-bottom:4%;">

@@ -147,23 +147,6 @@
 
 </section>
 
-<section id="" style="background-color:#F8C6C6;" >
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class=""><b>Tips to Grow Your Business</b></h2>
-                    <h3>1) Advertise your Coupons will increase the reach of your coupons. By putting your coupons at the top search indexs, categories and will increase the audience size of viewers to see coupon</h3>
-                    <h3>2) Use clear and percise images with your coupons, make sure the quality of your image of your coupon are excellent.</h3>
-                    <h3>3) Make sure your coupons title and description is short and two the point.</h3>
-                    <h3>4) Remain Consistent and make sure the quality of your coupon are excellent</h3>
-
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
 <section id="questions-help" style="background-color:#FFF5EE;">
     <div class="container">
         <div class="row" style="padding-bottom:10%;">

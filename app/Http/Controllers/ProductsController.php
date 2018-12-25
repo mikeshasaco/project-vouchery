@@ -21,6 +21,7 @@ class ProductsController extends Controller
 {
     public function allbusinesses()
     {
+
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
             ->join('users', 'users.id', 'products.user_id')
             ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
@@ -161,8 +162,9 @@ class ProductsController extends Controller
         $product->category_id = $request->category;
         $product->couponcode = $request->couponcode;
         $product->url = $request->url;
-        $product->expired_date = Carbon::now()->addDay(7);
+        $product->expired_date = Carbon::now()->addMinute(3);
         $product->user_id = Auth::user()->id;
+//         $product->expired_date = Carbon::now()->addDay(7);
 
         if ($request->hasFile('image')) {
             // $image = $request->file('image');
