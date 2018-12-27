@@ -158,7 +158,7 @@
     </section>
 
     {{-- datatable --}}
-   <section style="margin-top:10%; margin-bottom: 4%;" class="d-none d-lg-block">
+   <section style="margin-top:10%; margin-bottom: 4%;" >
     <div class="container">
 
         <div class="row">

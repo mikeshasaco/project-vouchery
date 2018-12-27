@@ -512,49 +512,6 @@ color: red;
     text-decoration: line-through;
 }
 
-
-.filter-productbox{
-    margin-bottom: 5%;
-    margin-top: 5%;
-}
-
-.filter-productbox .card {
-    position: relative;
-    overflow: hidden;
-    width: 70rem;
-    height: 15rem;
-    margin-bottom: 5%;
-}
-.filter-productbox .card .productbox-body{
-    position: absolute;
-    right: 0;
-    bottom: 40px;
-    left: 30%;
-}
-
-.filter-productbox .card .filter-image{
-    left: 5%;
-    position: absolute;
-    width: 10rem;
-    height: 7rem;
-    bottom: 40px;
-}
-.filter-productbox .card  .show-currentprice{
-    position: absolute;
-    font-size: 50px;
-    right: -510px;
-    bottom: -34px;
-
-}
-
-.filter-productbox .card .show-newprice{
-    position: absolute;
-    font-size: 50px;
-    right: -530px;
-    bottom: -34px;
-
-}
-
  .viewdeal-filter{
     float: right;
     border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
@@ -998,14 +955,7 @@ border-radius: 3px;
 }
 
 
-.filter-selecttag{
-    width: 100%;
-    min-height: 45px;
-    border-width: 3px;
-    border-color: rgba(50, 50, 50, 0.14);
-    margin-top: 6%;
-    margin-left: 3%;
-}
+
 
 
 @media(max-width:670px){

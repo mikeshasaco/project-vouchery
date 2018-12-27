@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="d-none d-lg-block">
 
     <div class="container">
         <h5 style=" margin-bottom: 4%; margin-top: 4%;"> <b>Online Businesses Coupons By Price Range</b> </h5>
@@ -20,7 +20,7 @@
     </div>
       <div class="row">
         <div class="col-md-12 col-sm-12col-xs-12 filter-productbox" style="position:relative;">
-          <div class="container-fluid">
+          <div class="container">
 
             <div class="row">
 
@@ -30,14 +30,19 @@
                 <a :href="product.url" target="_blank" class="viewdeal-filter"><i class="fas fa-tags"></i>View Deal</a>
                 <!-- <button style="float:right;" type="button" name="button">View Deal</button> -->
                   </div>
-                  <div class="col-md-4 productbox-body">
-                      <h5><center>{{product.title}}</center></h5>
-                        <p><center>{{product.desc}}</center></p>
-                        <p style="font-weight:bold; font-size:14px;"> <center>Coupon Code: {{product.couponcode}} </center> </p>
-
+                  <div class="col-md-4 col-4 productbox-body">
+                      <h5 class="coupon-vue-title"><center> <b>{{product.title}}</b> </center></h5>
+                        <p class="coupon-vue-desc "><center>{{product.desc}}</center></p>
                 </div>
-                          <h5 class="filterold">${{product.currentprice}}</h5>
-                           <h5 class="filternew">${{product.newprice}}</h5>
+                    <p class="coupon-setting-code"> <center>Coupon Code: {{product.couponcode}} </center> </p>
+
+                    <div class="product-pricing" >
+                        <span class="currentpricing">${{product.currentprice}}</span>
+                        <span class="newpricing">${{product.newprice}}</span>
+                          <!-- <h5 class="filterold"></h5>
+                           <h5 class="filternew"></h5> -->
+                    </div>
+                          
 
                       <img class="filter-image" :src="product.image">
                     </div>

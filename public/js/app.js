@@ -50492,6 +50492,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -50611,7 +50616,7 @@ var render = function() {
             staticStyle: { position: "relative" }
           },
           [
-            _c("div", { staticClass: "container-fluid" }, [
+            _c("div", { staticClass: "container" }, [
               _c(
                 "div",
                 { staticClass: "row" },
@@ -50635,44 +50640,51 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-4 productbox-body" }, [
-                      _c(
-                        "h5",
-                        [_c("center", [_vm._v(_vm._s(product.title))])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        [_c("center", [_vm._v(_vm._s(product.desc))])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          staticStyle: {
-                            "font-weight": "bold",
-                            "font-size": "14px"
-                          }
-                        },
-                        [
-                          _c("center", [
-                            _vm._v(
-                              "Coupon Code: " + _vm._s(product.couponcode) + " "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4 col-4 productbox-body" },
+                      [
+                        _c(
+                          "h5",
+                          { staticClass: "coupon-vue-title" },
+                          [
+                            _c("center", [
+                              _c("b", [_vm._v(_vm._s(product.title))])
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "coupon-vue-desc " },
+                          [_c("center", [_vm._v(_vm._s(product.desc))])],
+                          1
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("h5", { staticClass: "filterold" }, [
-                      _vm._v("$" + _vm._s(product.currentprice))
-                    ]),
+                    _c(
+                      "p",
+                      { staticClass: "coupon-setting-code" },
+                      [
+                        _c("center", [
+                          _vm._v(
+                            "Coupon Code: " + _vm._s(product.couponcode) + " "
+                          )
+                        ])
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("h5", { staticClass: "filternew" }, [
-                      _vm._v("$" + _vm._s(product.newprice))
+                    _c("div", { staticClass: "product-pricing" }, [
+                      _c("span", { staticClass: "currentpricing" }, [
+                        _vm._v("$" + _vm._s(product.currentprice))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "newpricing" }, [
+                        _vm._v("$" + _vm._s(product.newprice))
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("img", {

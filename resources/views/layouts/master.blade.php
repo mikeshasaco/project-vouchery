@@ -16,6 +16,7 @@
 
 	<!--bootstrap  -->
 	<link href="{{ asset('css/mobilenavbarcustom.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/vueproducts.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/setting.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/help.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/inputs.css') }}" rel="stylesheet">
