@@ -15,6 +15,8 @@ class PagesController extends Controller
 {
     public function index()
     {
+
+
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', 'products.user_id')
         ->select('products.id', 'products.user_id', 'products.title', 'products.desc', 'products.image', 'products.currentprice', 'products.newprice', 'products.category_id', 'products.couponcode', 'products.advertboolean', 'products.url', 'users.company', 'users.slug', 'products.clicks', 'categoriess.categoryname', 'products.expired_date', 'products.created_at', 'categoriess.catslug')
@@ -22,7 +24,6 @@ class PagesController extends Controller
         ->orderBy('products.created_at', 'DESC')
         ->paginate(36);
 
-        // dd($products);
         $submission = Submission::inRandomOrder()->take(2)->get();
 
         $productlower = Product::join('categoriess', 'categoriess.id', 'products.category_id')

@@ -50547,7 +50547,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "d-none d-lg-block" }, [
+  return _c("div", {}, [
     _c("div", { staticClass: "container" }, [
       _vm._m(0),
       _vm._v(" "),
@@ -50623,9 +50623,14 @@ var render = function() {
                 _vm._l(_vm.products, function(product) {
                   return _c("div", { staticClass: "card" }, [
                     _c("div", { staticClass: "card-header" }, [
-                      _c("h5", { staticStyle: { float: "left" } }, [
-                        _c("b", [_vm._v(_vm._s(product.company))])
-                      ]),
+                      _c(
+                        "h5",
+                        {
+                          staticClass: "product-vue-header",
+                          staticStyle: { float: "left" }
+                        },
+                        [_c("b", [_vm._v(_vm._s(product.company))])]
+                      ),
                       _vm._v(" "),
                       _c(
                         "a",
@@ -50642,7 +50647,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-md-4 col-4 productbox-body" },
+                      { staticClass: "col-md-4 col-8 productbox-body" },
                       [
                         _c(
                           "h5",
@@ -50655,12 +50660,9 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _c(
-                          "p",
-                          { staticClass: "coupon-vue-desc " },
-                          [_c("center", [_vm._v(_vm._s(product.desc))])],
-                          1
-                        )
+                        _c("p", { staticClass: "coupon-vue-desc " }, [
+                          _vm._v(_vm._s(product.desc))
+                        ])
                       ]
                     ),
                     _vm._v(" "),

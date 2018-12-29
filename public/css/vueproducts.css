@@ -42,6 +42,8 @@
 .product-pricing .currentpricing{
     text-decoration: line-through;
     font-size: 20px;
+    position: absolute;
+     right: 105px;
 }
 .product-pricing .newpricing{
     color: red;
@@ -53,37 +55,60 @@
 }
 
 @media(max-width:430px){
-.product-pricing{
-       display: inline;
-       position: absolute;
-       right: 17px;
-       bottom: 13px;
+
+.filter-productbox .card .filter-image{
+    width: 6rem;
+    height: 6rem;
 }
+
 .product-pricing .currentpricing{
     text-decoration: line-through;
-    font-size: 10px;
+    font-size: 12px;
+    position: absolute;
+    font-size: 12px;
+    bottom: -72px;
+    font-weight: bold;
 }
 .product-pricing .newpricing{
+    position: absolute;
     color: red;
-    font-size: 10px;
+    right: 30px;
+    bottom: -72px;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .coupon-setting-code{
     font-size: 9px;
-    margin-left: -60px;
+    position: absolute;
+    bottom: -8px;
+    left: 3px;
 }
 
 .filter-productbox .card .productbox-body{
     position: absolute;
     bottom: 51px;
-    left: 138px;
-
+    left: 0px;
 
 }
 .coupon-vue-desc{
     font-size: 11px;
+    padding-left: 13px;
 }
 .coupon-vue-title{
     font-size: 12px;
+}
+}
+
+@media(max-width:430px){
+.product-vue-header{
+    font-size: 14px;
+}
+    .product-pricing .newpricing{
+       right: -18px;
+}
+
+.product-pricing .currentpricing{
+      right: 47px;
 }
 }

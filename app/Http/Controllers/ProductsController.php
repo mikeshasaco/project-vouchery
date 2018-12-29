@@ -77,7 +77,6 @@ class ProductsController extends Controller
         ->orderBy('products.created_at', 'DESC')
         ->where('categoriess.catslug', $slug)
         ->paginate(36);
-
         // random products for the category that between 10 - 100 dollars
         $randomcat = Product::join('categoriess', 'categoriess.id', 'products.category_id')
                 ->join('users', 'users.id', '=', 'products.user_id')

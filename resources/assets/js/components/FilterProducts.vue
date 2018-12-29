@@ -1,5 +1,5 @@
 <template>
-<div class="d-none d-lg-block">
+<div class="">
 
     <div class="container">
         <h5 style=" margin-bottom: 4%; margin-top: 4%;"> <b>Online Businesses Coupons By Price Range</b> </h5>
@@ -26,23 +26,23 @@
 
               <div v-for="product in products" class="card" >
                   <div class="card-header">
-                <h5 style="float:left;"> <b>{{product.company}}</b></h5>
+                <h5 class="product-vue-header" style="float:left;"> <b>{{product.company}}</b></h5>
                 <a :href="product.url" target="_blank" class="viewdeal-filter"><i class="fas fa-tags"></i>View Deal</a>
                 <!-- <button style="float:right;" type="button" name="button">View Deal</button> -->
                   </div>
-                  <div class="col-md-4 col-4 productbox-body">
+                  <div class="col-md-4 col-8 productbox-body">
                       <h5 class="coupon-vue-title"><center> <b>{{product.title}}</b> </center></h5>
-                        <p class="coupon-vue-desc "><center>{{product.desc}}</center></p>
+                        <p class="coupon-vue-desc ">{{product.desc}}</p>
+
                 </div>
-                    <p class="coupon-setting-code"> <center>Coupon Code: {{product.couponcode}} </center> </p>
+                         <p class="coupon-setting-code"> <center>Coupon Code: {{product.couponcode}} </center> </p>
 
                     <div class="product-pricing" >
                         <span class="currentpricing">${{product.currentprice}}</span>
                         <span class="newpricing">${{product.newprice}}</span>
-                          <!-- <h5 class="filterold"></h5>
-                           <h5 class="filternew"></h5> -->
                     </div>
-                          
+
+
 
                       <img class="filter-image" :src="product.image">
                     </div>

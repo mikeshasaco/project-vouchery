@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\CustomerAuth;
 
 use App\Customer;
+use Illuminate\Support\Facades\DB;
+use Auth; 
+use Carbon\Carbon;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -83,8 +86,18 @@ class RegisterController extends Controller
             'customerslug' => str_slug($data['username']),
         ]);
 
-
-
+        DB::table('followables')->insert(
+            array(
+                'followable_id' => 1,
+                'customer_id' => $customer->id,
+                'followable_type' => 'App\User',
+                'relation' => 'follow',
+                'deleted_at' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => null
+            )
+            );
+        
         return $customer;
     }
 }

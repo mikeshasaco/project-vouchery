@@ -131,10 +131,17 @@
 
                         <br>
                         <p class="card-text"style="margin:0;" title="Coupon Description">{{$product->desc}}</p>
+
+                        @if( empty($product->couponcode))
+                         @else
                         <p style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: {{$product->couponcode}} </p>
+                         @endif
                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
-                            <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
-                    </div>
+                        <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
+
+                     <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                           
+                </div>
                 <img class="card-img-bottom" src="{{$product->image}}" alt="" height="283" width="180">
                     {{-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180"> --}}
                     @if(auth::user() || auth::guard('customer')->user())
@@ -151,7 +158,6 @@
             @empty
             <div style="padding:185px 0 185px 0;">
             <h4> <i>(Currently No Coupons have been Created)<a href="/register" style="color:#B35464; text-decoration:none;">Sign Up Today and Begin your Journey!</a> </i> </h4>
-
             </div>
             @endforelse
         </div>
