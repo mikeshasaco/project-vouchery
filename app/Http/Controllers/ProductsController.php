@@ -148,12 +148,12 @@ class ProductsController extends Controller
 
       ]);
         // limit the number of posts that a user can make which is set to 9
-        // if (Auth::user()->products()->get()->count() == 9) {
-        //     session::flash('limit-count', 'You have reached the limit of coupons you can post!');
-        //     return back();
-        // } else {
-        //     $product = new Product;
-        // }
+        if (Auth::user()->products()->get()->count() == 9) {
+            session::flash('limit-count', 'You have reached the limit of coupons you can post!');
+            return back();
+        } else {
+            $product = new Product;
+        }
         $product->title = $request->title;
         $product->desc = $request->desc;
         $product->currentprice = $request->currentprice;
