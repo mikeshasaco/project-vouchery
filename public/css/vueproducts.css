@@ -50,8 +50,19 @@
     font-size: 20px;
 }
 .coupon-setting-code{
+    position: absolute;
     font-weight:bold;
      font-size:14px;
+     bottom: -12px;
+    left: 6px;
+
+}
+.coupon-vue-title{
+    font-size: 16px;
+
+}
+.coupon-vue-desc{
+    font-size: 14px;
 }
 @media(max-width:768px){
     .product-pricing .currentpricing{
@@ -60,6 +71,7 @@
     .product-pricing .newpricing{
     font-size: 16px;
 }
+
 }
 
 @media(max-width:430px){

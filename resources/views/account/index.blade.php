@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class=" profileheaderrow"  >
-        <div class="col-md-10 offset-col-1 col-12">
+        <div class="col-md-12">
             <div class="content" >
 
                 <div class="card profile-info ">

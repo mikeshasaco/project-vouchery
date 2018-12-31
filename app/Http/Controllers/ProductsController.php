@@ -136,7 +136,7 @@ class ProductsController extends Controller
 
         $this->validate($request, [
         'title'=> 'required|max:30',
-        'desc' => 'required|max:72',
+        'desc' => 'required|max:100',
         'newprice' => [
           'required', 'numeric', 'between:0.00,9999.99', 'min:0.00',
             new PriceRule($request->currentprice)
@@ -175,6 +175,8 @@ class ProductsController extends Controller
         $mimeType = $request->file('image')->getMimeType();
         $path = Storage::putFileAs('public/images', $request->file('image'), time(). '.'. $extension);
         $product->image = $path;
+        // Image::make($request->file('image'))->orientate()->save($path);
+
         }
         // using the storage
 

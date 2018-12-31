@@ -125,7 +125,6 @@
 }
 
 .profileheaderrow{
-   margin-left: 12%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -258,10 +257,7 @@
         font-size: 11px;
     }
 
-    .profileheaderrow{
-        margin-left: -8%;
-
-    }
+  
 
 
 }

@@ -21,7 +21,7 @@
 
 
                <div class="form-group {{ $errors->has('desc') ? 'has-error' : '' }}">
-                   <input type="text" name="desc" class="form-control" placeholder="Short Description of your Coupon." maxlength="72">
+                   <input type="text" name="desc" class="form-control" placeholder="Short Description of your Coupon." maxlength="100">
                    @if ($errors->has('desc'))
                        <small class="text-danger">{{ $errors->first('desc') }}</small>
                    @endif

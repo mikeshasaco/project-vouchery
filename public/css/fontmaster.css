@@ -496,21 +496,9 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     }
 
 /* profile  */
-.content{
-    margin-left: 30%;
-    margin-top: 16%;
-}
 
-.content .card {
-        height: 284px;
-        width: 538px;
-        padding: 20px;
-        position: relative;
-        border-radius: 3px;
-        background-color: white;
-        overflow: hidden;
-        margin-left: -25%;
-}
+
+
 
 
 /* vue filter products */
@@ -860,15 +848,7 @@ border-radius: 3px;
         margin-left: 3%;
     } */
     /* 991 card and margin */
-    .content .card{
-    height: 284px;
-    width: 513px;
-    }
-    /* profile  */
-.content{
-    margin-left: 81px;
-    margin-top: 175px;
-}
+ 
 
     .mediah5 h5{
         font-size:10px;
@@ -928,16 +908,7 @@ border-radius: 3px;
 
 }
 
-@media(max-width:800px){
-    .content{
-        margin-left: 199px;
 
-    }
-    .content-button{
-    margin-left: -15px;
-
-    }
-}
 @media(max-width:768px){
     .content-button{
     margin-left: -13px;
@@ -956,18 +927,7 @@ border-radius: 3px;
            margin-top: 21%;
            margin-bottom: 8%;
        }
-       /* profile and margin */
-       .content .card {
-          height: 248px !important;
-         width: 430px !important;
-         padding: 20px;
-    /* margin-left: -25%; */
-        margin-left: -86px;
-}
-.content{
-    margin-left: 250px;
-    margin-top: 175px;
-}
+
 
 
 }
@@ -976,25 +936,13 @@ border-radius: 3px;
 
 
 
-@media(max-width:670px){
-    .content{
-    margin-left: 141px;
-    }
-    .content-button{
-    margin-left: -15px;
-
-    }
-}
 
 @media (max-width: 575px) {
     .searchonlinebusiness{
         margin-top: 40%;
         font-size: 18px;
     }
-    .content{
-        margin-left: 27%;
-        margin-top: 36%;
-    }
+  
 }
 
 @media (max-width: 430px){
@@ -1024,23 +972,10 @@ border-radius: 3px;
            font-weight: 400;
            margin-left:0%;
        }
-          .content .card{
-             height: 202px !important;
-            width: 347px !important;
-    }
+   
 }
 
 @media (max-width: 320px) {
-        .content .card{
-            height: 202px !important;
-             width: 311px !important;
-             margin-left: -69px;
-    }
-    .content{
-    margin-top: 43%;
-    margin-left: 23%;
-    }
-
     .logincontainer{
         margin-top:42%;
         margin-bottom:20%
