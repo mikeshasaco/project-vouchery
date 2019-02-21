@@ -13,7 +13,6 @@ use App\User;
 use App\Rules\PriceRule;
 use Carbon\Carbon;
 use App\Advertisement;
-use Yajra\Datatables\Datatables;
 use Session;
 
 
@@ -173,7 +172,7 @@ class ProductsController extends Controller
             // $product->image = $filename;
         $extension = $request->file('image')->extension();
         $mimeType = $request->file('image')->getMimeType();
-        $path = Storage::putFileAs('public/images', $request->file('image'), time(). '.'. $extension);
+        $path = Storage::disk('do')->putFileAs('public/images', $request->file('image'), time(). '.'. $extension);
         $product->image = $path;
         // Image::make($request->file('image'))->orientate()->save($path);
 
