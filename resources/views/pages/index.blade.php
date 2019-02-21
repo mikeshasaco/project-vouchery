@@ -8,33 +8,34 @@
         
             <div class="col-md-9">
               <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
+                
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+ 
+  <ol class="carousel-indicators">
+   @foreach( $submission as $photo )
+      <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+   @endforeach
+  </ol>
+ 
+  <div class="carousel-inner" role="listbox">
+    @foreach( $submission as $photo )
+       <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+       <a href="{{$photo->weblink}}" target="_blank"> <img  src="{{ $photo->image }}" width="100%;" height="280px;" >
+       </a>
 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img  src="banner.jpg" width="100%;" height="280px;" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="babyco.png"  width="100%;" height="280px;" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="chicago.jpg" width="100%;" height="280px;"  alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                </div>
+       </div>
+    @endforeach
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+               
             </div>
             <div class="col-md-3">
                 <h5 style="text-align:center; padding-bottom:0%;"> <b>Trending Categories</b></h5>

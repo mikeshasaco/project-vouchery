@@ -74,9 +74,10 @@ Route::group(['prefix'=> 'customer'], function () {
 
 // Login Routes...
     // Route::get('login', ['as' => 'customer.login', 'uses' => 'CustomerAuth\LoginController@showLoginForm']);
+    Route::post('login', [ 'uses' => 'CustomerAuth\LoginController@customerLogin'])->name('customer.login');
 
-    Route::post('login', [ 'uses' => 'CustomerAuth\LoginController@login'])->name('customer.login');
-    Route::post('logout', ['as' => 'customer.logout', 'uses' => 'CustomerAuth\LoginController@logoutcustomer']);
+    // Route::post('logout', ['as' => 'customer.logout', 'uses' => 'CustomerAuth\LoginController@logoutcustomer']);
+    Route::post('logout', 'CustomerAuth\LoginController@logoutcustomer')->name('customer.logout');
 
     // Registration Routes...
     // Route::get('register', ['as' => 'customer.register', 'uses' => 'CustomerAuth\RegisterController@showRegistrationForm']);
@@ -104,4 +105,3 @@ Route::group(['prefix'=> 'customer'], function () {
 
 
 Route::post('/product/{id}/click', 'ClicksController@postClicks');
-

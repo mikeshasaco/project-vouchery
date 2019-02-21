@@ -63,12 +63,13 @@
                       <img class="card-img-bottom" src="{{$product->image}}" height="283" width="180">
 
                       <!-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="210" width="160" > -->
-                      <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deals</a>
-                  </div>
-
-
-
-              </div>
+                        @if(auth::user() || auth::guard('customer')->user())
+                         <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
+                         @else
+                         <a href="/register" class="cardbutton-page">View Deal</a>
+                         @endif                
+                      </div>
+                </div>
           @endforeach
             </div>
             {{ $products->appends(request()->input())->links() }}

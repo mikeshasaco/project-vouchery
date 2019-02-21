@@ -15,6 +15,9 @@
             <option value="400-600">Between $400 and $600</option>
             <option value="600-800">Between $600 and $800</option>
             <option value="800-1000">Between $800 and $1000</option>
+            <option value="1000-3000">Between $1000 and $3000</option>
+            <option value="3000-6000">Between $3000 and $6000</option>
+            <option value="6000-9999">Between $6000 and $9999</option>
 
         </select>
     </div>
@@ -24,7 +27,7 @@
 
             <div class="row">
 
-              <div v-for="product in products" class="card" >
+              <div v-for="product in products" v-bind:key="product.id" class="card" >
                   <div class="card-header">
                 <h5 class="product-vue-header" style="float:left;"> <b>{{product.company}}</b></h5>
                 <a :href="product.url" target="_blank" class="viewdeal-filter"><i class="fas fa-tags"></i>View Deal</a>
@@ -41,9 +44,6 @@
                         <span class="currentpricing">${{product.currentprice}}</span>
                         <span class="newpricing">${{product.newprice}}</span>
                     </div>
-
-
-
                       <img class="filter-image" :src="product.image">
                     </div>
 

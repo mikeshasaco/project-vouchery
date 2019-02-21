@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
-
 class LoginController extends Controller
 {
     /*
@@ -38,20 +37,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function guard()
+    public function guard()
     {
-        return Auth()->guard('customer');
+        return Auth::guard('customer');
     }
 
-    public function logoutcustomer()
+    public function logoutcustomer(Request $request)
     {
-    // $customer =  Auth::guard('customer')->logout();
-    //     $customer->session()->invalidate();
-    //     return redirect('/');
-
-    $customer = Auth::guard('customer');
-    $customer->remember_token = "";
-    $customer->logout();
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        return redirect('/');
     }
 
 
@@ -64,4 +59,18 @@ class LoginController extends Controller
             return view('customer-auth.login');
         }
     }
+
+    public function customerLogin(Request $request)
+   {
+       $this->validate($request, [
+           'email'   => 'required|email',
+           'password' => 'required|min:6'
+       ]);
+
+       if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+           return redirect()->intended('/');
+       }
+       return back()->withInput($request->only('email', 'remember'));
+   }
 }

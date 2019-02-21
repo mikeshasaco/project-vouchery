@@ -2,22 +2,15 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 
 class Submission extends Model
 {
-    protected $fillable = ['title', 'description', 'current', 'new','user_id',
-          'submissionprice', 'image', ];
+    protected $fillable = ['weblink', 'image', ];
 
-
-
-    public function percentageoff()
-    {
-        $newpercentage =   $this->current - $this->new;
-
-        $final = $newpercentage/ $this->current * 100;
-
-
-        return sprintf("%.0f%%", $final);
+    public function getImageAttribute($value){
+        return Storage::url($value);
     }
+
 }

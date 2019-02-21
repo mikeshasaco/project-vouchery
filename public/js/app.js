@@ -50603,6 +50603,18 @@ var render = function() {
             _vm._v(" "),
             _c("option", { attrs: { value: "800-1000" } }, [
               _vm._v("Between $800 and $1000")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1000-3000" } }, [
+              _vm._v("Between $1000 and $3000")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3000-6000" } }, [
+              _vm._v("Between $3000 and $6000")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "6000-9999" } }, [
+              _vm._v("Between $6000 and $9999")
             ])
           ]
         )
@@ -50621,7 +50633,7 @@ var render = function() {
                 "div",
                 { staticClass: "row" },
                 _vm._l(_vm.products, function(product) {
-                  return _c("div", { staticClass: "card" }, [
+                  return _c("div", { key: product.id, staticClass: "card" }, [
                     _c("div", { staticClass: "card-header" }, [
                       _c(
                         "h5",

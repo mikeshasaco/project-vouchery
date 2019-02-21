@@ -142,7 +142,7 @@ class ProductsController extends Controller
             new PriceRule($request->currentprice)
         ],
         'currentprice' => 'required|numeric|between:0.01,9999.99|min:0.00',
-        'image' =>'image|mimes:png,jpg,jpeg|max:10000|required',
+        'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
         'couponcode' => 'max:20',
         "url" => 'required|url',
 

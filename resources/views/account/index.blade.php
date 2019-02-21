@@ -142,8 +142,11 @@
                             </div>
 
                             <img class="card-img-bottom" src="{{Storage::url($product->image)}}" height="283" width="180">
-
-                            <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
+                             @if(auth::user() || auth::guard('customer')->user())
+                                <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
+                                 @else
+                                 <a href="/register" class="cardbutton-page">View Deal</a>
+                                @endif
                         </div>
 
                 </div>

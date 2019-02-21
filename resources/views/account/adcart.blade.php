@@ -2,12 +2,7 @@
 @section('title', $user->slug)
 
 @section('content')
-    {{-- <style >
-    body{
-        background-color: white;
-    }
 
-    </style> --}}
 
     <div class="container">
 
@@ -34,7 +29,8 @@
             </div>
               <div class=" {{ $errors->has('accountinfo') ? 'has-error' : '' }}">
                   <label for="avatar"> <b><i>(200 char max)</i> Short Description of Company: </b> </label>
-                  <textarea type="text" name="accountinfo"  class="form-control" placeholder="Short Description of your company" maxlength="200" value="{{ $userinfo->accountinfo }}"></textarea>
+
+                  <textarea type="text" name="accountinfo"  class="form-control" placeholder="Short Description of your company" maxlength="200">{{ $userinfo->accountinfo }}</textarea>
                   @if ($errors->has('accountinfo'))
                       {!! $errors->first('accountinfo', '<p class="help-blockerror"> Short Description of your Company is required max(200 characters)</p>') !!}
                   @endif

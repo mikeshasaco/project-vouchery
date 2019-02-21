@@ -67,6 +67,7 @@
 	<script type="text/javascript" src="{{ URL::asset('js/clickfeature.js') }}"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<!-- Recaptcha -->
+
 	<script>
 	@if(Session::has('successmessage'))
 

@@ -12,7 +12,7 @@ class Account extends Model
      * @var array
      */
     
-    protected $fillable = [ 'accountinfo', 'user_id', 'websitelink' ];
+    protected $fillable = [ 'accountinfo', 'websitelink', 'user_id' ];
 
     public function user()
     {

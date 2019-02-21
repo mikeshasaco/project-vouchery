@@ -127,7 +127,7 @@
                         <hr>                        <tr>
                             <th>Company</th>
                             <th>Coupon Name</th>
-                            <th>Current Price</th>
+                            <th>Original Price</th>
                             <th>Discounted Price</th>
                         </tr>
 

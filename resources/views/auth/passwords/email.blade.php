@@ -17,7 +17,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    
+                    @if($errors->has('email'))
+                        <div class="alert alert-danger">
+                        <strong>{{$errors->first('email')}}</strong>
+                        </div>
+                    @endif
 
                     <form method="POST" action="{{ route('password.email') }}" style="margin-top:3%;">
                         @csrf
@@ -26,12 +31,6 @@
 
                             <div class="col-md-6 col-12">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} input-email" name="email" value="{{ old('email') }}"placeholder="Enter Current Email Address" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 

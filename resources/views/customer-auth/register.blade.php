@@ -64,7 +64,7 @@
             <div class="form-group row">
 
                 <div class="col-md-12">
-                    <input id="name1" style="height:4rem;font-size:16px;font-weight:400" placeholder="Enter FullName"
+                    <input id="name1" style="height:4rem;font-size:16px;font-weight:400" placeholder="Enter Full Name"
                     type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  name="name" value="{{ old('name') }}" required autofocus>
 
                     @if ($errors->has('name'))
@@ -161,7 +161,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="name" placeholder="Enter FullName" style="height:4rem;font-size:16px;font-weight:400"
+                            <input id="name" placeholder="Enter Full Name" style="height:4rem;font-size:16px;font-weight:400"
                              maxlength="20" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                             @if ($errors->has('name'))

@@ -15,12 +15,7 @@ class CreateSubmissionsTable extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('description');
-            $table->decimal('current')->unsigned();
-            $table->decimal('new')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->string('submissionprice');
+            $table->string('weblink');
             $table->string('image');
             $table->timestamps();
         });

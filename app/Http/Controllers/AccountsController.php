@@ -58,8 +58,9 @@ class AccountsController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'accountinfo' => 'required|max:200',
-            'websitelink' => 'required',
+            'accountinfo' => 'max:200',
+            'avatar' => 'mimes:png,jpg,jpeg,gif|max:10000|required',
+
         ]);
 
         $array = Auth::user()->account()->update([
