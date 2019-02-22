@@ -46,9 +46,9 @@ class Product extends Model
         return $this->hasMany('App\Advertisement');
     }
 
-    public function getImageAttribute($value){
-        return Storage::disk($value);
-    }
+    // public function getImageAttribute($value){
+    //     return Storage::url($value);
+    // }
     
     public function getTitleAttribute($value){
         return ucfirst($value);
