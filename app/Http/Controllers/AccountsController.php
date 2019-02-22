@@ -70,7 +70,7 @@ class AccountsController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            $extension = $request->file('image')->extension();
+            $extension = $request->file('avatar')->extension();
 
             // store method store the path to the avatar from the storage return the path of image
             Auth::user()->update([
