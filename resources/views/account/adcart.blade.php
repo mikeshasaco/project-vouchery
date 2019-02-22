@@ -40,7 +40,7 @@
 
                   </form>
 
-                  <img src="https://vouch.sfo2.digitaloceanspaces.com/{{$user->avatar}}" class="img-updateprofile">
+                  <img src="https://vouch.sfo2.digitaloceanspaces.com{{$user->avatar}}" class="img-updateprofile">
 
               </div>
           </div>
