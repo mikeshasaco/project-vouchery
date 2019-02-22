@@ -14,7 +14,7 @@ use App\Rules\PriceRule;
 use Carbon\Carbon;
 use App\Advertisement;
 use Session;
-use Faker\Provider\Image;
+
 
 
 class ProductsController extends Controller
