@@ -71,7 +71,7 @@ class AccountsController extends Controller
 
         if ($request->hasFile('avatar')) {
             
-            // $extension = $request->file('avatar')->extension();
+            $extension = $request->file('avatar')->extension();
             // $path = Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time() . '.' . $extension);
             // Storage::disk('do')->setVisibility($path, 'public');
 
