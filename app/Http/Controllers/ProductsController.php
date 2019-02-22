@@ -166,18 +166,26 @@ class ProductsController extends Controller
 //         $product->expired_date = Carbon::now()->addDay(7);
 
         if ( $request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+            // $image = $request->file('image');
+            // $filename = time() . '.' . $image->getClientOriginalExtension();
             // $location = public_path('/images/' . $filename);
-            $location = Storage::disk('do')->storage_path('public/images' . $filename);
-                        Storage::disk('do')->setVisibility($location, 'public');
-            Image::make($image)->orientate()->save($location);
-            $product->image = $filename;
+            // Image::make($image)->orientate()->save($location);
+            // $product->image = $filename;
             // $extension = $request->file('image')->extension();
             // $path = Storage::disk('do')->putFileAs('public/images', $request->file('image'), time() . '.' . $extension);
             // Storage::disk('do')->setVisibility($path, 'public');
             // $product->image = $path;
-            
+
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = storage_path('public/images' . $filename);
+
+            $orientate = Image::make($image)->orientate();
+            $path = Storage::disk('do')->putFileAs('public/images', $orientate->__toString(), $filename);
+
+            Storage::disk('do')->setVisibility($path, 'public');
+
+            $product->image = $path;
         }
         // using the storage
 
