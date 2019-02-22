@@ -14,6 +14,7 @@ use App\Rules\PriceRule;
 use Carbon\Carbon;
 use App\Advertisement;
 use Session;
+use Faker\Provider\Image;
 
 
 class ProductsController extends Controller
@@ -164,7 +165,7 @@ class ProductsController extends Controller
         $product->user_id = Auth::user()->id;
 //         $product->expired_date = Carbon::now()->addDay(7);
 
-        if ($request->hasFile('image')) {
+        if ($image = $request->hasFile('image')) {
             // $image = $request->file('image');
             // $filename = time() . '.' . $image->getClientOriginalExtension();
             // $location = public_path('/images/' . $filename);
@@ -174,6 +175,7 @@ class ProductsController extends Controller
         $mimeType = $request->file('image')->getMimeType();
         $path = Storage::disk('do')->putFileAs('public/images', $request->file('image'), time(). '.'. $extension);
         Storage::disk('do')->setVisibility($path, 'public');
+        Image::make($image)->orientate()->save($path);
         $product->image = $path;
         // Image::make($request->file('image'))->orientate()->save($path);
 
