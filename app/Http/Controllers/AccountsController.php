@@ -77,9 +77,10 @@ class AccountsController extends Controller
 
             // store method store the path to the avatar from the storage return the path of image
             Auth::user()->update([
-
+                
             //   'avatar' => $request->avatar->store('public/avatars')
-              'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension)->setVisibility( 'public')
+              'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension)->setVisibility( 'public'),
+              Storage::disk('do')->setVisibility('avatar', 'public')
             ]);
         
         }
