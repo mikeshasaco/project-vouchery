@@ -18,7 +18,7 @@
 
                 <div class="card profile-info ">
                     <div class="firstinfo">
-                        <img src="https://vouch.sfo2.digitaloceanspaces.com{{$user->avatar }}" class="companyimage" >
+                        <img src="https://vouch.sfo2.digitaloceanspaces.com/{{$user->avatar }}" class="companyimage" >
 
                         <div class="profileinfo" style=" margin-left:30%;margin-top:-25%;" >
                             <h4 class="profilecompany" > <b style="color:#b35464;"> Company:</b> {{ $user->company }}</h4>

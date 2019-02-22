@@ -79,8 +79,8 @@ class User extends Authenticatable
     public function getCompanyAttribute($value){
         return ucfirst($value);
     }
-    public function getAvatarAttribute($value){
-        return Storage::url($value);
-    }
+    // public function getAvatarAttribute($value){
+    //     return Storage::url($value);
+    // }
 
 }
