@@ -70,14 +70,18 @@ class AccountsController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            $extension = $request->file('avatar')->extension();
+            
+            // $extension = $request->file('avatar')->extension();
+            // $path = Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time() . '.' . $extension);
+            // Storage::disk('do')->setVisibility($path, 'public');
 
             // store method store the path to the avatar from the storage return the path of image
             Auth::user()->update([
 
-              //  'avatar' => $request->avatar->store('public/avatars')
-              'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension)
+            //   'avatar' => $request->avatar->store('public/avatars')
+              'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension)->setVisibility( 'public')
             ]);
+        
         }
 
         Session::flash('UpdateAccountMe', 'Profile updated.');
