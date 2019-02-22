@@ -170,7 +170,7 @@ class ProductsController extends Controller
 
             
         $orientate = Image::make($image)->orientate()->encode('jpg');
-        $path = Storage::disk('do')->put('public/images/' . time(). '.jpg', $orientate->__toString() );
+        $path = Storage::disk('do')->put('public/images/' . time(). '.jpg', $orientate );
 
         Storage::disk('do')->setVisibility($path, 'public');
 
