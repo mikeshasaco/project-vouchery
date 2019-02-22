@@ -14,6 +14,7 @@ use App\Advertisement;
 use App\Mail\AdReceipt;
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AccountsController extends Controller
 {
@@ -69,9 +70,13 @@ class AccountsController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
+            $extension = $request->file('image')->extension();
+
             // store method store the path to the avatar from the storage return the path of image
             Auth::user()->update([
-                'avatar' => $request->avatar->store('public/avatars')
+
+              //  'avatar' => $request->avatar->store('public/avatars')
+              'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension)
             ]);
         }
 
