@@ -166,15 +166,15 @@ class ProductsController extends Controller
 //         $product->expired_date = Carbon::now()->addDay(7);
 
         if ( $request->hasFile('image')) {
-        $image = $request->file('image');
+            $image = $request->file('image');
 
-            
-        $orientate = Image::make($image)->orientate()->encode('jpg');
-        $path = Storage::disk('do')->put('public/images/' . time(). '.jpg', $orientate );
 
-        Storage::disk('do')->setVisibility($path, 'public');
+            $orientate = Image::make($image)->orientate();
+            $path = Storage::disk('do')->putFileAs('public/images/' . time() . '.jpg', (string)$orientate->encode());
 
-        $product->image = $path;
+            Storage::disk('do')->setVisibility($path, 'public');
+
+            $product->image = $path;
         }
         // using the storage
 
