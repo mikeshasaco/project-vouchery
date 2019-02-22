@@ -170,10 +170,8 @@ class ProductsController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('/images/' . $filename);
 
-            $extension = $request->file('image')->extension();
-        //$mimeType = $request->file('image')->getMimeType();
             $orientate = Image::make($image)->orientate();
-            $path = Storage::disk('do')->put('public/images', $orientate, $filename);
+            $path = Storage::disk('do')->putFileAs('public/images', $orientate->__toString(), $filename);
 
             Storage::disk('do')->setVisibility($path, 'public');
 
