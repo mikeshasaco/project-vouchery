@@ -79,8 +79,8 @@ class AccountsController extends Controller
             Auth::user()->update([
                 
             //   'avatar' => $request->avatar->store('public/avatars')
-                'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension),
-              Storage::disk('do')->setVisibility(Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time() . '.' . $extension),'public')
+                // 'avatar' => Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time(). '.'.$extension),
+                'avatar' =>    Storage::disk('do')->setVisibility(Storage::disk('do')->putFileAs('public/avatar', $request->avatar, time() . '.' . $extension),'public')
             ]);
         
         }
