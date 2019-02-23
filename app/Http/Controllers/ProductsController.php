@@ -176,7 +176,7 @@ class ProductsController extends Controller
             // Storage::disk('do')->setVisibility($path, 'public');
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $orientate = Image::make($image)->orientate();
+            $orientate = Image::make($image)->orientate()->save('public/images');
 
             $location = Storage::disk('do')->putFileAs('public/images', $image, $filename);
             Storage::disk('do')->setVisibility($location, 'public');
