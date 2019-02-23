@@ -177,7 +177,7 @@ class ProductsController extends Controller
             // $product->image = $path;
             $image = $request->file('image');
             $filename = time(). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->orientate()->save(storage_path('images/coupon'));
+            Image::make($image)->orientate()->save('public/images' . '.' . $filename);
             $path = Storage::disk('do')->putFileAs('public/images', $image, $filename);
             $product->image = $path;
         }
