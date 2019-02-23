@@ -149,8 +149,6 @@ class AccountsController extends Controller
            ->where('slug', $slug)
            ->get();
 
-            $submissonAds = User::join('submissions', 'submissions.user_id', 'users.id')
-                            ->where('slug', $slug)->get();
 
             // total count of like coupon per coupon
             $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
