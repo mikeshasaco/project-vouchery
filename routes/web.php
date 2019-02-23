@@ -2,8 +2,8 @@
 
 route::get('/404', 'AskEmailController@pagenotfound')->name('notfound');
 
-Route::get('/advertisement/createAd', 'AdvertisementsController@createAd');
-Route::post('/advertisement/createAd', 'AdvertisementsController@store')->name('adsubmissions.store');
+// Route::get('/advertisement/createAd', 'AdvertisementsController@createAd');
+// Route::post('/advertisement/createAd', 'AdvertisementsController@store')->name('adsubmissions.store');
 
 Route::get('/help/questions', 'AskEmailController@askemail')->name('help.quest');
 Route::post('/help/questions', 'AskEmailController@store')->name('help.store');
