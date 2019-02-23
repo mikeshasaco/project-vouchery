@@ -6,6 +6,7 @@ use Mail;
 use Auth;
 use DB;
 use Session;
+use Image;
 use App\User;
 use App\Product;
 use Hash;
