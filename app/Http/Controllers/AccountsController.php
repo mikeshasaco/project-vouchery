@@ -71,15 +71,27 @@ class AccountsController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            $user = Auth::user();
 
             $avatar = $request->file('avatar');
             $filename = time(). '.' . $avatar->getClientOriginalExtension();
             $o = Image::make($avatar)->orientate();
             $path = Storage::disk('do')->put('Avatar/' . $filename, $o->encode());
 
-            $user->avatar = $filename;
-            $user->update();
+            if($path){
+                $user = Auth::user();
+
+                $oldfilename = $user->avatar;
+
+                $oldfileexist = Storage::disk('do')->exists($oldfilename);
+
+                if($oldfilename != 'company.png' && $oldfilename){
+                    Storage::disk('do')->delete($oldfilename);
+                }
+                $user->avatar = $filename;
+                $user->update();
+            }
+
+          
         }
 
         Session::flash('UpdateAccountMe', 'Profile updated.');
