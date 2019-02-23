@@ -179,7 +179,7 @@ class ProductsController extends Controller
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $orientate = Image::make($image)->orientate()->fit(200);
 
-            $location = Storage::disk('do')->putFile('public/images', $image);
+            $location = Storage::disk('do')->putFile('ProductImage', $filename);
             Storage::disk('do')->setVisibility($location, 'public');
 
             $product->image = $filename;
