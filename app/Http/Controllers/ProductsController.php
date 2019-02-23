@@ -176,14 +176,10 @@ class ProductsController extends Controller
             // Storage::disk('do')->setVisibility($path, 'public');
             // $product->image = $path;
             $image = $request->file('image');
-
-            $filename = $image->hashName('product');
-            $orientate = Image::make($image)->orientate()->fit(200);
-
-            $location = Storage::disk('do')->put($filename, (string)$orientate->encode());
-            Storage::disk('do')->setVisibility($location, 'public');
-
-            $product->image = $filename;
+            $filename = time(). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->orientate()->save(storage_path('images/coupon'));
+            $path = Storage::disk('do')->putFileAs('public/images', $image, $filename);
+            $product->image = $path;
         }
         // using the storage
 
