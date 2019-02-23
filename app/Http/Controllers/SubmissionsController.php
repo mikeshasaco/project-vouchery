@@ -30,10 +30,10 @@ class SubmissionsController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
            $filename = time() . '.' . $image->getClientOriginalExtension();
-      $o = Image::make($image)->orientate();
-      $path = Storage::disk('do')->put('Banner/' . $filename, $o->encode());
-      $submission->image = $filename;
-          
+            $o = Image::make($image)->orientate();
+            $path = Storage::disk('do')->put('Banner/' . $filename, $o->encode());
+            $submission->image = $filename;
+                
         }
 
 
