@@ -20,7 +20,7 @@
   <div class="carousel-inner" role="listbox">
     @foreach( $submission as $photo )
        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-       <a href="{{$photo->weblink}}" target="_blank"> <img  src="{{ $photo->image }}" width="100%;" height="280px;" >
+       <a href="{{$photo->weblink}}" target="_blank"> <img  src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Banner/{{$photo->url}}" width="100%;" height="280px;" >
        </a>
 
        </div>

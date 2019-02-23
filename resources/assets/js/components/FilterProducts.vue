@@ -44,7 +44,7 @@
                         <span class="currentpricing">${{product.currentprice}}</span>
                         <span class="newpricing">${{product.newprice}}</span>
                     </div>
-                      <img class="filter-image" :src="product.image">
+                      <img class="filter-image" :src="'https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/'+ product.image">
                     </div>
 
                   </div>

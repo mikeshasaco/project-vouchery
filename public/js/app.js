@@ -50703,7 +50703,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("img", {
                       staticClass: "filter-image",
-                      attrs: { src: product.image }
+                      attrs: {
+                        src:
+                          "https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/" +
+                          product.image
+                      }
                     })
                   ])
                 })

@@ -28,10 +28,12 @@ class SubmissionsController extends Controller
         $submission->weblink = $request->weblink;
 
         if ($request->hasFile('image')) {
-          $extension = $request->file('image')->extension();
-          $mimetype = $request->file('image')->getMimeType();
-          $path = Storage::putFileAs('public/images', $request->file('image'), time() . '.' . $extension);
-            $submission->image = $path;
+            $image = $request->file('image');
+           $filename = time() . '.' . $image->getClientOriginalExtension();
+      $o = Image::make($image)->orientate();
+      $path = Storage::disk('do')->put('Banner/' . $filename, $o->encode());
+      $$submission->image = $filename;
+          
         }
 
 

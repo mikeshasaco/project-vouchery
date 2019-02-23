@@ -64,7 +64,7 @@
 
                       <!-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="210" width="160" > -->
                         @if(auth::user() || auth::guard('customer')->user())
-                         <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
+                         <a href="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                          @else
                          <a href="/register" class="cardbutton-page">View Deal</a>
                          @endif                
