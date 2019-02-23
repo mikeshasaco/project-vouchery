@@ -177,9 +177,10 @@ class ProductsController extends Controller
             // $product->image = $path;
             $image = $request->file('image');
             $filename = time(). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->orientate()->save('public/images' . '.' . $filename);
-            $path = Storage::disk('do')->putFileAs('public/images', $image, $filename);
-            $product->image = $path;
+            $o = Image::make($image)->orientate();
+            $path = Storage::disk('do')->put('public/images'. '.'. $filename, $o->encode());
+            // $path = Storage::disk('do')->putFileAs('public/images', $image, $filename);
+            $product->image = $filename;
         }
         // using the storage
 
