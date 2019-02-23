@@ -141,7 +141,7 @@
 
                             </div>
 
-                            <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/{{$product->url}}" height="283" width="180">
+                            <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
                              @if(auth::user() || auth::guard('customer')->user())
                                 <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                                  @else
