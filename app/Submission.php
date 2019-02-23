@@ -9,8 +9,8 @@ class Submission extends Model
 {
     protected $fillable = ['weblink', 'image', ];
 
-    public function getImageAttribute($value){
-        return Storage::url($value);
-    }
+    // public function getImageAttribute($value){
+    //     return Storage::url($value);
+    // }
 
 }

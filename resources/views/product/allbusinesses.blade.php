@@ -75,10 +75,10 @@
                                   <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
 
                                 </div>
-                                <img class="card-img-bottom" src="{{$product->image}}" height="283" width="180">
+                                <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
                             
                                 @if(auth::user() || auth::guard('customer')->user())
-                                <a href="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
+                                <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                                  @else
                                  <a href="/register" class="cardbutton-page">View Deal</a>
                                 @endif
