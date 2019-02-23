@@ -32,7 +32,7 @@ class SubmissionsController extends Controller
            $filename = time() . '.' . $image->getClientOriginalExtension();
       $o = Image::make($image)->orientate();
       $path = Storage::disk('do')->put('Banner/' . $filename, $o->encode());
-      $$submission->image = $filename;
+      $submission->image = $filename;
           
         }
 
