@@ -169,7 +169,7 @@ class ProductsController extends Controller
         
             $image = $request->file('image');
             $filename = time(). '.' . $image->getClientOriginalExtension();
-            $o = Image::make($image)->orientate()->fit(286,300);
+            $o = Image::make($image)->orientate();
             $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
             $product->image = $filename;
         }
