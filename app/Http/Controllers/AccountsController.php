@@ -83,10 +83,9 @@ class AccountsController extends Controller
 
                 $oldfileexist = Storage::disk('do')->exists('Avatar/' .$oldfilename);
 
-                dd($oldfileexist);
-                // if($oldfilename != 'company.png' && $oldfileexist){
-                //     Storage::disk('do')->delete($oldfilename);
-                // }
+                if($oldfilename != $oldfileexist){
+                    Storage::disk('do')->delete($oldfilename);
+                }
                 $user->avatar = $filename;
                 $user->update();
             }
