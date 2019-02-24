@@ -101,8 +101,8 @@ class AccountsController extends Controller
     {
         $deleteproduct = Product::find($id);
         $oldcouponimage = $deleteproduct->image;
-        
         $oldcouponexist = Storage::disk('do')->exists('Coupon/' . $oldcouponimage);
+        dd($oldcouponexist);
         if($oldcouponimage != $oldcouponexist){
             Storage::disk('do')->delete('Coupon/' . $oldcouponimage);
         }
