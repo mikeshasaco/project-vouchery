@@ -168,7 +168,7 @@ class ProductsController extends Controller
         if ( $request->hasFile('image')) {
         
             $image = $request->file('image');
-            $filename = 'coupon/image/' . time(). '.' . $image->getClientOriginalExtension();
+            $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
             $o = Image::make($image)->orientate();
             $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
             $product->image = $filename;

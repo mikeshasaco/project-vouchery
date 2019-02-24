@@ -73,7 +73,7 @@ class AccountsController extends Controller
         if ($request->hasFile('avatar')) {
 
             $avatar = $request->file('avatar');
-            $filename = 'avatar/image/' . time(). '.' . $avatar->getClientOriginalExtension();
+            $filename = 'avatarimage/' . time(). '.' . $avatar->getClientOriginalExtension();
             $o = Image::make($avatar)->orientate();
             $path = Storage::disk('do')->put('Avatar/' . $filename, $o->encode());
             
