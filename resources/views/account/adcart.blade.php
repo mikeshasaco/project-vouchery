@@ -40,7 +40,7 @@
 
                   </form>
 
-                  <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Avatar/{{$user->avatar}}" class="img-updateprofile">
+                  <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar}}" class="img-updateprofile">
 
               </div>
           </div>

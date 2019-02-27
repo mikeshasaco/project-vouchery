@@ -50705,7 +50705,7 @@ var render = function() {
                       staticClass: "filter-image",
                       attrs: {
                         src:
-                          "https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/" +
+                          "https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/" +
                           product.image
                       }
                     })
