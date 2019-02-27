@@ -69,7 +69,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Company</th>
+                        <th scope="col">Username</th>
                     </tr>
 
                 </thead>
