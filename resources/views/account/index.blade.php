@@ -18,7 +18,7 @@
 
                 <div class="card profile-info ">
                     <div class="firstinfo">
-                        <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage" >
+                        <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage" >
 
                         <div class="profileinfo" style=" margin-left:30%;margin-top:-25%;" >
                             <h4 class="profilecompany" > <b style="color:#b35464;"> Company:</b> {{ $user->company }}</h4>
@@ -141,7 +141,7 @@
 
                             </div>
 
-                            <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/default/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
+                            <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
                              @if(auth::user() || auth::guard('customer')->user())
                                 <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
                                  @else
