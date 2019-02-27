@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlbertCht\\InvisibleReCaptcha\\Facades\\InvisibleReCaptcha' => $vendorDir . '/albertcht/invisible-recaptcha/src/Facades/InvisibleReCaptcha.php',
+    'AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptcha' => $vendorDir . '/albertcht/invisible-recaptcha/src/InvisibleReCaptcha.php',
+    'AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptchaServiceProvider' => $vendorDir . '/albertcht/invisible-recaptcha/src/InvisibleReCaptchaServiceProvider.php',
     'App\\Account' => $baseDir . '/app/Account.php',
     'App\\Advertisement' => $baseDir . '/app/Advertisement.php',
     'App\\Category' => $baseDir . '/app/Category.php',
@@ -16,7 +19,6 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AccountsController' => $baseDir . '/app/Http/Controllers/AccountsController.php',
     'App\\Http\\Controllers\\AdminsController' => $baseDir . '/app/Http/Controllers/AdminsController.php',
-    'App\\Http\\Controllers\\AdvertisementsController' => $baseDir . '/app/Http/Controllers/AdvertisementsController.php',
     'App\\Http\\Controllers\\AskEmailController' => $baseDir . '/app/Http/Controllers/AskEmailController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
