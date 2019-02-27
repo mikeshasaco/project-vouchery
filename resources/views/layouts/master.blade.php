@@ -8,11 +8,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, target-densityDpi=device-dpi" />
 	<script type="" src="/js/app.js"></script>
-	<script src='https://www.google.com/recaptcha/api.js?
-		onload=onloadCallback
-		&render=explicit
-		&hl={{app.request.locale|default(defaultLang) }}' async defer>
-</script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	
 
 {{--  tab icon--}}
 	<link rel="shortcut icon" href="/vouchtab.png">
