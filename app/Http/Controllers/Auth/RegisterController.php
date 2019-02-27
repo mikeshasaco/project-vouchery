@@ -82,7 +82,6 @@ class RegisterController extends Controller
         ]);
 
         Account::create(['user_id' => $user->id]);
-        dd($user);
         
         return $user;
     }

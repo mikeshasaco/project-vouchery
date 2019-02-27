@@ -96,7 +96,6 @@ class RegisterController extends Controller
                 'updated_at' => null
             )
             );
-        dd($customer);
         return $customer;
     }
 }
