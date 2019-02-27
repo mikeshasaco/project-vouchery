@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:30|unique:users|unique:customers,email',
             'password' => 'required|string|min:6|alpha_num|confirmed',
             'company' => 'required|string|max:16|unique:users,company|not_in:customers,voucheryhub,account,accounts,admin,user,User,Admin,Customer,Customers,Voucheryhub,VOUCHERYHUB, Accounts,Account,name,Name,Email,email, ADMIN,USER| alpha_num',
-            'g-recaptcha-response' => new Captcha(),
+            'g-recaptcha-response' => 'required|captcha',
 
 
         ]);
@@ -83,7 +83,7 @@ class RegisterController extends Controller
         ]);
 
         Account::create(['user_id' => $user->id]);
-        
+        dd($user);
         
         return $user;
     }

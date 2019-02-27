@@ -64,8 +64,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|alpha_num|confirmed',
             'username' => 'required|string|max:20|not_in:customers,voucheryhub,account,accounts,admin,user,User,Admin,Customer,Customers,Voucheryhub,VOUCHERYHUB, Accounts,Account,name,Name,Email,email
             |unique:customers|alpha_num',
-            //regex: /^\S*$/u
-            'g-recaptcha-response' => new Captcha(),
+            'g-recaptcha-response' => 'required|captcha',
 
         ]);
     }
@@ -97,7 +96,7 @@ class RegisterController extends Controller
                 'updated_at' => null
             )
             );
-        
+        dd($customer);
         return $customer;
     }
 }
