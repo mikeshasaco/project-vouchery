@@ -60,7 +60,7 @@
 
             <form method="POST" action="{{ route('customer.register') }}" style="margin-top:8%;">
             @csrf
-             @captcha
+            
             <div class="form-group row">
 
                 <div class="col-md-12">
@@ -158,7 +158,6 @@
 
             <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    @captcha
                     <div class="form-group row">
                         <div class="col-md-12">
                             <input id="name" placeholder="Enter Full Name" style="height:4rem;font-size:16px;font-weight:400"
