@@ -176,39 +176,53 @@
     <div class="container">
         <div class="row"  style="margin: 7% 0 7%;">
             <div class="col-md-3">
-                <a href="/businesses/beauty">
-                <img src="/sale3.png" alt="" title="Creative Commons BY 3.0">
+                <a href="/businesses/Pets">
+                <img src="/dog64.png" alt="" title="Creative Commons BY 3.0">
                 </a>
-                <h5 style="margin-left:5%;"> <b> Sales</b></h5>
+                <h5 style="margin-left:5%;"> <b> Pets</b></h5>
             </div>
             <div class="col-md-3">
+             <a href="/businesses/Cosmetics">
                 <img src="/mascara.png" alt="" title="Creative Commons BY 3.0">
-                <h5> <b> Beauty</b></h5>
+             </a>
+                <h5> <b> Cosmetics</b></h5>
             </div>
             <div class="col-md-3">
+                <a href="/businesses/Electronics">
                 <img src="/game-controller.png" alt="" >
+                </a>
                 <h5> <b> Electronics</b></h5>
             </div>
             <div class="col-md-3">
+                <a href="/businesses/Women’s-Fashion">
                 <img src="/coat.png" alt="" title="Creative Commons BY 3.0">
-                <h5> <b> Fashion</b></h5>
+                </a>
+                <h5> <b> Women Fashion</b></h5>
             </div>
              <div class="col-md-3">
+                 <a href="/businesses/Automotive">
                 <img src="/automobile.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                </a>
                 <h5> <b> Automotive</b></h5>
             </div>
 
               <div class="col-md-3">
+                  <a href="/businesses/Jewelry-&-Watches">
                 <img src="/diamonds.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                  </a>
                 <h5> <b>Jewelry &amp; Watches</b></h5>
             </div>
               <div class="col-md-3">
+                <a href="/businesses/Baby-Products">
                 <img src="/bottle.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+               </a>
                 <h5> <b>Baby Products</b></h5>
             </div>
             
               <div class="col-md-3">
+                 <a href="/businesses/Arts-&-Crafts">
                 <img src="/painting.png" alt="" title="Creative Commons BY 3.0" style="margin-top:120px;">
+                </a>
                 <h5> <b>Arts &amp; Crafts</b></h5>
             </div>
             
