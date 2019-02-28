@@ -32,7 +32,7 @@ class AskEmailController extends Controller
         Mail::send('help.contactinfo', $data, function ($message) use ($data) {
             $message->from($data['email']);
             $message->subject("Question Has Been Submitted");
-            $message->to('VoucheryHub@gmail.com');
+            $message->to('voucheryhub@gmail.com');
         });
         //
         // Mail::to('mikeshasaco@gmail.com')->send(new HelpEmailMailable($data));

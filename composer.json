@@ -18,6 +18,7 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "needim/noty": "^3.1",
         "overtrue/laravel-follow": "^1.1",
+        "skovmand/mailchimp-laravel": "^1.0",
         "stripe/stripe-php": "~5.0"
     },
     "require-dev": {
