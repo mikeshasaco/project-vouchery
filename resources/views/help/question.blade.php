@@ -21,7 +21,7 @@
                              </div>
 
                             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                               <label for="Enter your email">Email address</label>
+                               <label for="Enter your email">Enter Your Email Address</label>
                                <input type="email" class="form-control"  name="email" placeholder="name@example.com">
                                {!! $errors->first('email', '<p class="help-blockerror"> Email Address is Required</p>') !!}
                              </div>
