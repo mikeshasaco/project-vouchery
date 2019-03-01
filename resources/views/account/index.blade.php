@@ -86,7 +86,7 @@
                             {{ csrf_field() }}
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_live_7sQQoPimKkEX2qbIb1Ddajcq"
-                            {{-- data-amount="4.99" --}}
+                            data-amount="499"
                             data-name="{{ $product->title }} Coupon"
                             data-description=" Run Advertisement on coupon"
                             data-email="{{ auth::check() ? auth()->user()->email : null }}"
