@@ -59,7 +59,7 @@
                 <li class="nav-item">
 
                     <button type="button" class="custom-createbutton" data-toggle="modal" data-target="#productmodal">
-                      Create Coupon
+                      Create 
                     </button>
                 </li>
 

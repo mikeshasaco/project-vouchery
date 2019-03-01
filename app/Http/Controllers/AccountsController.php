@@ -61,7 +61,7 @@ class AccountsController extends Controller
     {
         $this->validate($request, [
             'accountinfo' => 'max:200',
-            'avatar' => 'mimes:png,jpg,jpeg,gif|max:10000|required',
+            'avatar' => 'mimes:png,jpg,jpeg,gif|max:10000',
 
         ]);
 

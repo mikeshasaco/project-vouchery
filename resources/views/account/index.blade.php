@@ -91,7 +91,6 @@
                             data-description=" Run Advertisement on coupon"
                             data-email="{{ auth::check() ? auth()->user()->email : null }}"
                             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            {{-- data-panel-label=" Pay: $4.99" --}}
                             data-label="Advertise"
                             data-locale="auto">
                             </script>

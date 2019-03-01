@@ -41,7 +41,7 @@
         <li><a class="nav-link" href="{{route('faqroute')}}"> Help</a></li>
 
         <button type="button" class="custom-createbutton-mobile" data-toggle="modal" data-target="#productmodal">
-      Create Coupon
+      Create 
     </button>
     @endif
     </ul>

@@ -4,7 +4,7 @@
 <div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="margin-top:15%;">
+            <div class="card" style="margin-top:190px;">
                 <div class="card-header">Customer {{ __('Reset Password') }}</div>
 
                 <div class="card-body">
