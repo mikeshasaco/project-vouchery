@@ -117,12 +117,12 @@
                                 <div class="">
                                     <h5 class="discounth5" title="Original Price" style="cursor:pointer;"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
                                     <h5 class="newprice5" style="cursor:pointer;" title="Discount Price"> ${{ number_format($product->newprice, 2) }}</h5>
+                                    <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464; float:right; margin-right:23px; margin-top:-31%"> <small class="badges" title="Category">{{$product->categoryname}}</small> </a>
                                 </div>
                             </li>
                         </ul>
                         <div >
                             <span class="badge badge-danger" title="Percentage Off" style="float:right; margin-right:-6%; margin-top:2%; cursor:pointer;">{{$product->percentageoff()}} OFF</span>
-                            <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464; float:right; margin-right:-68px; margin-top:5%"> <small class="badges" title="Category">{{$product->categoryname}}</small> </a>
                         </div>
 
 
