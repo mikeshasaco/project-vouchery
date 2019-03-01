@@ -13,7 +13,7 @@
             </div>
 
              <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                 <input type="text" name="title" class="form-control" placeholder="Coupon Name" maxlength="30">
+                 <input type="text" name="title" class="form-control" placeholder="Coupon Name" maxlength="50">
                  @if ($errors->has('title'))
                      <small class="text-danger">{{ $errors->first('title') }}</small>
                  @endif
