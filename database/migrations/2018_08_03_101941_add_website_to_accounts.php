@@ -14,7 +14,7 @@ class AddWebsiteToAccounts extends Migration
     public function up()
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->string('websitelink')->nullable();
+            $table->text('websitelink')->nullable();
         });
     }
 
