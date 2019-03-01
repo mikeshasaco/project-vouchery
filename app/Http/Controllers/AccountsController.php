@@ -116,7 +116,7 @@ class AccountsController extends Controller
     {
         $this->validate($request, [
             'adname' => 'required',
-            'adprice' => 'required|in: 2.99'
+            'adprice' => 'required|in: 4.99'
         ]);
 
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -124,7 +124,7 @@ class AccountsController extends Controller
 
 
         $charge = \Stripe\Charge::create([
-                'amount' => 299,
+                'amount' => 499,
                 'currency' => 'usd',
                 'description' => 'purchasing ad',
                 "source" => $token,

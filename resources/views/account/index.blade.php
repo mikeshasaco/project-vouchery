@@ -85,19 +85,19 @@
                         <form action="{{ '/account/'.Auth::user()->slug .'/'. $product->id  }}" method="POST" >
                             {{ csrf_field() }}
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_test_0pTcQ6w6V9JuLB7khUEmuTev"
-                            data-amount="2.99"
+                            data-key="pk_live_7sQQoPimKkEX2qbIb1Ddajcq"
+                            data-amount="4.99"
                             data-name="{{ $product->title }} Coupon"
                             data-description=" Run Advertisement on coupon"
                             data-email="{{ auth::check() ? auth()->user()->email : null }}"
                             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            data-panel-label=" Pay: $2.99"
+                            data-panel-label=" Pay: $4.99"
                             data-label="Advertise"
                             data-locale="auto">
                             </script>
 
                             <input type="hidden" name="adname" value="{{ $product->title }}">
-                            <input type="hidden" name="adprice" value="2.99">
+                            <input type="hidden" name="adprice" value="4.99">
                             <input type="hidden" name="prod_id" value="{{$product->id }}">
                         </form>
                         @endif
