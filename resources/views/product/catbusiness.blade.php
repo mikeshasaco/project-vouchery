@@ -69,17 +69,17 @@
                                         </ul>
                                         <div>
                                             <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
-                                            <a href="#" class="nav-link" style="    color: #B35464;float: right; margin-right:-68px;margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
                                         </div>
 
                                         <h4 class="card-title"> <a href="{{ url('account' .'/'. $product->user['slug']) }}">{{$product->title}}</a> </h4>
 
                                         <br>
-                                        <p class="card-text" style="margin:0;">{{$product->desc}}</p>
+                                        <p class="card-text" style="margin:0; margin-top:-6px;">{{$product->desc}}</p>
                                         <p style="font-weight:bold; font-size:12px; margin:0;">Coupon Code: {{$product->couponcode}} </p>
                                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                                          <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                                          <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                                            <a href="#" class="nav-link" style="    color: #B35464; position:absolute; left:13px;"> <small class="badges">{{$product->categoryname}}</small> </a>
 
                                     </div>
                                     <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
@@ -134,7 +134,6 @@
                             </ul>
                             <div>
                                 <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
-                                <a  href="#" class="nav-link" style="    color: #B35464;float: right; margin-right:-68px;margin-top: 5%;"> <small class="badges">{{$product->categoryname}}</small> </a>
                             </div>
 
 
@@ -142,11 +141,12 @@
                             <h4 class="card-title">
                                 <a href="{{ url('account' .'/'. $product->slug) }}">{{$product->title}}</a> </h4>
                             <br>
-                            <p class="card-text" style="margin:0;">{{$product->desc}}</p>
+                            <p class="card-text" style="margin:0; margin-top:-6px;">{{$product->desc}}</p>
                             <p style="font-weight:bold; font-size:12px; margin:0;">Coupon Code: {{$product->couponcode}} </p>
                             <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                             <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                            <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                                <a  href="#" class="nav-link" style="    color: #B35464; position:absolute; left:13px;"> <small class="badges">{{$product->categoryname}}</small> </a>
 
                         </div>
                         <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
