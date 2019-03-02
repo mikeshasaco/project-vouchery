@@ -72,7 +72,7 @@
                                     <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                                     <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                                   <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
-                                 <a href="#" class="nav-link" style=" color: #B35464; position:absolute; left:13px;"> <small class="badges">{{$product->category['categoryname']}}</small> </a>
+                                 <a href="#" class="nav-link" style=" color: #B35464;"> <small class="badges" style="position:absolute; left:13px;">{{$product->category['categoryname']}}</small> </a>
 
                                 </div>
                                 <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
@@ -137,7 +137,7 @@
                         <p style="font-weight:bold; font-size:12px;margin:0;">Coupon Code: {{$product->couponcode}} </p>
                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                         <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
-                        <a  href="#" class="nav-link" style=" color: #B35464; position:absolute; left:13px;"> <small class="badges">{{$product->categoryname}}</small> </a>
+                        <a  href="#" class="nav-link" style=" color: #B35464; "> <small class="badges" style="position:absolute; left:13px;">{{$product->categoryname}}</small> </a>
 
                     </div>
                 <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">

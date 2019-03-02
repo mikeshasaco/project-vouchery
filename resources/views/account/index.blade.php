@@ -136,7 +136,7 @@
                                 <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
                              <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                               <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
-                                <a href="#" class="nav-link" style="color:red; position:absolute; left:13px;"> <small class="badges">{{$product->categoryname}}</small> </a>
+                                <a href="#" class="nav-link" style="color:red; "> <small class="badges" style="position:absolute; left:13px;">{{$product->categoryname}}</small> </a>
 
                             </div>
 
