@@ -64,7 +64,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-12">
-                                <input id="email" style="height:4rem;font-size:16px;font-weight:400" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                                <input id="email" style="height:3rem;font-size:16px;font-weight:400" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -77,7 +77,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-12">
-                                <input id="password" style="height:4rem; font-size:16px;font-weight:400" type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" style="height:3rem; font-size:16px;font-weight:400" type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -131,7 +131,7 @@
                         @csrf
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <input id="email1" type="email" placeholder="Email" style="height:4rem;font-size:16px;font-weight:400" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email1" type="email" placeholder="Email" style="height:3rem;font-size:16px;font-weight:400" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -144,7 +144,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-12">
-                                <input id="password1" placeholder="Password" style="height:4rem;font-size:16px;font-weight:400" type="password" class="form-control{{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" required>
+                                <input id="password1" placeholder="Password" style="height:3rem;font-size:16px;font-weight:400" type="password" class="form-control{{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">

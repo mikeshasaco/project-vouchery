@@ -64,7 +64,7 @@
             <div class="form-group row">
 
                 <div class="col-md-12">
-                    <input id="name1" style="height:4rem;font-size:16px;font-weight:400" placeholder="Enter Full Name"
+                    <input id="name1" style="height:3rem;font-size:16px;font-weight:400" placeholder="Enter Full Name"
                     type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  name="name" value="{{ old('name') }}" required autofocus>
 
                     @if ($errors->has('name'))
@@ -77,7 +77,7 @@
 
             <div class="form-group row">
               <div class="col-md-12">
-                  <input id="username1" placeholder="Enter a UserName (𝑵𝒐 𝑺𝒑𝒂𝒄𝒆𝒔, 𝑵𝒐 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑪𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓𝒔: #@!$% )" style="height:4rem;font-size:16px;font-weight:400"
+                  <input id="username1" placeholder="Enter a UserName (𝑵𝒐 𝑺𝒑𝒂𝒄𝒆𝒔, 𝑵𝒐 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑪𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓𝒔: #@!$% )" style="height:3rem;font-size:16px;font-weight:400"
                   type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
 
                   @if ($errors->has('username'))
@@ -90,7 +90,7 @@
 
             <div class="form-group row">
                 <div class="col-md-12">
-                    <input id="email1" placeholder="Enter a Email" style="height:4rem;font-size:16px;font-weight:400"
+                    <input id="email1" placeholder="Enter a Email" style="height:3rem;font-size:16px;font-weight:400"
                      type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                     @if ($errors->has('email'))
@@ -103,7 +103,7 @@
 
             <div class="form-group row">
                 <div class="col-md-12">
-                    <input id="password1" placeholder="Enter Password" style="height:4rem;font-size:16px;font-weight:400"
+                    <input id="password1" placeholder="Enter Password" style="height:3rem;font-size:16px;font-weight:400"
                     type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                     @if ($errors->has('password'))
@@ -117,7 +117,7 @@
             <div class="form-group row">
 
                 <div class="col-md-12">
-                    <input id="password-confirm1" placeholder="Password Confirmation" style="height:4rem;font-size:16px;font-weight:400"
+                    <input id="password-confirm1" placeholder="Password Confirmation" style="height:3rem;font-size:16px;font-weight:400"
                      type="password" class="form-control" name="password_confirmation" required>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                     @csrf
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="name" placeholder="Enter Full Name" style="height:4rem;font-size:16px;font-weight:400"
+                            <input id="name" placeholder="Enter Full Name" style="height:3rem;font-size:16px;font-weight:400"
                              maxlength="20" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                             @if ($errors->has('name'))
@@ -173,7 +173,7 @@
 
                     <div class="form-group row">
                       <div class="col-md-12">
-                          <input id="company" placeholder="Enter Company Name (𝑵𝒐 𝑺𝒑𝒂𝒄𝒆𝒔, 𝑵𝒐 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑪𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓𝒔: #@!$% )" style="height:4rem;font-size:16px;font-weight:400"
+                          <input id="company" placeholder="Enter Company Name (𝑵𝒐 𝑺𝒑𝒂𝒄𝒆𝒔, 𝑵𝒐 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑪𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓𝒔: #@!$% )" style="height:3rem;font-size:16px;font-weight:400"
                           maxlength="16" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" required autofocus>
 
                           @if ($errors->has('company'))
@@ -186,7 +186,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="email" placeholder="Enter Email" style="height:4rem;font-size:16px;font-weight:400"
+                            <input id="email" placeholder="Enter Email" style="height:3rem;font-size:16px;font-weight:400"
                              type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                             @if ($errors->has('email'))
@@ -199,7 +199,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="password" placeholder="Enter Password" style="height:4rem;font-size:16px;font-weight:400"
+                            <input id="password" placeholder="Enter Password" style="height:3rem;font-size:16px;font-weight:400"
                             type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                             @if ($errors->has('password'))
@@ -212,7 +212,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="password-confirm" placeholder="Password Confirmation" style="height:4rem;font-size:16px;font-weight:400"
+                            <input id="password-confirm" placeholder="Password Confirmation" style="height:3rem;font-size:16px;font-weight:400"
                             type="password" class="form-control" name="password_confirmation" required>
                         </div>
                     </div>
