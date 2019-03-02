@@ -130,7 +130,7 @@
                          </h4>
 
                         <br>
-                        <p class="card-text"style="margin:0; margin-top:-6px;" title="Coupon Description">{{$product->desc}}</p>
+                        <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description">{{$product->desc}}</p>
 
                         @if( empty($product->couponcode))
                          @else
