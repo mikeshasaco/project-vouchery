@@ -117,7 +117,6 @@
                                 <div class="">
                                     <h5 class="discounth5" title="Original Price" style="cursor:pointer;"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
                                     <h5 class="newprice5" style="cursor:pointer;" title="Discount Price"> ${{ number_format($product->newprice, 2) }}</h5>
-                                    <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:56px; top: -17px;" title="Category">{{$product->categoryname}}</small> </a>
                                 </div>
                             </li>
                         </ul>
@@ -139,6 +138,7 @@
                          @endif
                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
                         <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
+                         <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px;" title="Category">{{$product->categoryname}}</small> </a>
 
                      <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
                            
