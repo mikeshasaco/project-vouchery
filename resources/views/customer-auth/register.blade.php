@@ -77,7 +77,7 @@
 
             <div class="form-group row">
               <div class="col-md-12">
-                  <input id="username1" placeholder="Enter a UserName (𝑵𝒐 𝑺𝒑𝒂𝒄𝒆𝒔, 𝑵𝒐 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑪𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓𝒔: #@!$% )" style="height:3rem;font-size:16px;font-weight:400"
+                  <input id="username1" placeholder="Enter a UserName (No Spaces & No Special Characters)" style="height:3rem;font-size:16px;font-weight:400"
                   type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
 
                   @if ($errors->has('username'))
@@ -173,7 +173,7 @@
 
                     <div class="form-group row">
                       <div class="col-md-12">
-                          <input id="company" placeholder="Enter Company Name (𝑵𝒐 𝑺𝒑𝒂𝒄𝒆𝒔, 𝑵𝒐 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑪𝒉𝒂𝒓𝒂𝒄𝒕𝒆𝒓𝒔: #@!$% )" style="height:3rem;font-size:16px;font-weight:400"
+                          <input id="company" placeholder="Enter Company Name (No Spaces & No Special Characters)" style="height:3rem;font-size:16px;font-weight:400"
                           maxlength="16" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" required autofocus>
 
                           @if ($errors->has('company'))
