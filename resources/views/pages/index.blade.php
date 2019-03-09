@@ -293,6 +293,7 @@
     </div>
 </section> --}}
 
+@include('inc.signupblocker');
 
 <section id="filterproducts">
     <filter-products></filter-products>
@@ -321,6 +322,21 @@
             .appendTo('#slidershow');
     }, 8000);
 </script>
+
+{{-- <script type="text/javascript">
+setTimeout(function(){
+    alert("Hello")
+    },4000);
+
+</script> --}}
+{{-- <script type = "text/javascript">
+window.onload=function(){setTimeout(showPopup,4000)};
+
+function showPopup()
+{
+  alert("hello world");
+}
+</script> --}}
 
 
 @endsection

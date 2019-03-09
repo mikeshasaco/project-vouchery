@@ -79,5 +79,7 @@
 </section>
 
     </div>
+    @include('inc.signupblocker');
+
 
 @endsection

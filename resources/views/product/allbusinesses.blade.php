@@ -185,6 +185,9 @@
         </div>
     </div>
 </section>
+
+@include('inc.signupblocker');
+
 @endsection
 
 @section('javascripts')
