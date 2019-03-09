@@ -101,15 +101,11 @@ class ProductsController extends Controller
 
         session()->put('categoryname', $catbread->catslug);
 
-        $categorycount = Product::join('categoriess', 'categoriess.id', 'products.category_id')
-    ->select('categoriess.*', 'products.category_id')
-    ->where('catslug', $slug)
-    ->get();
+       
         //dd($products);
         return view('product.catbusiness')
         ->with('cats', $cats)
         ->with('users', $users)
-        ->with('categorycount', $categorycount)
         ->with('products', $products)
         ->with('catbyuser', $slug)
         ->with('randomcat', $randomcat)

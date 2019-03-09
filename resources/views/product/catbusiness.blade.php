@@ -28,7 +28,7 @@
 
                 <div class="col-md-12 col-sm-12">
                     <h2 class="titleallcategory" > <b>{{ $catbread->categoryname }}</b> </h2>
-                    <h5> <b>(Coupon Count <i>{{ $categorycount->count() }})</i> </b> </h5>
+                    <h5> <b><i>(Coupons) </i> </b> </h5>
 
                     <select name="record" style="margin-top:5%;"  class="media-select">
                         @foreach($cats as $categoryselect)
