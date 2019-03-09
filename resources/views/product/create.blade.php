@@ -1,5 +1,5 @@
 
-<center> <h3>Create Coupon</h3> <b style="opacity:0.5;"> Expiration Date: {{  \Carbon\Carbon::now()->addDay(7)->format('l, d F, Y') }}</b> </center>
+<center> <h3>Create Coupon</h3> <b style="opacity:0.5;"> Expiration Date: {{  \Carbon\Carbon::now()->addDays(7)->format('l, d F, Y') }}</b> </center>
 
 
      <div class="panel panel-default">

@@ -156,7 +156,7 @@ class ProductsController extends Controller
         $product->category_id = $request->category;
         $product->couponcode = $request->couponcode;
         $product->url = $request->url;
-        $product->expired_date = Carbon::now()->addDay(7);
+        $product->expired_date = Carbon::now()->addDays(7);
         $product->user_id = Auth::user()->id;
 //         $product->expired_date = Carbon::now()->addDay(7);
 
