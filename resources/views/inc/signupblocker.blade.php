@@ -6,7 +6,7 @@
     <div class="modal-content">
       <div class="modal-header">
        <img src="/vouch.png" alt="logo" height="24px">
-       <a href="/login" style="margin-left: 60%;"> Sign In</a>
+       <a href="/login" style="margin-left: 20%;"> Sign In</a>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,38 +20,38 @@
         <section class="merchant-newsletter">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-12">
                         <h5 style="color:#B35464"> Sign Up as Merchants</h5>
                         <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                         <div class="numbers">1</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                             <img src="/diagram.png" style="width:40px;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                              <p style="font-weight:bold; font-size:14px;">Create your coupons and grow your business.</p>
                         </div>
                    </div>
                         <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                         <div class="numbers">2</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                             <img src="/analytics.png" style="width:40px;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                         <p style="font-weight:bold; font-size:14px;">Track your Coupons analytics</p>
                         </div>
                    </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                         <div class="numbers">3</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                             <img src="/adsv.png" style="width:40px;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                         <p style="font-weight:bold; font-size:14px;">Advertise Coupons to Increase Coupon Growth</p>
                         </div>
                    </div>
@@ -65,38 +65,38 @@
         <section class="customer-newsletter">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-12">
                         <h5 style="color: #6699ff;"> Sign Up as Customer</h5>
                         <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                         <div class="numbers">1</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                             <img src="/follow.png" style="width:40px;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                              <p style="font-weight:bold; font-size:14px;">Follow your favorite companies!</p>
                         </div>
                    </div>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                         <div class="numbers">2</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                             <img src="/love.png" style="width:40px;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                              <p style="font-weight:bold; font-size:14px;">You can track coupons that interest you!</p>
                         </div>
                    </div>
                        <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                         <div class="numbers">3</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-3">
                             <img src="/gold-medal.png" style="width:40px;" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                              <p style="font-weight:bold; font-size:14px;">Be the first to know when your favorite companies post coupons!</p>
                         </div>
                    </div>
