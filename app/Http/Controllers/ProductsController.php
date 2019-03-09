@@ -43,13 +43,8 @@ class ProductsController extends Controller
                           ->take(3)
                           ->get();
 
-        $categorycountallbusy = Product::join('categoriess', 'categoriess.id', 'products.category_id')
-      ->select('categoriess.*', 'products.category_id')
-      ->get();
-
 
         return view('product.allbusinesses')
-      ->with('categorycountallbusy', $categorycountallbusy)
       ->with('users', $users)
       ->with('products', $products)
       ->with('alladproducts', $alladproducts);

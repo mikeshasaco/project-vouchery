@@ -21,7 +21,7 @@
 
             <div class="col-md-12 col-12">
                     <h2 class="titleallcategory"  > <b> All Categories</b></h2>
-                    <h5> <b>(Coupon Count <i>{{ $categorycountallbusy->count() }})</b> </i></h5>
+                    <h5> <b>(All Coupons</h5>
                     <div class="selectagcategory">
 
                     <select onchange="if (this.value) window.location.href=this.value" style="margin-top:5%; " class="media-select">
