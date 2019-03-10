@@ -39,8 +39,7 @@ class DeleteCoupons extends Command
     public function handle()
     {
         // Product::where('created_at' ,'<=', Carbon::now()->subDays(7))->delete();
-        //Product::where('created_at','<=',  Carbon::now()->subDay(7))->delete();
-        Product::where('created_at', '<=', Carbon::now()->subMinutes(2))->delete();
+        Product::where('created_at', '<=', Carbon::now()->subDays(7))->delete();
 
     }
 }
