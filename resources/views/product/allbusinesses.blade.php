@@ -186,7 +186,7 @@
     </div>
 </section>
 
-@include('inc.signupblocker');
+{{-- @include('inc.signupblocker'); --}}
 
 @endsection
 

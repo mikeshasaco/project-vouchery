@@ -100,11 +100,11 @@ class AccountsController extends Controller
     public function destroy($slug, $id)
     {
         $deleteproduct = Product::find($id);
-        $oldcouponimage = $deleteproduct->image;
-        $oldcouponexist = Storage::disk('do')->exists('Coupon/' . $oldcouponimage);
-        if($oldcouponimage == $oldcouponexist){
-            Storage::disk('do')->delete('Coupon/' . $oldcouponimage);
-        }
+        // $oldcouponimage = $deleteproduct->image;
+        // $oldcouponexist = Storage::disk('do')->exists('Coupon/' . $oldcouponimage);
+        // if($oldcouponimage == $oldcouponexist){
+        //     Storage::disk('do')->delete('Coupon/' . $oldcouponimage);
+        // }
         $deleteproduct->delete();
 
 

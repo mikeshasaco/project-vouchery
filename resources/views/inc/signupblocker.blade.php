@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-12">
-                        <h5 style="color:#B35464"> Sign Up as Merchants</h5>
+                        <h5 style="color:#B35464"> Sign Up as Merchant</h5>
                         <div class="row">
                         <div class="col-md-3 col-3">
                         <div class="numbers">1</div>

@@ -164,6 +164,7 @@
             </div>
         </div>
     </section>
+@include('inc.signupblocker');
 
     {{-- datatable --}}
    <section style="margin-top:10%; margin-bottom: 4%;" >
@@ -194,7 +195,6 @@
         @endif
     </div>
 </section>
-@include('inc.signupblocker');
 
 
     @endsection
