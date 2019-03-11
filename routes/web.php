@@ -101,7 +101,11 @@ Route::group(['prefix'=> 'customer'], function () {
     Route::get('/{customerslug}/customerunfollow/{id}', 'CustomerController@customerunfollow');
 });
 
+// verify merchant email verification
+Route::get('/account/merchant/verify/{token}', 'Auth\RegisterController@verifyMerchant');
 
+// verify customer email verification
+Route::get('/account/customer/verify/{token}', 'CustomerAuth\RegisterController@verifyCustomer');
 
 
 Route::post('/product/{id}/click', 'ClicksController@postClicks');

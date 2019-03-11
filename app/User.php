@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'company', 'slug',
-        'avatar', 'affiliate_id', 'referred_by',
+        'avatar', 'affiliate_id', 'referred_by', 'verified',
     ];
 
     /**
@@ -83,4 +83,7 @@ class User extends Authenticatable
     //     return Storage::url($value);
     // }
 
+    public function verifyUser(){
+        return $this->hasOne('App\VerifyUser');
+    }
 }

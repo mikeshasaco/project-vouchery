@@ -18,7 +18,7 @@ class Customer extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'customerslug',
+        'name', 'email', 'password', 'username', 'customerslug', 'verified',
     ];
 
     /**
@@ -47,6 +47,10 @@ class Customer extends Authenticatable
 
     public function getUsernameAttribute($value){
         return ucfirst($value);
+    }
+
+    public function verifyCustomer(){
+        return $this->hasOne('App\VerifyCustomer');
     }
 
 }

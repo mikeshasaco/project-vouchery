@@ -20,6 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('customerslug');
+            $table->boolean('verified')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

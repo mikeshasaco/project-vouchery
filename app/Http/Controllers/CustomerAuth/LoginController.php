@@ -48,7 +48,15 @@ class LoginController extends Controller
         $request->session()->invalidate();
         return redirect('/');
     }
+   public function authenticated(Request $request, $customer)
+    {
+        if (!$customer->verified) {
+            $this->guard()->logout();
+            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+    }
 
+    return redirect()->intended($this->redirectPath());
+}
 
 
     public function showLoginForm()
@@ -61,16 +69,19 @@ class LoginController extends Controller
     }
 
     public function customerLogin(Request $request)
-   {
-       $this->validate($request, [
-           'email'   => 'required|email',
-           'password' => 'required|min:6'
-       ]);
+    {
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
 
-       if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            return $this->sendLoginResponse($request);
 
-           return redirect()->intended('/');
+            return redirect()->intended('/');
        }
+       
        return back()->withInput($request->only('email', 'remember'));
    }
+ 
 }
