@@ -43,8 +43,13 @@ class ProductsController extends Controller
                           ->take(3)
                           ->get();
 
+        $categorycountallbusy = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+            ->select('categoriess.*', 'products.category_id')
+      ->get();
+
 
         return view('product.allbusinesses')
+      ->with('categorycountallbusy', $categorycountallbusy)
       ->with('users', $users)
       ->with('products', $products)
       ->with('alladproducts', $alladproducts);
@@ -97,15 +102,22 @@ class ProductsController extends Controller
         // }
         Category::where('catslug', $slug)->firstOrFail();
         $catbread = Category::where('catslug', $slug)->first();
-        $cats =  Category::orderBy('categoryname','ASC')->get();
+        $cats =
+        Category::orderBy('categoryname','ASC')->get();
 
         session()->put('categoryname', $catbread->catslug);
+
+        $categorycount = Product::join ('categoriess', 'categoriess.id', 'products.category_id')
+    ->select('categoriess.*', 'products.category_id')
+    ->where('catslug', $slug)
+    ->get();
 
        
         //dd($products);
         return view('product.catbusiness')
         ->with('cats', $cats)
         ->with('users', $users)
+         ->with('categorycount', $categorycount)
         ->with('products', $products)
         ->with('catbyuser', $slug)
         ->with('randomcat', $randomcat)

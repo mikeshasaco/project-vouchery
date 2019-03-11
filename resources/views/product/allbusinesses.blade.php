@@ -21,10 +21,10 @@
 
             <div class="col-md-12 col-12">
                     <h2 class="titleallcategory"  > <b> All Categories</b></h2>
-                    <h5> <b> <i>(All Coupons)</i></h5>
-                    <div class="selectagcategory">
-
-                    <select onchange="if (this.value) window.location.href=this.value" style="margin-top:5%; " class="media-select">
+                         <h5> <b>(Coupon Count <i>{{ $categorycountallbusy->count() }})</b> </i></h5>
+                    
+                <div class="selectagcategory">
+                  <select onchange="if (this.value) window.location.href=this.value" style="margin-top:5%; " class="media-select">
                         <option value="{{ route('AllBusinesses') }}">Select Category</option>
                         @foreach($cats as $categoryselect)
                         <option value="{{ url('/businesses'.'/'. $categoryselect->catslug)  }}">{{ $categoryselect->categoryname }}</option>
