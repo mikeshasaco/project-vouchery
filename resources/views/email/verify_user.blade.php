@@ -3,7 +3,7 @@
 
 Your account has been successfully registered. Please click the below link to verify your email address. Your registered email-id is {{ $user['email'] }}.
 
-@component('mail::button', ['url' => url('account/merchant/verify', $user->verifyUser->token , 'color' => 'red'])
+@component('mail::button', ['url' => url('account/merchant/verify', $user->verifyUser->token ), 'color' => 'red'])
 Verify Email
 @endcomponent
 
