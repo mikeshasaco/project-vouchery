@@ -28,7 +28,9 @@ class VerifyUserMail extends Mailable
      * @return $this
      */
     public function build()
-    {
-        return $this->markdown('email.verify_user');
+    { 
+        return $this->from('VoucheryHub@gmail.com')
+        ->subject('Verify Account')
+        ->markdown('email.verify_user');
     }
 }

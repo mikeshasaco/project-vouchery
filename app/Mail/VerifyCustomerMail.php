@@ -28,6 +28,8 @@ class VerifyCustomerMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.verify_customer');
+        return $this->from( 'VoucheryHub@gmail.com')  
+                    ->subject('Verify Account')
+                     ->markdown('email.verify_customer');
     }
 }
