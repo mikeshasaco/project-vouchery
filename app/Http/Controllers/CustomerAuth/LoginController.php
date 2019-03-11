@@ -80,8 +80,11 @@ class LoginController extends Controller
 
             return redirect()->intended('/');
        }
-       
-       return back()->withInput($request->only('email', 'remember'));
+
+        //    return back()->withInput($request->only('email', 'remember'));
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
    }
  
 }
