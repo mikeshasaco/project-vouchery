@@ -24,7 +24,7 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
             ->join('users', 'users.id', 'products.user_id')
-            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
+            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
             ->orderByRaw('advertboolean = 0', 'advertboolean')
             ->orderBy('products.created_at', 'DESC')
             ->paginate(36);
@@ -38,7 +38,7 @@ class ProductsController extends Controller
         $alladproducts = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
                           ->join('users', 'users.id', 'products.user_id')
                           ->join('categoriess', 'categoriess.id', 'products.category_id')
-                          ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
+                          ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
                           ->inRandomOrder()
                           ->take(3)
                           ->get();
@@ -72,7 +72,7 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', '=', 'products.user_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->where('categoriess.catslug', $slug)
@@ -90,7 +90,7 @@ class ProductsController extends Controller
         $paidadvertisement = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
                         ->join('users', 'users.id', 'products.user_id')
                         ->join('categoriess', 'categoriess.id', 'products.category_id')
-                        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
+                        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
                         ->where('categoriess.catslug', $slug)
                         ->inRandomOrder()
                         ->take(3)

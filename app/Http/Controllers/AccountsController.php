@@ -34,7 +34,7 @@ class AccountsController extends Controller
         $userproduct = user::join('accounts', 'accounts.user_id', 'users.id')
         ->join('products', 'products.user_id', 'users.id')
         ->join('categoriess', 'categoriess.id', 'products.category_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
         ->orderBy('products.created_at', 'DESC')
        ->where('slug', $slug)
        ->get();
