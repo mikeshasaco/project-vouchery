@@ -298,10 +298,6 @@
     <filter-products></filter-products>
 </section>
 
-{{-- pop up box modal --}}
-@include('inc.signupblocker');
-
-
 @endsection
 
 @section('javascripts')

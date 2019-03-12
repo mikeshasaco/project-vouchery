@@ -122,12 +122,3 @@
 </div>
 @endif
 
-@section('javascripts')
-    <script type="text/javascript">
-$('#overlay').modal('show');
-
-setTimeout(function() {
-    $('#overlay').modal('show');
-}, 5000);
-</script>
-@endsection

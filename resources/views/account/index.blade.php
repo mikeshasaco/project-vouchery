@@ -187,7 +187,6 @@
         </div>
     </div>
         @endif
-        @include('inc.signupblocker');
 
 @endsection
 
