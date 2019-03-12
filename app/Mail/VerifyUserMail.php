@@ -29,7 +29,7 @@ class VerifyUserMail extends Mailable
      */
     public function build()
     { 
-        return $this->from('VoucheryHub@gmail.com')
+        return $this->from('support@voucheryhub.com')
         ->subject('Verify Account')
         ->markdown('email.verify_user');
     }
