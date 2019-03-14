@@ -292,11 +292,13 @@
         </div>
     </div>
 </section> --}}
+	@include('inc.signupblocker')
 
 {{-- vue filter --}}
 <section id="filterproducts">
     <filter-products></filter-products>
 </section>
+
 
 @endsection
 
