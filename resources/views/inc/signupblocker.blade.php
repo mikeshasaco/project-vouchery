@@ -30,7 +30,7 @@
                             <img src="/diagram.png" style="width:40px;" >
                         </div>
                         <div class="col-md-6 col-6">
-                             <p style="font-weight:bold; font-size:14px;">Create your coupons and grow your business.</p>
+                             <p style="font-weight:bold; font-size:14px;">Post your coupons and grow your business.</p>
                         </div>
                    </div>
                         <div class="row">
