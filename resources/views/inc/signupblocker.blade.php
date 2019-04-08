@@ -13,8 +13,7 @@
       </div>
          <div class="welcome-title-vouch" style="padding-top:8px; padding-bottom:8px; background:mistyrose;">
              <h3 style="text-align:center; font-style:italic; color:#B35464">Welcome to VoucheryHub</h3>
-             <h5 style="color:#B35464;text-align:center;">Sign Up Today!</h5>
-             <h6 style="color:black;text-align:center; font-weight:bold;">Sign Up are FREE! </h6>
+             <h5 style="color:#B35464;text-align:center; font-weight:bold;">Sign Up Today For FREE!</h5>
           </div>
       <div class="modal-body">
        
