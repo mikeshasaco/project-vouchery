@@ -111,11 +111,11 @@
         
       </div>
       <div class="modal-footer">
-                 <img src="/vouch.png" alt="logo" height="24px">
-
-               <a href="/register" class="customer-letter-button" style="float:left;"> Customer</a>
-    
-                <a href="/register" class="merchant-letter-button" style="float:right;"> Merchant</a>
+                 {{-- <img src="/vouch.png" alt="logo" height="24px"> --}}
+                  <h5><b>Register: </b></h5>
+                     <a href="/register" class="customer-letter-button" style="float:left;"> Customer</a>
+                      <h5><b>Register: </b></h5>
+                         <a href="/register" class="merchant-letter-button" style="float:right;"> Merchant</a>
       </div>
     </div>
   </div>
