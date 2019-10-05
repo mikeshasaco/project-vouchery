@@ -156,7 +156,7 @@
         
       </div>
       <div class="modal-footer">
-                 <img src="/vouch.png" alt="logo" height="24px">
+                 {{-- <img src="/vouch.png" alt="logo" height="24px"> --}}
                      <a href="/register" class="customer-letter-button" style="float:left;"> Customer</a>
                          <a href="/register" class="merchant-letter-button" style="float:right;"> Merchant</a>
       </div>
