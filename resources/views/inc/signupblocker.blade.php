@@ -12,10 +12,55 @@
         </button>
       </div>
          <div class="welcome-title-vouch" style="padding-top:8px; padding-bottom:8px; background:mistyrose;">
-             <h3 style="text-align:center; font-style:italic; color:#B35464">Welcome to VoucheryHub</h3>
+             {{-- <h3 style="text-align:center; font-style:italic; color:#B35464">Welcome to VoucheryHub</h3> --}}
+                  <h3 style="text-align:center; font-style:italic; color:#B35464">Welcome to VoucheryHub</h3>
              <h5 style="color:#B35464;text-align:center; font-weight:bold;">Sign Up Today For FREE!</h5>
           </div>
       <div class="modal-body">
+         <section class="customer-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <h5> <mark style="background-color: yellow; color:black;"> Were giving away free advertisement!, Here How:</mark></h5>
+                        <div class="row">
+                        <div class="col-md-3 col-3">
+                        <div class="numbers">1</div>
+                        </div>
+                        <div class="col-md-3 col-3">
+                            <img src="/storead.png" style="width:40px;" >
+                        </div>
+                        <div class="col-md-6 col-6">
+                             <p style="font-weight:bold; font-size:14px;">Signup as a merchant!</p>
+                        </div>
+                   </div>
+                    <div class="row">
+                        <div class="col-md-3 col-3">
+                        <div class="numbers">2</div>
+                        </div>
+                        <div class="col-md-3 col-3">
+                            <img src="/vouchercoup.png" style="width:40px;" >
+                        </div>
+                        <div class="col-md-6 col-6">
+                             <p style="font-weight:bold; font-size:14px;">Post your coupon on our site!</p>
+                        </div>
+                   </div>
+                       <div class="row">
+                        <div class="col-md-3 col-3">
+                        <div class="numbers" style="margin-top:12px;">3</div>
+                        </div>
+                        <div class="col-md-3 col-3">
+                            <img src="/iglogo.png" style="width:40px; margin-top:12px;" >
+                        </div>
+                        <div class="col-md-6 col-6">
+                             <p style="font-weight:bold; font-size:14px;">Message us on instagram at @voucherhubinc and we will post your coupon to our 138k followers for FREE!</p>
+                        </div>
+                   </div>
+                </div>
+            </div>
+
+            </div>
+
+        </section>
        
         <section class="merchant-newsletter">
             <div class="container">
@@ -111,10 +156,8 @@
         
       </div>
       <div class="modal-footer">
-                 {{-- <img src="/vouch.png" alt="logo" height="24px"> --}}
-                  <h5><b>Register: </b></h5>
+                 <img src="/vouch.png" alt="logo" height="24px">
                      <a href="/register" class="customer-letter-button" style="float:left;"> Customer</a>
-                      <h5><b>Register: </b></h5>
                          <a href="/register" class="merchant-letter-button" style="float:right;"> Merchant</a>
       </div>
     </div>
