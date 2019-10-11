@@ -52,7 +52,7 @@
                             <img src="/iglogo.png" style="width:40px; margin-top:12px;" >
                         </div>
                         <div class="col-md-6 col-6">
-                             <p style="font-weight:bold; font-size:14px;">Message us on instagram at @voucherhubinc and we will post your coupon to our 138k followers for FREE!</p>
+                             <p style="font-weight:bold; font-size:14px;">Message us on instagram at @voucheryhubinc and we will post your coupon to our 138k followers for FREE!</p>
                         </div>
                    </div>
                 </div>
