@@ -176,6 +176,23 @@ class AccountsController extends Controller
                                 ->where('slug', $slug)
                                 ->get();
 
+            // $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
+            //                         ->join('products', 'products.id', 'clicks.click_product_id')
+            //                         ->join('categoriess', 'categoriess.id', 'products.category_id')
+            //                         ->select('clicks.click_customer_id', DB::raw('count(*)as total'))
+            //                         ->groupBy('clicks.click_customer_id')
+            //                         ->where('slug', $slug)
+            //                         ->get();
+
+            // $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
+            //                 ->distinct('clicks.click_customer_id')
+            //                 ->select
+            //                 ->where('slug', $slug)
+            //                  ->count('clicks.click_customer_id');                               
+
+   
+            //     dd($usertracker);
+
             $userinfo = User::join('accounts', 'accounts.user_id', 'users.id')
                                 ->select('users.*', 'accounts.accountinfo', 'accounts.websitelink')
                                 ->where('slug', $slug)->first();

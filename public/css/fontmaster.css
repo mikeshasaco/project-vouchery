@@ -85,7 +85,7 @@ background-color: #B35464;
 }
 
 #recentlyuploaded .card-body .list-group-item .newprice5{
-    color: red;
+    color: green;
     font-weight: bold;
     float: right;
     font-size: 14px;
@@ -133,7 +133,7 @@ background-color: #B35464;
 }
 
 #customerclicks .card-body .list-group-item .newpriceR5{
-    color: red;
+    color: green;
     font-weight: bold;
     float: right;
     font-size: 14px;
@@ -184,7 +184,7 @@ background-color: #B35464;
 }
 
 #randonlyselected .card-body .list-group-item .newpriceR5{
-    color: red;
+    color: green;
     font-weight: bold;
     float: right;
     font-size: 14px;
@@ -224,7 +224,7 @@ background-color: #B35464;
 }
 
 #albusysection .card-body .list-group-item .newprice5{
-    color:red;
+    color:green;
     font-weight:bold;
     float: right;
     font-size: 14px;
@@ -270,7 +270,7 @@ background-color: #B35464;
 }
 
 #catbusysection .card-body .list-group-item .newprice5{
-    color:red;
+    color:green;
     font-weight:bold;
     float: right;
     font-size: 14px;
@@ -309,7 +309,7 @@ background-color: #B35464;
 }
 
 #advert-section .card-body .list-group-item .newprice5{
-    color:red;
+    color:green;
     font-weight:bold;
     float: right;
     font-size: 14px;
@@ -357,7 +357,7 @@ background-color: #B35464;
     margin-left: -10%;
 }
 #accountsection .card-body .list-group-item .newprice5{
-    color:red;
+    color:green;
     font-weight:bold;
     float: right;
     font-size: 14px;
@@ -469,7 +469,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 }
 
 #searchcoupon .card-body .list-group-item .newpriceR5{
-    color: red;
+    color: green;
     font-weight: bold;
     float: right;
     font-size: 14px;
