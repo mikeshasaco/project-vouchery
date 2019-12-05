@@ -5161,6 +5161,7 @@ input[type="button"].btn-block {
 }
 
 .card-img-bottom {
+  height:auto;
   width: 100%;
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
@@ -5561,7 +5562,7 @@ input[type="button"].btn-block {
 
 .badge-danger {
   color: #fff;
-  background-color: #dc3545;
+  background-color: green;
 }
 
 .badge-danger[href]:hover,
