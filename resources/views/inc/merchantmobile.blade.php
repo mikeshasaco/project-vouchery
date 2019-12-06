@@ -18,27 +18,19 @@
         <li><a class="nav-link" href="{{ route('customer.login') }}">Login</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
         @else
-            <div class="btn-group">
-  <button type="button" class="custom-account-mobile-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    MY ACCOUNT
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item"  href="{{ route('myaccount', auth()->user()->slug) }}">Profile</a>
-    <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Setting</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+  
+      <li><a class="nav-link"  href="{{ route('myaccount', auth()->user()->slug) }}">Profile</a></li>
+      <li> <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Setting</a></li>
+      <li><a href="{{ route('AllBusinesses') }}">Categories</a></li>
+
+      <li> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
-            </a>
-
-
+            </a></li>
+   
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
-  </div>
-</div>
-        <li><a href="{{ route('AllBusinesses') }}">Categories</a></li>
-        <li><a class="nav-link" href="{{route('faqroute')}}"> Help</a></li>
 
         <button type="button" class="custom-createbutton-mobile" data-toggle="modal" data-target="#productmodal">
       Create 
@@ -47,3 +39,7 @@
     </ul>
   </div>
 </nav>
+
+@section('javascript')
+<script src="{{asset('js/tabreload.js')}}"></script>
+@stop

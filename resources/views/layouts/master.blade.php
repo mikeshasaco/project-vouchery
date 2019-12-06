@@ -255,7 +255,7 @@ setTimeout(function() {
 }, 5000);
 </script>
 
-	<script>$('.dropdown-toggle').dropdown();</script>
+	{{-- <script>$('.dropdown-toggle').dropdown();</script> --}}
 	<script type="text/javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/tabreload.js') }}"></script>
