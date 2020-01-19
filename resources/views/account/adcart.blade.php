@@ -223,7 +223,7 @@
                           @if($tracker->total > 1000)
                           <a class="btn btn-success" href="/help/questions">Claim</a>
                           @else 
-                      <button type="button" disabled title="Claim $50USD after 1000 clicks">{{$tacker->total}} / 1000</button>
+                      <button type="button" disabled title="Claim $50USD after 1000 clicks">{{$tracker->total}} / 1000</button>
                       @endif
                     </td>
 
