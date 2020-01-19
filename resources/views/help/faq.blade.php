@@ -34,6 +34,48 @@
                     </div>
 
                     <div class="question-title">
+                        <h3>How can i earn free money?</h3>
+                        <div class="content-main">
+                            <div class="content-inner">
+                                <p>Merchants can earn money by customers clicking on there coupons,
+                                     once a merchant has over 1000 customer clicks on their coupon, they will earn $50 dollars USD for that particular coupon. 
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="question-title">
+                        <h3>How do I know how much clicks I have on a coupon?</h3>
+                        <div class="content-main">
+                            <div class="content-inner">
+                                <p>
+                                    When you sign up as a Merchant, on setting page will have all the information about your 
+                                    coupon clicks and how far you are from 1000 clicks per coupon.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                      <div class="question-title">
+                        <h3>How long will it take for me to receive my money?</h3>
+                        <div class="content-main">
+                            <div class="content-inner">
+                                <p>
+                                    Voucherhub will payout its merchants between 24 to 48 of receiving 1000 clicks on
+                                    their coupon.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="question-title">
                         <h3>As a merchant, what is the benefit of paying for “Promoted Ad” for my coupon than just posting without paying for advertising?</h3>
                         <div class="content-main">
                             <div class="content-inner">
