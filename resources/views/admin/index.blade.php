@@ -36,7 +36,7 @@
     </div>
 </section>
 
-<section style="margin-top:40px;">
+<section style="margin-top:40px; margin-bottom:6%;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">

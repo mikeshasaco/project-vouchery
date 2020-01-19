@@ -4,27 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Click;
+use App\Customer;
 use Auth;
+
 
 class ClicksController extends Controller
 {
     public function postClicks($id)
     {
-        // This works increments
-        $product = Product::FindorFail($id);
-        $product->increment('clicks');
-        $product->update();
+ 
+            // find product
+            $product = Product::FindorFail($id);
 
+            // check to see if in database
 
+            $clicks_registered = Click::where('click_customer_id', '=', Auth::guard('customer')->user()->id)
+                                ->where('click_product_id', '=', $product->id)
+                                ->first();
 
-        // store the create in an array
+           
+
+            // store the create in an array
         // tracks clicks that are customers
-        if (Auth::guard('customer')->user()) {
-            Click::create(['click_customer_id' => Auth::guard('customer')->user()->id,
-                        'click_product_id' => $product->id,
-                        'click_user_id' => $product->user_id,
-    ]);
-        }
+        if(Auth::guard('customer')->user() && is_null($clicks_registered)) {
+                // This works increments
+                $product->increment('clicks');
+                $product->update();
+                Click::create([
+                    'click_customer_id' => Auth::guard('customer')->user()->id,
+                    'click_product_id' => $product->id,
+                    'click_user_id' => $product->user_id,
+                ]);
+            }
+  
         // tracks clicks that are guest
     //     elseif (!Auth::guard('customer')->user() && !Auth::user()) {
     //         Click::create(['click_customer_id' => null,
