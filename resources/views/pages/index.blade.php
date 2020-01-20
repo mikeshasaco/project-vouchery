@@ -66,10 +66,23 @@
 
 </section>
 
+@if(auth::user() || auth::guard('customer')->user())
+
 <div class="container">
 <h6  class="d-block d-lg-none searchonlinebusiness"> <b>Search Deals from Online Businesses</b> </h6>
 </div>
+@else
+<div class="container">
+    <div class="d-block d-lg-none searchonlinebusiness">
+        <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
+            <b style="text-align:center;">Sign Up your Business For Free & Start Earning Free Money Today!</b>
+            <br>
+            <a href="{{ route('register') }}">Sign Up to find out how!</a>
+        </div>
+    </div>
 
+</div>
+@endif
 {{--  onlt mobile view--}}
 <?php $cats = DB::table('categoriess')->orderby('categoryname','ASC')->get(); ?>
 
