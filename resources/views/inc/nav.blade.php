@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item active" class=" d-none d-lg-block">
-                    <a class="nav-link" href="{{route('faqroute')}}" style="color: #B35464; font-size:16px;"> Help</a>
+                    <a class="nav-link" href="{{route('faqroute')}}" style="color: #B35464; font-size:16px;">Help</a>
                 </li>
                 {{-- name saves the query result to the bar && id query print the result--}}
 

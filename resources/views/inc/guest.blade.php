@@ -33,7 +33,7 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('faqroute')}}" style="color: #B35464; font-size:16px;"> Help</a>
+                    <a class="nav-link" href="{{route('faqroute')}}" style="color: #B35464; font-size:16px;">Help</a>
                 </li>
 
 

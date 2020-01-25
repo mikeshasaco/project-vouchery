@@ -75,7 +75,7 @@
 <div class="container">
     <div class="d-block d-lg-none searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
-            <b style="text-align:center;">Sign Up your Business For Free & Start Earning Free Money Today!</b>
+            <b style="text-align:center;">Sign Up your Business For Free & Post your coupons to our 1000+ customers!</b>
             <br>
             <a href="{{ route('register') }}">Sign Up to find out how!</a>
         </div>
