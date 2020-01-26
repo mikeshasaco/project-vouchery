@@ -86,44 +86,15 @@ class RegisterController extends Controller
 
         Account::create(['user_id' => $user->id]);
 
-       VerifyUser::create([
-            'user_id' => $user->id,
-            'token' => str_random(60)
-        ]);
-        
-        Mail::to($user->email)->send(new VerifyUserMail($user));
         return $user;
     }
 
-    protected function registered(Request $request, $user)
-    {
-        $this->guard()->logout();
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
-}
+//     protected function registered(Request $request, $user)
+//     {
+//         $this->guard()->logout();
+//         return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+// }
 
-    public function verifyMerchant($token)
-    {
-        $verifyUser = VerifyUser::where('token', $token)->first();
-        if (isset($verifyUser)) {
-            $user = $verifyUser->user;
-            if (isset($user)) {
-                if (!$user->verified) {
-                    $verifyUser->user->verified = 1;
-                    $verifyUser->user->save();
-                    $status = "Your e-mail is verified. You can now login.";
-                } else {
-                    $status = "Your e-mail is already verified. You can now login.";
-                }
-            } else {
-                return redirect('/login')->with('warning', "Oops! Something happend.");
-            }
-        } else {
-            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
-        }
-
-        return redirect('/login')->with('status', $status);
-
-}
 
     public function showRegistrationForm()
     {

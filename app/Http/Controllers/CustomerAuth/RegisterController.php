@@ -100,40 +100,9 @@ class RegisterController extends Controller
                 'updated_at' => null
             ));
 
-            VerifyCustomer::create([
-                'customer_id' => $customer->id,
-                'token' => str_random(60)
-            ]);
+          
         
-            Mail::to($customer->email)->send(new VerifyCustomerMail($customer));
         return $customer;
     }
-    protected function registered(Request $request, $customer)
-    {
-        $this->guard()->logout();
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
-    }
 
-    public function verifyCustomer($token){
-        $verifyCustomer = VerifyCustomer::where('token', $token)->first();
-        if(isset($verifyCustomer)){
-            $customer = $verifyCustomer->customer;
-            if(isset($customer)){
-                if(!$customer->verified){
-                    $verifyCustomer->customer->verified = 1;
-                    $verifyCustomer->customer->save();
-                    $status = "Your e-mail is verified. You can now login.";
-                }else{
-                    $status = "Your e-mail is already verified. You can now login.";
-                }
-            }else{
-                return redirect('/login')->with('warning', "Oops! Something happend.");
-            }
-        }else{
-            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
-
-        }
-        return redirect('/login')->with('status', $status);
-
-    }
 }
