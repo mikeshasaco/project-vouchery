@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropVerifiedCustomersFromCustomers extends Migration
+class DropVerifiedCustomerFromCustomers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class DropVerifiedCustomersFromCustomers extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('customers', function (Blueprint $table) {
+            $table->dropColumn('verified');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class DropVerifiedCustomersFromCustomers extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('customers', function (Blueprint $table) {
+            $table->boolean('verified');
+        });
     }
 }
