@@ -21,11 +21,11 @@
         <section class="merchant-newsletter">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-6">
                         <img src="/moneyline.png" >
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-6">
                         <h5><b> SignUp Your Business an Earn $5 USD.</b></h5>
                         <h5><b> Expose your Business to 1000+ Customers.</b></h5>
                         <h5><b> Track your Business Analytics.</b></h5>
