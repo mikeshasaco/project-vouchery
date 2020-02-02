@@ -38,6 +38,7 @@ class AccountsController extends Controller
         ->orderBy('products.created_at', 'DESC')
        ->where('slug', $slug)
        ->get();
+       
 
        $followercount = User::join('followables', 'users.id', 'followables.followable_id')
                     ->where('slug', $slug)->count();
