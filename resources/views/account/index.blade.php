@@ -57,18 +57,106 @@
 
 </div>
 
-@foreach($userproduct as $p)
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-                {{$p->title}}
 
+    <section id="accountsection" style="margin-bottom:4%;">
+
+        <div class="container">
+            <h6 style="margin-bottom:3%;"> <b>{{ $user->company }} Coupon's ({{ $userproduct->count() }})</b></h6>
+            <div class="row">
+
+
+                @forelse($userproduct as $product)
+                <div class="col-md-6 col-lg-4">
+                    <div class="content-button" style="position:relative;">
+
+
+                    {{-- Delete link --}}
+                    @if(Auth::id() == $product->user_id)
+                    <form class="deleteaccount"  action="{{ '/account/'.Auth::user()->slug .'/'. $product->id }}" method="post">
+                        {{ csrf_field() }} {{ method_field('DELETE') }}
+                        <button type="submit" class="btn-customdelete"><i class="far fa-trash-alt"></i> Delete</button>
+                    </form>
+
+                    @if($product->advertboolean == 1)
+
+                            <button href="{{ route('myads', auth::user()->slug) }}" type="button" name="button" class="btn-customrunning" disabled><i class="fas fa-sync"></i> Running</button>
+
+                        @else
+                        <form action="{{ '/account/'.Auth::user()->slug .'/'. $product->id  }}" method="POST" >
+                            {{ csrf_field() }}
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_live_7sQQoPimKkEX2qbIb1Ddajcq"
+                            data-amount="499"
+                            data-name="{{ $product->title }} Coupon"
+                            data-description=" Run Advertisement on coupon"
+                            data-email="{{ auth::check() ? auth()->user()->email : null }}"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-label="Advertise"
+                            data-locale="auto">
+                            </script>
+
+                            <input type="hidden" name="adname" value="{{ $product->title }}">
+                            <input type="hidden" name="adprice" value="4.99">
+                            <input type="hidden" name="prod_id" value="{{$product->id }}">
+                        </form>
+                        @endif
+                    @endif
+                </div>
+
+                        <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs">
+                                    <li>
+                                        <a href="{{ url('/account'.'/'. $product->slug) }}" class="nav-link"> <small class="badges">  {{$product->company}}</small></a>
+                                    </li>
+                                    @if($product->advertboolean == 1)
+                                        <li>
+                                            <span class="nav-link" style="position:absolute; right:4%;"> <small class="badge badge-warning"> Promoted Ad</small> </span>
+                                        </li>
+                                        @endif
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="clear:both;">
+                                        <h5 class="discounth5"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
+                                        <h5 class="newprice5"> ${{ number_format($product->newprice, 2) }}</h5>
+
+                                    </li>
+                                </ul>
+                                <span class="badge badge-danger" style="float:right; margin-right:-6%; margin-top:2%;">{{$product->percentageoff()}} OFF</span>
+
+                                <h4 class="card-title" >
+                                    <a href="{{ url('account' .'/'. $product->slug) }}">{{$product->title}}</a>
+                                </h4>
+
+                                <br>
+                                <p class="card-text" style="margin:0; margin-top:-10px;">{{$product->desc}}</p>
+                                <p style="font-weight:bold; font-size:12px; margin:0;">Coupon Code: {{$product->couponcode}} </p>
+                                <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0;">
+                             <i class="far fa-clock"></i> {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
+                              <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                                <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:red; "> <small class="badges" style="position:absolute; margin-top:-5px; left:13px;">{{$product->categoryname}}</small> </a>
+
+                            </div>
+
+                            <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283">
+                             @if(auth::user() || auth::guard('customer')->user())
+                                <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal</a>
+                                 @else
+                                 <a href="/register" class="cardbutton-page">View Deal</a>
+                                @endif
+                        </div>
+
+                </div>
+            @empty
+                <h4>  <b>Create Your First Coupon Today!</b></h4>
+                <h4> <i>(Click Edit to setup your Business Information!)</i> </h4>
+            @endforelse
+            </div>
         </div>
+    </section>
 
-    </div>
-
-</div>
-@endforeach
 
     <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
