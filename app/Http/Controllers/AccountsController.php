@@ -39,7 +39,7 @@ class AccountsController extends Controller
        ->where('slug', $slug)
        ->get();
        
-
+        dd($userproduct);
        $followercount = User::join('followables', 'users.id', 'followables.followable_id')
                     ->where('slug', $slug)->count();
         // dd($followercount);
