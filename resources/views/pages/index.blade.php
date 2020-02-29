@@ -305,7 +305,7 @@
         </div>
     </div>
 </section> --}}
-	@include('inc.signupad')
+	@include('inc.signupmodal')
 
 {{-- vue filter --}}
 <section id="filterproducts">

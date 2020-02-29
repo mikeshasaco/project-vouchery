@@ -37,7 +37,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -103,6 +103,11 @@ class RegisterController extends Controller
           
         
         return $customer;
+    }
+
+    protected function redirectto()
+    {
+        return '/customer/' . Auth()->guard('customer')->user()->customerslug;
     }
 
 }

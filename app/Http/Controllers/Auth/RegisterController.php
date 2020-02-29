@@ -34,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = return '/account/'. Auth::user()->slug;
 
     /**
      * Create a new controller instance.
@@ -94,6 +94,10 @@ class RegisterController extends Controller
 //         $this->guard()->logout();
 //         return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
 // }
+
+    protected function redirectto(){
+        return '/account/'. auth()->user()->slug;
+    }
 
 
     public function showRegistrationForm()

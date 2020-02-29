@@ -196,7 +196,7 @@
     </div>
 </section>
 
-	@include('inc.signupblocker')
+	@include('inc.signupmodal')
 
     @endsection
 
