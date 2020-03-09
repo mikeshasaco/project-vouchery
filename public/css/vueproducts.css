@@ -28,8 +28,8 @@
 .filter-productbox .card .filter-image{
     left: 5%;
     position: absolute;
-    width: 10rem;
-    height: 7rem;
+    max-width: 135px;
+    height: 100px;
     bottom: 40px;
 }
 
