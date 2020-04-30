@@ -71,9 +71,11 @@ background-color: #B35464;
 
 
 #recentlyuploaded .card{
-    height: 41rem;
-    width:18rem;
-    margin-top: 14%;
+    height: 30rem;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
 
 }
 
@@ -93,28 +95,26 @@ background-color: #B35464;
 }
 
 
-.card-title{
-    font-size: 14px;
+.card-title a{
+    text-decoration: none;
 }
 
 /* customer click tab  */
 
 #recentlyuploaded .cardbutton-page{
-    border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-     background-color: #B35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#B35464), to(#B35464));
-     background-image: -webkit-linear-gradient(top, #B35464, #B35464);
-     background-image: -moz-linear-gradient(top, #B35464, #B35464);
-     background-image: -ms-linear-gradient(top, #B35464, #B35464);
-     background-image: -o-linear-gradient(top, #B35464, #B35464);
-     background-image: linear-gradient(to bottom, #B35464, #B35464);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B35464, endColorstr=#B35464);
-     height: 34px;
-    width: 100%;;
-    line-height: 11px;
+    border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 15px;
+    text-decoration: none;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 20px;
-    left: 141px;
-    text-align: center;
-    margin-top: -1px;
+    font-size: 15px;
+    margin-top: -2px;
     }
 
 /* bottom of page home white randomly selected */
@@ -211,9 +211,11 @@ background-color: #B35464;
 
 /* All businesses Section */
 #albusysection .card{
-    width: 18rem;
-    height: 41rem;
-    margin-top: 15%;
+    height: 30rem;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
 
 }
 #albusysection .card-body .list-group-item .discounth5{
@@ -231,21 +233,19 @@ background-color: #B35464;
     margin-right: -16px;
 }
 #albusysection .cardbutton-page{
-    border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-     background-color: #B35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#B35464), to(#B35464));
-     background-image: -webkit-linear-gradient(top, #B35464, #B35464);
-     background-image: -moz-linear-gradient(top, #B35464, #B35464);
-     background-image: -ms-linear-gradient(top, #B35464, #B35464);
-     background-image: -o-linear-gradient(top, #B35464, #B35464);
-     background-image: linear-gradient(to bottom, #B35464, #B35464);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B35464, endColorstr=#B35464);
-     height: 34px;
-    width: 100%;
-    line-height: 11px;
+    border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 20px;
-    left: 141px;
-    text-align: center;
-    margin-top: -1px;
+    font-size: 15px;
+    margin-top: -2px;
     }
 
 
@@ -257,9 +257,11 @@ background-color: #B35464;
 }
 
 #catbusysection .card{
-    width:18rem;
-    margin-top:15%;
-    height:41rem;
+    height: 30rem;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
 }
 
 #catbusysection .card-body .list-group-item .discounth5{
@@ -277,21 +279,19 @@ background-color: #B35464;
     margin-right: -16px;
 }
 #catbusysection .cardbutton-page{
-    border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-     background-color: #B35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#B35464), to(#B35464));
-     background-image: -webkit-linear-gradient(top, #B35464, #B35464);
-     background-image: -moz-linear-gradient(top, #B35464, #B35464);
-     background-image: -ms-linear-gradient(top, #B35464, #B35464);
-     background-image: -o-linear-gradient(top, #B35464, #B35464);
-     background-image: linear-gradient(to bottom, #B35464, #B35464);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B35464, endColorstr=#B35464);
-     height: 34px;
-    width: 100%;
-    line-height: 11px;
+        border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 20px;
-    left: 141px;
-    text-align: center;
-    margin-top: -1px;
+    font-size: 15px;
+    margin-top: -2px;
     }
     /* Advertise in cat busy page */
 
@@ -344,10 +344,11 @@ background-color: #B35464;
 }
 
 #accountsection .card{
-    width:18rem;
-    margin-bottom: 15%;
-     height:41rem;
-     margin-top: 2px;
+    height: 30rem;
+    margin-top: 0;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
 }
 
 #accountsection .card-body .list-group-item .discounth5{
@@ -419,21 +420,19 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 }
 
 #accountsection .cardbutton-page{
-    border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-     background-color: #B35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#B35464), to(#B35464));
-     background-image: -webkit-linear-gradient(top, #B35464, #B35464);
-     background-image: -moz-linear-gradient(top, #B35464, #B35464);
-     background-image: -ms-linear-gradient(top, #B35464, #B35464);
-     background-image: -o-linear-gradient(top, #B35464, #B35464);
-     background-image: linear-gradient(to bottom, #B35464, #B35464);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B35464, endColorstr=#B35464);
-     height: 34px;
-    width: 100%;
-    line-height: 11px;
+    border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 20px;
-    left: 141px;
-    text-align: center;
-    margin-top: -1px;
+    font-size: 15px;
+    margin-top: -2px;
     }
 
 /* setting page */

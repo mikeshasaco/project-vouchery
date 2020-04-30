@@ -13,122 +13,60 @@
 }
 
 .filter-productbox .card {
-    position: relative;
-    overflow: hidden;
+    display: flex;
     width: 100%;
-    height: 15rem;
-    margin-bottom: 5%;
+    height: 10rem;
+    border-radius: 0;
+    flex-direction: unset;
 }
 .filter-productbox .card .productbox-body{
-      margin-left: 33%;
-    margin-top: 4%;
-
+    margin: 1em;
 }
-
-.filter-productbox .card .filter-image{
-    left: 5%;
-    position: absolute;
+.filter-productbox .card .productbox-body>*{
+    margin-bottom: 0.1rem;
+}
+.filter-productbox .card .avatar{
+    margin: auto;
+    max-width: 135px;
+}
+.filter-productbox .card .avatar .filter-image{
+    margin: auto;
     max-width: 135px;
     height: 100px;
+    width: 100%;
     bottom: 40px;
+    border-radius: 10px;
 }
-
-.product-pricing{
-       display: inline;
-       position: absolute;
-       right: 50px;
-       bottom: 79px;
+.filter-productbox .card .view-button{
+    margin: auto;
+    max-width: 150px;
+}
+.filter-productbox .card .viewdeal{
+    border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
 }
 .product-pricing .currentpricing{
     text-decoration: line-through;
     font-size: 20px;
-    position: absolute;
-     right: 105px;
 }
 .product-pricing .newpricing{
     color: red;
     font-size: 20px;
 }
-.coupon-setting-code{
-    position: absolute;
-    font-weight:bold;
-     font-size:14px;
-     bottom: -12px;
-    left: 6px;
-
-}
-.coupon-vue-title{
-    font-size: 16px;
-
-}
-.coupon-vue-desc{
-    font-size: 14px;
-}
-@media(max-width:768px){
-    .product-pricing .currentpricing{
-        font-size: 16px;
+@media(max-width:414px){
+    .filter-productbox .card {
+        display: block;
+        height: auto;
+        padding: 1em;
     }
-    .product-pricing .newpricing{
-    font-size: 16px;
-}
-
-}
-
-@media(max-width:430px){
-
-.filter-productbox .card .filter-image{
-    width: 6rem;
-    height: 6rem;
-}
-
-.product-pricing .currentpricing{
-    text-decoration: line-through;
-    font-size: 12px;
-    position: absolute;
-    font-size: 12px;
-    bottom: -72px;
-    font-weight: bold;
-}
-.product-pricing .newpricing{
-    position: absolute;
-    color: red;
-    right: 30px;
-    bottom: -72px;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.coupon-setting-code{
-    font-size: 9px;
-    position: absolute;
-    bottom: -8px;
-    left: 3px;
-}
-
-.filter-productbox .card .productbox-body{
-    position: absolute;
-    bottom: 51px;
-    left: 0px;
-
-}
-.coupon-vue-desc{
-    font-size: 11px;
-    padding-left: 13px;
-}
-.coupon-vue-title{
-    font-size: 12px;
-}
-}
-
-@media(max-width:430px){
-.product-vue-header{
-    font-size: 14px;
-}
-    .product-pricing .newpricing{
-       right: -18px;
-}
-
-.product-pricing .currentpricing{
-      right: 47px;
-}
 }

@@ -14,7 +14,7 @@
                         <div class="container">
                             <?php $categories = App\Category::orderBy('categoryname', 'ASC')->get(); ?>
 
-                            <div class="row">
+                            <div class="row" style="width: 100%;">
                                 @foreach($categories->chunk(5) as $chunk)
                                     @foreach($chunk as $categories)
                                     <div class="col-lg-3 ">
