@@ -50501,15 +50501,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -50699,81 +50690,67 @@ var render = function() {
                 { staticClass: "row" },
                 _vm._l(_vm.products, function(product) {
                   return _c("div", { key: product.id, staticClass: "card" }, [
-                    _c("div", { staticClass: "card-header" }, [
-                      _c(
-                        "h5",
-                        {
-                          staticClass: "product-vue-header",
-                          staticStyle: { float: "left" }
-                        },
-                        [_c("b", [_vm._v(_vm._s(product.company))])]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "viewdeal-filter",
-                          attrs: { href: product.url, target: "_blank" }
-                        },
-                        [
-                          _c("i", { staticClass: "fas fa-tags" }),
-                          _vm._v("View Deal")
-                        ]
-                      )
+                    _c("div", { staticClass: "col-md-3 col-lg-2 avatar" }, [
+                      _c("img", {
+                        staticClass: "filter-image",
+                        attrs: {
+                          src:
+                            "https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/" +
+                            product.image
+                        }
+                      })
                     ]),
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-md-4 col-8 productbox-body" },
+                      { staticClass: "col-md-6 col-lg-7 productbox-body" },
                       [
-                        _c(
-                          "h5",
-                          { staticClass: "coupon-vue-title" },
-                          [
-                            _c("center", [
-                              _c("b", [_vm._v(_vm._s(product.title))])
-                            ])
-                          ],
-                          1
-                        ),
+                        _c("h5", { staticClass: "product-vue-company" }, [
+                          _c("b", [_vm._v(_vm._s(product.company))])
+                        ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "coupon-vue-desc " }, [
+                        _c("h6", { staticClass: "coupon-vue-title" }, [
+                          _c("b", [_vm._v(_vm._s(product.title))])
+                        ]),
+                        _vm._v(" "),
+                        _c("h7", { staticClass: "coupon-vue-desc " }, [
                           _vm._v(_vm._s(product.desc))
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "p",
-                      { staticClass: "coupon-setting-code" },
-                      [
-                        _c("center", [
-                          _vm._v(
-                            "Coupon Code: " + _vm._s(product.couponcode) + " "
-                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "product-pricing" }, [
+                          _c("span", { staticClass: "currentpricing" }, [
+                            _vm._v("$" + _vm._s(product.currentprice))
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "newpricing" }, [
+                            _vm._v("$" + _vm._s(product.newprice))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "coupon-setting-code" }, [
+                          _vm._v("Coupon Code: " + _vm._s(product.couponcode))
                         ])
                       ],
                       1
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "product-pricing" }, [
-                      _c("span", { staticClass: "currentpricing" }, [
-                        _vm._v("$" + _vm._s(product.currentprice))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "newpricing" }, [
-                        _vm._v("$" + _vm._s(product.newprice))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticClass: "filter-image",
-                      attrs: {
-                        src:
-                          "https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/" +
-                          product.image
-                      }
-                    })
+                    _c(
+                      "div",
+                      { staticClass: "col-md-3 col-lg-3 view-button" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "viewdeal",
+                            attrs: { href: product.url, target: "_blank" }
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-tags" }),
+                            _vm._v("View Deal")
+                          ]
+                        )
+                      ]
+                    )
                   ])
                 })
               )

@@ -147,7 +147,7 @@ class ProductsController extends Controller
         'currentprice' => 'required|numeric|between:0.01,9999.99|min:0.00',
         'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
         'couponcode' => 'max:20',
-        "url" => 'required|url',
+       // "url" => 'required|url',
 
       ]);
         // limit the number of posts that a user can make which is set to 9
@@ -168,22 +168,22 @@ class ProductsController extends Controller
         $product->user_id = Auth::user()->id;
 //         $product->expired_date = Carbon::now()->addDay(7);
 
-        if ( $request->hasFile('image')) {
+        // if ( $request->hasFile('image')) {
         
-            $image = $request->file('image');
-            $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
-            $o = Image::make($image)->orientate();
-            $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
-            $product->image = $filename;
-        }
-
-        //    if ($request->hasFile('image')) {
         //     $image = $request->file('image');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     $location = public_path('/images/' . $filename);
-        //     Image::make($image)->save($location);
+        //     $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
+        //     $o = Image::make($image)->orientate();
+        //     $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
         //     $product->image = $filename;
         // }
+
+           if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($image)->save($location);
+            $product->image = $filename;
+        }
         // using the storage
 
         //
