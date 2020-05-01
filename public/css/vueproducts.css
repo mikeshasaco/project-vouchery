@@ -63,6 +63,11 @@
     color: red;
     font-size: 20px;
 }
+.filter-selecttag li{
+    list-style-type: none;
+    float: left;
+    padding: 5px;
+}
 @media(max-width:414px){
     .filter-productbox .card {
         display: block;

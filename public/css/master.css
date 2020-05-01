@@ -122,8 +122,30 @@ cursor: pointer;
     padding: 5%;
     margin-top: 10%;
 }
-
-
+#banner-homepage{
+  background-image: url(http://www.powerpointstemplate.com/wp-content/uploads/2017/02/Red-abstract-composition-vector-ppt-backgrounds.jpg);
+  background-size: 100% 100%;
+  margin-top: 64px;
+  display: block!important;
+  text-align: center;
+}
+#banner-homepage .container{
+  max-width: 750px;
+}
+#banner-homepage .row{
+  display: block;
+  padding: 6em 1em;
+}
+#banner-homepage .navbar-form{
+  margin-top: 2em;
+}
+#banner-homepage .search-query{
+  border-radius: 25px;
+  margin: auto;
+  padding-left: 1em;
+  font-size: x-large;
+  width: 700px;
+}
 #direct-advert .row{
     padding-top: 15%;
     padding-bottom: 15%;

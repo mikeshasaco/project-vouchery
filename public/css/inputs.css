@@ -190,9 +190,6 @@
 }
 
 @media (max-width: 991px) {
-    #custom-search-input {
-        margin-left: -15%;
-    }
     #custom-search-input .search-query{
         margin-left:10%;
         max-width: 341px;

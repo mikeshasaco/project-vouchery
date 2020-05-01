@@ -1,45 +1,21 @@
 @extends('layouts.master')
 @section('content')
 
-<section id="banner-homepage" style="margin-top:120px;"  class="d-none d-lg-block">
+<section id="banner-homepage" class="d-none d-lg-block">
     <div class="container" >
 
          <div class="row">
-        
-            <div class="col-md-9">
-              <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
-                
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
- 
-  <ol class="carousel-indicators">
-   @foreach( $submission as $photo )
-      <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
-   @endforeach
-  </ol>
- 
-  <div class="carousel-inner" role="listbox">
-    @foreach( $submission as $photo )
-       <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-       <a href="{{$photo->weblink}}" target="_blank"> <img  src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Banner/{{$photo->image}}" width="100%;" height="280px;" >
-       </a>
-
-       </div>
-    @endforeach
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-               
-            </div>
-            <div class="col-md-3">
-                <h5 style="text-align:center; padding-bottom:0%;"> <b>Trending Categories</b></h5>
-                <ul class="topic" style="margin-top:4%;">
+            <h4><b>Search through businesses coupon from our marketplace</b></h4>
+            <form class="navbar-form" action="{{ route('search') }}" method="GET">
+                <div id="custom-search-input">
+                    <div class="input-group  col-md-12">
+                        <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search for latest Deals... ">
+                    </div>
+                </div>
+            </form>
+            <div class="trend">
+                <h5> <b>Trending Categories</b></h5>
+                <ul class="topic">
                     @forelse($categoriess as $cattopic)
                     <li class="cat-topic" >
                         <a  href="businesses/{{$cattopic->catslug}}">{{ $cattopic->categoryname }}
@@ -49,8 +25,40 @@
                     <h6> <i> (No Categories Currently Trending)</i></h6>
                     @endforelse
                 </ul>
-
             </div>
+        
+            <!-- <div class="col-md-9">
+              <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
+                
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                 
+                  <ol class="carousel-indicators">
+                   @foreach( $submission as $photo )
+                      <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                   @endforeach
+                  </ol>
+                 
+                  <div class="carousel-inner" role="listbox">
+                    @foreach( $submission as $photo )
+                       <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                       <a href="{{$photo->weblink}}" target="_blank"> <img  src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Banner/{{$photo->image}}" width="100%;" height="280px;" >
+                       </a>
+
+                       </div>
+                    @endforeach
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+               
+            </div>
+             -->
         </div>
     </div>
 
@@ -181,7 +189,7 @@
     </div>
 </section>
 
-<section id="category-pic" class="d-none d-lg-block" style="margin-top:60px;">
+<!-- <section id="category-pic" class="d-none d-lg-block" style="margin-top:60px;">
     <div>
         <h3 style="text-align:center; font-weight:bold; font-size:24px;">Browse Through Different Businesses Categories! </h3>
     </div>
@@ -244,7 +252,7 @@
 
     </div>
 
-</section>
+</section> -->
 
 
 {{-- <section id="randonlyselected" class="d-none d-lg-block">
