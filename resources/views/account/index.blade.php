@@ -22,8 +22,8 @@
                             <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage rounded-circle" >
                         </div>
                         <div class="profileinfo">
-                            <h4 class="profilecompany" > <b style="color:#b35464;"> Company:</b> {{ $user->company }}</h4>
-                            <p class="profilebio"> <b style="color:#b35464;">Description: </b>{{$user->accountinfo}}</p>
+                            <h4 class="profilecompany" > <b style="color:#b35464;"></b> {{ $user->company }}</h4>
+                            <p class="profilebio"> <b style="color:#b35464;"></b>{{$user->accountinfo}}</p>
                             <div class="profile-bottom">
                                 <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
                                 <h6 class="subscriberh6"> <b>Subscriber Count: {{ $followercount }}</b></h6>
