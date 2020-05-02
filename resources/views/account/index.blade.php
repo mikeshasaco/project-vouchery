@@ -16,37 +16,39 @@
         <div class="col-md-12">
             <div class="content" >
 
-                <div class="card profile-info ">
+                <div class="profile-info ">
                     <div class="firstinfo">
-                        <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage" >
-
-                        <div class="profileinfo" style=" margin-left:30%;margin-top:-25%;" >
+                        <div class="compayavarta">
+                            <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage rounded-circle" >
+                        </div>
+                        <div class="profileinfo">
                             <h4 class="profilecompany" > <b style="color:#b35464;"> Company:</b> {{ $user->company }}</h4>
                             <p class="profilebio"> <b style="color:#b35464;">Description: </b>{{$user->accountinfo}}</p>
-                            <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a></h6>
-                            <h6 class="subscriberh6"> <b>Subscriber Count: {{ $followercount }}</b></h6>
-                            @if(Auth::id() == $user->id)
-                                  <!-- Button trigger modal -->
-                                  {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">
-                                      Edit Account
-                                  </button> --}}
-                                  <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount"> Edit</a>
-                            @endif
-
-                                @if(Auth::guard('customer')->user())
-                                    @if(Auth::guard('customer')->user()->isfollowing($user))
-                                        <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
-                                             UNSUBSCRIBE</a>
-                                    @else
-                                        <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> SUBSCRIBE</a>
-                                    @endif
-                                @elseif (Auth::user())
-
-                                @else
-                                    <a href="/register" class="follow_button">SUBSCRIBE</a>
+                            <div class="profile-bottom">
+                                <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
+                                <h6 class="subscriberh6"> <b>Subscriber Count: {{ $followercount }}</b></h6>
+                                @if(Auth::id() == $user->id)
+                                      <!-- Button trigger modal -->
+                                      {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">
+                                          Edit Account
+                                      </button> --}}
+                                      <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit</a>
                                 @endif
-                        </div>
 
+                                    @if(Auth::guard('customer')->user())
+                                        @if(Auth::guard('customer')->user()->isfollowing($user))
+                                            <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
+                                                 UNSUBSCRIBE</a>
+                                        @else
+                                            <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> SUBSCRIBE</a>
+                                        @endif
+                                    @elseif (Auth::user())
+
+                                    @else
+                                        <a href="/register" class="follow_button">SUBSCRIBE</a>
+                                    @endif
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -58,7 +60,7 @@
 </div>
 
 
-    <section id="accountsection" style="margin-bottom:4%;">
+    <section id="accountsection" style="margin-bottom:4%;margin-top: 2em;">
 
         <div class="container">
             <h6 style="margin-bottom:3%;"> <b>{{ $user->company }} Coupon's ({{ $userproduct->count() }})</b></h6>

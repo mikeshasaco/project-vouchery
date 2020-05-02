@@ -24,7 +24,7 @@
                          <h5> <b>(Coupon Count <i>{{ $categorycountallbusy->count() }})</b> </i></h5>
                     
                 <div class="selectagcategory">
-                  <select onchange="if (this.value) window.location.href=this.value" style="margin-top:5%; " class="media-select">
+                  <select onchange="if (this.value) window.location.href=this.value" style="margin-top:5%; " class="media-select form-control">
                         <option value="{{ route('AllBusinesses') }}">Select Category</option>
                         @foreach($cats as $categoryselect)
                         <option value="{{ url('/businesses'.'/'. $categoryselect->catslug)  }}">{{ $categoryselect->categoryname }}</option>

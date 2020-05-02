@@ -31,7 +31,7 @@
                     
                     <h5> <b>(Coupon Count <i>{{ $categorycount->count() }})</i> </b> </h5>
                     
-                    <select name="record" style="margin-top:5%;"  class="media-select">
+                    <select name="record" style="margin-top:5%;"  class="media-select form-control">
                         @foreach($cats as $categoryselect)
                         <option value="{{ $categoryselect->catslug  }}"
                             @if(session('categoryname') == $categoryselect->catslug)

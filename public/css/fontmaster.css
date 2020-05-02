@@ -338,10 +338,6 @@ background-color: #B35464;
 
 
 /* User Account Page */
-#accountsection{
-    margin-top: 110px;
-}
-
 #accountsection .deleteaccount{
     float:right;
 }
@@ -784,12 +780,15 @@ border-radius: 3px;
 }
 
 .media-select {
-  min-width:85%;
   min-height: 45px;
   border-width: 3px;
   border-color: rgba(50, 50, 50, 0.14);
   margin-top: 6%;
   margin-left: 3%;
+  margin-top: 5%;
+    border-radius: 10px;
+    outline: none;
+    width: 200px!important;
 }
 .titleallcategory{
     margin-top: 16%;
