@@ -48,6 +48,32 @@
     content: "|";
     padding: 0 10px;
 }
+.follow_button{
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.follow_button:hover{
+    text-decoration: none;
+    color: #CA3F3F;
+}
+.follow_button:before{
+    content: "|";
+    padding: 0 10px;
+}
+.unfollow_button{
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.unfollow_button:hover{
+    text-decoration: none;
+    color: #CA3F3F;
+}
+.unfollow_button:before{
+    content: "|";
+    padding: 0 10px;
+}
 .websitebutton:after{
     content: "|";
     padding: 0 10px;
@@ -83,6 +109,14 @@
         display: block;
     }
     .editaccount:before{
+        content: "";
+        padding: 0px;
+    }
+    .follow_button:before{
+        content: "";
+        padding: 0px;
+    }
+    .unfollow_button:before{
         content: "";
         padding: 0px;
     }
