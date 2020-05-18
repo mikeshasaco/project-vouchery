@@ -74,7 +74,7 @@ background-color: #B35464;
 
 
 #recentlyuploaded .card{
-    height: 30rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -214,7 +214,7 @@ background-color: #B35464;
 
 /* All businesses Section */
 #albusysection .card{
-    height: 30rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -260,7 +260,7 @@ background-color: #B35464;
 }
 
 #catbusysection .card{
-    height: 30rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -343,7 +343,7 @@ background-color: #B35464;
 }
 
 #accountsection .card{
-    height: 30rem;
+    height: 32rem;
     margin-top: 0;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -454,7 +454,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 
 /* search area coupons */
 #searchcoupon .card {
-    height: 30rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
