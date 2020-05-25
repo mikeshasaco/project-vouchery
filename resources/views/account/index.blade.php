@@ -26,7 +26,7 @@
                             <p class="profilebio"> <b style="color:#b35464;"></b>{{$user->accountinfo}}</p>
                             <div class="profile-bottom">
                                 <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
-                                <h6 class="subscriberh6"> <b>Subscriber Count: {{ $followercount }}</b></h6>
+                                <h6 class="subscriberh6"> <b>Follower Count: {{ $followercount }}</b></h6>
                                 @if(Auth::id() == $user->id)
                                       <!-- Button trigger modal -->
                                       {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">
@@ -38,15 +38,16 @@
                                     @if(Auth::guard('customer')->user())
                                         @if(Auth::guard('customer')->user()->isfollowing($user))
                                             <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
-                                                 UNSUBSCRIBE</a>
+                                                 UNFOLLOW</a>
                                         @else
-                                            <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> SUBSCRIBE</a>
+                                            <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
                                         @endif
                                     @elseif (Auth::user())
 
                                     @else
-                                        <a href="/register" class="follow_button">SUBSCRIBE</a>
+                                        <a href="/register" class="follow_button">FOLLOW</a>
                                     @endif
+                                <a href="#" class="subscribe_button" target="">SUBSCRIBE</a>
                             </div>
                         </div>
                     </div>

@@ -61,6 +61,32 @@
     content: "|";
     padding: 0 10px;
 }
+.subscribe_button{
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.subscribe_button:hover{
+    text-decoration: none;
+    color: #CA3F3F;
+}
+.subscribe_button:before{
+    content: "|";
+    padding: 0 10px;
+}
+.unsubscribe_button{
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.unsubscribe_button:hover{
+    text-decoration: none;
+    color: #CA3F3F;
+}
+.unsubscribe_button:before{
+    content: "|";
+    padding: 0 10px;
+}
 .unfollow_button{
     font-weight: bold;
     color: #000;
