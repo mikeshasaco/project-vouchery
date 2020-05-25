@@ -138,6 +138,14 @@
         content: "";
         padding: 0px;
     }
+    .subscribe_button:before{
+        content: "";
+        padding: 0px;
+    }
+    .unsubscribe_button:before{
+        content: "";
+        padding: 0px;
+    }
     .follow_button:before{
         content: "";
         padding: 0px;
