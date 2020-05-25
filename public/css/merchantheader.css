@@ -37,7 +37,7 @@
 }
 .editaccount{
     font-weight: bold;
-    color: #000;
+    color: blue;
     text-decoration: none;
 }
 .editaccount:hover{
@@ -46,11 +46,12 @@
 }
 .editaccount:before{
     content: "|";
-    padding: 0 10px;
+    padding: 0 5px;
+    color: #000;
 }
 .follow_button{
     font-weight: bold;
-    color: #000;
+    color: blue;
     text-decoration: none;
 }
 .follow_button:hover{
@@ -59,11 +60,26 @@
 }
 .follow_button:before{
     content: "|";
-    padding: 0 10px;
+    padding: 0 5px;
+    color: #000;
+}
+.unfollow_button{
+    font-weight: bold;
+    color: blue;
+    text-decoration: none;
+}
+.unfollow_button:hover{
+    text-decoration: none;
+    color: #CA3F3F;
+}
+.unfollow_button:before{
+    content: "|";
+    padding: 0 5px;
+    color: #000;
 }
 .subscribe_button{
     font-weight: bold;
-    color: #000;
+    color: red;
     text-decoration: none;
 }
 .subscribe_button:hover{
@@ -72,7 +88,8 @@
 }
 .subscribe_button:before{
     content: "|";
-    padding: 0 10px;
+    padding: 0 5px;
+    color: #000;
 }
 .unsubscribe_button{
     font-weight: bold;
@@ -85,24 +102,13 @@
 }
 .unsubscribe_button:before{
     content: "|";
-    padding: 0 10px;
-}
-.unfollow_button{
-    font-weight: bold;
+    padding: 0 5px;
     color: #000;
-    text-decoration: none;
-}
-.unfollow_button:hover{
-    text-decoration: none;
-    color: #CA3F3F;
-}
-.unfollow_button:before{
-    content: "|";
-    padding: 0 10px;
 }
 .websitebutton:after{
     content: "|";
-    padding: 0 10px;
+    padding: 0 5px;
+    color: #000;
 }
 .websitebutton{
     color:#000;
@@ -134,18 +140,21 @@
     .profile-bottom{
         display: block;
     }
+    .profile-bottom h6{
+        margin-top: 0;
+    }
     .editaccount:before{
         content: "";
         padding: 0px;
     }
-    .subscribe_button:before{
+    /* .subscribe_button:before{
         content: "";
         padding: 0px;
     }
     .unsubscribe_button:before{
         content: "";
         padding: 0px;
-    }
+    } */
     .follow_button:before{
         content: "";
         padding: 0px;

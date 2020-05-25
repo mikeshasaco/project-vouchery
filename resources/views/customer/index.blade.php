@@ -96,7 +96,7 @@
     </section>
 
     <section id="subscription-names">
-        <h5 style="color:#b35464;"> <b>My Subscriptions</b> <i>(Subscriptions allow you to follow your favorite merchants.)</i> </h5>
+        <h5 style="color:#b35464;"> <b>My Following</b></h5>
         <hr>
         <div class="row">
             <div class="col-md-12 col-12">
@@ -123,7 +123,7 @@
                 <div class="row">
                     <div class="col-md-12 col-12">
                     <table class="table">
-                        <h5 style="color:#b35464;"> <b>Most Recent Coupons from my Subscriptions</b> <i>(Latest Coupons)</i> </h5>
+                        <h5 style="color:#b35464;"> <b>Most recent coupon from merchant following</b> <i>(Latest Coupons)</i> </h5>
                         <hr>                        <tr>
                             <th>Company</th>
                             <th>Coupon Name</th>
