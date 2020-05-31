@@ -42,12 +42,13 @@
                                         @else
                                             <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
                                         @endif
+                                        <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE</a>
                                     @elseif (Auth::user())
 
                                     @else
                                         <a href="/register" class="follow_button">FOLLOW</a>
+                                        <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE</a>
                                     @endif
-                                <a href="#" class="subscribe_button" target="">SUBSCRIBE</a>
                             </div>
                         </div>
                     </div>

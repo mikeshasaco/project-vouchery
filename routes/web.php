@@ -40,7 +40,8 @@ Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
 Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
 
 Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
-
+Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
+Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@setsubscription')->name('subscription.setting')->middleware('auth');
 Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
 
 // delete post

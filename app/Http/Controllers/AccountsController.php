@@ -207,9 +207,14 @@ class AccountsController extends Controller
 
 
 
-        return view('account.adcart', compact('user', 'userproduct', 'submissonAds', 'usertracker', 'userinfo'));
+        return view('account.adcart', compact('user', 'userproduct', 'usertracker', 'userinfo'));
     }
-
+    public function setsubscription($slug)
+    {
+        $user = User::join('accounts', 'accounts.user_id', 'users.id')
+            ->where('slug', $slug)->first();
+        return view('account.subscription', compact('user'));
+    }
     public function changepassword(Request $request)
     {
         // this checks if the current password matches with the retry aptemp password

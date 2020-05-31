@@ -25,7 +25,22 @@
 .search-container .search{
     margin-top: 10
 }
-
+.modal-dialog{
+    max-width: 400px!important;
+}
+.panel-heading h5{
+    margin-left: 15px;
+}
+.setsubscription{
+    margin-top: 4em;
+    margin-bottom: 6em;
+}
+.setsubscription input,.setsubscription select{
+    max-width: 300px;
+}
+.setsubscription span{
+    color: red;
+}
 @media (max-width: 991px){
     #merchantupdatesetting{
         padding-top:20%;

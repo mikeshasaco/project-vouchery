@@ -79,6 +79,7 @@
                                             Admin DashBoard</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a>
+                            <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
                             <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Setting</a>
 
 
