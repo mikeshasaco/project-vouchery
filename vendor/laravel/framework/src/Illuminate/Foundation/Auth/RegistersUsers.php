@@ -15,10 +15,10 @@ trait RegistersUsers
      *
      * @return \Illuminate\Http\Response
      */
-    // public function showRegistrationForm()
-    // {
-    //     return view('auth.register');
-    // }
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
 
     /**
      * Handle a registration request for the application.
