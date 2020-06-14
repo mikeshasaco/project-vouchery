@@ -12,6 +12,7 @@
                 <a href="{{route('adcustomer')}}" class="list-group-item ">Customer</a>
                 <a href="{{route('category.create')}}" class="list-group-item ">Create Category</a>
                 <a href="{{route('adproduct')}}" class="list-group-item ">Coupons</a>
+                <a href="{{route('subscription.payout')}}" class="list-group-item">Subscription Statistic</a>
              </div>
         </div>
         <div class="col-md-9">

@@ -20,7 +20,6 @@
         @else
   
       <li><a class="nav-link"  href="{{ route('myaccount', auth()->user()->slug) }}">Profile</a></li>
-      <li> <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Setting</a></li>
       <li><a href="{{ route('AllBusinesses') }}">Categories</a></li>
 
       <li> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();

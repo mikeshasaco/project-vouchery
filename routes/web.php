@@ -27,6 +27,13 @@ Route::get('/search', 'SearchController@search')->name('search');
 Route::post('/get', 'PagesController@getData');
 Route::post('/filter', 'PagesController@filterData');
 
+// Subscribe
+Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
+Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
+Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
+Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
+Route::get('/account/{slug}/setsubscription/statistic', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+
 // account page
 Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
 Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
@@ -36,18 +43,12 @@ Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
 Route::get('/account/{slug}/follow', 'AccountsController@follow');
 Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
 
-
 Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
-
 Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
-Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
-Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@setsubscription')->name('subscription.setting')->middleware('auth');
 Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
 
 // delete post
 Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
-
-
 
 
 //old admin
@@ -69,6 +70,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
     Route::get('/instantad', 'AdminsController@Instantadcount')->name('adcount');
     Route::get('/category/create', 'CategoryController@create')->name('category.create')->middleware('auth');
     Route::post('/category/create', 'CategoryController@store')->middleware('auth');
+    Route::get('subscribe/payout', 'AdminsController@subscriptionpayout')->name('subscription.payout');
+
 });
 
 Route::group(['prefix'=> 'customer'], function () {

@@ -9,6 +9,7 @@ use Session;
 use Image;
 use App\User;
 use App\Product;
+use App\Subsctipeion;
 use Hash;
 use App\Click;
 use App\Advertisement;
@@ -26,7 +27,6 @@ class AccountsController extends Controller
         // {
         //  return redirect()->route('notfound');
         // }
-
         $user = User::join('accounts', 'accounts.user_id', 'users.id')
         ->select('users.*', 'accounts.accountinfo', 'accounts.websitelink')
         ->where('slug', $slug)->first();
@@ -39,26 +39,19 @@ class AccountsController extends Controller
        ->where('slug', $slug)
        ->get();
 
-       
-       
-        // dd($userproduct);
        $followercount = User::join('followables', 'users.id', 'followables.followable_id')
                     ->where('slug', $slug)->count();
-        // dd($followercount);
 
        // $followers = User::join('followables', 'users.id', 'followables.followable_id')
        //              ->select('followables.customer_id', 'users.*')
        //              ->where('slug',$slug)
        //              ->get();
-       //  dd($followers);
-
         return view('account.index')
         ->with('followercount', $followercount)
         ->with('user', $user)
         ->with('userproduct', $userproduct)
         ->with('usernotexist', $slug);
     }
-
 
     public function update(Request $request)
     {
@@ -67,7 +60,6 @@ class AccountsController extends Controller
             'avatar' => 'mimes:png,jpg,jpeg,gif|max:10000',
 
         ]);
-
         $array = Auth::user()->account()->update([
             'accountinfo' => $request->accountinfo,
             'websitelink' => $request->websitelink,
@@ -92,10 +84,7 @@ class AccountsController extends Controller
                 $user->avatar = $filename;
                 $user->update();
             }
-
-          
         }
-
         Session::flash('UpdateAccountMe', 'Profile updated.');
         return redirect('/account/'. Auth::user()->slug);
     }
@@ -109,8 +98,6 @@ class AccountsController extends Controller
         //     Storage::disk('do')->delete('Coupon/' . $oldcouponimage);
         // }
         $deleteproduct->delete();
-
-
         Session::flash('DeleteCoupon', 'Coupon Has Been Deleted!');
         return back();
     }
@@ -125,7 +112,6 @@ class AccountsController extends Controller
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $token = $request->stripeToken;
 
-
         $charge = \Stripe\Charge::create([
                 'amount' => 499,
                 'currency' => 'usd',
@@ -137,8 +123,6 @@ class AccountsController extends Controller
         $adbool = Product::find($id);
         $adbool->advertboolean = 1;
         $adbool->update();
-
-
         $advertisement =new Advertisement;
         $advertisement->adname = $request->adname;
         $advertisement->adprice = $request->adprice;
@@ -147,10 +131,7 @@ class AccountsController extends Controller
         $advertisement->save();
 
         Mail::send(new AdReceipt($advertisement));
-
-
         Session::flash('advertisement-running', 'Success: Advertisement Running');
-
         return back();
     }
 
@@ -168,8 +149,6 @@ class AccountsController extends Controller
             ->select('products.*', 'users.company', 'categoriess.categoryname')
            ->where('slug', $slug)
            ->get();
-
-
             // total count of like coupon per coupon
             $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
                                 ->join('products', 'products.id', 'clicks.click_product_id')
@@ -193,9 +172,7 @@ class AccountsController extends Controller
             //                 ->where('slug', $slug)
             //                  ->count('clicks.click_customer_id');                               
 
-   
             //     dd($usertracker);
-
             $userinfo = User::join('accounts', 'accounts.user_id', 'users.id')
                                 ->select('users.*', 'accounts.accountinfo', 'accounts.websitelink')
                                 ->where('slug', $slug)->first();
@@ -204,17 +181,9 @@ class AccountsController extends Controller
         } else {
             return redirect('/');
         }
-
-
-
         return view('account.adcart', compact('user', 'userproduct', 'usertracker', 'userinfo'));
     }
-    public function setsubscription($slug)
-    {
-        $user = User::join('accounts', 'accounts.user_id', 'users.id')
-            ->where('slug', $slug)->first();
-        return view('account.subscription', compact('user'));
-    }
+    
     public function changepassword(Request $request)
     {
         // this checks if the current password matches with the retry aptemp password
@@ -235,8 +204,6 @@ class AccountsController extends Controller
             Session::flash('error-password', "Your New Password does not match up with your password confirmation. Please try again.");
             return redirect()->back()->with("error", "Your New Password does not match your password confirmation. Please try typing password again.");
         }
-
-
         $validatedData = $request->validate([
             'current-password' => 'required',
             'new-password' => 'required|string|min:6|alpha_num|confirmed',
@@ -251,7 +218,6 @@ class AccountsController extends Controller
 
     public function follow(User $user, $slug){
         $user = User::where('slug', $slug)->first();
-
         $customer = Auth::guard('customer')->user();
         $customer->follow($user);
         return redirect()->back()->with('success', 'You are now following user');
@@ -267,5 +233,60 @@ class AccountsController extends Controller
 
     }
 
+    public function setsubscription($slug)
+    {
+        $user = User::join('accounts', 'accounts.user_id', 'users.id')
+            ->where('slug', $slug)->first();
+        return view('account.subscription', compact('user'));
+    }
 
+    public function subscriptionsetting(Request $request){
+        $this->validate($request, [
+            'subscription_price'=> 'required|max:60',
+            'bankName' => 'required|max:100',
+            'beneficiarySwiftCode' => 'required|numeric',
+            'ibanAccountNo' => 'required|numeric',    
+          ]);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = Auth::user();
+        if($user->subscription_price && $user->stripe_plan){
+            Session::flash('successmessage', 'You already have set subscription');
+            return redirect()->back()->with('success', 'You already have set subscription');
+        }
+        $product = \Stripe\Product::create([
+            'name' => $user->company,
+            'type' => 'service'
+        ]);
+        $plan = \Stripe\Plan::create([
+            'amount' => $request->subscription_price*100,
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product' => $product->id,
+               ]);
+        $user->subscription_price = $request->subscription_price;
+        $user->stripe_plan = $plan->id;
+        $user->bank_accountname = $request->bankName;
+        $user->bank_routingnumber = $request->beneficiarySwiftCode;
+        $user->bank_accountnumber = $request->ibanAccountNo;
+        $user->save();
+        Session::flash('successmessage', 'You have set subscription');
+        return redirect()->back()->with('success', 'You have set subscription');
+    }
+
+    public function subscriptionstatistic($slug)
+    {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = Auth::user();
+        $subscriptions = \Stripe\subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
+        if(!$user->stripe_plan||$subscriptions == []){
+            $subscription_customer = [];
+        }else{
+            foreach($subscriptions as $subscription){
+                $subscription_customer[] = $subscription->customer;
+
+            }
+        }
+        $customers = Customer::whereIn('stripe_id',$subscription_customer)->get();
+        return view('account.subscriptionstatistic', compact('user','customers'));
+    }
 }

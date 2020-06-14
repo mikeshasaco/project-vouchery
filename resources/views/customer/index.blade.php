@@ -146,6 +146,31 @@
             </div>
         </section>
 
+        </section>
+
+                <section style="margin-bottom:10%;">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                    <table class="table">
+                        <h5 style="color:#b35464;"> <b>Subscription Statistic</b> <i>(This feature is mechants you subscribe)</i> </h5>
+                        <hr>                        <tr>
+                            <th>Company</th>
+                            <th>Subscription Price</th>
+                            <th>Subscription Cancel</th>
+                        </tr>
+
+                        @foreach ($subscriptions as $subscription)
+                            <tr>
+                                <td> {{ $subscription->plan->name }}</a></td>
+                                <td>{{ $subscription->plan->amount/100 }}</td>
+                                <td> <a href="{{route('subscription.cancel',$subscription->plan->name)}}" target=""  class="custsubbutton">Cancel</a> </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+        </section>
+
     </div>
 
 @endsection

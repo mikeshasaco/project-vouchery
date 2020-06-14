@@ -4,11 +4,12 @@
     <div class="row">
         <div class="col-md-3">
              <div class="list-group" style="margin-top:138px;">
-                 <a href="{{route('admin.dashboard')}}" class="list-group-item ">Dashboard</a>
+                <a href="{{route('admin.dashboard')}}" class="list-group-item ">Dashboard</a>
                 <a href="{{route('aduser')}}" class="list-group-item ">Merchant</a>
                 <a href="{{route('adcustomer')}}" class="list-group-item ">Customer</a>
                 <a href="{{route('category.create')}}" class="list-group-item ">Create Category</a>
                 <a href="{{route('adproduct')}}" class="list-group-item ">Coupons</a>
+                <a href="{{route('subscription.payout')}}" class="list-group-item">Subscription Statistic</a>
              </div>
         </div>
         <div class="col-md-9">

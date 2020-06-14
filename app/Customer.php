@@ -6,12 +6,14 @@ use Illuminate\Notifications\Notifiable;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\CustomerResetPasswordNotification;
+use Laravel\Cashier\Billable;
 
 class Customer extends Authenticatable
 {
 
     use Notifiable;
     use CanFollow;
+    use Billable;
     /**
      * The attributes that are mass assignable.
      *
@@ -53,4 +55,10 @@ class Customer extends Authenticatable
         return $this->hasOne('App\VerifyCustomer');
     }
 
+    public function subscriptionByPlan($subscription = 'default', $plan = null) {
+        if (!$plan)
+            return $this->subscription($subscription);
+
+        return $this->subscriptions->where('stripe_plan', $plan)->first();
+    }
 }

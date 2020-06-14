@@ -2,12 +2,18 @@
 @section('title', $user->slug)
 @section('content')
 <div class="fields default-boxshadow p-4 ml-2 payment-gateway-fields-4 setsubscription">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div><br />
+    @endif
 	<form class="form-horizontal" autocomplete="off" method="post" action="{{ route('subscription.setting',auth()->user()->slug) }}" novalidate="novalidate">
-		<input type="hidden" name="_token" value="hrt8VckqdeORjXMQpEW7AuvXYzbEqVo5fUE4tBO0">
-		<input type="hidden" name="_action" value="editPaymentGateway">
-		<input type="hidden" name="_gateway" value="4">
-        <input type="hidden" name="_id" value="367">
-        <h4 class="text-center">Subscription Setting...</h4>
+        @csrf
+        <h4 class="text-center">Subscription Setting</h4>
         <div class="form-group">
             <label for="price" class="col-md-6 control-label text-right">Subscription Price<span class="form-required">&nbsp;*</span></label>
             <div class="col-md-6 pull-right">
@@ -19,12 +25,12 @@
                     <option value="20">$20</option>
                     <option value="30">$30</option>
                     <option value="40">$40</option>
-            </select>
+                </select>
             </div>
             
         </div>
         <div class="form-group">
-            <label for="country" class="col-md-6 control-label text-right">Country of Bank<span class="form-required">&nbsp;*</span></label>
+            <label for="country" class="col-md-6 control-label text-right">Country of Bank</label>
             <div class="col-md-6 pull-right">
 				<select type="text" class="form-control select2 select2-hidden-accessible" data-rule-required="true" id="bankCountry" name="bankCountry" data-select2-id="bankCountry" tabindex="-1" aria-hidden="true">
 					<option value="" data-select2-id="288">Please select...</option>
@@ -287,48 +293,42 @@
         <div class="form-group">
             <label for="bankBranch" class="col-md-6 control-label text-right">Bank Branch</label>
             <div class="col-md-6 pull-right">
-                <input type="text" class="form-control" maxlength="50" id="bankBranch" name="bankBranch">
+                <input type="text" class="form-control" maxlength="50" id="bankBranch" name="bankBranch" required>
             </div>
         </div>
         <div class="form-group">
             <label for="beneficiarySwiftCode" class="col-md-6 control-label text-right">SWIFT Code(Routing Number for US Bank)<span class="form-required">&nbsp;*</span></label>
             <div class="col-md-6 pull-right">
-                <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="8" class="form-control" id="beneficiarySwiftCode" name="beneficiarySwiftCode">
+                <input type="text"  maxlength="50" data-rule-minlength="8" class="form-control" id="beneficiarySwiftCode" name="beneficiarySwiftCode">
             </div>
         </div>
         <div class="form-group">
             <label for="ibanAccountNo" class="col-md-6 control-label text-right">IBAN / Account No<span class="form-required">&nbsp;*</span></label>
             <div class="col-md-6 pull-right">
-                <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="10" class="form-control" id="ibanAccountNo" name="ibanAccountNo">
+                <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="10" class="form-control" id="ibanAccountNo" name="ibanAccountNo" required>
             </div>
         </div>
         <div class="form-group">
-            <label for="accountName" class="col-md-6 control-label text-right">Beneficiary's Name<span class="form-required">&nbsp;*</span></label>
+            <label for="accountName" class="col-md-6 control-label text-right">Beneficiary's Name</label>
             <div class="col-md-6 pull-right">
                 <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="accountName" name="accountName">
             </div>
         </div>
         <div class="form-group">
-            <label for="beneficiaryAddress1" class="col-md-6 control-label text-right">Beneficiary Address 1<span class="form-required">&nbsp;*</span></label>
+            <label for="beneficiaryAddress1" class="col-md-6 control-label text-right">Beneficiary Address 1</label>
             <div class="col-md-6 pull-right">
                 <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="beneficiaryAddress1" name="beneficiaryAddress1">
             </div>
         </div>
         <div class="form-group">
-            <label for="beneficiaryAddress2" class="col-md-6 control-label text-right">Address 2(Postal Code)<span class="form-required">&nbsp;*</span></label>
+            <label for="beneficiaryAddress2" class="col-md-6 control-label text-right">Address 2(Postal Code)</label>
             <div class="col-md-6 pull-right">
                 <input type="text" data-rule-required="true" class="form-control" maxlength="50" id="beneficiaryAddress2" name="beneficiaryAddress2">
             </div>
         </div>
         <div class="form-group">
-            <label for="beneficiaryAddress2" class="col-md-6 control-label text-right">Beneficiary's Birthday</label>
             <div class="col-md-6 pull-right">
-                <input type="date" class="form-control date-picker" maxlength="50" id="accountHolderBirthday" name="accountHolderBirthday" data-provide="datepicker">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-6 pull-right">
-            <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();" value="Subscribe Setting" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
+            <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();return false;" value="Subscribe Setting" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
             </div>
         </div>
     </form>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CustomerSubscriptionRequest;
 use App\Customer;
+use App\Subsctipeion;
 use Auth;
 use Hash;
 use App\User;
@@ -16,8 +18,14 @@ class CustomerController extends Controller
     {
         if (Auth::guard('customer')->user()->customerslug == $customerslug) {
             $customer = Customer::where('customerslug', $customerslug)->first();
-
-
+            \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+            if($customer->stripe_id==null){
+                $subscriptions = [];
+            }else{
+                $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active']);
+                $subscriptions = $subscriptions->data;
+                // dd($subscriptions);
+            }
             $customerclicks = Click::join('customers', 'customers.id', 'clicks.click_customer_id')
                             ->join('products', 'products.id', 'clicks.click_product_id')
                             ->join('categoriess', 'categoriess.id', 'products.category_id')
@@ -45,7 +53,7 @@ class CustomerController extends Controller
                                     ->take(15)
                                     ->get();
 
-            return view('customer.index', compact('customer', 'customerclicks','customerfollowing', 'customersubcoupons'));
+            return view('customer.index', compact('customer', 'customerclicks','customerfollowing', 'customersubcoupons','subscriptions'));
         } else {
             return redirect('/');
         }
@@ -98,4 +106,46 @@ class CustomerController extends Controller
         return redirect()->back();
     }
 
+    public function subscribe(Request $request,$slug) {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = User::where('slug', $slug)->first();
+        if($user->stripe_plan == null){
+            Session::flash('successmessage', $user->company.' did not set subscription yet');
+            return redirect()->back()->with('success', $user->company.' did not set subscription yet');  
+        }
+        $token = \Stripe\Token::create([
+                "card" => [
+                   "number"    => $request->card['number'],
+                   "exp_month" => str_before($request->card['exp'], '/'),
+                   "exp_year"  => str_after($request->card['exp'], '/'),
+                   "cvc"       => $request->card['cvc'],
+                   "name"      => $request->card['name']
+                ]
+            ]
+        );
+        $customer = Auth::guard('customer')->user();
+        // dd($customer->subscribed('main' , $user->stripe_plan));
+        if ($customer->subscribed('main', $user->stripe_plan)) {
+            Session::flash('successmessage', 'You already have subscribed to '.$user->company);
+            return redirect()->route('customerprofile',['customerslug' => $customer->customerslug]);
+        }
+        $customer->newSubscription('main', $user->stripe_plan)->create($token->id);
+        Session::flash('successmessage', 'You have set subscription to '.$user->company);
+        return redirect()->back();        
+    }
+
+    public function subscribecancel($slug) {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = User::where('slug', $slug)->first();
+        $customer = Auth::guard('customer')->user();
+
+        $subscription = $customer->subscriptionByPlan('main', $user->stripe_plan);
+
+        if ($subscription->cancelled()) {
+            $end_date = date('d/m/Y', strtotime($subscription->ends_at));
+            return redirect()->back()->with('success', 'You already have canceled subscription of '.$user->company.'. It will cancel at '.$end_date);  
+        }
+        $subscription->cancel();
+        return redirect()->back()->with('success', 'You have canceled subscription of '.$user->company); 
+    }
 }

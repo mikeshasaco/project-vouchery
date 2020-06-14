@@ -80,15 +80,12 @@
                             @endif
                             <a class="dropdown-item" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a>
                             <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
-                            <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Setting</a>
-
-
+                            <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Subscription/statistic</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

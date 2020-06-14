@@ -85,4 +85,21 @@ class AdminsController extends Controller
         $customerdelete->delete();
         return back();
     }
+    public function subscriptionpayout(Request $request){
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $userquery = $request->input('Qsearch');
+
+        $users = User::where('name', 'like', "%$userquery%")
+                            ->orwhere('company', 'like', "%$userquery%")
+                            ->paginate(30);
+        foreach($users as $user){
+            if(!$user->stripe_plan){
+                $user->count = null;
+            }else{
+                $subscriptions = \Stripe\subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
+                $user->count = count($subscriptions);
+            }
+        }
+        return view('admin.subscriptionpayout', compact('users'));
+    }
 }

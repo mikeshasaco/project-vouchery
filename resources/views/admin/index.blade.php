@@ -8,14 +8,13 @@
                 {{-- @include('admin._sidebar') --}}
             <div class="col-md-3">
                 <div class="list-group">
-                <a href="{{route('aduser')}}" class="list-group-item active">Merchant</a>
-                <a href="{{route('adcustomer')}}" class="list-group-item ">Customer</a>
-                <a href="{{route('category.create')}}" class="list-group-item ">Create Category</a>
-                <a href="{{route('adproduct')}}" class="list-group-item ">Coupons</a>
-                <a href="{{route('submission.create')}}" class="list-group-item">Banner</a>
-
+                    <a href="{{route('aduser')}}" class="list-group-item active">Merchant</a>
+                    <a href="{{route('adcustomer')}}" class="list-group-item ">Customer</a>
+                    <a href="{{route('category.create')}}" class="list-group-item ">Create Category</a>
+                    <a href="{{route('adproduct')}}" class="list-group-item ">Coupons</a>
+                    <a href="{{route('submission.create')}}" class="list-group-item">Banner</a>
+                    <a href="{{route('subscription.payout')}}" class="list-group-item">Subscription Statistic</a>
                 </div>
-
             </div>
                <div class="col-md-3">
                  <div class="card" title="Merchant" style="width: 13rem !important; height: 10rem !important;">
