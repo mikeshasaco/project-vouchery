@@ -106,7 +106,7 @@ class CustomerController extends Controller
         return redirect()->back();
     }
 
-    public function subscribe(Request $request,$slug) {
+    public function subscribe(CustomerSubscriptionRequest $request,$slug) {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = User::where('slug', $slug)->first();
         if($user->stripe_plan == null){
