@@ -4,10 +4,18 @@
 #customersettingpass{
     padding-top: 13%;
 }
+#subscriptionsetting{
+    padding-top: 13%;
+    padding-bottom:10%;
+}
 #merchantpassword{
     padding-top:6%;
 }
 
+#subscriptionstatstic{
+    margin-top: 8em;
+    margin-bottom: 10%;
+}
 #customerclickssection{
     padding-top:6%;
 
@@ -19,7 +27,7 @@
 }
 #merchantclicksetting{
     padding-top:6%;
-     padding-bottom:10%;
+    padding-bottom:10%;
 }
 
 .search-container .search{
@@ -31,14 +39,7 @@
 .panel-heading h5{
     margin-left: 15px;
 }
-.setsubscription{
-    margin-top: 4em;
-    margin-bottom: 6em;
-}
-.setsubscription input,.setsubscription select{
-    max-width: 300px;
-}
-.setsubscription span{
+#subscriptionsetting span{
     color: red;
 }
 @media (max-width: 991px){
@@ -48,8 +49,13 @@
     #customersettingpass{
         padding-top: 20%;
     }
-
-
+    #subscriptionsetting{
+        padding-top: 25%;
+    }
+    #subscriptionstatstic{
+        margin-top: 15em;
+        margin-bottom: 10%;
+    }
 }
 
 @media(max-width:768px){
@@ -82,7 +88,13 @@
     .search-container {
         margin-top: 30%;
     }
-
+    #subscriptionsetting{
+        padding-top: 35%;
+    }
+    #subscriptionstatstic{
+        margin-top: 10em;
+        margin-bottom: 10%;
+    }
 }
 
 @media(max-width:320px){

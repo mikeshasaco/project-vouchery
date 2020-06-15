@@ -118,10 +118,6 @@
     text-decoration: none;
     color: #CA3F3F;
 }
-#subscriptionstatstic{
-    margin-top: 8em;
-    margin-bottom: 10%;
-}
 @media(max-width: 414px){
     .companyimage{
         max-width: 70px;
@@ -171,8 +167,5 @@
         content: "";
         padding: 0px;
     }
-    #subscriptionstatstic{
-        margin-top: 10em;
-        margin-bottom: 10%;
-    }
+    
 }

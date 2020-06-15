@@ -19,12 +19,14 @@
                         <hr>                        <tr>
                             <th>Username</th>
                             <th>Email</th>
+                            <th>Subscription Price</th>
                         </tr>
 
                         @foreach($customers as $customer)
                                 <tr>
                                     <td> {{ $customer->name }}</a></td>
                                     <td>{{ $customer->email }}</td>
+                                    <td>{{ $user->subscription_price }}</td>
                                 </tr>
                         @endforeach
                     </table>

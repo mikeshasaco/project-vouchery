@@ -16,6 +16,7 @@ use App\Advertisement;
 use App\Mail\AdReceipt;
 use App\Customer;
 use Illuminate\Http\Request;
+use App\Http\Requests\BankRequest;
 use Illuminate\Support\Facades\Storage;
 
 class AccountsController extends Controller
@@ -240,13 +241,7 @@ class AccountsController extends Controller
         return view('account.subscription', compact('user'));
     }
 
-    public function subscriptionsetting(Request $request){
-        $this->validate($request, [
-            'subscription_price'=> 'required|max:60',
-            'bankName' => 'required|max:100',
-            'beneficiarySwiftCode' => 'required|numeric',
-            'ibanAccountNo' => 'required|numeric',    
-          ]);
+    public function subscriptionsetting(BankRequest $request){
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
         if($user->subscription_price && $user->stripe_plan){
