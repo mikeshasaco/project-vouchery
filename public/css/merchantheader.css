@@ -78,32 +78,24 @@
     color: #000;
 }
 .subscribe_button{
+    background-color: #B35464;
+    padding: 10px 40px;
+    border-radius: 30px;
     font-weight: bold;
-    color: red;
+    color: white;
     text-decoration: none;
 }
 .subscribe_button:hover{
+    background-color: white;
     text-decoration: none;
-    color: #CA3F3F;
+    color: #B35464;
+    border: 1px solid #B35464;
 }
-.subscribe_button:before{
-    content: "|";
-    padding: 0 5px;
-    color: #000;
-}
-.unsubscribe_button{
-    font-weight: bold;
-    color: #000;
-    text-decoration: none;
-}
-.unsubscribe_button:hover{
-    text-decoration: none;
-    color: #CA3F3F;
-}
-.unsubscribe_button:before{
-    content: "|";
-    padding: 0 5px;
-    color: #000;
+.secondinfo{
+    border: 1px solid #DEE0E1;
+    width: 310px;
+    padding: 20px;
+    border-radius: 5px;
 }
 .websitebutton:after{
     content: "|";

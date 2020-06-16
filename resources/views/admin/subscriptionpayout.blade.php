@@ -42,7 +42,7 @@
                         <tr>
                             <td>{{$user->id}}</td>
                             <td>{{$user->company}}</td>
-                            <td>{{$user->subscription_price}}</td>
+                            <td>{{number_format($user->subscription_price, 2)}}</td>
                             <td>{{$user->count}}</td>
                             <td>{{$user->bank_accountname}}</td>
                             <td>{{$user->bank_routingnumber}}</td>

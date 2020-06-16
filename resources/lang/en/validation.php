@@ -119,4 +119,16 @@ return [
 
     'attributes' => [],
 
+    'credit_card' => [
+        'card_invalid' => 'Card Number Invalid',
+        'card_pattern_invalid' =>'Pattern Invalid',
+        'card_length_invalid' => 'Number Length Invalid',
+        'card_checksum_invalid' => 'Check SUm Invalid',
+        'card_expiration_month_invalid' => 'Expiration Month Invalid',
+        'card_expiration_year_invalid' => 'Expiration Year Invalid',
+        'card_expiration_date_invalid' =>'Expiration Date Invalid',
+        'card_expiration_date_format_invalid' => 'Expiration Date Format Invalid',
+        'card_cvc_invalid' => 'CV Code Invalid',
+    ]
+
 ];

@@ -42,17 +42,29 @@
                                         @else
                                             <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
                                         @endif
-                                        <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE</a>
                                     @elseif (Auth::user())
 
                                     @else
                                         <a href="/register" class="follow_button">FOLLOW</a>
-                                        <a href="/register" class="subscribe_button">SUBSCRIBE</a>
                                     @endif
                             </div>
                         </div>
                     </div>
-
+                    @if(Auth::guard('customer')->user())
+                        <div class="secondinfo">
+                            <label for="subscription">SUBSCRIPTION</label>
+                            <p>${{ $user->subscription_price }} per month</p>
+                            <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                        </div>
+                    @elseif (Auth::user())
+                    @else 
+                        <div class="secondinfo">
+                            <label for="subscription">SUBSCRIPTION</label>
+                            <p>${{ $user->subscription_price }} per month</p>
+                            <a href="/register" class="subscribe_button">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -149,9 +161,13 @@
                         </ul>
 
                         @if( empty($product->couponcode))
-                         @else
-                        <p style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: {{$product->couponcode}} </p>
-                         @endif
+                        @else
+                            @if($product->coupon)
+                                <p style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: {{$product->couponcode}} </p>
+                            @else
+                            <p style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: ****** </p>
+                            @endif
+                        @endif
                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
                         <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
                          <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
@@ -236,31 +252,51 @@
                                             <div class="form-group">
                                                 <label>CARD NUMBER</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="tel" class="form-control" placeholder="Valid Card Number" name="card[number]" />
+                                                    <input type="tel" class="form-control" placeholder="Valid Card Number" name="card_number" required />
                                                     <span class="input-group-text"><span class="fa fa-credit-card"></span></span>
                                                 </div>
+                                                @if ($errors->has('card_number'))
+                                                    <small class="text-danger">{{ $errors->first('card_number') }}</small>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-7 col-md-7">
+                                        <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <label><span class="hidden-lg">EXPIRATION</span><span class="visible-lg-inline">EXP</span> DATE</label>
-                                                <input type="tel" class="form-control" placeholder="MM / YY" name="card[exp]" />
+                                                <label><span class="hidden-lg">EXPIRATION MONTH</span></label>
+                                                <input type="tel" class="form-control" placeholder="MM" name="exp_month" required />
                                             </div>
+                                            @if ($errors->has('exp_month'))
+                                                <small class="text-danger">{{ $errors->first('exp_month') }}</small>
+                                            @endif
                                         </div>
-                                        <div class="col-lg-5 col-md-5 pull-right">
+                                        <div class="col-lg-6 col-md-6 pull-right">
                                             <div class="form-group">
-                                                <label>CV CODE</label>
-                                                <input type="tel" class="form-control" placeholder="CVC" name="card[cvc]" />
+                                                <label><span class="hidden-lg">EXPIRATION YEAR</span></label>
+                                                <input type="tel" class="form-control" placeholder="YY" name="exp_year" required />
                                             </div>
+                                            @if ($errors->has('exp_year'))
+                                                <small class="text-danger">{{ $errors->first('exp_year') }}</small>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                        <div class="form-group">
+                                                <label>CV CODE</label>
+                                                <input type="tel" class="form-control" placeholder="CVC" name="cv_code" required />
+                                            </div>
+                                            @if ($errors->has('cv_code'))
+                                                <small class="text-danger">{{ $errors->first('cv_code') }}</small>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>CARD OWNER</label>
-                                                <input type="text" class="form-control" placeholder="Card Owner Names" name="card[name]" />
+                                                <input type="text" class="form-control" placeholder="Card Owner Names" name="card_name" />
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +304,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit(); return false;" value="Subscribe" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
+                        <input type="submit" value="Subscribe" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
                     </div>
                     </form>
                     </div>
@@ -283,6 +319,10 @@
 
 @section('javascripts')
 <script>
+    $('#subscriptionmodal form').submit(function() {
+        this.disabled=true;
+        this.value='Submitting...';
+    })
     $('.btn-customdelete').click(function(e){
         e.preventDefault()
             if (confirm('Are you sure you want to delete Coupon')) {

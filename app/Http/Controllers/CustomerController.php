@@ -23,7 +23,13 @@ class CustomerController extends Controller
                 $subscriptions = [];
             }else{
                 $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active']);
+                
                 $subscriptions = $subscriptions->data;
+                foreach($subscriptions as $subscription){
+                    if($customer->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
+                        $subscription->end_date = date('d/m/Y', strtotime($customer->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
+                    }
+                }
                 // dd($subscriptions);
             }
             $customerclicks = Click::join('customers', 'customers.id', 'clicks.click_customer_id')
@@ -106,7 +112,7 @@ class CustomerController extends Controller
         return redirect()->back();
     }
 
-    public function subscribe(CustomerSubscriptionRequest $request,$slug) {
+    public function subscribe(CustomerSubscriptionRequest $request, $slug) {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = User::where('slug', $slug)->first();
         if($user->stripe_plan == null){
@@ -115,11 +121,11 @@ class CustomerController extends Controller
         }
         $token = \Stripe\Token::create([
                 "card" => [
-                   "number"    => $request->card['number'],
-                   "exp_month" => str_before($request->card['exp'], '/'),
-                   "exp_year"  => str_after($request->card['exp'], '/'),
-                   "cvc"       => $request->card['cvc'],
-                   "name"      => $request->card['name']
+                   "number"    => $request->card_number,
+                   "exp_month" => $request->exp_month,
+                   "exp_year"  => $request->exp_year,
+                   "cvc"       => $request->cv_code,
+                   "name"      => $request->card_name
                 ]
             ]
         );

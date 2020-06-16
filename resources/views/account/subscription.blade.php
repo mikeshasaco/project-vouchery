@@ -9,15 +9,6 @@
                 <div class="col-md-12 col-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div><br />
-                            @endif
                             <form class="form-horizontal" autocomplete="off" method="post" action="{{ route('subscription.setting',auth()->user()->slug) }}" novalidate="novalidate">
                                 @csrf
                                 <div class="form-group">
@@ -32,6 +23,9 @@
                                             <option value="30.00">$30.00</option>
                                             <option value="40.00">$40.00</option>
                                         </select>
+                                        @if ($errors->has('subscription_price'))
+                                            <small class="text-danger">{{ $errors->first('subscription_price') }}</small>
+                                        @endif
                                     </div>
                                     
                                 </div>
@@ -294,6 +288,9 @@
                                     <label for="bankName" class="control-label">Bank Name<span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="bankName" name="bankName">
+                                        @if ($errors->has('bankName'))
+                                            <small class="text-danger">{{ $errors->first('bankName') }}</small>
+                                        @endif
                                     </div>
                                     
                                 </div>
@@ -301,35 +298,23 @@
                                     <label for="beneficiarySwiftCode" class="control-label">SWIFT Code(Routing Number for US Bank)<span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <input type="text"  maxlength="50" data-rule-minlength="8" class="form-control" id="beneficiarySwiftCode" name="beneficiarySwiftCode">
+                                        @if ($errors->has('beneficiarySwiftCode'))
+                                            <small class="text-danger">{{ $errors->first('beneficiarySwiftCode') }}</small>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="ibanAccountNo" class="control-label">IBAN / Account No<span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="10" class="form-control" id="ibanAccountNo" name="ibanAccountNo" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="accountName" class="control-label">Beneficiary's Name</label>
-                                    <div>
-                                        <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="accountName" name="accountName">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="beneficiaryAddress1" class="control-label">Beneficiary Address 1</label>
-                                    <div>
-                                        <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="beneficiaryAddress1" name="beneficiaryAddress1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="beneficiaryAddress2" class="control-label">Address 2(Postal Code)</label>
-                                    <div>
-                                        <input type="text" data-rule-required="true" class="form-control" maxlength="50" id="beneficiaryAddress2" name="beneficiaryAddress2">
+                                        @if ($errors->has('ibanAccountNo'))
+                                            <small class="text-danger">{{ $errors->first('ibanAccountNo') }}</small>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div>
-                                    <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();return false;" value="Subscribe Setting" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
+                                        <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();return false;" value="Subscription Setting" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
                                     </div>
                                 </div>
                             </form>

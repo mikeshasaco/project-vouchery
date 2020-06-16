@@ -24,10 +24,31 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
             ->join('users', 'users.id', 'products.user_id')
-            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
+            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug','users.stripe_plan')
             ->orderByRaw('advertboolean = 0', 'advertboolean')
             ->orderBy('products.created_at', 'DESC')
             ->paginate(36);
+        $user = Auth::user();
+        $customer = $customer = Auth::guard('customer')->user();
+        if($user){
+            foreach($products as $product){
+                if($product->user_id == $user->id){
+                    $product->coupon = true;
+                }else{
+                $product->coupon = false;
+                }
+            }
+        }
+        elseif($customer){
+            foreach($products as $product){
+                if($customer->subscribed('main', $product->stripe_plan)){
+                    $product->coupon = true;
+                }
+                else{
+                $product->coupon = false;
+                }
+            }
+        }
         // this function responds to datatable
         $users = User::selectRaw('users.*, COUNT(products.id) AS products')
          ->join('products', 'users.id', '=', 'products.user_id')
@@ -72,11 +93,32 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', '=', 'products.user_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->where('categoriess.catslug', $slug)
         ->paginate(36);
+        $user = Auth::user();
+        $customer = $customer = Auth::guard('customer')->user();
+        if($user){
+            foreach($products as $product){
+                if($product->user_id == $user->id){
+                    $product->coupon = true;
+                }else{
+                $product->coupon = false;
+                }
+            }
+        }
+        elseif($customer){
+            foreach($products as $product){
+                if($customer->subscribed('main', $product->stripe_plan)){
+                    $product->coupon = true;
+                }
+                else{
+                $product->coupon = false;
+                }
+            }
+        }
         // random products for the category that between 10 - 100 dollars
         $randomcat = Product::join('categoriess', 'categoriess.id', 'products.category_id')
                 ->join('users', 'users.id', '=', 'products.user_id')

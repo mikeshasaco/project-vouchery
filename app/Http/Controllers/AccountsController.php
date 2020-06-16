@@ -35,10 +35,31 @@ class AccountsController extends Controller
         $userproduct = User::join('accounts', 'accounts.user_id', 'users.id')
         ->join('products', 'products.user_id', 'users.id')
         ->join('categoriess', 'categoriess.id', 'products.category_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan')
         ->orderBy('products.created_at', 'DESC')
        ->where('slug', $slug)
        ->get();
+        $user_auth = Auth::user();
+        $customer = $customer = Auth::guard('customer')->user();
+        if($user_auth){
+            foreach($userproduct as $product){
+                if($product->user_id == $user_auth->id){
+                    $product->coupon = true;
+                }else{
+                $product->coupon = false;
+                }
+            }
+        }
+        elseif($customer){
+            foreach($userproduct as $product){
+                if($customer->subscribed('main', $product->stripe_plan)){
+                    $product->coupon = true;
+                }
+                else{
+                $product->coupon = false;
+                }
+            }
+        }
 
        $followercount = User::join('followables', 'users.id', 'followables.followable_id')
                     ->where('slug', $slug)->count();
@@ -281,6 +302,7 @@ class AccountsController extends Controller
 
             }
         }
+        $user->count = count($subscriptions);
         $customers = Customer::whereIn('stripe_id',$subscription_customer)->get();
         return view('account.subscriptionstatistic', compact('user','customers'));
     }

@@ -29,9 +29,9 @@ class CustomerSubscriptionRequest extends FormRequest
     {
         return [
             'card_number' => ['required', new CardNumber],
-            'expiration_year' => ['required', new CardExpirationYear($this->get('expiration_month'))],
-            'expiration_month' => ['required', new CardExpirationMonth($this->get('expiration_year'))],
-            'cvc' => ['required', new CardCvc($this->get('card_number'))]
+            'exp_year' => ['required', new CardExpirationYear($this->get('exp_month'))],
+            'exp_month' => ['required', new CardExpirationMonth($this->get('exp_year'))],
+            'cv_code' => ['required', new CardCvc($this->get('card_number'))]
         ];
     }
 }
