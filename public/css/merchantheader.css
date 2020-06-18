@@ -79,13 +79,14 @@
 }
 .subscribe_button{
     background-color: #B35464;
+    text-align: center;
     padding: 10px 40px;
     border-radius: 30px;
     font-weight: bold;
     color: white;
     text-decoration: none;
 }
-.subscribe_button:hover{
+a.subscribe_button:hover{
     background-color: white;
     text-decoration: none;
     color: #B35464;
@@ -97,6 +98,7 @@
     padding: 20px;
     border-radius: 5px;
 }
+
 .websitebutton:after{
     content: "|";
     padding: 0 5px;

@@ -41,12 +41,15 @@ class ProductsController extends Controller
         }
         elseif($customer){
             foreach($products as $product){
-                if($customer->subscribed('main', $product->stripe_plan)){
-                    $product->coupon = true;
+                if($product->stripe_plan){
+                    if($customer->subscribedByPLan('main', $product->stripe_plan)){
+                        $product->coupon = true;
+                    }
+                    else{
+                    $product->coupon = false;
+                    }
                 }
-                else{
-                $product->coupon = false;
-                }
+                
             }
         }
         // this function responds to datatable
@@ -111,12 +114,15 @@ class ProductsController extends Controller
         }
         elseif($customer){
             foreach($products as $product){
-                if($customer->subscribed('main', $product->stripe_plan)){
-                    $product->coupon = true;
+                if($product->stripe_plan){
+                    if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        $product->coupon = true;
+                    }
+                    else{
+                    $product->coupon = false;
+                    }
                 }
-                else{
-                $product->coupon = false;
-                }
+                
             }
         }
         // random products for the category that between 10 - 100 dollars

@@ -14,15 +14,18 @@
                                 <div class="form-group">
                                     <label for="price" class="control-label">Subscription Price<span class="form-required">&nbsp;*</span></label>
                                     <div>
+                                        @if($user->subscription_price)
+                                        <input id="subscription_price" class="form-control select2 select2-hidden-accessible" value="{{ $user->subscription_price }}" disabled>
+                                        <input type="hidden" name="subscription_price" value="{{ $user->subscription_price }}">
+                                        @else
                                         <select name="subscription_price" id="subscription_price" class="form-control select2 select2-hidden-accessible">
                                             <option value="" data-select2-id="288">Please select...</option>
                                             <option value="5.00">$5.00</option>
                                             <option value="10.00">$10.00</option>
                                             <option value="15.00">$15.00</option>
                                             <option value="20.00">$20.00</option>
-                                            <option value="30.00">$30.00</option>
-                                            <option value="40.00">$40.00</option>
                                         </select>
+                                        @endif
                                         @if ($errors->has('subscription_price'))
                                             <small class="text-danger">{{ $errors->first('subscription_price') }}</small>
                                         @endif
@@ -32,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="country" class="control-label">Country of Bank</label>
                                     <div>
-                                        <select type="text" class="form-control select2 select2-hidden-accessible" data-rule-required="true" id="bankCountry" name="bankCountry" data-select2-id="bankCountry" tabindex="-1" aria-hidden="true">
+                                        <select type="text" class="form-control select2 select2-hidden-accessible" data-rule-required="true" id="bankCountry" name="bankCountry" data-select2-id="bankCountry" tabindex="-1" aria-hidden="true" value="{{old('bankCountry')}}">
                                             <option value="" data-select2-id="288">Please select...</option>
                                             <option value="AF">Afghanistan</option>
                                             <option value="AX">Aland Islands</option>
@@ -287,7 +290,7 @@
                                 <div class="form-group">
                                     <label for="bankName" class="control-label">Bank Name<span class="form-required">&nbsp;*</span></label>
                                     <div>
-                                        <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="bankName" name="bankName">
+                                        <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="bankName" name="bankName" value="{{old('bankName')}}">
                                         @if ($errors->has('bankName'))
                                             <small class="text-danger">{{ $errors->first('bankName') }}</small>
                                         @endif
@@ -297,7 +300,7 @@
                                 <div class="form-group">
                                     <label for="beneficiarySwiftCode" class="control-label">SWIFT Code(Routing Number for US Bank)<span class="form-required">&nbsp;*</span></label>
                                     <div>
-                                        <input type="text"  maxlength="50" data-rule-minlength="8" class="form-control" id="beneficiarySwiftCode" name="beneficiarySwiftCode">
+                                        <input type="text"  maxlength="50" data-rule-minlength="8" class="form-control" id="beneficiarySwiftCode" name="beneficiarySwiftCode" value="{{old('beneficiarySwiftCode')}}">
                                         @if ($errors->has('beneficiarySwiftCode'))
                                             <small class="text-danger">{{ $errors->first('beneficiarySwiftCode') }}</small>
                                         @endif
@@ -306,7 +309,7 @@
                                 <div class="form-group">
                                     <label for="ibanAccountNo" class="control-label">IBAN / Account No<span class="form-required">&nbsp;*</span></label>
                                     <div>
-                                        <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="10" class="form-control" id="ibanAccountNo" name="ibanAccountNo" required>
+                                        <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="10" class="form-control" id="ibanAccountNo" name="ibanAccountNo" value="{{old('ibanAccountNo')}}">
                                         @if ($errors->has('ibanAccountNo'))
                                             <small class="text-danger">{{ $errors->first('ibanAccountNo') }}</small>
                                         @endif
@@ -314,7 +317,11 @@
                                 </div>
                                 <div class="form-group">
                                     <div>
+                                        @if($user->subscription_price)
+                                        <input type="submit" onclick="this.disabled=true;this.value='Updating...'; this.form.submit();return false;" value="BankInfo Update" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
+                                        @else
                                         <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();return false;" value="Subscription Setting" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
+                                        @endif
                                     </div>
                                 </div>
                             </form>

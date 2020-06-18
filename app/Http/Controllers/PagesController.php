@@ -16,7 +16,6 @@ class PagesController extends Controller
 {
     public function index()
     {
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', 'products.user_id')
         ->select('products.id', 'products.user_id', 'products.title', 'products.desc', 'products.image', 'products.currentprice', 'products.newprice', 'products.category_id', 'products.couponcode', 'products.advertboolean', 'products.url', 'users.company', 'users.slug', 'products.clicks', 'categoriess.categoryname', 'products.expired_date', 'products.created_at', 'categoriess.catslug','users.stripe_plan')
@@ -36,12 +35,15 @@ class PagesController extends Controller
         }
         elseif($customer){
             foreach($products as $product){
-                if($customer->subscribed('main', $product->stripe_plan)){
-                    $product->coupon = true;
+                if($product->stripe_plan){
+                    if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        $product->coupon = true;
+                    }
+                    else{
+                    $product->coupon = false;
+                    }
                 }
-                else{
-                $product->coupon = false;
-                }
+                
             }
         }
         $submission = Submission::inRandomOrder()->take(4)->get();

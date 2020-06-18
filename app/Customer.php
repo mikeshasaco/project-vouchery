@@ -61,4 +61,17 @@ class Customer extends Authenticatable
 
         return $this->subscriptions->where('stripe_plan', $plan)->first();
     }
+    public function subscribedByPlan($subscription = 'default', $plan = null) {
+        $subscription = $this->subscriptionByPlan($subscription, $plan);
+        if (is_null($subscription)) {
+            return false;
+        }
+
+        if (is_null($plan)) {
+            return $subscription->valid();
+        }
+
+        return $subscription->valid() &&
+               $subscription->stripe_plan === $plan;
+    }
 }

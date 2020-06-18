@@ -50,20 +50,55 @@
                             </div>
                         </div>
                     </div>
-                    @if(Auth::guard('customer')->user())
+                    @if(Auth::id() == $user->id)
+                        @if($user->subscription_price)
                         <div class="secondinfo">
                             <label for="subscription">SUBSCRIPTION</label>
                             <p>${{ $user->subscription_price }} per month</p>
-                            <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                            <p class="subscribe_button">SETTED TO ${{ $user->subscription_price }}</p>
                         </div>
+                        @else
+                        <div class="secondinfo">
+                            <p >SUBSCRIPTION</p>
+                            <a class="subscribe_button" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
+                        </div>
+                        @endif
+                    @endif
+                    @if($customer = Auth::guard('customer')->user())
+                        @if($user->subscription_price)
+                            @if($customer->subscribedByPLan('main', $user->stripe_plan))
+                            <div class="secondinfo">
+                                <label for="subscription">SUBSCRIPTION</label>
+                                <p>${{ $user->subscription_price }} per month</p>
+                                <p class="subscribe_button">SUBSCRIBED FOR ${{ $user->subscription_price }}</a>
+                            </div>
+                            @else
+                            <div class="secondinfo">
+                                <label for="subscription">SUBSCRIPTION</label>
+                                <p>${{ $user->subscription_price }} per month</p>
+                                <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                            </div>
+                            @endif
+                        @else
+                        <div class="secondinfo">
+                            <p >SUBSCRIPTION</p>
+                            <p class="subscribe_button">Not Set Subscription</p>
+                        </div>
+                        @endif
                     @elseif (Auth::user())
-                    @else 
+                    @else
+                        @if($user->subscription_price)
                         <div class="secondinfo">
                             <label for="subscription">SUBSCRIPTION</label>
                             <p>${{ $user->subscription_price }} per month</p>
                             <a href="/register" class="subscribe_button">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
                         </div>
-                    </div>
+                        @else
+                        <div class="secondinfo">
+                            <p >SUBSCRIPTION</p>
+                            <p class="subscribe_button">Not Set Subscription</p>
+                        </div>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -252,7 +287,7 @@
                                             <div class="form-group">
                                                 <label>CARD NUMBER</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="tel" class="form-control" placeholder="Valid Card Number" name="card_number" required />
+                                                    <input type="tel" class="form-control" placeholder="Valid Card Number" name="card_number" value="{{old('card_number')}}" required />
                                                     <span class="input-group-text"><span class="fa fa-credit-card"></span></span>
                                                 </div>
                                                 @if ($errors->has('card_number'))
@@ -265,7 +300,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
                                                 <label><span class="hidden-lg">EXPIRATION MONTH</span></label>
-                                                <input type="tel" class="form-control" placeholder="MM" name="exp_month" required />
+                                                <input type="tel" class="form-control" placeholder="MM" name="exp_month" value="{{old('exp_month')}}" required />
                                             </div>
                                             @if ($errors->has('exp_month'))
                                                 <small class="text-danger">{{ $errors->first('exp_month') }}</small>
@@ -274,7 +309,7 @@
                                         <div class="col-lg-6 col-md-6 pull-right">
                                             <div class="form-group">
                                                 <label><span class="hidden-lg">EXPIRATION YEAR</span></label>
-                                                <input type="tel" class="form-control" placeholder="YY" name="exp_year" required />
+                                                <input type="tel" class="form-control" placeholder="YY" name="exp_year" value="{{old('exp_year')}}" required />
                                             </div>
                                             @if ($errors->has('exp_year'))
                                                 <small class="text-danger">{{ $errors->first('exp_year') }}</small>
@@ -285,7 +320,7 @@
                                         <div class="col-lg-12">
                                         <div class="form-group">
                                                 <label>CV CODE</label>
-                                                <input type="tel" class="form-control" placeholder="CVC" name="cv_code" required />
+                                                <input type="tel" class="form-control" placeholder="CVC" name="cv_code" value="{{old('cv_code')}}" required />
                                             </div>
                                             @if ($errors->has('cv_code'))
                                                 <small class="text-danger">{{ $errors->first('cv_code') }}</small>

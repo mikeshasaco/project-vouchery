@@ -130,11 +130,6 @@ class CustomerController extends Controller
             ]
         );
         $customer = Auth::guard('customer')->user();
-        // dd($customer->subscribed('main' , $user->stripe_plan));
-        if ($customer->subscribed('main', $user->stripe_plan)) {
-            Session::flash('successmessage', 'You already have subscribed to '.$user->company);
-            return redirect()->route('customerprofile',['customerslug' => $customer->customerslug]);
-        }
         $customer->newSubscription('main', $user->stripe_plan)->create($token->id);
         Session::flash('successmessage', 'You have set subscription to '.$user->company);
         return redirect()->back();        

@@ -52,12 +52,15 @@ class AccountsController extends Controller
         }
         elseif($customer){
             foreach($userproduct as $product){
-                if($customer->subscribed('main', $product->stripe_plan)){
-                    $product->coupon = true;
+                if($product->stripe_plan){
+                    if($customer->subscribedByPLan('main', $product->stripe_plan)){
+                        $product->coupon = true;
+                    }
+                    else{
+                    $product->coupon = false;
+                    }
                 }
-                else{
-                $product->coupon = false;
-                }
+                
             }
         }
 
@@ -266,8 +269,12 @@ class AccountsController extends Controller
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
         if($user->subscription_price && $user->stripe_plan){
-            Session::flash('successmessage', 'You already have set subscription');
-            return redirect()->back()->with('success', 'You already have set subscription');
+            $user->bank_accountname = $request->bankName;
+            $user->bank_routingnumber = $request->beneficiarySwiftCode;
+            $user->bank_accountnumber = $request->ibanAccountNo;
+            $user->save();
+            Session::flash('successmessage', 'Your bank has been changed successfully');
+            return redirect()->back()->with('success', 'Your bank has been changed successfully');
         }
         $product = \Stripe\Product::create([
             'name' => $user->company,
