@@ -45,7 +45,10 @@
                                     <span class="currentpricing">${{product.currentprice}}</span>
                                     <span class="newpricing">${{product.newprice}}</span>
                                 </div>
-                                <p class="coupon-setting-code">Coupon Code: {{product.couponcode}}</p>
+                                <p v-if="!product.couponcode">ddd</p>
+                                <p v-else-if="product.coupon" style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: {{product.couponcode}} </p>
+                                <p v-else style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: ******</p>
+
                             </div>
                             <div class="col-md-3 col-lg-3 view-button" >
                                 <a :href="product.url" target="_blank" class="viewdeal"><i class="fas fa-tags"></i>View Deal</a>                               

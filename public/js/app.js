@@ -51539,6 +51539,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -51765,9 +51768,39 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "coupon-setting-code" }, [
-                          _vm._v("Coupon Code: " + _vm._s(product.couponcode))
-                        ])
+                        !product.couponcode
+                          ? _c("p", [_vm._v("ddd")])
+                          : product.coupon
+                            ? _c(
+                                "p",
+                                {
+                                  staticStyle: {
+                                    "font-weight": "bold",
+                                    "font-size": "12px",
+                                    opacity: "0.9",
+                                    margin: "0"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "Coupon Code: " +
+                                      _vm._s(product.couponcode) +
+                                      " "
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "p",
+                                {
+                                  staticStyle: {
+                                    "font-weight": "bold",
+                                    "font-size": "12px",
+                                    opacity: "0.9",
+                                    margin: "0"
+                                  }
+                                },
+                                [_vm._v("Coupon Code: ******")]
+                              )
                       ],
                       1
                     ),

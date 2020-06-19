@@ -52,18 +52,20 @@ class AccountsController extends Controller
         }
         elseif($customer){
             foreach($userproduct as $product){
-                if($product->stripe_plan){
-                    if($customer->subscribedByPLan('main', $product->stripe_plan)){
-                        $product->coupon = true;
-                    }
-                    else{
-                    $product->coupon = false;
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
                     }
                 }
-                
             }
         }
-
        $followercount = User::join('followables', 'users.id', 'followables.followable_id')
                     ->where('slug', $slug)->count();
 

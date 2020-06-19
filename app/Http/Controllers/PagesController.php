@@ -18,7 +18,7 @@ class PagesController extends Controller
     {
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', 'products.user_id')
-        ->select('products.id', 'products.user_id', 'products.title', 'products.desc', 'products.image', 'products.currentprice', 'products.newprice', 'products.category_id', 'products.couponcode', 'products.advertboolean', 'products.url', 'users.company', 'users.slug', 'products.clicks', 'categoriess.categoryname', 'products.expired_date', 'products.created_at', 'categoriess.catslug','users.stripe_plan')
+        ->select('products.id', 'products.user_id', 'products.title', 'products.desc', 'products.image', 'products.currentprice', 'products.newprice', 'products.category_id', 'products.couponcode', 'products.advertboolean', 'products.url', 'users.company', 'users.slug', 'products.clicks','products.exclusive', 'categoriess.categoryname', 'products.expired_date', 'products.created_at', 'categoriess.catslug','users.stripe_plan')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->paginate(36);
@@ -35,15 +35,18 @@ class PagesController extends Controller
         }
         elseif($customer){
             foreach($products as $product){
-                if($product->stripe_plan){
-                    if($customer->subscribedByPlan('main', $product->stripe_plan)){
-                        $product->coupon = true;
-                    }
-                    else{
-                    $product->coupon = false;
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
                     }
                 }
-                
             }
         }
         $submission = Submission::inRandomOrder()->take(4)->get();
@@ -104,6 +107,33 @@ class PagesController extends Controller
                         ->inRandomOrder()
                         ->take(30)
                        ->get();
+        $user = Auth::user();
+        $customer = $customer = Auth::guard('customer')->user();
+        if($user){
+            foreach($productlower as $product){
+                if($product->user_id == $user->id){
+                    $product->coupon = true;
+                }else{
+                $product->coupon = false;
+                }
+            }
+        }
+        elseif($customer){
+            foreach($productlower as $product){
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
+                    }
+                }
+            }
+        }
 
         return $productlower;
     }
@@ -120,7 +150,33 @@ class PagesController extends Controller
                         })
                         ->inRandomOrder()
                        ->get();
-
+        $user = Auth::user();
+        $customer = $customer = Auth::guard('customer')->user();
+        if($user){
+            foreach($productlower as $product){
+                if($product->user_id == $user->id){
+                    $product->coupon = true;
+                }else{
+                $product->coupon = false;
+                }
+            }
+        }
+        elseif($customer){
+            foreach($productlower as $product){
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
+                    }
+                }
+            }
+        }
         return $productlower;
     }
 }

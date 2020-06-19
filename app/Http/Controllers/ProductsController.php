@@ -41,15 +41,18 @@ class ProductsController extends Controller
         }
         elseif($customer){
             foreach($products as $product){
-                if($product->stripe_plan){
-                    if($customer->subscribedByPLan('main', $product->stripe_plan)){
-                        $product->coupon = true;
-                    }
-                    else{
+                if($product->exclusive){
                     $product->coupon = false;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
                     }
                 }
-                
             }
         }
         // this function responds to datatable
@@ -114,15 +117,18 @@ class ProductsController extends Controller
         }
         elseif($customer){
             foreach($products as $product){
-                if($product->stripe_plan){
-                    if($customer->subscribedByPlan('main', $product->stripe_plan)){
-                        $product->coupon = true;
-                    }
-                    else{
-                    $product->coupon = false;
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
                     }
                 }
-                
             }
         }
         // random products for the category that between 10 - 100 dollars
@@ -184,7 +190,6 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $formInput=$request->except('image');
-
         $this->validate($request, [
         'title'=> 'required|max:60',
         'desc' => 'required|max:100',
@@ -193,7 +198,7 @@ class ProductsController extends Controller
             new PriceRule($request->currentprice)
         ],
         'currentprice' => 'required|numeric|between:0.01,9999.99|min:0.00',
-        'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
+        // 'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
         'couponcode' => 'max:20',
        // "url" => 'required|url',
 
@@ -205,6 +210,7 @@ class ProductsController extends Controller
         } else {
             $product = new Product;
         }
+        $product->exclusive = $request->exclusive;
         $product->title = $request->title;
         $product->desc = $request->desc;
         $product->currentprice = $request->currentprice;
