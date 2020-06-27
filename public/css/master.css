@@ -201,6 +201,7 @@ cursor: pointer;
   border-radius: 9px;
 }
 .card-img, .card-img-bottom{
+    height: 240px;
     border-radius: 10px;
     width: auto;
     margin: auto;
@@ -530,4 +531,10 @@ li:hover .listhover {
 li:hover .listhover a {
     color:white;
 
+}
+.createcoupon .form-group{
+  margin-bottom: 0.3rem;
+}
+.createcoupon .form-group lavel{
+  margin-bottom: 0;
 }

@@ -103,6 +103,8 @@ Route::group(['prefix'=> 'customer'], function () {
     Route::post('/{customerslug}/updatecustomer', 'CustomerController@update')->name('update.customer');
 
     Route::get('/{customerslug}/customerunfollow/{id}', 'CustomerController@customerunfollow');
+    //subscription coupons
+    Route::get('/{customerslug}/subscriptioncoupons', 'CustomerController@subscriptioncoupons')->name('subscription.coupons');
 });
 
 // verify merchant email verification

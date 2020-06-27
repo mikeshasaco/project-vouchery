@@ -20,19 +20,12 @@
                     <div class="firstinfo">
                         <div class="compayavarta">
                             <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage rounded-circle" >
-                        </div>
-                        <div class="profileinfo">
-                            <h4 class="profilecompany" > <b style="color:#b35464;"></b> {{ $user->company }}</h4>
-                            <p class="profilebio"> <b style="color:#b35464;"></b>{{$user->accountinfo}}</p>
-                            <div class="profile-bottom">
-                                <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
-                                <h6 class="subscriberh6"> <b>Follower Count: {{ $followercount }}</b></h6>
-                                @if(Auth::id() == $user->id)
+                            @if(Auth::id() == $user->id)
                                       <!-- Button trigger modal -->
                                       {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">
                                           Edit Account
                                       </button> --}}
-                                      <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit</a>
+                                      <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit Profile</a>
                                 @endif
 
                                     @if(Auth::guard('customer')->user())
@@ -47,6 +40,13 @@
                                     @else
                                         <a href="/register" class="follow_button">FOLLOW</a>
                                     @endif
+                        </div>
+                        <div class="profileinfo">
+                            <h4 class="profilecompany" > <b style="color:#b35464;"></b> {{ $user->company }}</h4>
+                            <p class="profilebio"> <b style="color:#b35464;"></b>{{$user->accountinfo}}</p>
+                            <div class="profile-bottom">
+                                <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
+                                <h6 class="subscriberh6"> <b>Follower Count: {{ $followercount }}</b></h6>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="secondinfo">
                             <label for="subscription">SUBSCRIPTION</label>
                             <p>${{ $user->subscription_price }} per month</p>
-                            <p class="subscribe_button">SETTED TO ${{ $user->subscription_price }}</p>
+                            <p class="subscribe_button">Set at ${{ $user->subscription_price }}</p>
                         </div>
                         @else
                         <div class="secondinfo">
@@ -118,41 +118,7 @@
 
                 @forelse($userproduct as $product)
                 <div class="col-md-6 col-lg-4">
-                    <div class="content-button" style="position:relative;">
-
-
-                    {{-- Delete link --}}
-                    @if(Auth::id() == $product->user_id)
-                    <form class="deleteaccount"  action="{{ '/account/'.Auth::user()->slug .'/'. $product->id }}" method="post">
-                        {{ csrf_field() }} {{ method_field('DELETE') }}
-                        <button type="submit" class="btn-customdelete"><i class="far fa-trash-alt"></i> Delete</button>
-                    </form>
-
-                    @if($product->advertboolean == 1)
-
-                            <button href="{{ route('myads', auth::user()->slug) }}" type="button" name="button" class="btn-customrunning" disabled><i class="fas fa-sync"></i> Running</button>
-
-                        @else
-                        <form action="{{ '/account/'.Auth::user()->slug .'/'. $product->id  }}" method="POST" >
-                            {{ csrf_field() }}
-                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_live_7sQQoPimKkEX2qbIb1Ddajcq"
-                            data-amount="499"
-                            data-name="{{ $product->title }} Coupon"
-                            data-description=" Run Advertisement on coupon"
-                            data-email="{{ auth::check() ? auth()->user()->email : null }}"
-                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                            data-label="Advertise"
-                            data-locale="auto">
-                            </script>
-
-                            <input type="hidden" name="adname" value="{{ $product->title }}">
-                            <input type="hidden" name="adprice" value="4.99">
-                            <input type="hidden" name="prod_id" value="{{$product->id }}">
-                        </form>
-                        @endif
-                    @endif
-                </div>
+                    
 
                 <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
                     <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180">
@@ -205,12 +171,49 @@
                         @endif
                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
                         <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
-                         <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                        <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                        <div style = "display:flex;">
+                            @if($product->advertboolean == 1)
+                            <p class="advertise">Promoted Ad</p>
+                            @endif
+                            @if($product->exclusive)
+                            <p  class="subscriberonly">Subscriber Only</p>
+                            @endif
+                        </div>
                         <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
-            
                     </div>
-                    
-                        
+                    <div class="content-button">
+                        {{-- Delete link --}}
+                        @if(Auth::id() == $product->user_id)
+                            @if($product->advertboolean == 1)
+
+                                <button href="{{ route('myads', auth::user()->slug) }}" type="button" name="button" class="btn-customrunning" disabled><i class="fas fa-sync"></i> Running</button>
+
+                            @else
+                            <form action="{{ '/account/'.Auth::user()->slug .'/'. $product->id  }}" method="POST" >
+                                {{ csrf_field() }}
+                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_live_7sQQoPimKkEX2qbIb1Ddajcq"
+                                data-amount="499"
+                                data-name="{{ $product->title }} Coupon"
+                                data-description=" Run Advertisement on coupon"
+                                data-email="{{ auth::check() ? auth()->user()->email : null }}"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-label="Advertise"
+                                data-locale="auto">
+                                </script>
+
+                                <input type="hidden" name="adname" value="{{ $product->title }}">
+                                <input type="hidden" name="adprice" value="4.99">
+                                <input type="hidden" name="prod_id" value="{{$product->id }}">
+                            </form>
+                            @endif
+                            <form class="deleteaccount"  action="{{ '/account/'.Auth::user()->slug .'/'. $product->id }}" method="post">
+                                {{ csrf_field() }} {{ method_field('DELETE') }}
+                                <button type="submit" class="btn-customdelete"><i class="far fa-trash-alt"></i> Delete</button>
+                            </form>
+                        @endif
+                </div>
                 </div>
 
             </div>

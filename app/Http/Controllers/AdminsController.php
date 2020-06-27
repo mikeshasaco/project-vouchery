@@ -12,8 +12,8 @@ class AdminsController extends Controller
 {
     public function index()
     {
-        $adminallcustomers = Customer::paginate(30);
-        $adminallusers = User::paginate(30);
+        $adminallcustomers = Customer::paginate(15);
+        $adminallusers = User::paginate(15);
         $adminusercount = User::count();
         $admincustomercount = Customer::count();
         $adminproductcount = Product::count();
@@ -32,7 +32,7 @@ class AdminsController extends Controller
         ->orwhere('title', 'like', "%$search%")
         ->orwhere('company', 'like', "%$search%")
         ->orwhere('adprice', 'like', "%$search%")
-        ->paginate(30);
+        ->paginate(15);
 
         return view('admin.instantad', compact('instantad'));
     }
@@ -43,7 +43,7 @@ class AdminsController extends Controller
 
         $adminallusers = User::where('name', 'like', "%$query%")
                              ->orwhere('company', 'like', "%$query%")
-                             ->paginate(30);
+                             ->paginate(15);
 
         return view('admin.users', compact('adminallusers'));
     }
@@ -75,7 +75,7 @@ class AdminsController extends Controller
 
         $customersonadmin = Customer::where('name', 'like', "%$customerquery%")
                             ->orwhere('username', 'like', "%$customerquery%")
-                            ->paginate(30);
+                            ->paginate(15);
             return view('admin.customers', compact('customersonadmin')); 
 
     }
@@ -91,7 +91,7 @@ class AdminsController extends Controller
 
         $users = User::where('name', 'like', "%$userquery%")
                             ->orwhere('company', 'like', "%$userquery%")
-                            ->paginate(30);
+                            ->paginate(15);
         foreach($users as $user){
             if(!$user->stripe_plan){
                 $user->count = null;

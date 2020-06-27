@@ -8,12 +8,14 @@
         background-color: white;
     }
     .tab-login{
+        display: flex;
         width: 100%;
-        display: grid;
-        grid-template-columns: 50% 50%;
         list-style-type: none;
         padding: 0;
         margin: 0;
+    }
+    .tab-login div{
+        width: 50%;
     }
     .tab-login li{
         text-align: center;
@@ -25,17 +27,12 @@
         cursor: pointer;
     }
     .tab-pan ul li.active{
-        border-bottom: solid #CA3F3F;
-        border-width:  0px 0 3px  ;
-        padding-top: 1px;
-        padding-bottom: 3px;
+        background-color: #B8606E;
+        color: white;
     }
     .tab-pan ul li{
         border-bottom: solid #d9d9d9;
         border-width:  0px 0 3px  ;
-        padding-top: 1px;
-        padding-bottom: 3px;
-
     }
 
     .tab-pan .pan{
@@ -51,11 +48,17 @@
 
     <div class=" tab-pan row justify-content-center">
         <div class="col-md-8">
-                <h1 class="registerh1">Sign Up</h1>
-            <ul class="tab-login">
-                <li rel="vouchpanel3" class=" vouchpanel3 active">Customer</li>
-                <li rel="vouchpanel4" class="vouchpanel4">Merchant</li>
-            </ul>
+            <h1 class="registerh1">Sign Up</h1>
+            <div>
+                <ul class="tab-login">
+                    <div>
+                        <li rel="vouchpanel3" class=" vouchpanel3 active">Customer</li>
+                    </div>
+                    <div>
+                        <li rel="vouchpanel4" class="vouchpanel4">Merchant</li>
+                    </div>
+                </ul>
+            </div>
         <div id="vouchpanel3" class="pan vouchpanel3-content active">
 
             <form method="POST" action="{{ route('customer.register') }}" style="margin-top:8%;">
@@ -264,7 +267,7 @@ $(document).ready(function() {
 
 	var current_tab = localStorage.getItem("current_tab") || 'vouchpanel3',
   		element     = $(".tab-login li")
-                      .parent('ul')
+                      .parent('div')
                       .find("[rel="+current_tab+"]")
                       .addClass('active');
 

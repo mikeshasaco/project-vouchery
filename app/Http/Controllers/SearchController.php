@@ -19,7 +19,7 @@ class SearchController extends Controller
             ->where('categoryname', 'like', "%$query%")
             ->orwhere('title', 'like', "%$query%")
             ->orwhere('company', 'like', "%$query%")
-            ->paginate(30);
+            ->paginate(15);
             $user = Auth::user();
             $customer = $customer = Auth::guard('customer')->user();
             if($user){

@@ -47,7 +47,7 @@
 
             <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
-                        <div class="input-group  col-md-12">
+                        <div class="input-group search-menu col-md-12">
                             <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search for latest Deals...">
                         </div>
                     </div>

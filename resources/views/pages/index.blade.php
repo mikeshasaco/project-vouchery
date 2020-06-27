@@ -169,17 +169,19 @@
                         @endif
                         <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
                         <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
-                         <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                        <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+                        <div style = "display:flex;">
+                            @if($product->advertboolean == 1)
+                            <p class="advertise">Promoted Ad</p>
+                            @endif
+                            @if($product->exclusive)
+                            <p  class="subscriberonly">Subscriber Only</p>
+                            @endif
+                        </div>
                         <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
-            
                     </div>
-                    
-                        
                 </div>
-
             </div>
-
-
                 @empty
                 <div style="padding:185px 0 185px 0;">
                 <h4> <i>(Currently No Coupons have been Created)<a href="/register" style="color:#B35464; text-decoration:none;">Sign Up Today and Begin your Journey!</a> </i> </h4>

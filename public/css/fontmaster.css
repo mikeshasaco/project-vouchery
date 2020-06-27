@@ -74,7 +74,7 @@ background-color: #B35464;
 
 
 #recentlyuploaded .card{
-    height: 32rem;
+    height: 30rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -119,13 +119,36 @@ background-color: #B35464;
     font-size: 15px;
     margin-top: -2px;
     }
+#recentlyuploaded .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#recentlyuploaded .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
 
 /* bottom of page home white randomly selected */
 #customerclicks .card {
-    width: 18rem;
-    margin-bottom: 7%;
-    height: 40rem;
-    margin-top: 15%;
+    height: 30rem;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
 }
 
 #customerclicks .card .card-body .list-group-item .discountR5{
@@ -142,7 +165,28 @@ background-color: #B35464;
     font-size: 14px;
     margin-right: -16px;
 }
-
+#customerclicks .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#customerclicks .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
 
  a.cardbutton-pages{
     border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
@@ -214,7 +258,7 @@ background-color: #B35464;
 
 /* All businesses Section */
 #albusysection .card{
-    height: 32rem;
+    height: 30rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -250,7 +294,28 @@ background-color: #B35464;
     font-size: 15px;
     margin-top: -2px;
     }
-
+#albusysection .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#albusysection .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
 
 
 /* category businessess */
@@ -260,7 +325,7 @@ background-color: #B35464;
 }
 
 #catbusysection .card{
-    height: 32rem;
+    height: 30rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -282,7 +347,7 @@ background-color: #B35464;
     margin-right: -16px;
 }
 #catbusysection .cardbutton-page{
-        border: 1px solid #B35464;
+    border: 1px solid #B35464;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     text-decoration: none;
@@ -295,13 +360,36 @@ background-color: #B35464;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
-    }
+}
+#catbusysection .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#catbusysection .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
     /* Advertise in cat busy page */
-
 #advert-section .card {
-    width:18rem;
-    margin-bottom: 15%;
-    height: 41rem;
+    height: 30rem;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
 }
 
 #advert-section .card-body .list-group-item .discounth5{
@@ -319,23 +407,102 @@ background-color: #B35464;
     margin-right: -16px;
 }
 #advert-section .cardbutton-page{
-    border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
-     background-color: #B35464; background-image: -webkit-gradient(linear, left top, left bottom, from(#B35464), to(#B35464));
-     background-image: -webkit-linear-gradient(top, #B35464, #B35464);
-     background-image: -moz-linear-gradient(top, #B35464, #B35464);
-     background-image: -ms-linear-gradient(top, #B35464, #B35464);
-     background-image: -o-linear-gradient(top, #B35464, #B35464);
-     background-image: linear-gradient(to bottom, #B35464, #B35464);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B35464, endColorstr=#B35464);
-     height: 34px;
-    width: 100%;
-    line-height: 11px;
+    border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 20px;
-    left: 141px;
-    text-align: center;
-    margin-top: -1px;
-    }
+    font-size: 15px;
+    margin-top: -2px;
+}
+#advert-section .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#advert-section .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
+/* subscription coupons Page */
+#subscriptioncoupons .card {
+    height: 30rem;
+    margin-top: 4%;
+    border: none;
+    border-bottom: 1px solid #B4B6B8;
+    border-radius: 10px 10px 0px 0px;
+}
 
+#subscriptioncoupons .card-body .list-group-item .discounth5{
+    font-weight: bold;
+    float: left;
+    font-size: 14px;
+    margin-left: -10%;
+}
+
+#subscriptioncoupons .card-body .list-group-item .newprice5{
+    color:green;
+    font-weight:bold;
+    float: right;
+    font-size: 14px;
+    margin-right: -16px;
+}
+#subscriptioncoupons .cardbutton-page{
+    border: 1px solid #B35464;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    height: 25px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    margin-top: -2px;
+}
+#subscriptioncoupons .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#subscriptioncoupons .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
 
 /* User Account Page */
 #accountsection .deleteaccount{
@@ -343,8 +510,8 @@ background-color: #B35464;
 }
 
 #accountsection .card{
-    height: 32rem;
-    margin-top: 0;
+    height: 31rem;
+    margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
     border-radius: 10px 10px 0px 0px;
@@ -376,9 +543,9 @@ width: 139px;
 line-height: 11px;
 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 14px;
-position: absolute;
-left: 141px;
 cursor: pointer;
+border-radius: 10px;
+margin-left: 4px;
 }
 
 #accountsection .btn-customdelete:hover{
@@ -390,7 +557,15 @@ cursor: pointer;
  background-image: -o-linear-gradient(top, #CB2B40, #93414f);
  background-image: linear-gradient(to bottom, #CB2B40, #93414f);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#CB2B40, endColorstr=#93414f);
 }
-
+#accountsection .btn-customdelete:focus{
+    outline: none;
+}
+.stripe-button-el{
+    border-radius: 10px !important;
+}
+.stripe-button-el:focus{
+    outline: none;
+}
 #accountsection .btn-customrunning{
 border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
  background-color: #a9db80; background-image: -webkit-gradient(linear, left top, left bottom, from(#a9db80), to(#588C58));
@@ -405,7 +580,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
  font-size: 14px;
  margin-top:0%;
- border-radius: 4px;
+ border-radius: 10px;
 }
 
 #accountsection .btn-customrunning:hover{
@@ -433,7 +608,30 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     font-size: 15px;
     margin-top: -2px;
     }
-
+#accountsection .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#accountsection .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    /* border: 1px solid #ffff00;
+    color: #ffff00; */
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
 /* setting page */
 .referral-icon i{
     margin-left: -3%;
@@ -454,7 +652,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 
 /* search area coupons */
 #searchcoupon .card {
-    height: 32rem;
+    height: 30rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -492,13 +690,29 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     font-size: 15px;
     margin-top: -2px;
     }
-
+#searchcoupon .subscriberonly{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid red;
+    color: red;
+}
+#searchcoupon .advertise{
+    font-weight: bold;
+    font-size: 10px;
+    opacity: 0.9;
+    margin: 0;
+    padding: 2px;
+    border-radius: 4px;
+    color: black;
+    background-color: #ffff00;
+    border: 1px solid #e6e600;
+}
 /* profile  */
-
-
-
-
-
 /* vue filter products */
 .filternew{
 display: inline;
@@ -743,7 +957,6 @@ margin: 0 0 10px 0;
     border-bottom: 1px solid #fff;
 }
 
-
 .custsubbutton{
     border:1px solid #B35464; -webkit-border-radius: 4px; -moz-border-radius: 4px;border-radius: 4px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 15px 10px 10px 10px; text-decoration:none; display:inline-block;font-weight:bold; color: #B35464;
      background-color: #FFFFFF; background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#B35464));
@@ -804,8 +1017,11 @@ border-radius: 3px;
     outline: none;
     width: 200px!important;
 }
+.subscriptioncouponstitle{
+    margin-top: 13%;
+}
 .titleallcategory{
-    margin-top: 16%;
+    margin-top: 13%;
 }
 
 
@@ -833,7 +1049,9 @@ border-radius: 3px;
   margin-top:260px;
 }
 .content-button{
-    margin-left: 4px;
+    margin-bottom: 5px !important;
+    display: flex;
+    margin: auto;
 }
 
 @media (max-width: 991px) {
@@ -869,8 +1087,6 @@ border-radius: 3px;
         font-size:10px;
         margin-top: 5%;
     }
-
-
     /* select all businesses page on business\all page */
      .media-select{
          min-width:85%;
@@ -891,6 +1107,11 @@ border-radius: 3px;
    }
 
 /* all business page category title busienss/all */
+   .subscriptioncouponstitle{
+        font-size: 20px;
+        margin-top: 24%;
+        margin-left: 3%;
+   }
    .titleallcategory {
        font-size: 20px;
        margin-top: 24%;
@@ -908,26 +1129,9 @@ border-radius: 3px;
           margin-top:38%;
           margin-bottom:20%
       }
-    
-      #accountsection .btn-customdelete{
-              left: 161px;
-      }
-
-      .stripe-button-el{
-          margin-left: 5%;
-      }
-      #accountsection .btn-customrunning{
-          margin-left: 5%;
-      }
-
-
 }
-
 
 @media(max-width:768px){
-    .content-button{
-    margin-left: -13px;
-}
     .logincontainer{
         margin-top:22%;
         margin-bottom:20%
@@ -942,15 +1146,7 @@ border-radius: 3px;
            margin-top: 21%;
            margin-bottom: 8%;
        }
-
-
-
 }
-
-
-
-
-
 
 @media (max-width: 575px) {
     .searchonlinebusiness{
@@ -961,6 +1157,11 @@ border-radius: 3px;
 }
 
 @media (max-width: 430px){
+    .subscriptioncouponstitle{
+        font-size: 20px;
+        margin-top: 40%;
+        margin-left: 3%;
+    }
     .titleallcategory {
         font-size: 20px;
         margin-top: 40%;
@@ -991,6 +1192,9 @@ border-radius: 3px;
 }
 
 @media (max-width: 320px) {
+    .subscriptioncouponstitle{
+        margin-top: 50%;
+    }
     .logincontainer{
         margin-top:42%;
         margin-bottom:20%

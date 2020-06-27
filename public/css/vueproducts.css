@@ -13,11 +13,11 @@
 }
 
 .filter-productbox .card {
-    display: flex;
     width: 100%;
-    height: 10rem;
+    align-items: center;
     border-radius: 0;
     flex-direction: unset;
+    -ms-flex-direction: row;
 }
 .filter-productbox .card .productbox-body{
     margin: 1em;

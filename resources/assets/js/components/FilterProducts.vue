@@ -45,7 +45,7 @@
                                     <span class="currentpricing">${{product.currentprice}}</span>
                                     <span class="newpricing">${{product.newprice}}</span>
                                 </div>
-                                <p v-if="!product.couponcode">ddd</p>
+                                <p v-if="!product.couponcode"></p>
                                 <p v-else-if="product.coupon" style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: {{product.couponcode}} </p>
                                 <p v-else style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: ******</p>
 

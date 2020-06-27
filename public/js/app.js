@@ -51769,7 +51769,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         !product.couponcode
-                          ? _c("p", [_vm._v("ddd")])
+                          ? _c("p")
                           : product.coupon
                             ? _c(
                                 "p",

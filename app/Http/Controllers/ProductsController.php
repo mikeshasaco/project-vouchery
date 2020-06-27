@@ -27,7 +27,7 @@ class ProductsController extends Controller
             ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug','users.stripe_plan')
             ->orderByRaw('advertboolean = 0', 'advertboolean')
             ->orderBy('products.created_at', 'DESC')
-            ->paginate(36);
+            ->paginate(15);
         $user = Auth::user();
         $customer = $customer = Auth::guard('customer')->user();
         if($user){
@@ -93,7 +93,7 @@ class ProductsController extends Controller
         $users = User::selectRaw('users.*, COUNT(products.id) AS products')
             ->join('products', 'users.id', 'products.user_id')
             ->join('categoriess', 'categoriess.id', 'products.category_id')
-             ->where('categoriess.catslug', '=', $slug)
+            ->where('categoriess.catslug', '=', $slug)
             ->groupBy('users.id')
             ->get();
 
@@ -103,7 +103,7 @@ class ProductsController extends Controller
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->where('categoriess.catslug', $slug)
-        ->paginate(36);
+        ->paginate(15);
         $user = Auth::user();
         $customer = $customer = Auth::guard('customer')->user();
         if($user){
@@ -198,7 +198,7 @@ class ProductsController extends Controller
             new PriceRule($request->currentprice)
         ],
         'currentprice' => 'required|numeric|between:0.01,9999.99|min:0.00',
-        // 'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
+        'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
         'couponcode' => 'max:20',
        // "url" => 'required|url',
 

@@ -156,7 +156,7 @@
 
                         @foreach ($subscriptions as $subscription)
                             <tr>
-                                <td> {{ $subscription->plan->name }}</a></td>
+                                <td>{{ $subscription->plan->name }}</td>
                                 <td>{{ number_format($subscription->plan->amount/100, 2)}}</td>
                                 @if($subscription->end_date)
                                     <td> <p  class="cancelledbutton" >Cancelling</p></td>

@@ -17,20 +17,23 @@
         <li><a class="nav-link" href="{{ route('customer.login') }}">Login</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
         @else
-         <li> <a href="{{ route('customerprofile', Auth()->guard('customer')->user()->customerslug) }}"> My Profile</a>
-         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth()->guard('customer')->user()->name }}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('customerprofile', Auth()->guard('customer')->user()->customerslug) }}"> My Profile</a>
+            <a class="dropdown-item" href="{{ route('subscription.coupons', Auth()->guard('customer')->user()->customerslug) }}">Subscription Coupons</a>
+          </div>
+        </li>
            <li><a href="{{ route('AllBusinesses') }}">Categories</a></li>
            <li><a class="nav-link" href="{{route('faqroute')}}"> Help</a></li>
         <li>
-                    <a  href="{{ route('customer.logout') }}" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                             {{ __('Logout') }}
-                            </a>
-
-
-                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+          <a  href="{{ route('customer.logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
         </li>
     @endif
 

@@ -42,7 +42,7 @@
 
             <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
-                        <div class="input-group  col-md-12">
+                        <div class="input-group search-menu col-md-12">
                             <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search for latest Deals...">
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         @if(auth()->guard('customer')->check())
 
                             <a class="dropdown-item" href="{{ route('customerprofile', Auth()->guard('customer')->user()->customerslug) }}"> My Profile</a>
-
+                            <a class="dropdown-item" href="{{ route('subscription.coupons', Auth()->guard('customer')->user()->customerslug) }}">Subscription Coupons</a>
                         @endif
 
                             <a class="dropdown-item" href="{{ route('customer.logout') }}" onclick="event.preventDefault();

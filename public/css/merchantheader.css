@@ -1,6 +1,8 @@
 .content{
-    margin-top: 180px;
-    margin-left: 20px;
+    background-image: url(http://www.powerpointstemplate.com/wp-content/uploads/2017/02/Red-abstract-composition-vector-ppt-backgrounds.jpg);
+    background-size: 100% 240px;
+    background-repeat: no-repeat;
+    padding: 180px 10px 0px 10px;
 }
 .content .card {
         height: 284px;
@@ -15,14 +17,11 @@
     margin-left: 2em;
     margin-top: 0.5em;
 }
-.content .profile-info .firstinfo{
-    display: flex;
-}
 .companyimage{
     width:115px;
-    /*max-width: 100%;*/
     margin: auto;
     height: 115px;
+    border: 1px solid #DEE0E1;
 }
 .profile-bottom{
     display: flex;
@@ -36,52 +35,61 @@
     margin-top: 4px;
 }
 .editaccount{
+    float: right;
+    margin-right: 20px;
+    margin-top: 70px;
     font-weight: bold;
-    color: blue;
+    color: #1DA1F2;
     text-decoration: none;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: 1px solid #1DA1F2;
 }
 .editaccount:hover{
     text-decoration: none;
     color: #CA3F3F;
-}
-.editaccount:before{
-    content: "|";
-    padding: 0 5px;
-    color: #000;
+    border: 1px solid #CA3F3F;
 }
 .follow_button{
+    float: right;
+    margin-right: 20px;
+    margin-top: 70px;
     font-weight: bold;
-    color: blue;
+    color: #1DA1F2;
     text-decoration: none;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: 1px solid #1DA1F2;
 }
 .follow_button:hover{
     text-decoration: none;
     color: #CA3F3F;
-}
-.follow_button:before{
-    content: "|";
-    padding: 0 5px;
-    color: #000;
+    border: 1px solid #CA3F3F;
 }
 .unfollow_button{
+    float: right;
+    margin-right: 20px;
+    margin-top: 70px;
     font-weight: bold;
-    color: blue;
+    color: #1DA1F2;
     text-decoration: none;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: 1px solid #1DA1F2;
 }
 .unfollow_button:hover{
     text-decoration: none;
     color: #CA3F3F;
-}
-.unfollow_button:before{
-    content: "|";
-    padding: 0 5px;
-    color: #000;
+    border: 1px solid #CA3F3F;
 }
 .subscribe_button{
     background-color: #B35464;
     text-align: center;
     padding: 10px 40px;
-    border-radius: 30px;
+    border-radius: 10px;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -94,7 +102,6 @@ a.subscribe_button:hover{
 }
 .secondinfo{
     border: 1px solid #DEE0E1;
-    width: 310px;
     padding: 20px;
     border-radius: 5px;
 }
@@ -114,8 +121,8 @@ a.subscribe_button:hover{
 }
 @media(max-width: 414px){
     .companyimage{
-        max-width: 70px;
-        max-height: 70px;
+        max-width: 85px;
+        max-height: 85px;
         margin-top: 20px;
     }
     .content{
@@ -123,7 +130,7 @@ a.subscribe_button:hover{
     }
     .content .profileinfo{
         margin-left: 0.5em;
-        margin-top: 0em;
+        margin-top: 1em;
     }
     .profilecompany{
         font-size: 1.3em;
@@ -131,35 +138,9 @@ a.subscribe_button:hover{
     .profilebio{
         margin-bottom: 0;
     }
-    .profile-bottom{
-        display: block;
+    .editaccount{
+        padding: 2px 5px;   
+        margin-right: 0px;
+
     }
-    .profile-bottom h6{
-        margin-top: 0;
-    }
-    .editaccount:before{
-        content: "";
-        padding: 0px;
-    }
-    /* .subscribe_button:before{
-        content: "";
-        padding: 0px;
-    }
-    .unsubscribe_button:before{
-        content: "";
-        padding: 0px;
-    } */
-    .follow_button:before{
-        content: "";
-        padding: 0px;
-    }
-    .unfollow_button:before{
-        content: "";
-        padding: 0px;
-    }
-    .websitebutton:after{
-        content: "";
-        padding: 0px;
-    }
-    
 }

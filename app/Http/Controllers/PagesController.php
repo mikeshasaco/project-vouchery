@@ -18,10 +18,11 @@ class PagesController extends Controller
     {
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', 'products.user_id')
-        ->select('products.id', 'products.user_id', 'products.title', 'products.desc', 'products.image', 'products.currentprice', 'products.newprice', 'products.category_id', 'products.couponcode', 'products.advertboolean', 'products.url', 'users.company', 'users.slug', 'products.clicks','products.exclusive', 'categoriess.categoryname', 'products.expired_date', 'products.created_at', 'categoriess.catslug','users.stripe_plan')
+        ->select('products.*', 'users.company', 'users.slug', 'products.clicks','products.exclusive', 'categoriess.categoryname'
+        , 'categoriess.catslug','users.stripe_plan')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
-        ->paginate(36);
+        ->paginate(15);
         $user = Auth::user();
         $customer = $customer = Auth::guard('customer')->user();
         if($user){

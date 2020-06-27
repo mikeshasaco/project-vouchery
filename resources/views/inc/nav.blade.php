@@ -40,7 +40,7 @@
             {{-- search bar --}}
             <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
-                        <div class="input-group  col-md-12">
+                        <div class="input-group search-menu col-md-12">
                             <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search for latest Deals... ">
                         </div>
                     </div>
@@ -67,10 +67,6 @@
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->company }} <span class="caret"></span>
                                 </a>
-
-
-
-
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @if(auth()->guard('web')->check())
                             @if(Auth::user()->admin== 'admin')

@@ -10,6 +10,7 @@ use Auth;
 use Hash;
 use App\User;
 use App\Click;
+use App\Product;
 use Session;
 
 class CustomerController extends Controller
@@ -22,15 +23,12 @@ class CustomerController extends Controller
             if($customer->stripe_id==null){
                 $subscriptions = [];
             }else{
-                $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active']);
-                
-                $subscriptions = $subscriptions->data;
+                $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
                 foreach($subscriptions as $subscription){
                     if($customer->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
                         $subscription->end_date = date('d/m/Y', strtotime($customer->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
                     }
                 }
-                // dd($subscriptions);
             }
             $customerclicks = Click::join('customers', 'customers.id', 'clicks.click_customer_id')
                             ->join('products', 'products.id', 'clicks.click_product_id')
@@ -148,5 +146,55 @@ class CustomerController extends Controller
         }
         $subscription->cancel();
         return redirect()->back()->with('success', 'You have canceled subscription of '.$user->company); 
+    }
+
+    public function subscriptioncoupons($customersulg){
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $customer = Auth::guard('customer')->user();
+        $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
+        if(!$customer->stripe_id||$subscriptions==[]){
+            $subscriptions_plan = [];
+        }else{
+            foreach($subscriptions as $subscription){
+                $subscriptions_plan[] = $subscription->plan->id;
+            }
+            
+        }
+        $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+        ->join('users', 'users.id', 'products.user_id')
+        ->select('products.*', 'users.company', 'users.slug', 'categoriess.categoryname'
+        , 'categoriess.catslug','users.stripe_plan')
+        ->orderByRaw('advertboolean = 0', 'advertboolean')
+        ->orderBy('products.created_at', 'DESC')
+        ->whereIn('users.stripe_plan', $subscriptions_plan)
+        ->paginate(15);
+        $user = Auth::user();
+        $customer = $customer = Auth::guard('customer')->user();
+        if($user){
+            foreach($products as $product){
+                if($product->user_id == $user->id){
+                    $product->coupon = true;
+                }else{
+                $product->coupon = false;
+                }
+            }
+        }
+        elseif($customer){
+            foreach($products as $product){
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
+                    }
+                }
+            }
+        }
+        return view('customer.subscriptioncoupons', compact('customer','products'));
     }
 }

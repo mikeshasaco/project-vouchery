@@ -9,11 +9,9 @@
 
     </style> --}}
     <div class="container">
-        </section>
-
-                <section id="subscriptionstatstic">
-                <div class="row">
-                    <div class="col-md-12 col-12">
+        <section id="subscriptionstatstic">
+            <div class="row">
+                <div class="col-md-12 col-12">
                     <table class="table">
                         <h3 style="color:#b35464;"> <b>Subscription Statistic</b></h3>
                         <hr>                        <tr>
@@ -37,7 +35,6 @@
                 </div>
             </div>
         </section>
-
     </div>
 
 @endsection
