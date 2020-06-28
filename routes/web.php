@@ -32,7 +32,7 @@ Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('
 Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
 Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
 Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
-Route::get('/account/{slug}/setsubscription/statistic', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+Route::get('/account/{slug}/subscription/statistic', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
 
 // account page
 Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
