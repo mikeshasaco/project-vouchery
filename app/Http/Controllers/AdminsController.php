@@ -96,7 +96,7 @@ class AdminsController extends Controller
             if(!$user->stripe_plan){
                 $user->count = null;
             }else{
-                $subscriptions = \Stripe\subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
+                $subscriptions = \Stripe\Subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
                 $user->count = count($subscriptions);
             }
         }

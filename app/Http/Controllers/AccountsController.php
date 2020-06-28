@@ -302,7 +302,7 @@ class AccountsController extends Controller
     {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
-        $subscriptions = \Stripe\subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
+        $subscriptions = \Stripe\Subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
         if(!$user->stripe_plan||$subscriptions == []){
             $subscription_customer = [];
         }else{

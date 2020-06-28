@@ -23,7 +23,7 @@ class CustomerController extends Controller
             if($customer->stripe_id==null){
                 $subscriptions = [];
             }else{
-                $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
+                $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
                 foreach($subscriptions as $subscription){
                     if($customer->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
                         $subscription->end_date = date('d/m/Y', strtotime($customer->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
@@ -151,7 +151,7 @@ class CustomerController extends Controller
     public function subscriptioncoupons($customersulg){
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $customer = Auth::guard('customer')->user();
-        $subscriptions = \Stripe\subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
+        $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
         if(!$customer->stripe_id||$subscriptions==[]){
             $subscriptions_plan = [];
         }else{
