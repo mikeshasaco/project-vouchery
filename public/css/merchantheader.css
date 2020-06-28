@@ -86,9 +86,11 @@
     border: 1px solid #CA3F3F;
 }
 .subscribe_button{
+    width: 100%;
+    display: inline-block;
     background-color: #B35464;
     text-align: center;
-    padding: 10px 40px;
+    padding: 10px;
     border-radius: 10px;
     font-weight: bold;
     color: white;

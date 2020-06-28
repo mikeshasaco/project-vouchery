@@ -167,6 +167,7 @@ class CustomerController extends Controller
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->whereIn('users.stripe_plan', $subscriptions_plan)
+        ->where('products.exclusive', "on")
         ->paginate(15);
         $user = Auth::user();
         $customer = $customer = Auth::guard('customer')->user();

@@ -351,8 +351,6 @@
         </div>
     </div>
         @endif
-	@include('inc.signupmodal')
-
 @endsection
 
 @section('javascripts')

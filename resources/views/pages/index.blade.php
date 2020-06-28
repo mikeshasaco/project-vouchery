@@ -319,7 +319,6 @@
         </div>
     </div>
 </section> --}}
-	@include('inc.signupmodal')
 
 {{-- vue filter --}}
 <section id="filterproducts">

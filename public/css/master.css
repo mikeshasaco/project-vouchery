@@ -201,7 +201,7 @@ cursor: pointer;
   border-radius: 9px;
 }
 .card-img, .card-img-bottom{
-    height: 240px;
+    height: 200px;
     border-radius: 10px;
     width: auto;
     margin: auto;

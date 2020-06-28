@@ -220,8 +220,6 @@
     </div>
 </section>
 
-	@include('inc.signupmodal')
-
     @endsection
 
     @section('javascripts')

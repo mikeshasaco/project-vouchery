@@ -51528,20 +51528,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -51630,40 +51616,8 @@ var render = function() {
               _vm._v("Select Price Range")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "0-20" } }, [
-              _vm._v("Between $0 and $20.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "20-30" } }, [
-              _vm._v("Between $20.00 and $30.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "30-40" } }, [
-              _vm._v("Between $30.00 and $40.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "40-50" } }, [
-              _vm._v("Between $40.00 and $50.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "50-60" } }, [
-              _vm._v("Between $50.00 and $60.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "60-70" } }, [
-              _vm._v("Between $60.00 and $70.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "70-80" } }, [
-              _vm._v("Between $70.00 and $80.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "80-90" } }, [
-              _vm._v("Between $80.00 and $90.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "90-100" } }, [
-              _vm._v("Between $90.00 and $100.00")
+            _c("option", { attrs: { value: "0-100" } }, [
+              _vm._v("Between $0 and $100.00")
             ]),
             _vm._v(" "),
             _c("option", { attrs: { value: "100-200" } }, [
@@ -51674,44 +51628,20 @@ var render = function() {
               _vm._v("Between $200.00 and $300.00")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "300-400" } }, [
-              _vm._v("Between $300.00 and $400.00")
+            _c("option", { attrs: { value: "300-500" } }, [
+              _vm._v("Between $300.00 and $500.00")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "400-500" } }, [
-              _vm._v("Between $400.00 and $500.00")
+            _c("option", { attrs: { value: "500-700" } }, [
+              _vm._v("Between $500.00 and $700.00")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "500-600" } }, [
-              _vm._v("Between $500.00 and $600.00")
+            _c("option", { attrs: { value: "700-1000" } }, [
+              _vm._v("Between $700.00 and $1000.00")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "600-700" } }, [
-              _vm._v("Between $600.00 and $700.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "700-800" } }, [
-              _vm._v("Between $700.00 and $800.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "800-900" } }, [
-              _vm._v("Between $800.00 and $900.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "900-1000" } }, [
-              _vm._v("Between $900.00 and $1000.00")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1000-3000" } }, [
-              _vm._v("Between $1000 and $3000")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3000-6000" } }, [
-              _vm._v("Between $3000 and $6000")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "6000-9999" } }, [
-              _vm._v("Between $6000 and $9999")
+            _c("option", { attrs: { value: "1000-10000" } }, [
+              _vm._v("$1000.00+")
             ])
           ]
         )

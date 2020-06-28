@@ -74,7 +74,7 @@ background-color: #B35464;
 
 
 #recentlyuploaded .card{
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -144,7 +144,7 @@ background-color: #B35464;
 
 /* bottom of page home white randomly selected */
 #customerclicks .card {
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -258,7 +258,7 @@ background-color: #B35464;
 
 /* All businesses Section */
 #albusysection .card{
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -325,7 +325,7 @@ background-color: #B35464;
 }
 
 #catbusysection .card{
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -385,7 +385,7 @@ background-color: #B35464;
 }
     /* Advertise in cat busy page */
 #advert-section .card {
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -445,7 +445,7 @@ background-color: #B35464;
 }
 /* subscription coupons Page */
 #subscriptioncoupons .card {
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -510,7 +510,7 @@ background-color: #B35464;
 }
 
 #accountsection .card{
-    height: 31rem;
+    height: 35rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -652,7 +652,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 
 /* search area coupons */
 #searchcoupon .card {
-    height: 30rem;
+    height: 33rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
