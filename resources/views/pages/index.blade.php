@@ -2,7 +2,7 @@
 @section('content')
 
 <section id="banner-homepage" class="d-none d-lg-block">
-    <div class="container" >
+    <div class="d-none d-sm-block container" >
 
          <div class="row">
             <h4><b>Search through businesses coupon from our marketplace</b></h4>
@@ -94,7 +94,7 @@
 {{--  onlt mobile view--}}
 <?php $cats = DB::table('categoriess')->orderby('categoryname','ASC')->get(); ?>
 
-<section id="mobile-category"  class="d-block d-lg-none">
+{{-- <section id="mobile-category"  class="d-block d-lg-none">
 
     <div class="container">
         <div class="row">
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-</section>
+</section> --}}
 
 <section id="recentlyuploaded" style="margin-bottom:90px;">
     <div class="container">
