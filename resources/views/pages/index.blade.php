@@ -73,6 +73,7 @@
 </div>
 
 </section>
+<section class="sobusiness">
 
 @if(auth::user() || auth::guard('customer')->user())
 
@@ -91,6 +92,8 @@
 
 </div>
 @endif
+</section>
+
 {{--  onlt mobile view--}}
 <?php $cats = DB::table('categoriess')->orderby('categoryname','ASC')->get(); ?>
 
