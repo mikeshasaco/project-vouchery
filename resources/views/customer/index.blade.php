@@ -162,8 +162,10 @@
                                     <td> <p  class="cancelledbutton" >Cancelling</p></td>
                                     <td>{{ $subscription->end_date }}</td>
                                 @else
+                                @if($subscription->plan->name)
                                 <td> <a href="{{route('subscription.cancel',$subscription->plan->name)}}" target=""  class="custsubbutton">Cancel</a> </td>
                                 <td></td>
+                                @endif
                                 @endif
                             </tr>
                         @endforeach
