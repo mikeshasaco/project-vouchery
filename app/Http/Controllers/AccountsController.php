@@ -9,7 +9,7 @@ use Session;
 use Image;
 use App\User;
 use App\Product;
-use App\Subsctipeion;
+use App\Subscription;
 use Hash;
 use App\Click;
 use App\Advertisement;

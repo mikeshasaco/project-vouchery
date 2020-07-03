@@ -77,15 +77,15 @@
 @if(auth::user() || auth::guard('customer')->user())
 
 <div class="container">
-<h6  class="d-block d-lg-none searchonlinebusiness"> <b>Search Deals from Online Businesses</b> </h6>
+<h6  class="d-block d-lg-none searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h6>
 </div>
 @else
 <div class="container">
     <div class="d-block d-lg-none searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
-            <b style="text-align:center;">Sign Up your Business For Free & Post your coupons to our 1000+ customers!</b>
+            <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
             <br>
-            <a href="{{ route('register') }}">Sign Up to find out how!</a>
+            <a href="{{ route('register') }}">Sign Up an Earn Extra Money for your Business!</a>
         </div>
     </div>
 
