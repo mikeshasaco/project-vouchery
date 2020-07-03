@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomerSubscriptionRequest;
 use App\Customer;
-use App\Subsctipeion;
+use App\Subscription;
 use Auth;
 use Hash;
 use App\User;
