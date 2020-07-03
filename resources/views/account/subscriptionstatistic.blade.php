@@ -21,15 +21,15 @@
                         </tr>
                         @foreach($customers as $customer)
                                 <tr>
-                                    <td> {{ $customer->name }}</td>
+                                    <td> {{ $customer->username }}</td>
                                     <td>{{ $customer->email }}</td>
-                                    <td>{{ number_format($user->subscription_price,2) }}</td>
+                                    <td>${{ number_format($user->subscription_price,2) }}</td>
                                 </tr>
                         @endforeach
                         <tr>
                             <td>Total Price</td>
                             <td></td>
-                            <td>{{ number_format($user->subscription_price*$user->count, 2) }}</td>
+                            <td>${{ number_format($user->subscription_price*$user->count, 2) }}</td>
                         </tr>
                     </table>
                 </div>
