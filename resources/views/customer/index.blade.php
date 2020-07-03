@@ -155,7 +155,7 @@
                         </tr>
 
                         @foreach ($subscriptions as $subscription)
-                        {{dd($subscription->plan)}}
+                        {{dd($subscription)}}
                             <tr>
                                 <td>{{ $subscription->plan->name }}</td>
                                 <td>{{ number_format($subscription->plan->amount/100, 2)}}</td>
