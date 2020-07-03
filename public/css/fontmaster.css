@@ -1071,7 +1071,6 @@ border-radius: 3px;
         margin-bottom: 8%;
     }
     .searchonlinebusiness{
-     /* margin-top: 20%; */
         font-size: 18px;
     }
     /* this affects the size of the profile look like the cards coupons */
@@ -1150,7 +1149,7 @@ border-radius: 3px;
 
 @media (max-width: 575px) {
     .searchonlinebusiness{
-        /* margin-top: 69px; */
+        margin-top: 20%;
         font-size: 18px;
     }
   
@@ -1189,7 +1188,7 @@ border-radius: 3px;
            margin-left:0%;
        }
        .searchonlinebusiness{
-           margin-top: 100px;
+           margin-top: 30%;
        }
    
 }
