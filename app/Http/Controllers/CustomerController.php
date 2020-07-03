@@ -25,6 +25,9 @@ class CustomerController extends Controller
             }else{
                 $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
                 foreach($subscriptions as $subscription){
+                    $user = User::where('stripe_plan', $subscription->plan->id)->first();
+                    $subscription->company = $user->company;
+                    $subscription->slug = $user->slug;
                     if($customer->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
                         $subscription->end_date = date('d/m/Y', strtotime($customer->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
                     }

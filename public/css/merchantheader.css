@@ -22,6 +22,7 @@
     margin: auto;
     height: 115px;
     border: 1px solid #DEE0E1;
+    background-color: white;
 }
 .profile-bottom{
     display: flex;

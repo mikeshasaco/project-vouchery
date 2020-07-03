@@ -155,16 +155,15 @@
                         </tr>
 
                         @foreach ($subscriptions as $subscription)
-                        {{dd($subscription)}}
                             <tr>
-                                <td>{{ $subscription->plan->name }}</td>
+                                <td>{{ $subscription->company }}</td>
                                 <td>{{ number_format($subscription->plan->amount/100, 2)}}</td>
                                 @if($subscription->end_date)
                                     <td> <p  class="cancelledbutton" >Cancelling</p></td>
                                     <td>{{ $subscription->end_date }}</td>
                                 @else
-                                @if($subscription->plan->name)
-                                <td> <a href="{{route('subscription.cancel',$subscription->plan->name)}}" target=""  class="custsubbutton">Cancel</a> </td>
+                                @if($subscription)
+                                <td> <a href="{{route('subscription.cancel',$subscription->slug)}}" target=""  class="custsubbutton">Cancel</a> </td>
                                 <td></td>
                                 @endif
                                 @endif
