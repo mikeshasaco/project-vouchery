@@ -64,7 +64,7 @@
 
 </section>
 
-<section id="h1title">
+{{-- <section id="h1title">
     <div class="container">
 
     <div class="row" style="margin-top:6%;">
@@ -72,15 +72,12 @@
     </div>
 </div>
 
-</section>
+</section> --}}
 
 @if(auth::user() || auth::guard('customer')->user())
 
-<div class="container">
 <h6  class="d-block d-lg-none searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h6>
-</div>
 @else
-<div class="container">
     <div class="d-block d-lg-none searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
             <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
@@ -88,8 +85,6 @@
             <a href="{{ route('register') }}">Sign Up an Earn Extra Money for your Business!</a>
         </div>
     </div>
-
-</div>
 @endif
 
 {{--  onlt mobile view--}}

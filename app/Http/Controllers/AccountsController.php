@@ -311,8 +311,18 @@ class AccountsController extends Controller
 
             }
         }
+        $firstofmonth = Carbon::now()->firstOfMonth()->addMonth(1)->format(' d F, Y');
         $user->count = count($subscriptions);
-        $customers = Customer::whereIn('stripe_id',$subscription_customer)->get();
-        return view('account.subscriptionstatistic', compact('user','customers'));
+        $customers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
+        ->select('customers.*', 'subscriptions.ends_at')
+        ->whereIn('customers.stripe_id', $subscription_customer)
+            ->get();
+
+        $activecustomers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
+        ->whereIn('customers.stripe_id', $subscription_customer)
+        ->whereNull('ends_at')
+            ->count();
+
+        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth', 'activecustomers'));
     }
 }
