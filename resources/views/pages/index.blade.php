@@ -9,7 +9,7 @@
             <form class="navbar-form" action="{{ route('search') }}" method="GET">
                 <div id="custom-search-input">
                     <div class="input-group  col-md-12">
-                        <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search for latest Deals... ">
+                        <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search Through ">
                     </div>
                 </div>
             </form>
@@ -80,9 +80,11 @@
 @else
     <div class=" searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
+            <center>
             <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
             <br>
             <a href="{{ route('register') }}">Sign Up an Earn Extra Money for your Business!</a>
+            </center>
         </div>
     </div>
 @endif

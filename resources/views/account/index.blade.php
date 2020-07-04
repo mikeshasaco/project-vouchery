@@ -58,7 +58,7 @@
                         @if($user->subscription_price)
                         <div class="secondinfo">
                             <label for="subscription"><b> SUBSCRIPTION</b></label>
-                            <p>${{ $user->subscription_price }} per month</p>
+                            <p> <b> ${{ $user->subscription_price }} per month</b></p>
                             <p class="subscribe_button">Set at ${{ $user->subscription_price }}</p>
                         </div>
                         @else
@@ -144,7 +144,7 @@
                         <h4 class="card-title">
                              <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
                          </h4>
-                        <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description">{{$product->desc}}</p>
+                        <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description"><b> {{$product->desc}}</b></p>
                         <ul class="list-group list-group-flush">
                             <!-- <li class="list-group-item" style="clear:both;"> -->
                                 <div class="" style="display: flex;justify-content: space-between;">
