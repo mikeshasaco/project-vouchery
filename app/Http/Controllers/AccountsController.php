@@ -331,7 +331,7 @@ class AccountsController extends Controller
         // ->where($user->slug, '=', $slug)
         // ->get();
 
-        dd($customers);
+        // dd($customers);
 
         // dd($subscription_customer);
 
