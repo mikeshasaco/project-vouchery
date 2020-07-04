@@ -210,7 +210,7 @@
                             @endif
                             <form class="deleteaccount"  action="{{ '/account/'.Auth::user()->slug .'/'. $product->id }}" method="post">
                                 {{ csrf_field() }} {{ method_field('DELETE') }}
-                                <button type="submit" class="btn-customdelete"><i class="far fa-trash-alt"></i> Delete</button>
+                                <button type="submit"  class="btn-customdelete"><i class="far fa-trash-alt"></i> Delete</button>
                             </form>
                         @endif
                 </div>

@@ -319,7 +319,11 @@ class AccountsController extends Controller
         $user->count = count($subscriptions);
                 
         
-        $customers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')->get();
+        $customers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
+            ->whereIn('customers.stripe_id', $subscription_customer)
+            ->get();
+
+            // dd($customers);
 
         // $customers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
         // ->select('customers.*', 'subscriptions.ends_at', $user)
@@ -329,12 +333,13 @@ class AccountsController extends Controller
 
         dd($customers);
 
-        
+        // dd($subscription_customer);
 
         $activecustomers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
         ->whereIn('customers.stripe_id', $subscription_customer)
         ->whereNull('ends_at')
             ->count();
+            // dd($activecustomers);
 
         return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth', 'activecustomers'));
     }

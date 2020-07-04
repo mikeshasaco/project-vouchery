@@ -5,7 +5,7 @@
          <div class="panel-body">
             <div class="form-group custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitches" name="exclusive" checked>
-                <label class="custom-control-label" for="customSwitches">Subscription Coupon</label>
+                <label class="custom-control-label" for="customSwitches"> <b>Subscription Coupon</b> <i>(checkbox create subscribers only coupon code)</i> </label>
             </div>
             <div class="form-group custom-file">
                 <input type="file" name="image" class="form-control custom-file-input" id="validatedCustomFile" required>

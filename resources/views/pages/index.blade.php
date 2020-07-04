@@ -82,7 +82,8 @@
     <div class=" searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
             <center>
-            <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
+                <h4>            <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
+</h4>
             <br>
             <a href="{{ route('register') }}">Sign Up an Earn Extra Money for your Business!</a>
             </center>
