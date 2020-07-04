@@ -16,10 +16,10 @@
                                     <table class="table table-borderless subscriptionpayout" >
                                         <thead>
                                             <tr>
-                                                <th>Subscription Price</th>
-                                                <th>Bank Name</th>
-                                                <th>Routing Number</th>
-                                                <th>Account Number</th>
+                                                <th> <b> Subscription Price </b></th>
+                                                <th> <b>Bank Name</b> </th>
+                                                <th> <b> Routing Number </b></th>
+                                                <th><b>Account Number</b> </th>
 
                                             </tr>
                                         </thead>
@@ -36,7 +36,7 @@
                                 <input type="hidden" name="subscription_price" value="{{ $user->subscription_price }}">
                                 @else
                                 <div class="form-group">
-                                    <label for="price" class="control-label">Subscription Price<span class="form-required">&nbsp;*</span></label>
+                                    <label for="price" class="control-label"><b> Subscription Price </b><span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <select name="subscription_price" id="subscription_price" class="form-control select2 select2-hidden-accessible">
                                             <option value="" data-select2-id="288">Please select...</option>
@@ -53,7 +53,7 @@
                                 </div>
                                 @endif
                                 <div class="form-group">
-                                    <label for="bankName" class="control-label">Bank Name<span class="form-required">&nbsp;*</span></label>
+                                    <label for="bankName" class="control-label"><b>   Bank Name</b><span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <input type="text" data-rule-required="true" maxlength="50" class="form-control" id="bankName" name="bankName" value="{{old('bankName')}}">
                                         @if ($errors->has('bankName'))
@@ -63,7 +63,7 @@
                                     
                                 </div>
                                 <div class="form-group">
-                                    <label for="beneficiarySwiftCode" class="control-label">SWIFT Code(Routing Number for US Bank)<span class="form-required">&nbsp;*</span></label>
+                                    <label for="beneficiarySwiftCode" class="control-label"><b> SWIFT Code(Routing Number for US Bank)</b><span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <input type="text"  maxlength="50" data-rule-minlength="8" class="form-control" id="beneficiarySwiftCode" name="beneficiarySwiftCode" value="{{old('beneficiarySwiftCode')}}">
                                         @if ($errors->has('beneficiarySwiftCode'))
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="ibanAccountNo" class="control-label">IBAN / Account No<span class="form-required">&nbsp;*</span></label>
+                                    <label for="ibanAccountNo" class="control-label"> <b> IBAN / Account No</b><span class="form-required">&nbsp;*</span></label>
                                     <div>
                                         <input type="text" data-rule-required="true" maxlength="50" data-rule-minlength="10" class="form-control" id="ibanAccountNo" name="ibanAccountNo" value="{{old('ibanAccountNo')}}">
                                         @if ($errors->has('ibanAccountNo'))

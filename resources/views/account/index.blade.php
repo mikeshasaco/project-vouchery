@@ -42,10 +42,14 @@
                                     @endif
                         </div>
                         <div class="profileinfo">
-                            <h4 class="profilecompany" > <b style="color:#b35464;"></b> {{ $user->company }}</h4>
+                            <h4 class="profilecompany" > <b style="color:#b35464;"></b> <b> {{ $user->company }}</b></h4>
                             <p class="profilebio"> <b style="color:#b35464;"></b>{{$user->accountinfo}}</p>
                             <div class="profile-bottom">
-                                <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
+                                @if(is_null($user->websitelink))
+                                <a href="{{ route('myads', auth()->user()->slug) }}" class="websitebutton">Click to Setup Website Link</a>
+                                @else 
+                                <a href="{{$user->websitelink}}" class="websitebutton" target="_blank"> {{$user->websitelink}}</a>
+                                @endif
                                 <h6 class="subscriberh6"> <b>Follower Count: {{ $followercount }}</b></h6>
                             </div>
                         </div>
@@ -53,13 +57,13 @@
                     @if(Auth::id() == $user->id)
                         @if($user->subscription_price)
                         <div class="secondinfo">
-                            <label for="subscription">SUBSCRIPTION</label>
+                            <label for="subscription"><b> SUBSCRIPTION</b></label>
                             <p>${{ $user->subscription_price }} per month</p>
                             <p class="subscribe_button">Set at ${{ $user->subscription_price }}</p>
                         </div>
                         @else
                         <div class="secondinfo">
-                            <p >SUBSCRIPTION</p>
+                            <p > <b>SUBSCRIPTION</b> </p>
                             <a class="subscribe_button" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
                         </div>
                         @endif

@@ -11,6 +11,7 @@ use App\User;
 use App\Product;
 use App\Subsctipeion;
 use Hash;
+use Carbon\Carbon;
 use App\Click;
 use App\Advertisement;
 use App\Mail\AdReceipt;

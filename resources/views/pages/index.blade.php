@@ -76,9 +76,9 @@
 
 @if(auth::user() || auth::guard('customer')->user())
 
-<h6  class="d-block d-lg-none searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h6>
+<h6  class=" searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h6>
 @else
-    <div class="d-block d-lg-none searchonlinebusiness">
+    <div class=" searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
             <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
             <br>
