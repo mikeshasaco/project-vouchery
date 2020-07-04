@@ -74,9 +74,10 @@
 
 </section> --}}
 
-@if(auth::user() || auth::guard('customer')->user())
-
-<h6  class=" searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h6>
+@if(!auth::user() || !auth::guard('customer')->user())
+{{-- <div class="container">
+    <h5 class=" searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h5>
+</div> --}}
 @else
     <div class=" searchonlinebusiness">
         <div style="background: #e6e7e8; border:16px solid #e6e7e8;">

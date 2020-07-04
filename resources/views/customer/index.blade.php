@@ -159,7 +159,7 @@
                                 <td>{{ $subscription->company }}</td>
                                 <td>{{ number_format($subscription->plan->amount/100, 2)}}</td>
                                 @if($subscription->end_date)
-                                    <td> <p  class="cancelledbutton" >Cancelling</p></td>
+                                    <td> <p  class="cancelledbutton" >Canceling</p></td>
                                     <td>{{ $subscription->end_date }}</td>
                                 @else
                                 @if($subscription)

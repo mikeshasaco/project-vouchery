@@ -45,11 +45,7 @@
                             <h4 class="profilecompany" > <b style="color:#b35464;"></b> <b> {{ $user->company }}</b></h4>
                             <p class="profilebio"> <b style="color:#b35464;"></b>{{$user->accountinfo}}</p>
                             <div class="profile-bottom">
-                                @if(is_null($user->websitelink))
-                                <a href="{{ route('myads', auth()->user()->slug) }}" class="websitebutton">Click to Setup Website Link</a>
-                                @else 
-                                <a href="{{$user->websitelink}}" class="websitebutton" target="_blank"> {{$user->websitelink}}</a>
-                                @endif
+                                 <a href="{{$user->websitelink}}" class="websitebutton" target="_blank">Website Link</a>
                                 <h6 class="subscriberh6"> <b>Follower Count: {{ $followercount }}</b></h6>
                             </div>
                         </div>
@@ -346,7 +342,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" value="Subscribe" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
+                        <input type="submit" onclick="this.disabled=true;this.value='Submitting...'; this.form.submit();"  value="Subscribe" class="btn btn-outline-danger btn-block button-prevent-multiple-submits">
                     </div>
                     </form>
                     </div>

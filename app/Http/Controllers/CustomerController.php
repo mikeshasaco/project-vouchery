@@ -29,7 +29,7 @@ class CustomerController extends Controller
                     $subscription->company = $user->company;
                     $subscription->slug = $user->slug;
                     if($customer->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
-                        $subscription->end_date = date('d/m/Y', strtotime($customer->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
+                        $subscription->end_date = date('m/d/Y', strtotime($customer->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
                     }
                 }
             }
