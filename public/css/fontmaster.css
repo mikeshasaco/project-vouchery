@@ -1149,7 +1149,7 @@ border-radius: 3px;
 
 @media (max-width: 575px) {
     .searchonlinebusiness{
-        margin-top: 20%;
+        /* margin-top: 20%; */
         font-size: 18px;
     }
 
@@ -1208,6 +1208,10 @@ border-radius: 3px;
     margin-top: 22%;
 
 }
+
+   .searchonlinebusiness{
+           margin-top: 27%;
+       }
 
 }
 
