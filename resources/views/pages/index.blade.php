@@ -80,7 +80,7 @@
 </div> --}}
 @else
     <div class=" searchonlinebusiness">
-        <div style="background: #e6e7e8; border:16px solid #e6e7e8;">
+        <div style="background: #e6e7e8; border: 22px solid #e6e7e8;">
             <center>
                 <h4>            <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
 </h4>

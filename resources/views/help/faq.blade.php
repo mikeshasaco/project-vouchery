@@ -6,11 +6,18 @@
     <div class="container">
         <div class="row row-help">
             <div class="col-md-12">
-                <h2 class="vouch-h2-title"><b>What is VoucheryHub?</b></h2>
-                <p style="font-size: 28px;"> <b>
-                    VoucheryHub is an E-Commerce marketplace that focuses on online businesses to direct consumers to coupons for their products & services. We focus on simplicity to make it easier for online businesses to run advertisements on our platform. The goal for VoucheryHub is to act as the intermediary between e-Commerce businesses and the consumers bringing both sides together. Online businesses can use our platform to focus on promoting their special deals in our marketplace.
-                    </b>
-                </p>
+
+                        <div class="question-title">
+                        <h3>What is VoucheryHub?</h3>
+                        <div class="content-main">
+                            <div class="content-inner">
+                                <p> VoucheryHub is an E-Commerce marketplace that focuses on online businesses to direct consumers to coupons for their products & services. We focus on simplicity to make it easier for online businesses to run advertisements on our platform. The goal for VoucheryHub is to act as the intermediary between e-Commerce businesses and the consumers bringing both sides together. Online businesses can use our platform to focus on promoting their special deals in our marketplace.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
             </div>
         </div>
 
