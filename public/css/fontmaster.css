@@ -1158,7 +1158,7 @@ border-radius: 3px;
 
 }
     .searchonlinebusiness{
-           margin-top: 27%;
+           margin-top: 23%;
        }
   
 }
@@ -1202,6 +1202,17 @@ border-radius: 3px;
        } */
    
 }
+@media (max-width: 375px) {
+    
+    #recentlyuploaded .card{
+    margin-top: 22%;
+
+}
+
+}
+
+
+
 
 @media (max-width: 320px) {
     .subscriptioncouponstitle{

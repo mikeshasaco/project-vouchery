@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row row-help">
             <div class="col-md-12">
+                <h2 class="vouch-merchant-customerh2">VoucheryHub Help Center</h2>
 
                         <div class="question-title">
                         <h3>What is VoucheryHub?</h3>
