@@ -74,7 +74,7 @@
 
 </section> --}}
 
-@if(!auth::user() || !auth::guard('customer')->user())
+@if(auth::user() || auth::guard('customer')->user())
 {{-- <div class="container">
     <h5 class=" searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h5>
 </div> --}}
