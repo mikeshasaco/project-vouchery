@@ -319,9 +319,8 @@ class AccountsController extends Controller
         $user->count = count($subscriptions);
                 
         
-        $customers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
-            ->whereIn('customers.stripe_id', $subscription_customer)
-            ->get();
+        $customers = Customer::whereIn('stripe_id', $subscription_customer)->get();
+
 
             // dd($customers);
 
@@ -335,10 +334,9 @@ class AccountsController extends Controller
 
         // dd($subscription_customer);
 
-        $activecustomers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
-        ->whereIn('customers.stripe_id', $subscription_customer)
-        ->whereNull('ends_at')
-            ->count();
+        $activecustomers =
+        Customer::whereIn('stripe_id', $subscription_customer)->count();
+
             // dd($activecustomers);
 
         return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth', 'activecustomers'));
