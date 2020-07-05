@@ -1154,9 +1154,12 @@ border-radius: 3px;
     }
 
     #recentlyuploaded .card{
-    margin-top: 15%;
+    margin-top: 17%;
 
 }
+    .searchonlinebusiness{
+           margin-top: 26%;
+       }
   
 }
 
@@ -1194,9 +1197,9 @@ border-radius: 3px;
            font-weight: 400;
            margin-left:0%;
        }
-       .searchonlinebusiness{
+       /* .searchonlinebusiness{
            margin-top: 30%;
-       }
+       } */
    
 }
 
