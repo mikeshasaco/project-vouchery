@@ -320,6 +320,7 @@ class AccountsController extends Controller
                 
         
         $customers = Customer::whereIn('stripe_id', $subscription_customer)->get();
+        $activecustomers = Customer::whereIn('stripe_id', $subscription_customer)->count();
 
 
             // dd($customers);
@@ -334,8 +335,6 @@ class AccountsController extends Controller
 
         // dd($subscription_customer);
 
-        $activecustomers =
-        Customer::whereIn('stripe_id', $subscription_customer)->count();
 
             // dd($activecustomers);
 
