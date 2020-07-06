@@ -159,7 +159,7 @@
 
 
 
-  <section id="merchantcouponsetting" >
+  <section id="merchantclicksetting" >
       <h5 style="color:#b35464;"> <b> My Coupon Click Tracker</b></h5>
           <div class="row">
               <div class="col-md-12 col-12">
