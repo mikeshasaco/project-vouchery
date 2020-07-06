@@ -196,51 +196,6 @@
      </section>
 
 
-     
-  <section id="merchantclicksetting" >
-      <h5 style="color:#b35464;"> <i class="fas fa-info-circle" title="Every 1000 Clicks Per Coupon From Customers = $50USD"></i> <b>Click Tracker For My Rewards</b></h5>
-          <div class="row">
-              <div class="col-md-12 col-12">
-
-              <table class="table">
-                  <tr>
-                      <th>Coupon Name</th>
-                      <th> Click Per Coupon / Cents Per Click</th>
-                      <th>Earn Reward <i>(1000 clicks per coupon = $50.00USD)</i> </th>
-                  </tr>
-                  @foreach ($usertracker as $tracker)
-
-                  <tr>
-                      <td>{{ $tracker->title }}</td>
-
-                      <td>
-                          
-                          <span style="font-size:14px; font-weight:bold;"> {{ $tracker->total  }} / 1000</span>
-
-                          {{-- <span class="badge badge-danger badge-pill"> {{ $tracker->total  }}</span> --}}
-                      </td>
-                      <td>  
-                          @if($tracker->total > 1000)
-                          <a class="btn btn-success" href="/help/questions">Claim</a>
-                          @else 
-                      <button type="button" disabled title="Claim $50USD after 1000 clicks">{{$tracker->total}} / 1000</button>
-                      @endif
-                    </td>
-
-                  </tr>
-
-
-              @endforeach
-
-
-              </table>
-          </div>
-
-
-          </div>
-     </section>
-
-
 
 </div>
 
