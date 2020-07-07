@@ -23,6 +23,7 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->company }}</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a>
+          <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Edit Profile</a>
           <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
           <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Earnings</a>
         </div>

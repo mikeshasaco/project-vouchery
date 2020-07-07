@@ -318,6 +318,6 @@ class AccountsController extends Controller
         $user->count = count($subscriptions);       
         $customers = Customer::whereIn('stripe_id', $subscription_customer)->get();
         $monthlyearnings = Monthlyearning::where('user_id',$user->id)->get();
-        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings'));
+        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','$monthlyearnings'));
     }
 }
