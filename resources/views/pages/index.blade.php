@@ -73,24 +73,6 @@
 </div>
 
 </section> --}}
-
-@if(auth::user() || auth::guard('customer')->user())
-{{-- <div class="container">
-    <h5 class=" searchonlinebusiness"> <b>Welcome to Voucheryhub</b> </h5>
-</div> --}}
-@else
-    <div class=" searchonlinebusiness">
-        <div style="background: #e6e7e8; border: 22px solid #e6e7e8;">
-            <center>
-                <h4>            <b style="text-align:center;">Sign Up your Business, Create your Own Subscription Plan, Create Personalized Coupons, Earn Extra Money</b>
-</h4>
-            <br>
-            <a href="{{ route('register') }}">Sign Up an Earn Extra Money for your Business!</a>
-            </center>
-        </div>
-    </div>
-@endif
-
 {{--  onlt mobile view--}}
 <?php $cats = DB::table('categoriess')->orderby('categoryname','ASC')->get(); ?>
 

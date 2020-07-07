@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         '\App\Console\Commands\DeleteCoupons',
+        '\App\Console\Commands\Addearning',
+        '\App\Console\Commands\Deleteearning',
     ];
 
     /**
@@ -25,6 +27,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('delete:coupon')->everyMinute();
+        $schedule->command('monthlyearning:add')->monthly();
+        $schedule->command('monthlyearning:delete')->yearly();
     }
 
     /**

@@ -16,6 +16,7 @@ use App\Click;
 use App\Advertisement;
 use App\Mail\AdReceipt;
 use App\Customer;
+use App\Monthlyearning;
 use Illuminate\Http\Request;
 use App\Http\Requests\BankRequest;
 use Illuminate\Support\Facades\Storage;
@@ -298,7 +299,6 @@ class AccountsController extends Controller
         Session::flash('successmessage', 'You have set subscription');
         return redirect()->back()->with('success', 'You have set subscription');
     }
-
     public function subscriptionstatistic($slug)
     {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -313,32 +313,11 @@ class AccountsController extends Controller
             }
         }
         // $monthlyBalance 
-
-
         $firstofmonth = Carbon::now()->firstOfMonth()->addMonth(1)->format(' d F, Y');
-        $user->count = count($subscriptions);
-                
-        
+        // dd(Carbon::now()->firstOfMonth()->addMonth(-1)->format('Y-m'));
+        $user->count = count($subscriptions);       
         $customers = Customer::whereIn('stripe_id', $subscription_customer)->get();
-
-
-            // dd($customers);
-
-        // $customers = Customer::join('subscriptions', 'subscriptions.customer_id', 'customers.id')
-        // ->select('customers.*', 'subscriptions.ends_at', $user)
-        // ->whereIn('customers.stripe_id', $subscription_customer)
-        // ->where($user->slug, '=', $slug)
-        // ->get();
-
-        // dd($customers);
-
-        // dd($subscription_customer);
-
-        $activecustomers =
-        Customer::whereIn('stripe_id', $subscription_customer)->count();
-
-            // dd($activecustomers);
-
-        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth', 'activecustomers'));
+        $monthlyearnings = Monthlyearning::where('user_id',$user->id)->get();
+        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings'));
     }
 }
