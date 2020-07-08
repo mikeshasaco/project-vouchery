@@ -439,6 +439,7 @@ class ComposerStaticInit632c97099ba4b4477755f4368f1e769f
         'App\\Click' => __DIR__ . '/../..' . '/app/Click.php',
         'App\\Console\\Commands\\Addearning' => __DIR__ . '/../..' . '/app/Console/Commands/Addearning.php',
         'App\\Console\\Commands\\DeleteCoupons' => __DIR__ . '/../..' . '/app/Console/Commands/DeleteCoupons.php',
+        'App\\Console\\Commands\\Deleteearning' => __DIR__ . '/../..' . '/app/Console/Commands/Deleteearning.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

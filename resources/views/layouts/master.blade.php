@@ -69,8 +69,8 @@
 	@include('inc.nav')
 
 @else
-	@include('inc.mobilenavbar')
-	@include('inc.guest')
+	{{-- @include('inc.mobilenavbar')
+	@include('inc.guest') --}}
 
 @endif
 
@@ -82,9 +82,12 @@
 
 
 	<!-- footer -->
-
+@if(auth()->guard('customer')->check() || auth()->guard('web')->check())
 	@include('footer')
 
+@else
+
+@endif
 
 	<!-- dataTables -->
 
