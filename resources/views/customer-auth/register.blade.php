@@ -2,53 +2,25 @@
 
 @section('content')
 <div class="container registercontainer">
-
-    <style>
-    body{
-        background-color: white;
-    }
-    .tab-login{
-        display: flex;
-        width: 100%;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-    .tab-login div{
-        width: 50%;
-    }
-    .tab-login li{
-        text-align: center;
-        line-height: 3em;
-        font-size: 20px;
-        font-weight: 400;
-        text-transform: uppercase;
-        list-style: none;
-        cursor: pointer;
-    }
-    .tab-pan ul li.active{
-        background-color: #B8606E;
-        color: white;
-    }
-    .tab-pan ul li{
-        border-bottom: solid #d9d9d9;
-        border-width:  0px 0 3px  ;
-    }
-
-    .tab-pan .pan{
-        display: none;
-    }
-    .tab-pan .pan.active{
-        display: block;
-    }
-
-    </style>
-
-
+    <div class="phones-col">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.png);">
+                </div>
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider2.png);"> 
+                </div>
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.png);">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class=" tab-pan row justify-content-center">
-        <div class="col-md-8">
-            <h1 class="registerh1">Sign Up</h1>
+        <div class="wrapper-pan  col-md-12">
+            <div class="logo">
+                <img src="/vouch.png" alt="logo" height="50px">
+            </div>
+            <h4 class="loginh1">Sign Up</h4>
             <div>
                 <ul class="tab-login">
                     <div>
@@ -154,6 +126,12 @@
                     </button>
                 </div>
             </div>
+            <div class="col-md-12 m-auto" style="width:fit-content">
+                <label for="sign-up">Don't have an account yet?</label>
+                <div class="m-auto" style="width:fit-content">
+                    <a href="{{ route('login') }}">Login</a>
+                </div>
+            </div>
         </form>
                 </div>
 
@@ -250,6 +228,12 @@
                             </button>
                         </div>
                     </div>
+                    <div class="col-md-12 m-auto" style="width:fit-content">
+                        <label for="sign-up">Don't have an account yet?</label>
+                        <div class="m-auto" style="width:fit-content">
+                            <a href="{{ route('login') }}">Login</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -257,58 +241,57 @@
 </div>
 @endsection
 
-
 @section('javascripts')
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var Swipes = new Swiper('.swiper-container', {
+            autoplay: {
+                delay: 3000,
+            },
+            speed: 500,
+            slidesPerView: 'auto',
+            loop: true,
+        });
+        $('.tab-login li, .pan').removeClass('active');
 
+        var current_tab = localStorage.getItem("current_tab") || 'vouchpanel3',
+            element     = $(".tab-login li")
+                        .parent('div')
+                        .find("[rel="+current_tab+"]")
+                        .addClass('active');
 
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.tab-login li, .pan').removeClass('active');
+    // new .pan code
+    var pan = $('.pan')
+        .parent('.wrapper-pan') // <-- This used to be .tab-pan (old parent)
+        .find('.' + current_tab + '-content')
+        .addClass('active')
 
-	var current_tab = localStorage.getItem("current_tab") || 'vouchpanel3',
-  		element     = $(".tab-login li")
-                      .parent('div')
-                      .find("[rel="+current_tab+"]")
-                      .addClass('active');
-
-  // new .pan code
-  var pan = $('.pan')
-    .parent('.col-md-8') // <-- This used to be .tab-pan (old parent)
-    .find('.' + current_tab + '-content')
-    .addClass('active')
-
-	// this code is switching from tab to tab
-  // im in the class tab-panels > ul tab-vouch > grabing the li
-  $('.tab-pan .tab-login li').on('click', function() {
-    var $panels = $(this).closest('.tab-pan');
-    $panels.find('.tab-login li.active').removeClass('active');
-    $(this).addClass('active');
-
-    // use if to check which tab has class of current_tab
-    if ($('.pan').hasClass(current_tab)) {
-    	$(this).addClass('active');
-    }
-
-    var loginpanelshow = $(this).attr('rel');
-
-    $('.tab-pan .pan.active').stop().slideUp(300, function(){
-      $(this).removeClass('active');
-      $('#'+ loginpanelshow).slideDown(300, function(){
+        // this code is switching from tab to tab
+    // im in the class tab-panels > ul tab-vouch > grabing the li
+    $('.tab-pan .tab-login li').on('click', function() {
+        var $panels = $(this).closest('.tab-pan');
+        $panels.find('.tab-login li.active').removeClass('active');
         $(this).addClass('active');
-      });
+
+        // use if to check which tab has class of current_tab
+        if ($('.pan').hasClass(current_tab)) {
+            $(this).addClass('active');
+        }
+
+        var loginpanelshow = $(this).attr('rel');
+
+        $('.tab-pan .pan.active').stop().slideUp(300, function(){
+        $(this).removeClass('active');
+        $('#'+ loginpanelshow).slideDown(300, function(){
+            $(this).addClass('active');
+        });
+        });
+
+        // this is the code that i attempted to use local storage to save on refresh
+        var relAtt = $(this).attr('rel');
+        localStorage.setItem("current_tab", relAtt);
+        /* console.log(relAtt); */
+        });
     });
-
-    // this is the code that i attempted to use local storage to save on refresh
-    var relAtt = $(this).attr('rel');
-    localStorage.setItem("current_tab", relAtt);
-    /* console.log(relAtt); */
-	});
-});
-
-
-
-
-</script>
-
-
+    </script>
 @endsection

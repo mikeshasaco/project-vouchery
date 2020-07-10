@@ -1,5 +1,5 @@
 .content{
-    background-image: url(http://www.powerpointstemplate.com/wp-content/uploads/2017/02/Red-abstract-composition-vector-ppt-backgrounds.jpg);
+    background-image: url(/top_img.jpg);
     background-size: 100% 240px;
     background-repeat: no-repeat;
     padding: 180px 10px 0px 10px;
@@ -17,13 +17,26 @@
     margin-left: 2em;
     margin-top: 0.5em;
 }
+.compayavarta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .companyimage{
     width:115px;
-    margin: auto;
     height: 115px;
     border: 1px solid #DEE0E1;
     background-color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
+/* .companyimage img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0px, -50%);
+} */
 .profile-bottom{
     display: flex;
     color: #000;

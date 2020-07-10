@@ -15,13 +15,8 @@
             <h5 class="show-currentprice"> Current Price: <strike>${{$value->currentprice}}</h5></strike>
             <h5 class="show-newprice"> You Pay: ${{$value->newprice}}</h5>
             <a href="#" class="btn btn-outline-danger btn-block weblink" style="margin-left:-120%; margin-top:80px;">View Deal</a>
-
-
           </div>
-
         </div>
-
       @endforeach
-
-        </div>
-      </div>
+  </div>
+</div>

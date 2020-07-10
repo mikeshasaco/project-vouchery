@@ -1,15 +1,12 @@
 @extends('layouts.master')
 @section(': title')
-
-    @section('content')
+@section('content')
 @if($user == null)
     <div class="col-md-12" align="center">
         <h1 align="center" style="margin:20%; margin-top:18%;"> User <b style="color:red;">{{ $usernotexist }}</b> Not Found </h1>
     </div>
 
 @else
-
-{{--style="height:128px; width:128px;"  --}}
 
 <div class="container">
     <div class=" profileheaderrow"  >
@@ -19,7 +16,8 @@
                 <div class="profile-info ">
                     <div class="firstinfo">
                         <div class="compayavarta">
-                            <img src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }}" class="companyimage rounded-circle" >
+                            <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }})">
+                            </div>
                             @if(Auth::id() == $user->id)
                                       <!-- Button trigger modal -->
                                       {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">

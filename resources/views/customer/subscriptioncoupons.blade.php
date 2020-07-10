@@ -1,13 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-    {{-- <style >
-    body{
-        background-color: white;
-    }
-
-    </style> --}}
     <div class="container">
         <section id="subscriptioncoupons" class="">
             <div class="container">

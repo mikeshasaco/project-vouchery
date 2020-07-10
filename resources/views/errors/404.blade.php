@@ -115,7 +115,6 @@
 }
 body {
   background-color: #FDFAF5;
-  margin-bottom: 50px;
   margin-top: 10%;
 }
 html, button, input, select, textarea {

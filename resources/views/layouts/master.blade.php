@@ -54,6 +54,7 @@
 	<link rel="stylesheet" href="{{ asset('css/table.css') }}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
 	 @yield('styles')
 	<title>@yield('title') VoucheryHub: Coupons, Deals</title>
 </head>
@@ -69,9 +70,6 @@
 	@include('inc.nav')
 
 @else
-	@include('inc.mobilenavbar')
-	@include('inc.guest')
-
 @endif
 
 	@include('inc.modal')
@@ -262,6 +260,8 @@ setTimeout(function() {
 	<script type="text/javascript" src="{{ URL::asset('js/clickfeature.js') }}"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+
 	@yield('javascripts')
 
 

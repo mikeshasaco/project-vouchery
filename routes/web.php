@@ -11,46 +11,47 @@ Route::post('/help/questions', 'AskEmailController@store')->name('help.store');
 Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');
-
-
-Route::get('/', 'PagesController@index')->name('homepage');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('product', 'ProductsController@store')->name('product.store');
-Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
-Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
 
-// search filter
-Route::get('/search', 'SearchController@search')->name('search');
+Route::group(['middleware'=>'all'],function(){
+    Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
+    // Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('product', 'ProductsController@store')->name('product.store');
+    Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
+    Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
 
-// vue filter
-Route::post('/get', 'PagesController@getData');
-Route::post('/filter', 'PagesController@filterData');
+    // search filter
+    Route::get('/search', 'SearchController@search')->name('search');
 
-// Subscribe
-Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
-Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
-Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
-Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
-Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+    // vue filter
+    Route::post('/get', 'PagesController@getData');
+    Route::post('/filter', 'PagesController@filterData');
 
-// account page
-Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
-Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
-Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
-Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
+    // Subscribe
+    Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
+    Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
+    Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
+    Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
+    Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
 
-Route::get('/account/{slug}/follow', 'AccountsController@follow');
-Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
+    // account page
+    Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
+    Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
+    Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
+    Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
 
-Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
-Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
-Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
+    Route::get('/account/{slug}/follow', 'AccountsController@follow');
+    Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
 
-// delete post
-Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
+    Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
+    Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
+    Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
 
+    // delete post
+    Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
+    Route::post('/product/{id}/click', 'ClicksController@postClicks');
+});
 //old admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
 
@@ -99,12 +100,14 @@ Route::group(['prefix'=> 'customer'], function () {
     Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm')->name('customer.password.reset');
 
     // Customer profile update profile and update
-    Route::get('/{customerslug}', 'CustomerController@index')->middleware('customer')->name('customerprofile');
-    Route::post('/{customerslug}/updatecustomer', 'CustomerController@update')->name('update.customer');
+    Route::group(['middleware'=> 'customer'], function(){
+        Route::get('/{customerslug}', 'CustomerController@index')->name('customerprofile');
+        Route::post('/{customerslug}/updatecustomer', 'CustomerController@update')->name('update.customer');
 
-    Route::get('/{customerslug}/customerunfollow/{id}', 'CustomerController@customerunfollow');
-    //subscription coupons
-    Route::get('/{customerslug}/subscriptioncoupons', 'CustomerController@subscriptioncoupons')->name('subscription.coupons');
+        Route::get('/{customerslug}/customerunfollow/{id}', 'CustomerController@customerunfollow');
+        //subscription coupons
+        Route::get('/{customerslug}/subscriptioncoupons', 'CustomerController@subscriptioncoupons')->name('subscription.coupons');
+    });
 });
 
 // verify merchant email verification
@@ -113,5 +116,3 @@ Route::get('/account/merchant/verify/{token}', 'Auth\RegisterController@verifyMe
 // verify customer email verification
 Route::get('/account/customer/verify/{token}', 'CustomerAuth\RegisterController@verifyCustomer');
 
-
-Route::post('/product/{id}/click', 'ClicksController@postClicks');
