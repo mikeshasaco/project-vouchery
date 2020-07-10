@@ -12,6 +12,7 @@ return array(
     'App\\Click' => $baseDir . '/app/Click.php',
     'App\\Console\\Commands\\Addearning' => $baseDir . '/app/Console/Commands/Addearning.php',
     'App\\Console\\Commands\\DeleteCoupons' => $baseDir . '/app/Console/Commands/DeleteCoupons.php',
+    'App\\Console\\Commands\\Deleteearning' => $baseDir . '/app/Console/Commands/Deleteearning.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Customer' => $baseDir . '/app/Customer.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

@@ -1,0 +1,387 @@
+@extends('layouts.master')
+@section('content')
+    <style>
+    body{
+        background-color: white;
+    }
+    .tab-login{
+        display: flex;
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .tab-login div{
+        width: 50%;
+    }
+    .tab-login li{
+        text-align: center;
+        line-height: 3em;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        list-style: none;
+        cursor: pointer;
+    }
+    .tab-pan ul li.active{
+        background-color: #B8606E;
+        color: white;
+    }
+    .tab-pan ul li{
+        border-bottom: solid #d9d9d9;
+        border-width:  0px 0 3px  ;
+    }
+
+    .tab-pan .pan{
+        display: none;
+    }
+    .tab-pan .pan.active{
+        display: block;
+    }
+
+    .introfooter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 5px 0;
+        color: #8a96a3;
+        border-top: 1px solid rgba(138,150,163,0.2);
+        font-size: 15px;
+
+    }
+    .introfooter nav {
+        display: flex;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 5px 0;
+
+    }
+    .introfootermenu{
+        color: inherit;
+        padding: 0;
+        margin: 4px 15px;
+    }
+
+    </style>
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+                    <img src="/iphonew.png"   style="margin-top: 16px; height:780px; width: 440px;" >
+        </div>
+
+        <div class="col-md-6 col-lg-6">
+
+            
+    <div class=" tab-pan row justify-content-center">
+        <div class="col-md-8" style="margin-top: 71px">
+            <img src="/vouch.png"  width="237" height="59" style="margin-left: 74px">
+            <h6> <b> Sign up to make money and interact with your customers!</b></h6>
+
+            <h1 class="registerh1">Sign Up</h1>
+            <div>
+                <ul class="tab-login">
+                    <div>
+                        <li rel="vouchpanel3" class=" vouchpanel3 active">Customer</li>
+                    </div>
+                    <div>
+                        <li rel="vouchpanel4" class="vouchpanel4">Merchant</li>
+                    </div>
+                </ul>
+            </div>
+        <div id="vouchpanel3" class="pan vouchpanel3-content active">
+
+            <form method="POST" action="{{ route('customer.register') }}" style="margin-top:8%;">
+            @csrf
+            
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <input id="name1" style="height:3rem;font-size:16px;font-weight:400" placeholder="Enter Full Name"
+                    type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  name="name" value="{{ old('name') }}" required autofocus>
+
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                  <input id="username1" placeholder="Enter a UserName (No Spaces & No Special Characters)" style="height:3rem;font-size:16px;font-weight:400"
+                  type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+
+                  @if ($errors->has('username'))
+                      <span class="invalid-feedback">
+                          <strong>{{ $errors->first('username') }}</strong>
+                      </span>
+                  @endif
+              </div>
+          </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <input id="email1" placeholder="Enter a Email" style="height:3rem;font-size:16px;font-weight:400"
+                     type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <input id="password1" placeholder="Enter Password" style="height:3rem;font-size:16px;font-weight:400"
+                    type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-md-12">
+                    <input id="password-confirm1" placeholder="Password Confirmation" style="height:3rem;font-size:16px;font-weight:400"
+                     type="password" class="form-control" name="password_confirmation" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}">
+                        @if($errors->has('g-recaptcha-response'))
+                            <span class="invalid-feedback" style="display:block">
+                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+
+                            </span>
+                        @endif
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <label for="register-term">
+                    By clicking an option below, I agree to the <a href="{{ route('termsof') }}">Term of Use</a> and the <a href="{{ route('privacy') }}">Privacy Statement</a>.
+                </label>
+
+            </div>
+
+            <div class="form-group row mb-0">
+                <div class="col-md-12">
+                    <button type="submit" class="loginandregister" style="width:100%; height:3rem; font-size:18px; padding:2px 0px 2px 0;">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </form>
+
+         <div class="col-md-12">
+                <h3 style="font-size: 18px; font-weight: 300; text-align: center;" >Already have an account?</h3>
+                <a style=" font-size: 18px; margin-left:120px;" href="{{ route('login') }}">Login</a>
+        </div>
+    </div>
+
+        <div id="vouchpanel4" class="pan vouchpanel4-content" style="margin-top:8%;">
+
+            <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input id="name" placeholder="Enter Full Name" style="height:3rem;font-size:16px;font-weight:400"
+                             maxlength="20" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                          <input id="company" placeholder="Enter Company Name (No Spaces & No Special Characters)" style="height:3rem;font-size:16px;font-weight:400"
+                          maxlength="16" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" required autofocus>
+
+                          @if ($errors->has('company'))
+                              <span class="invalid-feedback">
+                                  <strong>{{ $errors->first('company') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+                  </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input id="email" placeholder="Enter Email" style="height:3rem;font-size:16px;font-weight:400"
+                             type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input id="password" placeholder="Enter Password" style="height:3rem;font-size:16px;font-weight:400"
+                            type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input id="password-confirm" placeholder="Password Confirmation" style="height:3rem;font-size:16px;font-weight:400"
+                            type="password" class="form-control" name="password_confirmation" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}">
+                                @if($errors->has('g-recaptcha-response'))
+                                    <span class="invalid-feedback" style="display:block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+
+                                    </span>
+                                @endif
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="register-term">
+                            By clicking an option below, I agree to the <a href="{{ route('termsof') }}">Term of Use</a> and the <a href="{{ route('privacy') }}">Privacy Statement</a>.
+                        </label>
+
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-12">
+                            <button type="submit" style="width:100%; height:3rem; font-size:18px; padding:2px 0px 2px 0;" class="loginandregister">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="col-md-12">
+                    <h3 style="font-size: 18px; font-weight: 300; text-align: center;" >Already have an account?</h3>
+                <a style=" font-size: 18px; margin-left:120px;" href="{{ route('login') }}">Login</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container" style="padding 0 16px">
+    <div class="introfooter" >
+        <nav class="introfooter-menu">
+        <a href="{{route('faqroute')}}" class="introfootermenu">FAQs</a>
+        <a href="{{route('termsof')}}" class="introfootermenu">Terms</a>
+        <a href="{{route('privacy')}}" class="introfootermenu">Privacy</a>
+
+        </nav>
+
+
+    </div>
+
+
+</div>
+@endsection
+
+
+@section('javascripts')
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.tab-login li, .pan').removeClass('active');
+
+	var current_tab = localStorage.getItem("current_tab") || 'vouchpanel3',
+  		element     = $(".tab-login li")
+                      .parent('div')
+                      .find("[rel="+current_tab+"]")
+                      .addClass('active');
+
+  // new .pan code
+  var pan = $('.pan')
+    .parent('.col-md-8') // <-- This used to be .tab-pan (old parent)
+    .find('.' + current_tab + '-content')
+    .addClass('active')
+
+	// this code is switching from tab to tab
+  // im in the class tab-panels > ul tab-vouch > grabing the li
+  $('.tab-pan .tab-login li').on('click', function() {
+    var $panels = $(this).closest('.tab-pan');
+    $panels.find('.tab-login li.active').removeClass('active');
+    $(this).addClass('active');
+
+    // use if to check which tab has class of current_tab
+    if ($('.pan').hasClass(current_tab)) {
+    	$(this).addClass('active');
+    }
+
+    var loginpanelshow = $(this).attr('rel');
+
+    $('.tab-pan .pan.active').stop().slideUp(300, function(){
+      $(this).removeClass('active');
+      $('#'+ loginpanelshow).slideDown(300, function(){
+        $(this).addClass('active');
+      });
+    });
+
+    // this is the code that i attempted to use local storage to save on refresh
+    var relAtt = $(this).attr('rel');
+    localStorage.setItem("current_tab", relAtt);
+    /* console.log(relAtt); */
+	});
+});
+
+
+
+
+</script>
+
+
+@endsection

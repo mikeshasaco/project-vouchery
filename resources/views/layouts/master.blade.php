@@ -80,9 +80,12 @@
 
 
 	<!-- footer -->
-
+@if(auth()->guard('customer')->check() || auth()->guard('web')->check())
 	@include('footer')
 
+@else
+
+@endif
 
 	<!-- dataTables -->
 
