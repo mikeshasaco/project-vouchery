@@ -7,10 +7,6 @@ route::get('/404', 'AskEmailController@pagenotfound')->name('notfound');
 
 Route::get('/help/questions', 'AskEmailController@askemail')->name('help.quest');
 Route::post('/help/questions', 'AskEmailController@store')->name('help.store');
-
-Route::get('/Homepage', 'PagesController@homepagecover');
-
-
 Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');

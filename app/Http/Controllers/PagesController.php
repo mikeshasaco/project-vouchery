@@ -180,10 +180,4 @@ class PagesController extends Controller
         }
         return $productlower;
     }
-
-
-    public function homepagecover()
-    {
-        return view('inc.homepagecover');
-    }
 }
