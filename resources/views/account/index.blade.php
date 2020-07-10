@@ -104,9 +104,7 @@
 
     </div>
 
-</div>
-
-
+    
     <section id="accountsection" style="margin-bottom:4%;margin-top: 2em;">
 
         <div class="container">
@@ -222,7 +220,7 @@
             </div>
         </div>
     </section>
-
+    </div>
 
     <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
