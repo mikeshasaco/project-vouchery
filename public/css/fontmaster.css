@@ -123,6 +123,7 @@ background-color: #B35464;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
+    overflow: hidden;
     }
 #recentlyuploaded .subscriberonly{
     font-weight: bold;
@@ -259,6 +260,7 @@ background-color: #B35464;
     left: 141px;
     text-align: center;
     margin-top: -1px;
+    overflow: hidden;
     }
 
 /* All businesses Section */
@@ -298,6 +300,7 @@ background-color: #B35464;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
+    overflow: hidden;
     }
 #albusysection .subscriberonly{
     font-weight: bold;
@@ -365,6 +368,7 @@ background-color: #B35464;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
+    overflow: hidden;
 }
 #catbusysection .subscriberonly{
     font-weight: bold;
@@ -425,6 +429,7 @@ background-color: #B35464;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
+    overflow: hidden;
 }
 #advert-section .subscriberonly{
     font-weight: bold;
@@ -485,6 +490,7 @@ background-color: #B35464;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
+    overflow: hidden;
 }
 #subscriptioncoupons .subscriberonly{
     font-weight: bold;
@@ -612,6 +618,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
     margin-top: -2px;
+    overflow: hidden;
     }
 #accountsection .subscriberonly{
     font-weight: bold;

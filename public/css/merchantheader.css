@@ -159,4 +159,12 @@ a.subscribe_button:hover{
         margin-right: 0px;
 
     }
+    .profile-bottom{
+        display: block;
+    }
+    .websitebutton:after{
+        content: "";
+        padding: 0 5px;
+        color: #000;
+    }
 }
