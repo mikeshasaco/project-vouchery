@@ -299,7 +299,5 @@
     });
     </script>
 
-    <script>
-  fbq('track', 'CompleteRegistration');
-</script>
+
 @endsection
