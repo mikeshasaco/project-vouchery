@@ -38,6 +38,7 @@ return array(
     'App\\Http\\Controllers\\SubmissionsController' => $baseDir . '/app/Http/Controllers/SubmissionsController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
+    'App\\Http\\Middleware\\All' => $baseDir . '/app/Http/Middleware/All.php',
     'App\\Http\\Middleware\\CustomerMiddleware' => $baseDir . '/app/Http/Middleware/CustomerMiddleware.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',

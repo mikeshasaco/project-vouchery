@@ -22,7 +22,9 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-            <h4 class="loginh1">Sign Up</h4>
+  <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: #B8606E;">Business</span>  make extra money, and interact with <span style="color:blue;">Customers</span>.</h6>
+    <center> <h6 style="font-size: 14px; margin-top:-10px;">OR</h6></center>
+    <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: blue;"> Customer</span>, find top deals and interact with  <span style="color: #B8606E;">Businesses</span>. </h6>            <h4 class="loginh1">Sign Up</h4>
             <div>
                 <ul class="tab-login">
                     <div>
@@ -231,7 +233,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 m-auto" style="width:fit-content">
-                        <label for="sign-up">Don't have an account yet?</label>
+                        <label for="sign-up">Do you have an Account?</label>
                         <div class="m-auto" style="width:fit-content">
                             <a href="{{ route('login') }}">Login</a>
                         </div>

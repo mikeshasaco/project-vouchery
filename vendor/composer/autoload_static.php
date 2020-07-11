@@ -465,6 +465,7 @@ class ComposerStaticInit632c97099ba4b4477755f4368f1e769f
         'App\\Http\\Controllers\\SubmissionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubmissionsController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
+        'App\\Http\\Middleware\\All' => __DIR__ . '/../..' . '/app/Http/Middleware/All.php',
         'App\\Http\\Middleware\\CustomerMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/CustomerMiddleware.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
