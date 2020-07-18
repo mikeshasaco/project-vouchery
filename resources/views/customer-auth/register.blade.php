@@ -22,7 +22,7 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-          <center>  <h5>Grow your business, link your website coupons, earn extra income and interact with your customers! </h5></center>
+          <center>  <h5 style="color: #B8606E ">Sign Up your business to enter the marketplace, and earn extra income! </h5></center>
   {{-- <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: #B8606E;">Business</span>  make extra money, and interact with <span style="color:blue;">Customers</span>.</h6>
     <center> <h6 style="font-size: 14px; margin-top:-10px;">OR</h6></center>
     <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: blue;"> Customer</span>, find top deals and interact with  <span style="color: #B8606E;">Businesses</span>. </h6>            --}}
