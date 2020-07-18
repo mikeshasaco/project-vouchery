@@ -22,18 +22,21 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-          <center>  <h5 style="color: #B8606E ">Sign Up your business to enter the marketplace, and start earning extra income! </h5></center>
-  {{-- <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: #B8606E;">Business</span>  make extra money, and interact with <span style="color:blue;">Customers</span>.</h6>
-    <center> <h6 style="font-size: 14px; margin-top:-10px;">OR</h6></center>
-    <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: blue;"> Customer</span>, find top deals and interact with  <span style="color: #B8606E;">Businesses</span>. </h6>            --}}
+          <center>  <h5 style="color: #B8606E ">Register your business to join the marketplace, and start earning extra income! </h5></center>
+            {{-- <div class="ecom-types">
+                <img src="/etsy.png" alt="etsy" height="30px" width="30px">
+                <img src="/shopify.jpg" alt="shop" height="30px" width="30px">
+
+            </div> --}}
+
      <h4 class="loginh1">Sign Up</h4>
             <div>
                 <ul class="tab-login">
                     <div>
-                        <li rel="vouchpanel3" class=" vouchpanel3 active">Customer</li>
+                        <li rel="vouchpanel3" class=" vouchpanel3 active"> <b> Customer</b></li>
                     </div>
                     <div>
-                        <li rel="vouchpanel4" class="vouchpanel4">Merchant</li>
+                        <li rel="vouchpanel4" class="vouchpanel4"> <b>Merchant</b> </li>
                     </div>
                 </ul>
             </div>

@@ -40,10 +40,10 @@
             <div>
                 <ul class="tab-login">
                     <div>
-                        <li rel="vouchpanel3" class=" vouchpanel3 active">Customer</li>
+                        <li rel="vouchpanel3" class=" vouchpanel3 active"> <b> Customer</b></li>
                     </div>
                     <div>
-                        <li rel="vouchpanel4" class="vouchpanel4">Merchant</li>
+                        <li rel="vouchpanel4" class="vouchpanel4"> <b> Merchant</b></li>
                     </div>
                 </ul>
             </div>
