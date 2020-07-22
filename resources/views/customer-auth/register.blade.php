@@ -5,13 +5,13 @@
     <div class="phones-col">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/voucheryhubimg.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.PNG);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchbank.PNG);"> 
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider2.PNG);"> 
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchstatic.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider3.PNG);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchcoupon.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider4.PNG);">
                 </div>
             </div>
         </div>

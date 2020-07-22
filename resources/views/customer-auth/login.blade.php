@@ -16,7 +16,7 @@
     <div class="phones-col">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/voucheryhubimg.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.PNG);">
                 </div>
                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchbank.PNG);"> 
                 </div>
