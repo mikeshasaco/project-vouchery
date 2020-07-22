@@ -9,9 +9,9 @@
                 </div>
                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchbank.PNG);"> 
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider3.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchstatic.PNG);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider4.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchcoupon.PNG);">
                 </div>
             </div>
         </div>
