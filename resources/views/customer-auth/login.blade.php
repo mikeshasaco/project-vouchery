@@ -32,7 +32,7 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-          <center>  <h5 style="color: #B8606E ">Earn money from posting coupoons!</h5></center>
+          <center>  <h5 style="color: #B8606E ">Earn money from posting your business deals!</h5></center>
 
             <h4 class="loginh1">Sign In To Your Account!</h4>
             <div>

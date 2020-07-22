@@ -5,7 +5,7 @@
     <div class="phones-col">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchhome.png);">
                 </div>
                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider2.PNG);"> 
                 </div>
@@ -22,7 +22,7 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-          <center>  <h5 style="color: #B8606E ">Earn money from posting coupoons!</h5></center>
+          <center>  <h5 style="color: #B8606E ">Earn money from posting your business deals!</h5></center>
             {{-- <div class="ecom-types">
                 <img src="/etsy.png" alt="etsy" height="30px" width="30px">
                 <img src="/shopify.jpg" alt="shop" height="30px" width="30px">
