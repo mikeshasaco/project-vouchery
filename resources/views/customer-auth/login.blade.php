@@ -16,13 +16,13 @@
     <div class="phones-col">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.PNG);">
+                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchhome.png);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchbank.PNG);"> 
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchbank.png);"> 
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchstatic.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchstatic.png);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchcoupon.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchcoupon.png);">
                 </div>
             </div>
         </div>
