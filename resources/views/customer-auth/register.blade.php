@@ -7,7 +7,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchhome.png);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider2.PNG);"> 
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/slider/vouchbank.png);"> 
                 </div>
                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider3.PNG);">
                 </div>
