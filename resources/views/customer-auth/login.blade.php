@@ -32,9 +32,7 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-    <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: #B8606E;">Business</span>  make extra money, and interact with <span style="color:blue;">Customers</span>.</h6>
-    <center> <h6 style="font-size: 14px; margin-top:-10px;">OR</h6></center>
-    <h6 style="font-size: 14px; font-weight:300; ">Sign up as a <span style="color: blue;"> Customer</span>, find top deals and interact with  <span style="color: #B8606E;">Businesses</span>. </h6>
+          <center>  <h5 style="color: #B8606E ">Earn money from posting coupoons!</h5></center>
 
             <h4 class="loginh1">Sign In To Your Account!</h4>
             <div>
@@ -48,7 +46,7 @@
                 </ul>
             </div>
             
-            <div id="vouchpanel3" class="pan vouchpanel3-content active">
+            <div id="vouchpanel3" class="pan vouchpanel3-content ">
 
                     <form method="POST" action="{{ route('customer.login') }}" style="margin-top:8%;">
                         @csrf
@@ -121,7 +119,7 @@
                     </form>
                 </div>
 
-            <div id="vouchpanel4" class="pan vouchpanel4-content" style="margin-top:8%;">
+            <div id="vouchpanel4" class="pan vouchpanel4-content active" style="margin-top:8%;">
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -209,7 +207,7 @@
         $(document).ready(function() {
             $('.tab-login li, .pan').removeClass('active');
 
-            var current_tab = localStorage.getItem("current_tab") || 'vouchpanel3',
+            var current_tab = localStorage.getItem("current_tab") || 'vouchpanel4',
                 element     = $(".tab-login li")
                             .parent('div')
                             .find("[rel="+current_tab+"]")

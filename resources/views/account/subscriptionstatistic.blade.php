@@ -22,13 +22,11 @@
                         <table class="table">
                             <tr>
                                 <th>Username</th>
-                                <th>Email</th>
                                 <th>Subscription Price</th>
                             </tr>
                             @foreach($customers as $customer)
                                     <tr>
                                         <td> {{ $customer->username }}</td>
-                                        <td> {{ $customer->email }}</td>
                                         <td>${{ number_format($user->subscription_price,2) }}</td>
                                     </tr>
                             @endforeach

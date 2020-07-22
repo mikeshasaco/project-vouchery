@@ -5,9 +5,9 @@
     <div class="phones-col">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider1.PNG);">
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/voucheryhubimg.PNG);">
                 </div>
-                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider2.PNG);"> 
+                <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/vouchbank.PNG);"> 
                 </div>
                 <div class="swiper-slide" data-swiper-autoplay="3000" style="background-image: url(/slider3.PNG);">
                 </div>
@@ -22,7 +22,7 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-          <center>  <h5 style="color: #B8606E ">Register your business to join the marketplace, and start earning extra income! </h5></center>
+          <center>  <h5 style="color: #B8606E ">Earn money from posting coupoons!</h5></center>
             {{-- <div class="ecom-types">
                 <img src="/etsy.png" alt="etsy" height="30px" width="30px">
                 <img src="/shopify.jpg" alt="shop" height="30px" width="30px">
@@ -33,14 +33,14 @@
             <div>
                 <ul class="tab-login">
                     <div>
-                        <li rel="vouchpanel3" class=" vouchpanel3 active"> <b> Customer</b></li>
+                        <li rel="vouchpanel3" class=" vouchpanel3 "> <b> Customer</b></li>
                     </div>
                     <div>
-                        <li rel="vouchpanel4" class="vouchpanel4"> <b>Merchant</b> </li>
+                        <li rel="vouchpanel4" class="vouchpanel4 active"> <b>Merchant</b> </li>
                     </div>
                 </ul>
             </div>
-        <div id="vouchpanel3" class="pan vouchpanel3-content active">
+        <div id="vouchpanel3" class="pan vouchpanel3-content ">
 
             <form method="POST" action="{{ route('customer.register') }}" style="margin-top:8%;">
             @csrf
@@ -144,7 +144,7 @@
         </form>
                 </div>
 
-        <div id="vouchpanel4" class="pan vouchpanel4-content" style="margin-top:8%;">
+        <div id="vouchpanel4" class="pan vouchpanel4-content active" style="margin-top:8%;">
 
             <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -263,7 +263,7 @@
         });
         $('.tab-login li, .pan').removeClass('active');
 
-        var current_tab = localStorage.getItem("current_tab") || 'vouchpanel3',
+        var current_tab = localStorage.getItem("current_tab") || 'vouchpanel4',
             element     = $(".tab-login li")
                         .parent('div')
                         .find("[rel="+current_tab+"]")
