@@ -1034,8 +1034,8 @@ border-radius: 3px;
     color: #b35464;
 }
 .registercontainer{
-    margin-top:3em;
-    margin-bottom:3em;
+    margin-top:1em;
+    margin-bottom:1em;
     display: flex;
     justify-content: space-around;
 }
@@ -1043,8 +1043,8 @@ border-radius: 3px;
     text-decoration: none;
 }
 .logincontainer{
-    margin-top:3em;
-    margin-bottom:3em;
+    margin-top:1em;
+    margin-bottom:1em;
     display: flex;
     justify-content: space-around;
 }
@@ -1052,8 +1052,8 @@ border-radius: 3px;
     text-decoration: none;
 }
 .phones-col{
-    width: 440px;
-    height: 700px;
+    width: 436px;
+    height: 701px;
     background: url(/phones.png);
     position: relative;
     background-size: 100% 100%;
