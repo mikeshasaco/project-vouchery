@@ -32,7 +32,7 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-          <center>  <h5 style="color: black ">Earn money from posting your business deals to our Marketplace!</h5></center>
+          <center>  <h5 style="color: black ">Earn money from posting your business virtual deals to our Marketplace!</h5></center>
           <center>  <h5 style="color: black ">Earn up to: $1000/month</h5></center>
 
 
