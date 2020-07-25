@@ -50,6 +50,9 @@ Route::group(['middleware'=>'all'],function(){
     Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
     Route::post('/product/{id}/click', 'ClicksController@postClicks');
+
+    // welcome page
+    Route::get('/welcome/voucheryhub', 'PagesController@loading')->middleware('auth');
 });
 //old admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {

@@ -180,4 +180,9 @@ class PagesController extends Controller
         }
         return $productlower;
     }
+
+    public function loading()
+    {
+        return view('pages.loading');
+    }
 }

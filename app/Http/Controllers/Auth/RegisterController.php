@@ -96,7 +96,10 @@ class RegisterController extends Controller
 // }
 
     protected function redirectto(){
-        return '/account/'. auth()->user()->slug;
+        // return '/account/'. auth()->user()->slug;
+
+        return '/welcome/voucheryhub';
+
     }
 
 
