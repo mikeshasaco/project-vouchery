@@ -23,7 +23,7 @@
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
          <center>  <h5 style="color: black ">Earn money from posting your business virtual deals to our Marketplace!</h5></center>
-          <center>  <h5 style="color: black ">Earn up to: $1000/month</h5></center>
+          <center>  <h5 style="color: black "><b> Earn up to: $1000/month </b> </h5></center>
           {{-- <center>  <h5 style="color: #B8606E ">Earn money from posting your business deals!</h5></center> --}}
             {{-- <div class="ecom-types">
                 <img src="/etsy.png" alt="etsy" height="30px" width="30px">
@@ -31,7 +31,7 @@
 
             </div> --}}
 
-     <h4 class="loginh1" style="color: black">Sign Up</h4>
+     <h4 class="loginh1" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4>
             <div>
                 <ul class="tab-login">
                     <div>
@@ -250,6 +250,10 @@
         </div>
     </div>
 </div>
+
+<section>
+
+</section>
 @endsection
 
 @section('javascripts')
