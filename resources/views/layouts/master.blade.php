@@ -13,6 +13,17 @@
 
 {{--  tab icon--}}
 	<link rel="shortcut icon" href="/vouchtab.png">
+
+	<!-- Global site tag (gtag.js) - Google Ads: 757039582 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-757039582"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-757039582');
+</script>
+
 		
 	{{-- ads --}}
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

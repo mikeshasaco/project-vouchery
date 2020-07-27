@@ -74,4 +74,10 @@ src="https://www.facebook.com/tr?id=387119268900181&ev=PageView
 </noscript>
 <!-- End Facebook Pixel Code -->
 
+<!-- Event snippet for Sign-up-conversions conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-757039582/gAXFCPCX7tgBEN6D_ugC'});
+</script>
+
+
 @endsection
