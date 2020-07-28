@@ -31,7 +31,7 @@
 
             </div> --}}
 
-     <h4 class="loginh1" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4>
+     <h4 class="loginh1" style="margin-top: -9px" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4>
             <div>
                 <ul class="tab-login">
                     <div>
