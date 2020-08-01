@@ -23,7 +23,7 @@
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
          <center>  <h5 style="color: black ">Sign up to make money and interact with your customers!</h5></center>
-          <center>  <h5 style="color: black "><b> Earn up to: $500/month </b> </h5></center>
+          {{-- <center>  <h5 style="color: black "><b> Earn up to: $500/month </b> </h5></center> --}}
           {{-- <center>  <h5 style="color: #B8606E ">Earn money from posting your business deals!</h5></center> --}}
             {{-- <div class="ecom-types">
                 <img src="/etsy.png" alt="etsy" height="30px" width="30px">

@@ -18,6 +18,6 @@ class All
         if (auth()->guard('customer')->check()||Auth::check()) {
             return $next($request);
         }
-        return redirect('/login');
+        return redirect('/home');
     }
 }

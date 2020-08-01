@@ -10,6 +10,8 @@ Route::post('/help/questions', 'AskEmailController@store')->name('help.store');
 Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');
+Route::get('/home', 'PagesController@landingpage');
+
 Auth::routes();
 
 Route::group(['middleware'=>'all'],function(){

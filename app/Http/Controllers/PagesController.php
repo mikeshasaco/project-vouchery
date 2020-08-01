@@ -185,4 +185,13 @@ class PagesController extends Controller
     {
         return view('pages.loading');
     }
+
+    public function landingpage()
+    {
+        if (Auth::user() || Auth::guard('customer')->user()) {
+            return redirect('/');
+        } else {
+            return view('pages.landingpage');
+        }
+    }
 }
