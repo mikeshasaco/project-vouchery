@@ -86,7 +86,7 @@
     </section> --}}
     <section id="recentlyuploaded" style="margin-bottom:90px;">
         <div class="container">
-            <div class="row" >
+            <div class="row w-100" >
 
                 @forelse($products as $product)
                 <div class="col-md-6 col-lg-4 col-12">
