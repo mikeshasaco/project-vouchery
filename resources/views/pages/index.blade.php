@@ -166,6 +166,7 @@
             </div>
         </div>
     </section>
+
     <!-- <section id="category-pic" class="d-none d-lg-block" style="margin-top:60px;">
         <div>
             <h3 style="text-align:center; font-weight:bold; font-size:24px;">Browse Through Different Businesses Categories! </h3>

@@ -22,7 +22,9 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-         <center>  <h5 style="color: black ">Sign up to make money and interact with your customers!</h5></center>
+        <center>  <h5 style="color: black "> <b> Sign up your business, earn a monthly income and interact with your customers.</b></h5></center>
+
+         {{-- <center>  <h5 style="color: black ">Sign up to make money and interact with your customers!</h5></center> --}}
           {{-- <center>  <h5 style="color: black "><b> Earn up to: $500/month </b> </h5></center> --}}
           {{-- <center>  <h5 style="color: #B8606E ">Earn money from posting your business deals!</h5></center> --}}
             {{-- <div class="ecom-types">
@@ -30,8 +32,9 @@
                 <img src="/shopify.jpg" alt="shop" height="30px" width="30px">
 
             </div> --}}
+         <center>  <h5 class="loginh1" style="margin-top: -9px" style="color: black; opacity:0.8%;"> <b> Sign up to enter marketplace.</b> </h5></center> 
 
-     <h4 class="loginh1" style="margin-top: -9px" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4>
+     {{-- <h4 class="loginh1" style="margin-top: -9px" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4> --}}
             <div>
                 <ul class="tab-login">
                     <div>
@@ -251,9 +254,7 @@
     </div>
 </div>
 
-<section>
 
-</section>
 @endsection
 
 @section('javascripts')

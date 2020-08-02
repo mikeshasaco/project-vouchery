@@ -21,6 +21,8 @@
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
+    	{{-- <link href="{{ asset('css/fontmaster.css') }}" rel="stylesheet"> --}}
+
     <link href="css/landing-template/bootstrap.css" rel="stylesheet">
     {{-- <link href="css/landing-template/fontawesome-all.css" rel="stylesheet"> --}}
     	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -32,6 +34,7 @@
 	<link rel="shortcut icon" href="/vouchtab.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
+
     
     <!-- Preloader -->
 	<div class="spinner-wrapper">
@@ -447,7 +450,12 @@
         </div> <!-- end of container -->
     </div> <!-- end of copyright --> 
     <!-- end of copyright -->
-    
+    @include('inc.signupblocker')
+
+
+
+    	{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> --}}
+
     	
     <!-- Scripts -->
     <script src="js/landing-template/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
@@ -458,5 +466,70 @@
     <script src="js/landing-template/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/landing-template/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/landing-template/scripts.js"></script> <!-- Custom scripts -->
+
+
+    
+        <script>
+// $('#overlay').modal('show');
+
+setTimeout(function() {
+    $('#overlay').modal('show');
+}, 10000);
+
+
+</script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var Swipes = new Swiper('.swiper-container', {
+            autoplay: {
+                delay: 3000,
+            },
+            speed: 500,
+            slidesPerView: 'auto',
+            loop: true,
+        });
+        $('.tab-login li, .pan').removeClass('active');
+
+        var current_tab = localStorage.getItem("current_tab") || 'vouchpanel4',
+            element     = $(".tab-login li")
+                        .parent('div')
+                        .find("[rel="+current_tab+"]")
+                        .addClass('active');
+
+    // new .pan code
+    var pan = $('.pan')
+        .parent('.wrapper-pan') // <-- This used to be .tab-pan (old parent)
+        .find('.' + current_tab + '-content')
+        .addClass('active')
+
+        // this code is switching from tab to tab
+    // im in the class tab-panels > ul tab-vouch > grabing the li
+    $('.tab-pan .tab-login li').on('click', function() {
+        var $panels = $(this).closest('.tab-pan');
+        $panels.find('.tab-login li.active').removeClass('active');
+        $(this).addClass('active');
+
+        // use if to check which tab has class of current_tab
+        if ($('.pan').hasClass(current_tab)) {
+            $(this).addClass('active');
+        }
+
+        var loginpanelshow = $(this).attr('rel');
+
+        $('.tab-pan .pan.active').stop().slideUp(300, function(){
+        $(this).removeClass('active');
+        $('#'+ loginpanelshow).slideDown(300, function(){
+            $(this).addClass('active');
+        });
+        });
+
+        // this is the code that i attempted to use local storage to save on refresh
+        var relAtt = $(this).attr('rel');
+        localStorage.setItem("current_tab", relAtt);
+        /* console.log(relAtt); */
+        });
+    });
+    </script>
 </body>
 </html>

@@ -32,12 +32,12 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-         <center>  <h5 style="color: black ">Sign up to make money and interact with your customers!</h5></center>
+         {{-- <center>  <h5 style="color: black "> <b> Sign in to the marketplace </b></h5></center> --}}
           {{-- <center>  <h5 style="color: black ">Earn money from posting your business virtual deals to our Marketplace!</h5></center> --}}
           {{-- <center>  <h5 style="color: black ">Earn up to: $1000/month</h5></center> --}}
 
 
-            <h4 class="loginh1" style="color: black">Sign In To Your Account!</h4>
+            <h4 class="loginh1" style="color: black"> <b> Sign In To Your Account</b></h4>
             <div>
                 <ul class="tab-login">
                     <div>

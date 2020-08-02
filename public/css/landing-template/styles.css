@@ -4,6 +4,57 @@ html {
     width: 100%;
 	height: 100%;
 }
+}
+.tab-pan .wrapper-pan{
+    max-width: 400px;
+}
+.tab-pan .logo{
+    margin: auto;
+    width: fit-content;
+    margin: 1em auto;
+}
+.tab-login{
+    display: flex;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.tab-login div{
+    width: 50%;
+}
+.tab-login li{
+    text-align: center;
+    line-height: 3em;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    list-style: none;
+    cursor: pointer;
+}
+.tab-pan ul li.active{
+    background-color: #B8606E;
+    color: white;
+}
+.tab-pan ul li{
+    border-bottom: solid #d9d9d9;
+    border-width:  0px 0 3px  ;
+}
+
+.tab-pan .pan{
+    display: none;
+}
+.tab-pan .pan.active{
+    display: block;
+}
+.tab-pan .loginandregister{
+    width:100%;
+    height:3rem;
+    font-size:18px;
+    padding:2px 0px 2px 0;
+    margin: 1em auto;
+}
+
 
 body, p {
 	color: #555; 
