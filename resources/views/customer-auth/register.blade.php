@@ -212,7 +212,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <div class="col-md-12">
                             <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}">
                                 @if($errors->has('g-recaptcha-response'))
@@ -226,7 +226,7 @@
 
                         </div>
 
-                    </div>
+                    </div> --}}
 
                     <div class="col-md-12">
                         <label for="register-term">
