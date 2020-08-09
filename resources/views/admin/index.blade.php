@@ -88,4 +88,29 @@
 </section>
 
 
+<section style="margin-top:40px; margin-bottom:6%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Merchants <i>({{$adminusercount}})</i>  </h5>
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Email</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach($adminallusers as $adminusers)
+                    <tr>
+                    <th scope="row">{{$adminusers->email}}</th>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
