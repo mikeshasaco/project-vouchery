@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <div class="col-md-12">
                     <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}">
                         @if($errors->has('g-recaptcha-response'))
@@ -125,7 +125,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
             <div class="col-md-12">
                 <label for="register-term">
                     By clicking an option below, I agree to the <a href="{{ route('termsof') }}">Term of Use</a> and the <a href="{{ route('privacy') }}">Privacy Statement</a>.
