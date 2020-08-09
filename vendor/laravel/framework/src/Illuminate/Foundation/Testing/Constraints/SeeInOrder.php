@@ -38,11 +38,15 @@ class SeeInOrder extends Constraint
      * @param  array  $values
      * @return bool
      */
-    public function matches($values) : bool
+    public function matches($values): bool
     {
         $position = 0;
 
         foreach ($values as $value) {
+            if (empty($value)) {
+                continue;
+            }
+
             $valuePosition = mb_strpos($this->content, $value, $position);
 
             if ($valuePosition === false || $valuePosition < $position) {
@@ -63,7 +67,7 @@ class SeeInOrder extends Constraint
      * @param  array  $values
      * @return string
      */
-    public function failureDescription($values) : string
+    public function failureDescription($values): string
     {
         return sprintf(
             'Failed asserting that \'%s\' contains "%s" in specified order.',
@@ -77,7 +81,7 @@ class SeeInOrder extends Constraint
      *
      * @return string
      */
-    public function toString() : string
+    public function toString(): string
     {
         return (new ReflectionClass($this))->name;
     }

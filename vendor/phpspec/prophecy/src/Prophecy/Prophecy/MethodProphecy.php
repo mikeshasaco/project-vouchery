@@ -70,16 +70,16 @@ class MethodProphecy
             $this->withArguments($arguments);
         }
 
-        if (version_compare(PHP_VERSION, '7.0', '>=') && true === $reflectedMethod->hasReturnType()) {
-            $type = (string) $reflectedMethod->getReturnType();
+        if (true === $reflectedMethod->hasReturnType()) {
+            $type = $reflectedMethod->getReturnType()->getName();
 
             if ('void' === $type) {
                 $this->voidReturnType = true;
-                return;
             }
 
             $this->will(function () use ($type) {
                 switch ($type) {
+                    case 'void': return;
                     case 'string': return '';
                     case 'float':  return 0.0;
                     case 'int':    return 0;
@@ -92,10 +92,7 @@ class MethodProphecy
 
                     case 'Traversable':
                     case 'Generator':
-                        // Remove eval() when minimum version >=5.5
-                        /** @var callable $generator */
-                        $generator = eval('return function () { yield; };');
-                        return $generator();
+                        return (function () { yield; })();
 
                     default:
                         $prophet = new Prophet;
@@ -178,6 +175,38 @@ class MethodProphecy
         }
 
         return $this->will(new Promise\ReturnPromise(func_get_args()));
+    }
+
+    /**
+     * @param array $items
+     *
+     * @return $this
+     *
+     * @throws \Prophecy\Exception\InvalidArgumentException
+     */
+    public function willYield($items)
+    {
+        if ($this->voidReturnType) {
+            throw new MethodProphecyException(
+                "The method \"$this->methodName\" has a void return type, and so cannot yield anything",
+                $this
+            );
+        }
+
+        if (!is_array($items)) {
+            throw new InvalidArgumentException(sprintf(
+                'Expected array, but got %s.',
+                gettype($items)
+            ));
+        }
+
+        $generator =  function() use ($items) {
+            foreach ($items as $key => $value) {
+                yield $key => $value;
+            }
+        };
+
+        return $this->will($generator);
     }
 
     /**
@@ -279,6 +308,18 @@ class MethodProphecy
     }
 
     /**
+     * Sets call times prediction to the prophecy.
+     *
+     * @see \Prophecy\Prediction\CallTimesPrediction
+     *
+     * @return $this
+     */
+    public function shouldBeCalledOnce()
+    {
+        return $this->shouldBeCalledTimes(1);
+    }
+
+    /**
      * Checks provided prediction immediately.
      *
      * @param callable|Prediction\PredictionInterface $prediction
@@ -370,6 +411,18 @@ class MethodProphecy
     public function shouldHaveBeenCalledTimes($count)
     {
         return $this->shouldHave(new Prediction\CallTimesPrediction($count));
+    }
+
+    /**
+     * Checks call times prediction.
+     *
+     * @see \Prophecy\Prediction\CallTimesPrediction
+     *
+     * @return $this
+     */
+    public function shouldHaveBeenCalledOnce()
+    {
+        return $this->shouldHaveBeenCalledTimes(1);
     }
 
     /**

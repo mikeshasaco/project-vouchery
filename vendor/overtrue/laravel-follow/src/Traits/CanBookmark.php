@@ -24,9 +24,9 @@ trait CanBookmark
      * @param int|array|\Illuminate\Database\Eloquent\Model $targets
      * @param string                                        $class
      *
-     * @return array
-     *
      * @throws \Exception
+     *
+     * @return array
      */
     public function bookmark($targets, $class = __CLASS__)
     {
@@ -52,9 +52,9 @@ trait CanBookmark
      * @param int|array|\Illuminate\Database\Eloquent\Model $targets
      * @param string                                        $class
      *
-     * @return array
-     *
      * @throws \Exception
+     *
+     * @return array
      */
     public function toggleBookmark($targets, $class = __CLASS__)
     {
