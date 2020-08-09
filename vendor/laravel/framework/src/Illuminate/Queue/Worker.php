@@ -123,7 +123,7 @@ class Worker
             // Finally, we will check to see if we have exceeded our memory limits or if
             // the queue should restart based on other indications. If so, we'll stop
             // this worker and let whatever is "monitoring" it restart the process.
-            $this->stopIfNecessary($options, $lastRestart, $job);
+            $this->stopIfNecessary($options, $lastRestart);
         }
     }
 
@@ -139,13 +139,7 @@ class Worker
         // We will register a signal handler for the alarm signal so that we can kill this
         // process if it is running too long because it has frozen. This uses the async
         // signals supported in recent versions of PHP to accomplish it conveniently.
-        pcntl_signal(SIGALRM, function () use ($job, $options) {
-            if ($job) {
-                $this->markJobAsFailedIfWillExceedMaxAttempts(
-                    $job->getConnectionName(), $job, (int) $options->maxTries, $this->maxAttemptsExceededException($job)
-                );
-            }
-
+        pcntl_signal(SIGALRM, function () {
             $this->kill(1);
         });
 
@@ -200,17 +194,16 @@ class Worker
      *
      * @param  \Illuminate\Queue\WorkerOptions  $options
      * @param  int  $lastRestart
-     * @param  mixed  $job
      */
-    protected function stopIfNecessary(WorkerOptions $options, $lastRestart, $job = null)
+    protected function stopIfNecessary(WorkerOptions $options, $lastRestart)
     {
         if ($this->shouldQuit) {
-            $this->stop();
-        } elseif ($this->memoryExceeded($options->memory)) {
+            $this->kill();
+        }
+
+        if ($this->memoryExceeded($options->memory)) {
             $this->stop(12);
         } elseif ($this->queueShouldRestart($lastRestart)) {
-            $this->stop();
-        } elseif ($options->stopWhenEmpty && is_null($job)) {
             $this->stop();
         }
     }
@@ -258,14 +251,10 @@ class Worker
             $this->exceptions->report($e);
 
             $this->stopWorkerIfLostConnection($e);
-
-            $this->sleep(1);
         } catch (Throwable $e) {
             $this->exceptions->report($e = new FatalThrowableError($e));
 
             $this->stopWorkerIfLostConnection($e);
-
-            $this->sleep(1);
         }
     }
 
@@ -327,10 +316,6 @@ class Worker
                 $connectionName, $job, (int) $options->maxTries
             );
 
-            if ($job->isDeleted()) {
-                return $this->raiseAfterJobEvent($connectionName, $job);
-            }
-
             // Here we will fire off the job and let it process. We will catch any exceptions so
             // they can be reported to the developers logs, etc. Once the job is finished the
             // proper events will be fired to let any listeners know this job has finished.
@@ -377,11 +362,7 @@ class Worker
             // so it is not lost entirely. This'll let the job be retried at a later time by
             // another listener (or this same one). We will re-throw this exception after.
             if (! $job->isDeleted() && ! $job->isReleased() && ! $job->hasFailed()) {
-                $job->release(
-                    method_exists($job, 'delaySeconds') && ! is_null($job->delaySeconds())
-                                ? $job->delaySeconds()
-                                : $options->delay
-                );
+                $job->release($options->delay);
             }
         }
 
@@ -412,7 +393,9 @@ class Worker
             return;
         }
 
-        $this->failJob($job, $e = $this->maxAttemptsExceededException($job));
+        $this->failJob($connectionName, $job, $e = new MaxAttemptsExceededException(
+            $job->resolveName().' has been attempted too many times or run too long. The job may have previously timed out.'
+        ));
 
         throw $e;
     }
@@ -431,24 +414,25 @@ class Worker
         $maxTries = ! is_null($job->maxTries()) ? $job->maxTries() : $maxTries;
 
         if ($job->timeoutAt() && $job->timeoutAt() <= Carbon::now()->getTimestamp()) {
-            $this->failJob($job, $e);
+            $this->failJob($connectionName, $job, $e);
         }
 
         if ($maxTries > 0 && $job->attempts() >= $maxTries) {
-            $this->failJob($job, $e);
+            $this->failJob($connectionName, $job, $e);
         }
     }
 
     /**
      * Mark the given job as failed and raise the relevant event.
      *
+     * @param  string  $connectionName
      * @param  \Illuminate\Contracts\Queue\Job  $job
      * @param  \Exception  $e
      * @return void
      */
-    protected function failJob($job, $e)
+    protected function failJob($connectionName, $job, $e)
     {
-        return $job->fail($e);
+        return FailingJob::handle($connectionName, $job, $e);
     }
 
     /**
@@ -557,7 +541,7 @@ class Worker
      */
     public function memoryExceeded($memoryLimit)
     {
-        return (memory_get_usage(true) / 1024 / 1024) >= $memoryLimit;
+        return (memory_get_usage() / 1024 / 1024) >= $memoryLimit;
     }
 
     /**
@@ -568,7 +552,7 @@ class Worker
      */
     public function stop($status = 0)
     {
-        $this->events->dispatch(new Events\WorkerStopping($status));
+        $this->events->dispatch(new Events\WorkerStopping);
 
         exit($status);
     }
@@ -581,26 +565,13 @@ class Worker
      */
     public function kill($status = 0)
     {
-        $this->events->dispatch(new Events\WorkerStopping($status));
+        $this->events->dispatch(new Events\WorkerStopping);
 
         if (extension_loaded('posix')) {
             posix_kill(getmypid(), SIGKILL);
         }
 
         exit($status);
-    }
-
-    /**
-     * Create an instance of MaxAttemptsExceededException.
-     *
-     * @param  \Illuminate\Contracts\Queue\Job|null  $job
-     * @return \Illuminate\Queue\MaxAttemptsExceededException
-     */
-    protected function maxAttemptsExceededException($job)
-    {
-        return new MaxAttemptsExceededException(
-            $job->resolveName().' has been attempted too many times or run too long. The job may have previously timed out.'
-        );
     }
 
     /**

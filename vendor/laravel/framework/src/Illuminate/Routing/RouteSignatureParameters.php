@@ -12,7 +12,7 @@ class RouteSignatureParameters
      * Extract the route action's signature parameters.
      *
      * @param  array  $action
-     * @param  string|null  $subClass
+     * @param  string  $subClass
      * @return array
      */
     public static function fromAction(array $action, $subClass = null)
@@ -34,7 +34,7 @@ class RouteSignatureParameters
      */
     protected static function fromClassMethodString($uses)
     {
-        [$class, $method] = Str::parseCallback($uses);
+        list($class, $method) = Str::parseCallback($uses);
 
         if (! method_exists($class, $method) && is_callable($class, $method)) {
             return [];

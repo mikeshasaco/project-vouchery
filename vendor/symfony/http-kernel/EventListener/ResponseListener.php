@@ -11,16 +11,14 @@
 
 namespace Symfony\Component\HttpKernel\EventListener;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * ResponseListener fixes the Response headers based on the Request.
  *
  * @author Fabien Potencier <fabien@symfony.com>
- *
- * @final since Symfony 4.3
  */
 class ResponseListener implements EventSubscriberInterface
 {
@@ -51,8 +49,8 @@ class ResponseListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return [
+        return array(
             KernelEvents::RESPONSE => 'onKernelResponse',
-        ];
+        );
     }
 }

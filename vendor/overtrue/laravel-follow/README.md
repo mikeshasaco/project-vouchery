@@ -25,11 +25,6 @@
 
 ## Installation
 
-### Required
-
-- PHP 7.0 +
-- Laravel 5.5 +
-
 You can install the package using composer
 
 ```sh
@@ -45,13 +40,13 @@ Overtrue\LaravelFollow\FollowServiceProvider::class
 Publish the migrations file:
 
 ```sh
-$ php artisan vendor:publish --provider="Overtrue\LaravelFollow\FollowServiceProvider" --tag="migrations"
+$ php artisan vendor:publish --provider='Overtrue\LaravelFollow\FollowServiceProvider' --tag="migrations"
 ```
 
 As optional if you want to modify the default configuration, you can publish the configuration file:
  
 ```sh
-$ php artisan vendor:publish --provider="Overtrue\LaravelFollow\FollowServiceProvider" --tag="config"
+$ php artisan vendor:publish --provider='Overtrue\LaravelFollow\FollowServiceProvider' --tag="config"
 ```
 
 And create tables:
@@ -82,7 +77,6 @@ use Overtrue\LaravelFollow\Traits\CanLike;
 use Overtrue\LaravelFollow\Traits\CanFavorite;
 use Overtrue\LaravelFollow\Traits\CanSubscribe;
 use Overtrue\LaravelFollow\Traits\CanVote;
-use Overtrue\LaravelFollow\Traits\CanBookmark;
 
 class User extends Model
 {
@@ -96,7 +90,7 @@ Add `CanBeXXX` Trait to target model, such as 'Post' or 'Music' ...:
 use Overtrue\LaravelFollow\Traits\CanBeLiked;
 use Overtrue\LaravelFollow\Traits\CanBeFavorited;
 use Overtrue\LaravelFollow\Traits\CanBeVoted;
-use Overtrue\LaravelFollow\Traits\CanBeBookmarked;
+use Overtrue\LaravelFollow\Traits\CanBookmarked;
 
 class Post extends Model
 {
@@ -116,7 +110,6 @@ $user->unfollow($targets)
 $user->toggleFollow($targets)
 $user->followings()->get() // App\User:class
 $user->followings(App\Post::class)->get()
-$user->areFollowingEachOther($anotherUser);
 $user->isFollowing($target)
 ```
 
@@ -296,16 +289,16 @@ $relations = FollowRelation::popular(App\Post::class)->paginate(15);
 
 ### Events
 
- - `Overtrue\LaravelFollow\Events\RelationAttaching`
- - `Overtrue\LaravelFollow\Events\RelationAttached`
- - `Overtrue\LaravelFollow\Events\RelationDetaching`
- - `Overtrue\LaravelFollow\Events\RelationDetached`
- - `Overtrue\LaravelFollow\Events\RelationToggling`
- - `Overtrue\LaravelFollow\Events\RelationToggled`
+ - `Overtrue\LaravelFollow\RelationAttaching`
+ - `Overtrue\LaravelFollow\RelationAttached`
+ - `Overtrue\LaravelFollow\RelationDetaching`
+ - `Overtrue\LaravelFollow\RelationDetached`
+ - `Overtrue\LaravelFollow\RelationToggling`
+ - `Overtrue\LaravelFollow\RelationToggled`
 
 
 ```php
-Event::listen(\Overtrue\LaravelFollow\Events\RelationAttached::class, function($event) {
+Event::listen(\Overtrue\LaravelFollow\RelationAttached::class, function($event) {
     // $event->causer; 
     // $event->getTargetsCollection(); 
     // $event->getRelationType();
@@ -314,19 +307,13 @@ Event::listen(\Overtrue\LaravelFollow\Events\RelationAttached::class, function($
 
 # About toggled event.
 
-There has a extra properties for `Overtrue\LaravelFollow\Events\RelationToggled` event.
+There has a extra properties for `Overtrue\LaravelFollow\RelationToggled` event.
 
 ```php
 $event->results; // ['attached' => [1, 2, 3], 'detached' => [5, 6]]
 $event->attached; // [1, 2, 3]
 $event->detached; // [5, 6]
 ```
-
-## PHP 扩展包开发
-
-> 想知道如何从零开始构建 PHP 扩展包？
->
-> 请关注我的实战课程，我会在此课程中分享一些扩展开发经验 —— [《PHP 扩展包实战教程 - 从入门到发布》](https://learnku.com/courses/creating-package)
 
 ## License
 

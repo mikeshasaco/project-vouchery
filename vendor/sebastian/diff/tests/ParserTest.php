@@ -38,10 +38,12 @@ final class ParserTest extends TestCase
 
         $diffs = $this->parser->parse($content);
 
+        $this->assertInternalType('array', $diffs);
         $this->assertContainsOnlyInstancesOf(Diff::class, $diffs);
         $this->assertCount(1, $diffs);
 
         $chunks = $diffs[0]->getChunks();
+        $this->assertInternalType('array', $chunks);
         $this->assertContainsOnlyInstancesOf(Chunk::class, $chunks);
 
         $this->assertCount(1, $chunks);
@@ -73,7 +75,7 @@ final class ParserTest extends TestCase
 
     public function testParseWithRemovedLines(): void
     {
-        $content = <<<END
+        $content = <<<A
 diff --git a/Test.txt b/Test.txt
 index abcdefg..abcdefh 100644
 --- a/Test.txt
@@ -81,13 +83,15 @@ index abcdefg..abcdefh 100644
 @@ -49,9 +49,8 @@
  A
 -B
-END;
+A;
         $diffs = $this->parser->parse($content);
+        $this->assertInternalType('array', $diffs);
         $this->assertContainsOnlyInstancesOf(Diff::class, $diffs);
         $this->assertCount(1, $diffs);
 
         $chunks = $diffs[0]->getChunks();
 
+        $this->assertInternalType('array', $chunks);
         $this->assertContainsOnlyInstancesOf(Chunk::class, $chunks);
         $this->assertCount(1, $chunks);
 
@@ -98,6 +102,7 @@ END;
         $this->assertSame(8, $chunk->getEndRange());
 
         $lines = $chunk->getLines();
+        $this->assertInternalType('array', $lines);
         $this->assertContainsOnlyInstancesOf(Line::class, $lines);
         $this->assertCount(2, $lines);
 
@@ -113,7 +118,7 @@ END;
 
     public function testParseDiffForMulitpleFiles(): void
     {
-        $content = <<<END
+        $content = <<<A
 diff --git a/Test.txt b/Test.txt
 index abcdefg..abcdefh 100644
 --- a/Test.txt
@@ -129,7 +134,7 @@ index abcdefg..abcdefh 100644
 @@ -1,2 +1,3 @@
  A
 +B
-END;
+A;
         $diffs = $this->parser->parse($content);
         $this->assertCount(2, $diffs);
 

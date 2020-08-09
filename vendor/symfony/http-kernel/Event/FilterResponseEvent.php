@@ -11,12 +11,18 @@
 
 namespace Symfony\Component\HttpKernel\Event;
 
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
- * @deprecated since Symfony 4.3, use ResponseEvent instead
+ * Allows to filter a Response object.
+ *
+ * You can call getResponse() to retrieve the current response. With
+ * setResponse() you can set a new response that will be returned to the
+ * browser.
+ *
+ * @author Bernhard Schussek <bschussek@gmail.com>
  */
 class FilterResponseEvent extends KernelEvent
 {

@@ -2,7 +2,6 @@
 
 namespace Illuminate\Database\Schema\Grammars;
 
-use RuntimeException;
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,8 +14,8 @@ class MySqlGrammar extends Grammar
      * @var array
      */
     protected $modifiers = [
-        'Unsigned', 'Charset', 'Collate', 'VirtualAs', 'StoredAs', 'Nullable',
-        'Default', 'Increment', 'Comment', 'After', 'First', 'Srid',
+        'Unsigned', 'VirtualAs', 'StoredAs', 'Charset', 'Collate', 'Nullable',
+        'Default', 'Increment', 'Comment', 'After', 'First',
     ];
 
     /**
@@ -33,7 +32,7 @@ class MySqlGrammar extends Grammar
      */
     public function compileTableExists()
     {
-        return "select * from information_schema.tables where table_schema = ? and table_name = ? and table_type = 'BASE TABLE'";
+        return 'select * from information_schema.tables where table_schema = ? and table_name = ?';
     }
 
     /**
@@ -371,17 +370,6 @@ class MySqlGrammar extends Grammar
     }
 
     /**
-     * Compile the SQL needed to drop all views.
-     *
-     * @param  array  $views
-     * @return string
-     */
-    public function compileDropAllViews($views)
-    {
-        return 'drop view '.implode(',', $this->wrapArray($views));
-    }
-
-    /**
      * Compile the SQL needed to retrieve all table names.
      *
      * @return string
@@ -389,16 +377,6 @@ class MySqlGrammar extends Grammar
     public function compileGetAllTables()
     {
         return 'SHOW FULL TABLES WHERE table_type = \'BASE TABLE\'';
-    }
-
-    /**
-     * Compile the SQL needed to retrieve all view names.
-     *
-     * @return string
-     */
-    public function compileGetAllViews()
-    {
-        return 'SHOW FULL TABLES WHERE table_type = \'VIEW\'';
     }
 
     /**
@@ -591,17 +569,6 @@ class MySqlGrammar extends Grammar
     }
 
     /**
-     * Create the column definition for a set enumeration type.
-     *
-     * @param  \Illuminate\Support\Fluent  $column
-     * @return string
-     */
-    protected function typeSet(Fluent $column)
-    {
-        return sprintf('set(%s)', $this->quoteString($column->allowed));
-    }
-
-    /**
      * Create the column definition for a json type.
      *
      * @param  \Illuminate\Support\Fluent  $column
@@ -642,9 +609,7 @@ class MySqlGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
-        $columnType = $column->precision ? "datetime($column->precision)" : 'datetime';
-
-        return $column->useCurrent ? "$columnType default CURRENT_TIMESTAMP" : $columnType;
+        return $column->precision ? "datetime($column->precision)" : 'datetime';
     }
 
     /**
@@ -848,19 +813,6 @@ class MySqlGrammar extends Grammar
     }
 
     /**
-     * Create the column definition for a generated, computed column type.
-     *
-     * @param  \Illuminate\Support\Fluent  $column
-     * @return void
-     *
-     * @throws \RuntimeException
-     */
-    protected function typeComputed(Fluent $column)
-    {
-        throw new RuntimeException('This database driver requires a type, see the virtualAs / storedAs modifiers.');
-    }
-
-    /**
      * Get the SQL for a generated virtual column modifier.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -1011,20 +963,6 @@ class MySqlGrammar extends Grammar
     {
         if (! is_null($column->comment)) {
             return " comment '".addslashes($column->comment)."'";
-        }
-    }
-
-    /**
-     * Get the SQL for a SRID column modifier.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $column
-     * @return string|null
-     */
-    protected function modifySrid(Blueprint $blueprint, Fluent $column)
-    {
-        if (! is_null($column->srid) && is_int($column->srid) && $column->srid > 0) {
-            return ' srid '.$column->srid;
         }
     }
 

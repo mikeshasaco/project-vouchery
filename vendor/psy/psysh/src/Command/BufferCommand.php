@@ -56,8 +56,6 @@ HELP
         } else {
             $output->writeln($this->formatLines($buf), ShellOutput::NUMBER_LINES);
         }
-
-        return 0;
     }
 
     /**
@@ -70,10 +68,10 @@ HELP
      */
     protected function formatLines(array $lines, $type = 'return')
     {
-        $template = \sprintf('<%s>%%s</%s>', $type, $type);
+        $template = sprintf('<%s>%%s</%s>', $type, $type);
 
-        return \array_map(function ($line) use ($template) {
-            return \sprintf($template, $line);
+        return array_map(function ($line) use ($template) {
+            return sprintf($template, $line);
         }, $lines);
     }
 }

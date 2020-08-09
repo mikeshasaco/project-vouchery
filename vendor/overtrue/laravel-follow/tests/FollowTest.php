@@ -12,91 +12,105 @@
 namespace Overtrue\LaravelFollow\Test;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Overtrue\LaravelFollow\Follow;
 
 class FollowTest extends TestCase
 {
     public function testIsRelationExists()
     {
-        $user = User::create(['name' => 'overtrue']);
-        $other = Other::create(['name' => 'php']);
+        // case 1: with class
+        $class = 'App\Channel';
+        $target = 12;
+        $model = \Mockery::mock(Model::class);
+        $model->shouldReceive('followings')->with($class)->andReturnSelf()->once();
+        $model->shouldReceive('where')->with('followable_id', $target)->andReturnSelf()->once();
+        $model->shouldReceive('exists')->withNoArgs()->andReturn(true)->once();
 
-        $user->follow($other);
+        $this->assertTrue(Follow::isRelationExists($model, 'followings', $target, $class));
 
-        $this->assertTrue(Follow::isRelationExists($user, 'followings', $other->id, \get_class($other)));
+        // case 2: without class
+        config(['follow.user_model' => 'App\User']);
 
-        $user1 = User::create(['name' => 'overtrue']);
-        $user2 = User::create(['name' => 'anzhengchao']);
-        $user1->follow($user2);
+        $target = 12;
+        $model = \Mockery::mock(Model::class);
+        $model->shouldReceive('followings')->with('App\User')->andReturnSelf()->once();
+        $model->shouldReceive('where')->with('user_id', $target)->andReturnSelf()->once();
+        $model->shouldReceive('exists')->withNoArgs()->andReturn(true)->once();
 
-        $this->assertTrue(Follow::isRelationExists($user1, 'followings', $user2->id, User::class));
+        $this->assertTrue(Follow::isRelationExists($model, 'followings', $target));
     }
 
-    public function testAttachAndDetachRelations()
+    public function testAttachRelations()
     {
-        $user1 = User::create(['name' => 'overtrue']);
-        $user2 = User::create(['name' => 'anzhengchao']);
-        $user3 = User::create(['name' => 'allen']);
-        $user4 = User::create(['name' => 'taylor']);
-        $user1->follow($user2);
-        $user1->follow([$user3, $user4]);
+        $morph = \Mockery::mock(MorphToMany::class);
+        $morph->shouldReceive('getRelationName')->andReturn('followings');
 
-        $this->assertTrue(Follow::isRelationExists($user1, 'followings', $user2->id, User::class));
-        $this->assertTrue(Follow::isRelationExists($user1, 'followings', $user3->id, User::class));
-        $this->assertTrue(Follow::isRelationExists($user1, 'followings', $user4->id, User::class));
+        $targets = [1, 2];
+        $class = 'App\User';
+        $model = \Mockery::mock(Model::class);
+        $model->shouldReceive('followings')->withNoArgs()->andReturn($morph)->once();
+        $model->shouldReceive('followings')->with('App\User')->andReturnSelf()->once();
+        $model->shouldReceive('sync')->with(\Mockery::type('array'), false)->once()->andReturn([1, 2, 3]);
 
-        $user1->unfollow($user2);
-        $this->assertFalse(Follow::isRelationExists($user1, 'followings', $user2->id, User::class));
+        $this->assertSame([1, 2, 3], Follow::attachRelations($model, 'followings', $targets, $class));
+    }
+
+    public function testAttachRelationsWithoutInvalidRelationDefinition()
+    {
+        $morph = \Mockery::mock(MorphToMany::class);
+        $morph->shouldReceive('getRelationName')->andReturn('undefined');
+
+        $targets = [1, 2];
+        $class = 'App\User';
+        $model = \Mockery::mock(Model::class);
+        $model->shouldReceive('followings')->withNoArgs()->andReturn($morph)->once();
+
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Invalid relation definition.');
+
+        Follow::attachRelations($model, 'followings', $targets, $class);
+    }
+
+    public function testDetachRelations()
+    {
+        $targets = [1, 2];
+        $class = 'App\Foo';
+        $model = \Mockery::mock(Model::class);
+        $model->shouldReceive('followings')->with($class)->andReturnSelf()->once();
+        $model->shouldReceive('detach')->with($targets)->andReturn([1, 3])->once();
+
+        $this->assertSame([1, 3], Follow::detachRelations($model, 'followings', $targets, $class));
     }
 
     public function testToggleRelations()
     {
-        $user1 = User::create(['name' => 'overtrue']);
-        $user2 = User::create(['name' => 'anzhengchao']);
-        $user1->follow($user2);
+        $targets = [1, 2];
+        $class = 'App\Foo';
+        $morph = \Mockery::mock(MorphToMany::class);
+        $morph->shouldReceive('getRelationName')->andReturn('followings');
 
-        $this->assertTrue(Follow::isRelationExists($user1, 'followings', $user2->id, User::class));
+        $model = \Mockery::mock(Model::class);
+        $model->shouldReceive('followings')->with()->andReturn($morph)->once();
+        $model->shouldReceive('followings')->with($class)->andReturnSelf()->once();
+        $model->shouldReceive('toggle')->with(\Mockery::type('array'))->andReturn([1, 3])->once();
 
-        $user1->toggleFollow($user2);
-        $this->assertFalse(Follow::isRelationExists($user1, 'followings', $user2->id, User::class));
-
-        $user1->toggleFollow($user2);
-        $this->assertTrue(Follow::isRelationExists($user1, 'followings', $user2->id, User::class));
+        $this->assertSame([1, 3], Follow::toggleRelations($model, 'followings', $targets, $class));
     }
 
-    public function testEagerLoading()
+    public function testAttachPivotsFromRelation()
     {
-        $sqls = \collect([]);
+        $morph = \Mockery::mock(MorphToMany::class);
+        $morph->shouldReceive('getRelationName')->andReturn('followings');
 
-        $user1 = User::create(['name' => 'overtrue']);
-        $user2 = User::create(['name' => 'anzhengchao']);
-        $user3 = User::create(['name' => 'allen']);
-        $user4 = User::create(['name' => 'taylor']);
-        $user1->follow($user2);
-        $user1->follow([$user3, $user4]);
+        $targets = Follow::attachPivotsFromRelation($morph, [1, 34], 'App\Foo');
 
-        // start recording
-        \DB::listen(function ($query) use ($sqls) {
-            $sqls->push($query->sql);
-        });
-
-        $user1->isFollowing($user2);
-        $user1->isFollowing($user3);
-        $user1->isFollowing($user4);
-
-        $this->assertCount(3, $sqls);
-
-        // eager loading
-        $user1->load('followings');
-
-        // cleanup
-        $sqls = \collect([]);
-
-        $user1->isFollowing($user2);
-        $user1->isFollowing($user3);
-        $user1->isFollowing($user4);
-
-        $this->assertCount(0, $sqls);
+        $this->assertArrayHasKey(1, $targets->targets);
+        $this->assertArrayHasKey(34, $targets->targets);
+        $this->assertSame('follow', $targets->targets[1]['relation']);
+        $this->assertSame('follow', $targets->targets[34]['relation']);
+        $this->assertStringStartsWith(date('Y-m-d H:i:'), $targets->targets[34]['created_at']);
+        $this->assertRegExp('/^\d{4}(\-\d{2}){2} (\d{2}:){2}\d{2}$/', $targets->targets[34]['created_at']);
     }
 
     public function testFormatTargets()

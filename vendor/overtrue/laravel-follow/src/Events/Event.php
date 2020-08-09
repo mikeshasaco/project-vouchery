@@ -11,10 +11,10 @@
 
 namespace Overtrue\LaravelFollow\Events;
 
-use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Overtrue\LaravelFollow\Follow;
 
 /**
@@ -24,9 +24,7 @@ use Overtrue\LaravelFollow\Follow;
  */
 class Event
 {
-    use Dispatchable;
-    use InteractsWithSockets;
-    use SerializesModels;
+    use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $causer;
 
@@ -59,6 +57,6 @@ class Event
 
     public function getTargetsCollection()
     {
-        return \forward_static_call([$this->targets->classname, 'find'], (array) $this->targets->ids);
+        return \forward_static_call([$this->class, 'find'], (array) $this->targets);
     }
 }

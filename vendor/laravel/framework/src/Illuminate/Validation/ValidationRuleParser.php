@@ -131,7 +131,7 @@ class ValidationRuleParser
         foreach ($data as $key => $value) {
             if (Str::startsWith($key, $attribute) || (bool) preg_match('/^'.$pattern.'\z/', $key)) {
                 foreach ((array) $rules as $rule) {
-                    $this->implicitAttributes[$attribute][] = strval($key);
+                    $this->implicitAttributes[$attribute][] = $key;
 
                     $results = $this->mergeRules($results, $key, $rule);
                 }
@@ -231,7 +231,7 @@ class ValidationRuleParser
         // easy {rule}:{parameters} formatting convention. For instance the
         // rule "Max:3" states that the value may only be three letters.
         if (strpos($rules, ':') !== false) {
-            [$rules, $parameter] = explode(':', $rules, 2);
+            list($rules, $parameter) = explode(':', $rules, 2);
 
             $parameters = static::parseParameters($rules, $parameter);
         }
@@ -250,7 +250,7 @@ class ValidationRuleParser
     {
         $rule = strtolower($rule);
 
-        if (in_array($rule, ['regex', 'not_regex', 'notregex'], true)) {
+        if ($rule === 'regex' || $rule === 'notregex') {
             return [$parameter];
         }
 

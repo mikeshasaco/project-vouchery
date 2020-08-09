@@ -4,7 +4,6 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Lang;
@@ -34,7 +33,7 @@ trait ThrottlesLogins
     protected function incrementLoginAttempts(Request $request)
     {
         $this->limiter()->hit(
-            $this->throttleKey($request), $this->decayMinutes() * 60
+            $this->throttleKey($request), $this->decayMinutes()
         );
     }
 
@@ -43,7 +42,6 @@ trait ThrottlesLogins
      *
      * @param  \Illuminate\Http\Request  $request
      * @return void
-     *
      * @throws \Illuminate\Validation\ValidationException
      */
     protected function sendLockoutResponse(Request $request)
@@ -54,7 +52,7 @@ trait ThrottlesLogins
 
         throw ValidationException::withMessages([
             $this->username() => [Lang::get('auth.throttle', ['seconds' => $seconds])],
-        ])->status(Response::HTTP_TOO_MANY_REQUESTS);
+        ])->status(429);
     }
 
     /**

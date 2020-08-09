@@ -85,7 +85,7 @@ class CallQueuedHandler
      */
     protected function setJobInstanceIfNecessary(Job $job, $instance)
     {
-        if (in_array(InteractsWithQueue::class, class_uses_recursive($instance))) {
+        if (in_array(InteractsWithQueue::class, class_uses_recursive(get_class($instance)))) {
             $instance->setJob($job);
         }
 
@@ -127,7 +127,9 @@ class CallQueuedHandler
             return $job->delete();
         }
 
-        return $job->fail($e);
+        return FailingJob::handle(
+            $job->getConnectionName(), $job, $e
+        );
     }
 
     /**

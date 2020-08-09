@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\Framework\Constraint;
 
 use SebastianBergmann\Diff\Differ;
@@ -37,6 +38,8 @@ class StringMatchesFormatDescription extends RegularExpression
      * constraint is met, false otherwise.
      *
      * @param mixed $other value or object to evaluate
+     *
+     * @return bool
      */
     protected function matches($other): bool
     {
@@ -75,23 +78,37 @@ class StringMatchesFormatDescription extends RegularExpression
 
     private function createPatternFromFormat(string $string): string
     {
-        $string = \strtr(
-            \preg_quote($string, '/'),
+        $string = \preg_replace(
             [
-                '%%' => '%',
-                '%e' => '\\' . \DIRECTORY_SEPARATOR,
-                '%s' => '[^\r\n]+',
-                '%S' => '[^\r\n]*',
-                '%a' => '.+',
-                '%A' => '.*',
-                '%w' => '\s*',
-                '%i' => '[+-]?\d+',
-                '%d' => '\d+',
-                '%x' => '[0-9a-fA-F]+',
-                '%f' => '[+-]?\.?\d+\.?\d*(?:[Ee][+-]?\d+)?',
-                '%c' => '.',
-            ]
+                '/(?<!%)%e/',
+                '/(?<!%)%s/',
+                '/(?<!%)%S/',
+                '/(?<!%)%a/',
+                '/(?<!%)%A/',
+                '/(?<!%)%w/',
+                '/(?<!%)%i/',
+                '/(?<!%)%d/',
+                '/(?<!%)%x/',
+                '/(?<!%)%f/',
+                '/(?<!%)%c/'
+            ],
+            [
+                \str_replace('\\', '\\\\', '\\' . DIRECTORY_SEPARATOR),
+                '[^\r\n]+',
+                '[^\r\n]*',
+                '.+',
+                '.*',
+                '\s*',
+                '[+-]?\d+',
+                '\d+',
+                '[0-9a-fA-F]+',
+                '[+-]?\.?\d+\.?\d*(?:[Ee][+-]?\d+)?',
+                '.'
+            ],
+            \preg_quote($string, '/')
         );
+
+        $string = \str_replace('%%', '%', $string);
 
         return '/^' . $string . '$/s';
     }

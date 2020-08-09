@@ -13,8 +13,8 @@ namespace Overtrue\LaravelFollow;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Overtrue\LaravelFollow\Events\RelationAttached;
 use Overtrue\LaravelFollow\Events\RelationAttaching;
 use Overtrue\LaravelFollow\Events\RelationDetached;
@@ -74,11 +74,8 @@ class Follow
     {
         $target = self::formatTargets($target, $class ?: config('follow.user_model'));
 
-        if ($model->relationLoaded($relation)) {
-            return $model->{$relation}->where('id', head($target->ids))->isNotEmpty();
-        }
-
-        return $model->{$relation}($target->classname)->where('id', head($target->ids))->exists();
+        return $model->{$relation}($target->classname)
+                        ->where($class ? 'followable_id' : config('follow.users_table_foreign_key', 'user_id'), head($target->ids))->exists();
     }
 
     /**
@@ -218,15 +215,5 @@ class Follow
         }
 
         return self::RELATION_TYPES[$relation->getRelationName()];
-    }
-
-    /**
-     * @param string $field
-     *
-     * @return string
-     */
-    protected static function tablePrefixedField($field)
-    {
-        return \sprintf('%s.%s', config('follow.followable_table'), $field);
     }
 }

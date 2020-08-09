@@ -14,18 +14,21 @@ use RecursiveIterator;
 /**
  * Iterator for test suites.
  */
-final class TestSuiteIterator implements RecursiveIterator
+class TestSuiteIterator implements RecursiveIterator
 {
     /**
      * @var int
      */
-    private $position = 0;
+    protected $position;
 
     /**
      * @var Test[]
      */
-    private $tests;
+    protected $tests;
 
+    /**
+     * @param TestSuite $testSuite
+     */
     public function __construct(TestSuite $testSuite)
     {
         $this->tests = $testSuite->tests();
@@ -58,7 +61,7 @@ final class TestSuiteIterator implements RecursiveIterator
     /**
      * Returns the current element.
      */
-    public function current(): ?Test
+    public function current(): Test
     {
         return $this->valid() ? $this->tests[$this->position] : null;
     }
@@ -73,22 +76,12 @@ final class TestSuiteIterator implements RecursiveIterator
 
     /**
      * Returns the sub iterator for the current element.
-     *
-     * @throws \UnexpectedValueException if the current element is no TestSuite
      */
     public function getChildren(): self
     {
-        if (!$this->hasChildren()) {
-            throw new UnexpectedValueException(
-                'The current item is no TestSuite instance and hence cannot have any children.',
-                1567849414
-            );
-        }
-
-        /** @var TestSuite $current */
-        $current = $this->current();
-
-        return new self($current);
+        return new self(
+            $this->tests[$this->position]
+        );
     }
 
     /**
@@ -96,6 +89,6 @@ final class TestSuiteIterator implements RecursiveIterator
      */
     public function hasChildren(): bool
     {
-        return $this->current() instanceof TestSuite;
+        return $this->tests[$this->position] instanceof TestSuite;
     }
 }

@@ -59,7 +59,7 @@ class FilesystemManager implements FactoryContract
     /**
      * Get a filesystem instance.
      *
-     * @param  string|null  $name
+     * @param  string  $name
      * @return \Illuminate\Contracts\Filesystem\Filesystem
      */
     public function drive($name = null)
@@ -70,7 +70,7 @@ class FilesystemManager implements FactoryContract
     /**
      * Get a filesystem instance.
      *
-     * @param  string|null  $name
+     * @param  string  $name
      * @return \Illuminate\Contracts\Filesystem\Filesystem
      */
     public function disk($name = null)
@@ -160,7 +160,7 @@ class FilesystemManager implements FactoryContract
             : LocalAdapter::DISALLOW_LINKS;
 
         return $this->adapt($this->createFlysystem(new LocalAdapter(
-            $config['root'], $config['lock'] ?? LOCK_EX, $links, $permissions
+            $config['root'], LOCK_EX, $links, $permissions
         ), $config));
     }
 
@@ -219,8 +219,8 @@ class FilesystemManager implements FactoryContract
     {
         $config += ['version' => 'latest'];
 
-        if (! empty($config['key']) && ! empty($config['secret'])) {
-            $config['credentials'] = Arr::only($config, ['key', 'secret', 'token']);
+        if ($config['key'] && $config['secret']) {
+            $config['credentials'] = Arr::only($config, ['key', 'secret']);
         }
 
         return $config;
@@ -236,7 +236,7 @@ class FilesystemManager implements FactoryContract
     {
         $client = new Rackspace($config['endpoint'], [
             'username' => $config['username'], 'apiKey' => $config['key'],
-        ], $config['options'] ?? []);
+        ]);
 
         $root = $config['root'] ?? null;
 
@@ -318,13 +318,11 @@ class FilesystemManager implements FactoryContract
      *
      * @param  string  $name
      * @param  mixed  $disk
-     * @return $this
+     * @return void
      */
     public function set($name, $disk)
     {
         $this->disks[$name] = $disk;
-
-        return $this;
     }
 
     /**

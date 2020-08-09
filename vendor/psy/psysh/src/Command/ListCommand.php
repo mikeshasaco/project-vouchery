@@ -142,8 +142,6 @@ HELP
         if ($reflector !== null) {
             $this->setCommandScopeVariables($reflector);
         }
-
-        return 0;
     }
 
     /**
@@ -180,8 +178,8 @@ HELP
         }
 
         foreach ($result as $label => $items) {
-            $names = \array_map([$this, 'formatItemName'], $items);
-            $output->writeln(\sprintf('<strong>%s</strong>: %s', $label, \implode(', ', $names)));
+            $names = array_map([$this, 'formatItemName'], $items);
+            $output->writeln(sprintf('<strong>%s</strong>: %s', $label, implode(', ', $names)));
         }
     }
 
@@ -203,7 +201,7 @@ HELP
 
         foreach ($result as $label => $items) {
             $output->writeln('');
-            $output->writeln(\sprintf('<strong>%s:</strong>', $label));
+            $output->writeln(sprintf('<strong>%s:</strong>', $label));
 
             $table->setRows([]);
             foreach ($items as $item) {
@@ -227,7 +225,7 @@ HELP
      */
     private function formatItemName($item)
     {
-        return \sprintf('<%s>%s</%s>', $item['style'], OutputFormatter::escape($item['name']), $item['style']);
+        return sprintf('<%s>%s</%s>', $item['style'], OutputFormatter::escape($item['name']), $item['style']);
     }
 
     /**

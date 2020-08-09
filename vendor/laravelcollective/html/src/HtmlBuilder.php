@@ -132,7 +132,7 @@ class HtmlBuilder
     {
         $defaults = ['rel' => 'shortcut icon', 'type' => 'image/x-icon'];
 
-        $attributes = array_merge($defaults, $attributes);
+        $attributes = array_merge($attributes, $defaults);
 
         $attributes['href'] = $this->url->asset($url, $secure);
 
@@ -453,10 +453,6 @@ class HtmlBuilder
         // Treat boolean attributes as HTML properties
         if (is_bool($value) && $key !== 'value') {
             return $value ? $key : '';
-        }
-
-        if (is_array($value) && $key === 'class') {
-            return 'class="' . implode(' ', $value) . '"';
         }
 
         if (! is_null($value)) {

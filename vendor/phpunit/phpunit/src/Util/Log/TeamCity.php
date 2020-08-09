@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\Util\Log;
 
 use PHPUnit\Framework\AssertionFailedError;
@@ -60,10 +61,9 @@ class TeamCity extends ResultPrinter
         $this->printEvent(
             'testFailed',
             [
-                'name'     => $test->getName(),
-                'message'  => self::getMessage($t),
-                'details'  => self::getDetails($t),
-                'duration' => self::toMilliseconds($time),
+                'name'    => $test->getName(),
+                'message' => self::getMessage($t),
+                'details' => self::getDetails($t),
             ]
         );
     }
@@ -78,10 +78,9 @@ class TeamCity extends ResultPrinter
         $this->printEvent(
             'testFailed',
             [
-                'name'     => $test->getName(),
-                'message'  => self::getMessage($e),
-                'details'  => self::getDetails($e),
-                'duration' => self::toMilliseconds($time),
+                'name'    => $test->getName(),
+                'message' => self::getMessage($e),
+                'details' => self::getDetails($e)
             ]
         );
     }
@@ -94,10 +93,9 @@ class TeamCity extends ResultPrinter
     public function addFailure(Test $test, AssertionFailedError $e, float $time): void
     {
         $parameters = [
-            'name'     => $test->getName(),
-            'message'  => self::getMessage($e),
-            'details'  => self::getDetails($e),
-            'duration' => self::toMilliseconds($time),
+            'name'    => $test->getName(),
+            'message' => self::getMessage($e),
+            'details' => self::getDetails($e),
         ];
 
         if ($e instanceof ExpectationFailedException) {
@@ -132,7 +130,7 @@ class TeamCity extends ResultPrinter
      */
     public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
     {
-        $this->printIgnoredTest($test->getName(), $t, $time);
+        $this->printIgnoredTest($test->getName(), $t);
     }
 
     /**
@@ -156,22 +154,21 @@ class TeamCity extends ResultPrinter
 
         if ($this->startedTestName !== $testName) {
             $this->startTest($test);
-            $this->printIgnoredTest($testName, $t, $time);
+            $this->printIgnoredTest($testName, $t);
             $this->endTest($test, $time);
         } else {
-            $this->printIgnoredTest($testName, $t, $time);
+            $this->printIgnoredTest($testName, $t);
         }
     }
 
-    public function printIgnoredTest($testName, \Throwable $t, float $time): void
+    public function printIgnoredTest($testName, \Throwable $t): void
     {
         $this->printEvent(
             'testIgnored',
             [
-                'name'     => $testName,
-                'message'  => self::getMessage($t),
-                'details'  => self::getDetails($t),
-                'duration' => self::toMilliseconds($time),
+                'name'    => $testName,
+                'message' => self::getMessage($t),
+                'details' => self::getDetails($t),
             ]
         );
     }
@@ -212,7 +209,7 @@ class TeamCity extends ResultPrinter
         } else {
             $split = \explode('::', $suiteName);
 
-            if (\count($split) === 2 && \class_exists($split[0]) && \method_exists($split[0], $split[1])) {
+            if (\count($split) === 2 && \method_exists($split[0], $split[1])) {
                 $fileName                   = self::getFileName($split[0]);
                 $parameters['locationHint'] = "php_qn://$fileName::\\$suiteName";
                 $parameters['name']         = $split[1];
@@ -238,7 +235,7 @@ class TeamCity extends ResultPrinter
         if (!\class_exists($suiteName, false)) {
             $split = \explode('::', $suiteName);
 
-            if (\count($split) === 2 && \class_exists($split[0]) && \method_exists($split[0], $split[1])) {
+            if (\count($split) === 2 && \method_exists($split[0], $split[1])) {
                 $parameters['name'] = $split[1];
             }
         }
@@ -268,6 +265,9 @@ class TeamCity extends ResultPrinter
 
     /**
      * A test ended.
+     *
+     * @param Test  $test
+     * @param float $time
      */
     public function endTest(Test $test, float $time): void
     {
@@ -277,7 +277,7 @@ class TeamCity extends ResultPrinter
             'testFinished',
             [
                 'name'     => $test->getName(),
-                'duration' => self::toMilliseconds($time),
+                'duration' => (int) (\round($time, 2) * 1000)
             ]
         );
     }
@@ -306,6 +306,9 @@ class TeamCity extends ResultPrinter
         $this->write("]\n");
     }
 
+    /**
+     * @param \Throwable $t
+     */
     private static function getMessage(\Throwable $t): string
     {
         $message = '';
@@ -324,6 +327,8 @@ class TeamCity extends ResultPrinter
     }
 
     /**
+     * @param \Throwable $t
+     *
      * @throws \InvalidArgumentException
      */
     private static function getDetails(\Throwable $t): string
@@ -343,6 +348,9 @@ class TeamCity extends ResultPrinter
         return ' ' . \str_replace("\n", "\n ", $stackTrace);
     }
 
+    /**
+     * @param mixed $value
+     */
     private static function getPrimitiveValueAsString($value): ?string
     {
         if ($value === null) {
@@ -360,6 +368,9 @@ class TeamCity extends ResultPrinter
         return null;
     }
 
+    /**
+     * @param string $text
+     */
     private static function escapeValue(string $text): string
     {
         return \str_replace(
@@ -379,13 +390,5 @@ class TeamCity extends ResultPrinter
         $reflectionClass = new ReflectionClass($className);
 
         return $reflectionClass->getFileName();
-    }
-
-    /**
-     * @param float $time microseconds
-     */
-    private static function toMilliseconds(float $time): int
-    {
-        return \round($time * 1000);
     }
 }

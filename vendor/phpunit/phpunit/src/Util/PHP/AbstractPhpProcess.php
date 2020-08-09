@@ -7,11 +7,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\Util\PHP;
 
 use __PHP_Incomplete_Class;
 use ErrorException;
-use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\SyntheticError;
 use PHPUnit\Framework\Test;
@@ -57,7 +57,7 @@ abstract class AbstractPhpProcess
 
     public static function factory(): self
     {
-        if (\DIRECTORY_SEPARATOR === '\\') {
+        if (DIRECTORY_SEPARATOR === '\\') {
             return new WindowsPhpProcess;
         }
 
@@ -180,23 +180,20 @@ abstract class AbstractPhpProcess
         $command = $this->runtime->getBinary();
         $command .= $this->settingsToParameters($settings);
 
-        if (\PHP_SAPI === 'phpdbg') {
-            $command .= ' -qrr';
+        if (PHP_SAPI === 'phpdbg') {
+            $command .= ' -qrr ';
 
-            if (!$file) {
-                $command .= 's=';
+            if ($file) {
+                $command .= '-e ' . \escapeshellarg($file);
+            } else {
+                $command .= \escapeshellarg(__DIR__ . '/eval-stdin.php');
             }
-        }
-
-        if ($file) {
-            $command .= ' ' . \escapeshellarg($file);
+        } elseif ($file) {
+            $command .= ' -f ' . \escapeshellarg($file);
         }
 
         if ($this->args) {
-            if (!$file) {
-                $command .= ' --';
-            }
-            $command .= ' ' . $this->args;
+            $command .= ' -- ' . $this->args;
         }
 
         if ($this->stderrRedirection === true) {
@@ -249,14 +246,6 @@ abstract class AbstractPhpProcess
 
                 $childResult = \unserialize(\str_replace("#!/usr/bin/env php\n", '', $stdout));
                 \restore_error_handler();
-
-                if ($childResult === false) {
-                    $result->addFailure(
-                        $test,
-                        new AssertionFailedError('Test was run in child process and ended unexpectedly'),
-                        $time
-                    );
-                }
             } catch (ErrorException $e) {
                 \restore_error_handler();
                 $childResult = false;

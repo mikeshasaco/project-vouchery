@@ -12,18 +12,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Validation\Rules\Exists;
 use Illuminate\Validation\Rules\Unique;
 use Illuminate\Validation\ValidationData;
-use Egulias\EmailValidator\EmailValidator;
 use Symfony\Component\HttpFoundation\File\File;
-use Egulias\EmailValidator\Validation\RFCValidation;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Egulias\EmailValidator\Validation\DNSCheckValidation;
-use Egulias\EmailValidator\Validation\SpoofCheckValidation;
-use Egulias\EmailValidator\Validation\NoRFCWarningsValidation;
-use Egulias\EmailValidator\Validation\MultipleValidationWithAnd;
 
 trait ValidatesAttributes
 {
@@ -247,10 +240,10 @@ trait ValidatesAttributes
     {
         try {
             if ($this->isTestingRelativeDateTime($value)) {
-                return Date::parse($value);
+                return new Carbon($value);
             }
 
-            return date_create($value) ?: null;
+            return new DateTime($value);
         } catch (Exception $e) {
             //
         }
@@ -441,13 +434,9 @@ trait ValidatesAttributes
         $this->requireParameterCount(1, $parameters, 'different');
 
         foreach ($parameters as $parameter) {
-            if (! Arr::has($this->data, $parameter)) {
-                return false;
-            }
-
             $other = Arr::get($this->data, $parameter);
 
-            if ($value === $other) {
+            if (is_null($other) || $value === $other) {
                 return false;
             }
         }
@@ -499,7 +488,7 @@ trait ValidatesAttributes
      */
     public function validateDimensions($attribute, $value, $parameters)
     {
-        if ($this->isValidFileInstance($value) && $value->getClientMimeType() === 'image/svg+xml') {
+        if ($this->isValidFileInstance($value) && $value->getClientMimeType() == 'image/svg+xml') {
             return true;
         }
 
@@ -509,7 +498,7 @@ trait ValidatesAttributes
 
         $this->requireParameterCount(1, $parameters, 'dimensions');
 
-        [$width, $height] = $sizeDetails;
+        list($width, $height) = $sizeDetails;
 
         $parameters = $this->parseNamedParameters($parameters);
 
@@ -553,7 +542,7 @@ trait ValidatesAttributes
             return false;
         }
 
-        [$numerator, $denominator] = array_replace(
+        list($numerator, $denominator) = array_replace(
             [1, 1], array_filter(sscanf($parameters['ratio'], '%f/%d'))
         );
 
@@ -572,7 +561,17 @@ trait ValidatesAttributes
      */
     public function validateDistinct($attribute, $value, $parameters)
     {
-        $data = Arr::except($this->getDistinctValues($attribute), $attribute);
+        $attributeName = $this->getPrimaryAttribute($attribute);
+
+        $attributeData = ValidationData::extractDataFromPath(
+            ValidationData::getLeadingExplicitAttributePath($attributeName), $this->data
+        );
+
+        $pattern = str_replace('\*', '[^.]+', preg_quote($attributeName, '#'));
+
+        $data = Arr::where(Arr::dot($attributeData), function ($value, $key) use ($attribute, $pattern) {
+            return $key != $attribute && (bool) preg_match('#^'.$pattern.'\z#u', $key);
+        });
 
         if (in_array('ignore_case', $parameters)) {
             return empty(preg_grep('/^'.preg_quote($value, '/').'$/iu', $data));
@@ -582,78 +581,15 @@ trait ValidatesAttributes
     }
 
     /**
-     * Get the values to distinct between.
-     *
-     * @param  string  $attribute
-     * @return array
-     */
-    protected function getDistinctValues($attribute)
-    {
-        $attributeName = $this->getPrimaryAttribute($attribute);
-
-        if (! property_exists($this, 'distinctValues')) {
-            return $this->extractDistinctValues($attributeName);
-        }
-
-        if (! array_key_exists($attributeName, $this->distinctValues)) {
-            $this->distinctValues[$attributeName] = $this->extractDistinctValues($attributeName);
-        }
-
-        return $this->distinctValues[$attributeName];
-    }
-
-    /**
-     * Extract the distinct values from the data.
-     *
-     * @param  string  $attribute
-     * @return array
-     */
-    protected function extractDistinctValues($attribute)
-    {
-        $attributeData = ValidationData::extractDataFromPath(
-            ValidationData::getLeadingExplicitAttributePath($attribute), $this->data
-        );
-
-        $pattern = str_replace('\*', '[^.]+', preg_quote($attribute, '#'));
-
-        return Arr::where(Arr::dot($attributeData), function ($value, $key) use ($pattern) {
-            return (bool) preg_match('#^'.$pattern.'\z#u', $key);
-        });
-    }
-
-    /**
      * Validate that an attribute is a valid e-mail address.
      *
      * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  array  $parameters
+     * @param  mixed   $value
      * @return bool
      */
-    public function validateEmail($attribute, $value, $parameters)
+    public function validateEmail($attribute, $value)
     {
-        if (! is_string($value) && ! (is_object($value) && method_exists($value, '__toString'))) {
-            return false;
-        }
-
-        $validations = collect($parameters)
-            ->unique()
-            ->map(function ($validation) {
-                if ($validation === 'rfc') {
-                    return new RFCValidation();
-                } elseif ($validation === 'strict') {
-                    return new NoRFCWarningsValidation();
-                } elseif ($validation === 'dns') {
-                    return new DNSCheckValidation();
-                } elseif ($validation === 'spoof') {
-                    return new SpoofCheckValidation();
-                } elseif ($validation === 'filter') {
-                    return new FilterEmailValidation();
-                }
-            })
-            ->values()
-            ->all() ?: [new RFCValidation()];
-
-        return (new EmailValidator)->isValid($value, new MultipleValidationWithAnd($validations));
+        return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
     }
 
     /**
@@ -668,14 +604,14 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(1, $parameters, 'exists');
 
-        [$connection, $table] = $this->parseTable($parameters[0]);
+        list($connection, $table) = $this->parseTable($parameters[0]);
 
         // The second parameter position holds the name of the column that should be
         // verified as existing. If this parameter is not specified we will guess
         // that the columns being "verified" shares the given attribute's name.
         $column = $this->getQueryColumn($parameters, $attribute);
 
-        $expected = is_array($value) ? count(array_unique($value)) : 1;
+        $expected = (is_array($value)) ? count($value) : 1;
 
         return $this->getExistCount(
             $connection, $table, $column, $value, $parameters
@@ -723,21 +659,17 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(1, $parameters, 'unique');
 
-        [$connection, $table] = $this->parseTable($parameters[0]);
+        list($connection, $table) = $this->parseTable($parameters[0]);
 
         // The second parameter position holds the name of the column that needs to
         // be verified as unique. If this parameter isn't specified we will just
         // assume that this column to be verified shares the attribute's name.
         $column = $this->getQueryColumn($parameters, $attribute);
 
-        [$idColumn, $id] = [null, null];
+        list($idColumn, $id) = [null, null];
 
         if (isset($parameters[2])) {
-            [$idColumn, $id] = $this->getUniqueIds($parameters);
-
-            if (! is_null($id)) {
-                $id = stripslashes($id);
-            }
+            list($idColumn, $id) = $this->getUniqueIds($parameters);
         }
 
         // The presence verifier is responsible for counting rows within this store
@@ -781,7 +713,7 @@ trait ValidatesAttributes
             $id = $this->getValue($matches[1]);
         }
 
-        if (strtolower($id) === 'null') {
+        if (strtolower($id) == 'null') {
             $id = null;
         }
 
@@ -813,7 +745,7 @@ trait ValidatesAttributes
      * @param  string  $table
      * @return array
      */
-    public function parseTable($table)
+    protected function parseTable($table)
     {
         return Str::contains($table, '.') ? explode('.', $table, 2) : [null, $table];
     }
@@ -825,7 +757,7 @@ trait ValidatesAttributes
      * @param  string  $attribute
      * @return bool
      */
-    public function getQueryColumn($parameters, $attribute)
+    protected function getQueryColumn($parameters, $attribute)
     {
         return isset($parameters[1]) && $parameters[1] !== 'NULL'
                     ? $parameters[1] : $this->guessColumnForQuery($attribute);
@@ -914,9 +846,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) > $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) > $this->getSize($attribute, $comparedToValue);
     }
@@ -941,9 +871,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) < $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) < $this->getSize($attribute, $comparedToValue);
     }
@@ -968,9 +896,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) >= $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) >= $this->getSize($attribute, $comparedToValue);
     }
@@ -995,9 +921,7 @@ trait ValidatesAttributes
             return $this->getSize($attribute, $value) <= $parameters[0];
         }
 
-        if (! $this->isSameType($value, $comparedToValue)) {
-            return false;
-        }
+        $this->requireSameType($value, $comparedToValue);
 
         return $this->getSize($attribute, $value) <= $this->getSize($attribute, $comparedToValue);
     }
@@ -1011,7 +935,7 @@ trait ValidatesAttributes
      */
     public function validateImage($attribute, $value)
     {
-        return $this->validateMimes($attribute, $value, ['jpeg', 'png', 'gif', 'bmp', 'svg', 'webp']);
+        return $this->validateMimes($attribute, $value, ['jpeg', 'png', 'gif', 'bmp', 'svg']);
     }
 
     /**
@@ -1031,7 +955,7 @@ trait ValidatesAttributes
                 }
             }
 
-            return count(array_diff($value, $parameters)) === 0;
+            return count(array_diff($value, $parameters)) == 0;
         }
 
         return ! is_array($value) && in_array((string) $value, $parameters);
@@ -1202,13 +1126,9 @@ trait ValidatesAttributes
             return false;
         }
 
-        $phpExtensions = [
-            'php', 'php3', 'php4', 'php5', 'phtml',
-        ];
-
         return ($value instanceof UploadedFile)
-           ? in_array(trim(strtolower($value->getClientOriginalExtension())), $phpExtensions)
-           : in_array(trim(strtolower($value->getExtension())), $phpExtensions);
+           ? trim(strtolower($value->getClientOriginalExtension())) === 'php'
+           : trim(strtolower($value->getExtension())) === 'php';
     }
 
     /**
@@ -1551,32 +1471,6 @@ trait ValidatesAttributes
     }
 
     /**
-     * Validate the attribute starts with a given substring.
-     *
-     * @param  string  $attribute
-     * @param  mixed   $value
-     * @param  array   $parameters
-     * @return bool
-     */
-    public function validateStartsWith($attribute, $value, $parameters)
-    {
-        return Str::startsWith($value, $parameters);
-    }
-
-    /**
-     * Validate the attribute ends with a given substring.
-     *
-     * @param  string  $attribute
-     * @param  mixed   $value
-     * @param  array   $parameters
-     * @return bool
-     */
-    public function validateEndsWith($attribute, $value, $parameters)
-    {
-        return Str::endsWith($value, $parameters);
-    }
-
-    /**
      * Validate that an attribute is a string.
      *
      * @param  string  $attribute
@@ -1630,7 +1524,7 @@ trait ValidatesAttributes
             ((aaa|aaas|about|acap|acct|acr|adiumxtra|afp|afs|aim|apt|attachment|aw|barion|beshare|bitcoin|blob|bolo|callto|cap|chrome|chrome-extension|cid|coap|coaps|com-eventbrite-attendee|content|crid|cvs|data|dav|dict|dlna-playcontainer|dlna-playsingle|dns|dntp|dtn|dvb|ed2k|example|facetime|fax|feed|feedready|file|filesystem|finger|fish|ftp|geo|gg|git|gizmoproject|go|gopher|gtalk|h323|ham|hcp|http|https|iax|icap|icon|im|imap|info|iotdisco|ipn|ipp|ipps|irc|irc6|ircs|iris|iris.beep|iris.lwz|iris.xpc|iris.xpcs|itms|jabber|jar|jms|keyparc|lastfm|ldap|ldaps|magnet|mailserver|mailto|maps|market|message|mid|mms|modem|ms-help|ms-settings|ms-settings-airplanemode|ms-settings-bluetooth|ms-settings-camera|ms-settings-cellular|ms-settings-cloudstorage|ms-settings-emailandaccounts|ms-settings-language|ms-settings-location|ms-settings-lock|ms-settings-nfctransactions|ms-settings-notifications|ms-settings-power|ms-settings-privacy|ms-settings-proximity|ms-settings-screenrotation|ms-settings-wifi|ms-settings-workplace|msnim|msrp|msrps|mtqp|mumble|mupdate|mvn|news|nfs|ni|nih|nntp|notes|oid|opaquelocktoken|pack|palm|paparazzi|pkcs11|platform|pop|pres|prospero|proxy|psyc|query|redis|rediss|reload|res|resource|rmi|rsync|rtmfp|rtmp|rtsp|rtsps|rtspu|secondlife|s3|service|session|sftp|sgn|shttp|sieve|sip|sips|skype|smb|sms|smtp|snews|snmp|soap.beep|soap.beeps|soldat|spotify|ssh|steam|stun|stuns|submit|svn|tag|teamspeak|tel|teliaeid|telnet|tftp|things|thismessage|tip|tn3270|turn|turns|tv|udp|unreal|urn|ut2004|vemmi|ventrilo|videotex|view-source|wais|webcal|ws|wss|wtai|wyciwyg|xcon|xcon-userid|xfire|xmlrpc\.beep|xmlrpc.beeps|xmpp|xri|ymsgr|z39\.50|z39\.50r|z39\.50s))://                                 # protocol
             (([\pL\pN-]+:)?([\pL\pN-]+)@)?          # basic auth
             (
-                ([\pL\pN\pS\-\_\.])+(\.?([\pL]|xn\-\-[\pL\pN-]+)+\.?) # a domain name
+                ([\pL\pN\pS-\.])+(\.?([\pL]|xn\-\-[\pL\pN-]+)+\.?) # a domain name
                     |                                              # or
                 \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}                 # an IP address
                     |                                              # or
@@ -1643,22 +1537,6 @@ trait ValidatesAttributes
         $~ixu';
 
         return preg_match($pattern, $value) > 0;
-    }
-
-    /**
-     * Validate that an attribute is a valid UUID.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function validateUuid($attribute, $value)
-    {
-        if (! is_string($value)) {
-            return false;
-        }
-
-        return preg_match('/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/iD', $value) > 0;
     }
 
     /**
@@ -1709,8 +1587,6 @@ trait ValidatesAttributes
      * @param  mixed  $second
      * @param  string  $operator
      * @return bool
-     *
-     * @throws \InvalidArgumentException
      */
     protected function compare($first, $second, $operator)
     {
@@ -1739,7 +1615,7 @@ trait ValidatesAttributes
     protected function parseNamedParameters($parameters)
     {
         return array_reduce($parameters, function ($result, $item) {
-            [$key, $value] = array_pad(explode('=', $item, 2), 2, null);
+            list($key, $value) = array_pad(explode('=', $item, 2), 2, null);
 
             $result[$key] = $value;
 
@@ -1757,7 +1633,7 @@ trait ValidatesAttributes
      *
      * @throws \InvalidArgumentException
      */
-    public function requireParameterCount($count, $parameters, $rule)
+    protected function requireParameterCount($count, $parameters, $rule)
     {
         if (count($parameters) < $count) {
             throw new InvalidArgumentException("Validation rule $rule requires at least $count parameters.");
@@ -1765,15 +1641,19 @@ trait ValidatesAttributes
     }
 
     /**
-     * Check if the parameters are of the same type.
+     * Require comparison values to be of the same type.
      *
      * @param  mixed  $first
      * @param  mixed  $second
-     * @return bool
+     * @return void
+     *
+     * @throws \InvalidArgumentException
      */
-    protected function isSameType($first, $second)
+    protected function requireSameType($first, $second)
     {
-        return gettype($first) == gettype($second);
+        if (gettype($first) != gettype($second)) {
+            throw new InvalidArgumentException('The values under comparison must be of the same type');
+        }
     }
 
     /**

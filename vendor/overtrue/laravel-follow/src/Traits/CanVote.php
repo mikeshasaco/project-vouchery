@@ -12,7 +12,6 @@
 namespace Overtrue\LaravelFollow\Traits;
 
 use Overtrue\LaravelFollow\Follow;
-use Illuminate\Support\Str;
 
 /**
  * Trait CanVote.
@@ -26,15 +25,15 @@ trait CanVote
      * @param string                                        $type
      * @param string                                        $class
      *
-     * @throws \Exception
-     *
      * @return array
+     *
+     * @throws \Exception
      */
     public function vote($targets, $type = 'upvote', $class = __CLASS__)
     {
         $this->cancelVote($targets);
 
-        return Follow::attachRelations($this, Str::plural($type), $targets, $class);
+        return Follow::attachRelations($this, str_plural($type), $targets, $class);
     }
 
     /**
@@ -43,9 +42,9 @@ trait CanVote
      * @param int|array|\Illuminate\Database\Eloquent\Model $targets
      * @param string                                        $class
      *
-     * @throws \Exception
-     *
      * @return array
+     *
+     * @throws \Exception
      */
     public function upvote($targets, $class = __CLASS__)
     {
@@ -58,9 +57,9 @@ trait CanVote
      * @param int|array|\Illuminate\Database\Eloquent\Model $targets
      * @param string                                        $class
      *
-     * @throws \Exception
-     *
      * @return array
+     *
+     * @throws \Exception
      */
     public function downvote($targets, $class = __CLASS__)
     {
@@ -77,8 +76,8 @@ trait CanVote
      */
     public function cancelVote($targets, $class = __CLASS__)
     {
-        $this->hasUpvoted($targets) && Follow::detachRelations($this, 'upvotes', $targets, $class);
-        $this->hasDownvoted($targets) && Follow::detachRelations($this, 'downvotes', $targets, $class);
+        Follow::detachRelations($this, 'upvotes', $targets, $class);
+        Follow::detachRelations($this, 'downvotes', $targets, $class);
 
         return $this;
     }

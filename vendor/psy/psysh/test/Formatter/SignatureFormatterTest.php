@@ -12,8 +12,7 @@
 namespace Psy\Test\Formatter;
 
 use Psy\Formatter\SignatureFormatter;
-use Psy\Reflection\ReflectionClassConstant;
-use Psy\Reflection\ReflectionConstant_;
+use Psy\Reflection\ReflectionConstant;
 
 class SignatureFormatterTest extends \PHPUnit\Framework\TestCase
 {
@@ -29,7 +28,7 @@ class SignatureFormatterTest extends \PHPUnit\Framework\TestCase
      */
     public function testFormat($reflector, $expected)
     {
-        $this->assertSame($expected, \strip_tags(SignatureFormatter::format($reflector)));
+        $this->assertSame($expected, strip_tags(SignatureFormatter::format($reflector)));
     }
 
     public function signatureReflectors()
@@ -37,10 +36,10 @@ class SignatureFormatterTest extends \PHPUnit\Framework\TestCase
         return [
             [
                 new \ReflectionFunction('implode'),
-                \defined('HHVM_VERSION') ? 'function implode($arg1, $arg2 = null)' : 'function implode($glue, $pieces)',
+                defined('HHVM_VERSION') ? 'function implode($arg1, $arg2 = null)' : 'function implode($glue, $pieces)',
             ],
             [
-                ReflectionClassConstant::create($this, 'FOO'),
+                new ReflectionConstant($this, 'FOO'),
                 'const FOO = "foo value"',
             ],
             [
@@ -68,18 +67,6 @@ class SignatureFormatterTest extends \PHPUnit\Framework\TestCase
             [
                 new \ReflectionMethod('Psy\Test\Formatter\Fixtures\BoringTrait', 'boringMethod'),
                 'public function boringMethod($one = 1)',
-            ],
-            [
-                new ReflectionConstant_('E_ERROR'),
-                'define("E_ERROR", 1)',
-            ],
-            [
-                new ReflectionConstant_('PHP_VERSION'),
-                'define("PHP_VERSION", "' . PHP_VERSION . '")',
-            ],
-            [
-                new ReflectionConstant_('__LINE__'),
-                'define("__LINE__", null)', // @todo show this as `unknown` in red or something?
             ],
         ];
     }

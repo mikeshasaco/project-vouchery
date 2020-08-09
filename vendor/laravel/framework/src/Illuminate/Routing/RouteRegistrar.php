@@ -21,7 +21,6 @@ use InvalidArgumentException;
  * @method \Illuminate\Routing\RouteRegistrar name(string $value)
  * @method \Illuminate\Routing\RouteRegistrar namespace(string $value)
  * @method \Illuminate\Routing\RouteRegistrar prefix(string  $prefix)
- * @method \Illuminate\Routing\RouteRegistrar where(array  $where)
  */
 class RouteRegistrar
 {
@@ -54,7 +53,7 @@ class RouteRegistrar
      * @var array
      */
     protected $allowedAttributes = [
-        'as', 'domain', 'middleware', 'name', 'namespace', 'prefix', 'where',
+        'as', 'domain', 'middleware', 'name', 'namespace', 'prefix',
     ];
 
     /**
@@ -176,8 +175,6 @@ class RouteRegistrar
      * @param  string  $method
      * @param  array  $parameters
      * @return \Illuminate\Routing\Route|$this
-     *
-     * @throws \BadMethodCallException
      */
     public function __call($method, $parameters)
     {
@@ -186,7 +183,7 @@ class RouteRegistrar
         }
 
         if (in_array($method, $this->allowedAttributes)) {
-            if ($method === 'middleware') {
+            if ($method == 'middleware') {
                 return $this->attribute($method, is_array($parameters[0]) ? $parameters[0] : $parameters);
             }
 

@@ -18,6 +18,8 @@ class FirstTest extends TestCase
 {
     /**
      * @dataProvider provide
+     *
+     * @param mixed $x
      */
     public function testFirst($x): void
     {
@@ -26,6 +28,6 @@ class FirstTest extends TestCase
 
     public function provide(): void
     {
-        throw new \Exception;
+        throw new \Exception();
     }
 }
