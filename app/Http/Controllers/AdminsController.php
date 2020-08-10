@@ -13,7 +13,7 @@ class AdminsController extends Controller
     public function index()
     {
         $adminallcustomers = Customer::paginate(15);
-        $adminallusers = User::paginate(15);
+        $adminallusers = User::all();
         $adminusercount = User::count();
         $admincustomercount = Customer::count();
         $adminproductcount = Product::count();
