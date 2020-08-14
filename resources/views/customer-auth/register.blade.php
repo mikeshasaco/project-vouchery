@@ -32,7 +32,7 @@
                 <img src="/shopify.jpg" alt="shop" height="30px" width="30px">
 
             </div> --}}
-         <center>  <h5 class="loginh1" style="margin-top: -9px" style="color: black; opacity:0.8%;"> <b> Sign up to enter marketplace.</b> </h5></center> 
+         <center>  <h6 class="loginh1" style="margin-top: -9px" style="color: black; opacity:0.8%;"> <b>Trusted Marketplace for online businesses</b> </h6></center> 
 
      {{-- <h4 class="loginh1" style="margin-top: -9px" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4> --}}
             <div>
