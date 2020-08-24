@@ -283,6 +283,8 @@
     {{-- <section id="filterproducts">
         <filter-products></filter-products>
     </section> --}}
+
+     @include('inc.signupblocker')
 @endsection
 @section('javascripts')
     <script type="text/javascript">
