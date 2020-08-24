@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container logincontainer" >
+<div class="container logincontainer" style="margin-top:125px;" >
 @if (session('status'))
     <div class="alert alert-success">
         {{ session('status') }}

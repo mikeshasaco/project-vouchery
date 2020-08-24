@@ -10,12 +10,19 @@ Route::post('/help/questions', 'AskEmailController@store')->name('help.store');
 Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');
-Route::get('/home', 'PagesController@landingpage');
+
+// landing page
+// Route::get('/home', 'PagesController@landingpage');
+
+//put that in the all middleware down below
+// Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
+
+Route::get('/', 'PagesController@index')->name('homepage');
+
 
 Auth::routes();
 
 Route::group(['middleware'=>'all'],function(){
-    Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::post('product', 'ProductsController@store')->name('product.store');
     Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');

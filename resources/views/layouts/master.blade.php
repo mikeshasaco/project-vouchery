@@ -86,6 +86,8 @@ src="https://www.facebook.com/tr?id=387119268900181&ev=PageView
 	@include('inc.nav')
 
 @else
+@include('inc.guest')
+@include('inc.mobilenavbar')
 @endif
 
 	@include('inc.modal')

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container registercontainer">
+<div class="container registercontainer" style="margin-top: 125px;">
     <div class="phones-col">
         <div class="swiper-container">
             <div class="swiper-wrapper">
