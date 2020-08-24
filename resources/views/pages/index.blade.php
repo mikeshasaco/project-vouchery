@@ -304,4 +304,57 @@
                 .appendTo('#slidershow');
         }, 8000);
     </script>
+
+     <script type="text/javascript">
+    $(document).ready(function() {
+        var Swipes = new Swiper('.swiper-container', {
+            autoplay: {
+                delay: 3000,
+            },
+            speed: 500,
+            slidesPerView: 'auto',
+            loop: true,
+        });
+        $('.tab-login li, .pan').removeClass('active');
+
+        var current_tab = localStorage.getItem("current_tab") || 'vouchpanel4',
+            element     = $(".tab-login li")
+                        .parent('div')
+                        .find("[rel="+current_tab+"]")
+                        .addClass('active');
+
+    // new .pan code
+    var pan = $('.pan')
+        .parent('.wrapper-pan') // <-- This used to be .tab-pan (old parent)
+        .find('.' + current_tab + '-content')
+        .addClass('active')
+
+        // this code is switching from tab to tab
+    // im in the class tab-panels > ul tab-vouch > grabing the li
+    $('.tab-pan .tab-login li').on('click', function() {
+        var $panels = $(this).closest('.tab-pan');
+        $panels.find('.tab-login li.active').removeClass('active');
+        $(this).addClass('active');
+
+        // use if to check which tab has class of current_tab
+        if ($('.pan').hasClass(current_tab)) {
+            $(this).addClass('active');
+        }
+
+        var loginpanelshow = $(this).attr('rel');
+
+        $('.tab-pan .pan.active').stop().slideUp(300, function(){
+        $(this).removeClass('active');
+        $('#'+ loginpanelshow).slideDown(300, function(){
+            $(this).addClass('active');
+        });
+        });
+
+        // this is the code that i attempted to use local storage to save on refresh
+        var relAtt = $(this).attr('rel');
+        localStorage.setItem("current_tab", relAtt);
+        /* console.log(relAtt); */
+        });
+    });
+    </script>
 @endsection
