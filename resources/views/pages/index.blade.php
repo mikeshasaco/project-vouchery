@@ -3,7 +3,7 @@
     <section id="banner-homepage" class="d-none d-lg-block">
         <div class="d-none d-sm-block container" >
             <div class="row">
-                <h4><b>Search through businesses coupon from our marketplace</b></h4>
+                <h4><b>Add your Business to the Marketplace build your own subscription plan for customers</b></h4>
                 <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
                         <div class="input-group  col-md-12">
