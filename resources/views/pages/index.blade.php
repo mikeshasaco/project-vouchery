@@ -280,9 +280,9 @@
         </div>
     </section> --}}
     {{-- vue filter --}}
-    <section id="filterproducts">
+    {{-- <section id="filterproducts">
         <filter-products></filter-products>
-    </section>
+    </section> --}}
 @endsection
 @section('javascripts')
     <script type="text/javascript">
