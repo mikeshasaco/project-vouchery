@@ -4,7 +4,7 @@
       <form method="post" enctype="multipart/form-data" action="{{route('product.store')}}"  >
         {{ csrf_field() }}
       <div class="modal-header">
-      <center> <h3>Create Coupon</h3> </center>
+      <center> <h3>Add your business deal here</h3> </center>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
