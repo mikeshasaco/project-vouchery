@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Account' => $baseDir . '/app/Account.php',
+    'App\\Ad' => $baseDir . '/app/Ad.php',
+    'App\\Adtype' => $baseDir . '/app/Adtype.php',
     'App\\Advertisement' => $baseDir . '/app/Advertisement.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Click' => $baseDir . '/app/Click.php',
@@ -16,8 +18,11 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Customer' => $baseDir . '/app/Customer.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Gender' => $baseDir . '/app/Gender.php',
     'App\\Http\\Controllers\\AccountsController' => $baseDir . '/app/Http/Controllers/AccountsController.php',
     'App\\Http\\Controllers\\AdminsController' => $baseDir . '/app/Http/Controllers/AdminsController.php',
+    'App\\Http\\Controllers\\AdsController' => $baseDir . '/app/Http/Controllers/AdsController.php',
+    'App\\Http\\Controllers\\AdtypesController' => $baseDir . '/app/Http/Controllers/AdtypesController.php',
     'App\\Http\\Controllers\\AskEmailController' => $baseDir . '/app/Http/Controllers/AskEmailController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -31,6 +36,7 @@ return array(
     'App\\Http\\Controllers\\CustomerAuth\\RegisterController' => $baseDir . '/app/Http/Controllers/CustomerAuth/RegisterController.php',
     'App\\Http\\Controllers\\CustomerAuth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/CustomerAuth/ResetPasswordController.php',
     'App\\Http\\Controllers\\CustomerController' => $baseDir . '/app/Http/Controllers/CustomerController.php',
+    'App\\Http\\Controllers\\GendersController' => $baseDir . '/app/Http/Controllers/GendersController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PagesController' => $baseDir . '/app/Http/Controllers/PagesController.php',
     'App\\Http\\Controllers\\ProductsController' => $baseDir . '/app/Http/Controllers/ProductsController.php',

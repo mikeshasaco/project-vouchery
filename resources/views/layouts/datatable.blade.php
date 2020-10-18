@@ -67,11 +67,10 @@ src="https://www.facebook.com/tr?id=387119268900181&ev=PageView
 	<link href="{{ asset('css/inputs.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="/css/app.css">
 	<link href="{{ asset('css/master.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/fontmaster.css') }}" rel="stylesheet">
+		{{-- <link href="{{ asset('css/fontmaster.css') }}" rel="stylesheet"> --}}
 	<link rel="stylesheet" href="{{ asset('css/table.css') }}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
-	
 
 
 	 @yield('styles')

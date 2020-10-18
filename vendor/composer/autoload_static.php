@@ -434,6 +434,8 @@ class ComposerStaticInit632c97099ba4b4477755f4368f1e769f
 
     public static $classMap = array (
         'App\\Account' => __DIR__ . '/../..' . '/app/Account.php',
+        'App\\Ad' => __DIR__ . '/../..' . '/app/Ad.php',
+        'App\\Adtype' => __DIR__ . '/../..' . '/app/Adtype.php',
         'App\\Advertisement' => __DIR__ . '/../..' . '/app/Advertisement.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Click' => __DIR__ . '/../..' . '/app/Click.php',
@@ -443,8 +445,11 @@ class ComposerStaticInit632c97099ba4b4477755f4368f1e769f
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Gender' => __DIR__ . '/../..' . '/app/Gender.php',
         'App\\Http\\Controllers\\AccountsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountsController.php',
         'App\\Http\\Controllers\\AdminsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminsController.php',
+        'App\\Http\\Controllers\\AdsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdsController.php',
+        'App\\Http\\Controllers\\AdtypesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdtypesController.php',
         'App\\Http\\Controllers\\AskEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/AskEmailController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -458,6 +463,7 @@ class ComposerStaticInit632c97099ba4b4477755f4368f1e769f
         'App\\Http\\Controllers\\CustomerAuth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerAuth/RegisterController.php',
         'App\\Http\\Controllers\\CustomerAuth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerAuth/ResetPasswordController.php',
         'App\\Http\\Controllers\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerController.php',
+        'App\\Http\\Controllers\\GendersController' => __DIR__ . '/../..' . '/app/Http/Controllers/GendersController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
         'App\\Http\\Controllers\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductsController.php',

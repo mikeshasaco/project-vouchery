@@ -19,6 +19,11 @@ class Category extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function ads()
+    {
+        return $this->hasMany('App\Ad');
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

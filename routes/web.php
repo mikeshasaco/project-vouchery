@@ -1,5 +1,7 @@
 <?php
 
+route::get('/analytics/tool','AdsController@index');
+
 route::get('/404', 'AskEmailController@pagenotfound')->name('notfound');
 
 // Route::get('/advertisement/createAd', 'AdvertisementsController@createAd');
@@ -83,6 +85,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
     Route::get('/category/create', 'CategoryController@create')->name('category.create')->middleware('auth');
     Route::post('/category/create', 'CategoryController@store')->middleware('auth');
     Route::get('subscribe/payout', 'AdminsController@subscriptionpayout')->name('subscription.payout');
+
+
+    Route::get('/ad/create/process', 'AdsController@create');
+
+    Route::post('/ad/create/process','AdsController@store' )->name('create.ad');
+
+    Route::get('/gender/create', 'GendersController@create')->name('gender.create');
+    Route::post('/gender/create', 'GendersController@store')->name('create.gender');
+
+    Route::get('/adtype/create', 'AdtypesController@create')->name('adtype.create');
+    Route::post('/ad/create', 'AdtypesController@store')->name('create.adtype');
+
+    Route::get('/detail-targeting/create', 'TagController@index')->name('tag.create');
+    Route::post('/detail-targeting/create', 'TagController@store')->name('create.tag');
+
+
 
 });
 
