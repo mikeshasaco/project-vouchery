@@ -48,7 +48,13 @@
                             </div>
                         </div>
                     </div>
-                    @if(Auth::id() == $user->id)
+                @if(Auth::id() == $user->id)
+                    <div class="secondinfo">
+                        <label for="subscription"><b> POST YOUR WEBSITE DEAL</b></label>
+                    <a class="subscribe_button" data-toggle="modal" data-target="#productmodal" style="color: white; letter-spacing: 3px; cursor:pointer;">Create Deal</a>
+                    </div>
+                @endif
+                    {{-- @if(Auth::id() == $user->id)
                         @if($user->subscription_price)
                         <div class="secondinfo">
                             <label for="subscription"><b> SUBSCRIPTION</b></label>
@@ -97,7 +103,7 @@
                             <p class="subscribe_button">Not Set Subscription</p>
                         </div>
                         @endif
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>
@@ -134,7 +140,7 @@
                     </div> -->
                     <div class="card-body">
                         <h4 class="card-title">
-                             <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
+                                <a href="{{ url('deal' .'/'. $product->slug . '/'. $product->id) }}" title="Coupon Name" >{{$product->title}}</a>
                          </h4>
                         <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description"><b> {{$product->desc}}</b></p>
                         <ul class="list-group list-group-flush">
@@ -146,12 +152,12 @@
                                         <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
                                     </div>
                                     
-                                    @if(auth::user() || auth::guard('customer')->user())
+                                    {{-- @if(auth::user() || auth::guard('customer')->user()) --}}
                                     <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal
                                     </a>
-                                    @else
+                                    {{-- @else
                                         <a href="/register" class="cardbutton-page">View Deal</a>
-                                    @endif
+                                    @endif --}}
                                 </div>
 
                             <!-- </li> -->

@@ -18,8 +18,10 @@
         <li><a class="nav-link" href="{{ route('customer.login') }}">Login</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
         @else
-  
-      <li class="nav-item dropdown">
+      <li><a class="nav-link" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a></li>  
+      <li>  <a class="nav-link" href="{{ route('myads', auth()->user()->slug) }}">Edit Profile</a></li>
+
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->company }}</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a>
@@ -27,7 +29,7 @@
           <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
           <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Earnings</a>
         </div>
-      </li>
+      </li> --}}
       <li><a href="{{ route('AllBusinesses') }}">Categories</a></li>
 
       <li> <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -39,11 +41,13 @@
         @csrf
     </form>
 
-        <button type="button" class="custom-createbutton-mobile" data-toggle="modal" data-target="#productmodal">
+        {{-- <button type="button" class="custom-createbutton-mobile" data-toggle="modal" data-target="#productmodal">
       Create 
-    </button>
+    </button> --}}
     @endif
     </ul>
+
+    <ul style="padding-bottom:10px;"><button type="button" class="custom-createbutton-mobile" data-toggle="modal" data-target="#productmodal" style="width: 100%;"> CREATE DEAL</ul>
   </div>
 </nav>
 

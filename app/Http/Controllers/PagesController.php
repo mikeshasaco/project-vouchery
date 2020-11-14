@@ -19,7 +19,7 @@ class PagesController extends Controller
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', 'products.user_id')
         ->select('products.*', 'users.company', 'users.slug', 'products.clicks','products.exclusive', 'categoriess.categoryname'
-        , 'categoriess.catslug','users.stripe_plan')
+        , 'categoriess.catslug','users.stripe_plan', 'users.avatar')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->paginate(15);

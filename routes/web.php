@@ -19,12 +19,17 @@ Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('t
 //put that in the all middleware down below
 // Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
 
+Route::get('/deal/{user}/{id}', 'ProductsController@show');
 Route::get('/', 'PagesController@index')->name('homepage');
 
+Route::post('/product/{id}/click', 'ClicksController@postClicks');
 
 Auth::routes();
 
 Route::group(['middleware'=>'all'],function(){
+
+
+
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::post('product', 'ProductsController@store')->name('product.store');
     Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
@@ -60,7 +65,6 @@ Route::group(['middleware'=>'all'],function(){
     // delete post
     Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
-    Route::post('/product/{id}/click', 'ClicksController@postClicks');
 
     // welcome page
     Route::get('/welcome/voucheryhub', 'PagesController@loading')->middleware('auth');
@@ -85,22 +89,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
     Route::get('/category/create', 'CategoryController@create')->name('category.create')->middleware('auth');
     Route::post('/category/create', 'CategoryController@store')->middleware('auth');
     Route::get('subscribe/payout', 'AdminsController@subscriptionpayout')->name('subscription.payout');
-
-
-    Route::get('/ad/create/process', 'AdsController@create');
-
-    Route::post('/ad/create/process','AdsController@store' )->name('create.ad');
-
-    Route::get('/gender/create', 'GendersController@create')->name('gender.create');
-    Route::post('/gender/create', 'GendersController@store')->name('create.gender');
-
-    Route::get('/adtype/create', 'AdtypesController@create')->name('adtype.create');
-    Route::post('/ad/create', 'AdtypesController@store')->name('create.adtype');
-
-    Route::get('/detail-targeting/create', 'TagController@index')->name('tag.create');
-    Route::post('/detail-targeting/create', 'TagController@store')->name('create.tag');
-
-
 
 });
 

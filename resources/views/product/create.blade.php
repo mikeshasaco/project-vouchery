@@ -1,12 +1,12 @@
 
-<center><p style="color:b35464;"> Expiration Date: {{  \Carbon\Carbon::now()->addDays(7)->format('l, d F, Y') }}</p> </center>
-    
+{{-- <center><p style="color:b35464;"> Expiration Date: {{  \Carbon\Carbon::now()->addDays(7)->format('l, d F, Y') }}</p> </center> --}}
+    <center><h3 style="font-family: Brush Script MT, Brush Script Std, cursive">Create Deal</h3></center>
      <div class="panel panel-default">
          <div class="panel-body">
-            <div class="form-group custom-control custom-switch">
+            {{-- <div class="form-group custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitches" name="exclusive">
                 <label class="custom-control-label" for="customSwitches"> <b>Subscription Coupon</b> <i>(checkbox create subscribers only coupon code)</i> </label>
-            </div>
+            </div> --}}
             <div class="form-group custom-file">
                 <input type="file" name="image" class="form-control custom-file-input" id="validatedCustomFile" required>
                 <label class="custom-file-label" for="validatedCustomFile">Upload Coupon Image</label>

@@ -273,6 +273,8 @@ setTimeout(function() {
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/tabreload.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/clickfeature.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/clickshowfeature.js') }}"></script>
+
 	     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>

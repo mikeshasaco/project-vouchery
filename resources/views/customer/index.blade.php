@@ -13,9 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#subscription-names" role="tab" aria-controls="following" aria-selected="false">Following</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#subscriptionstatistic" role="tab" aria-controls="subscription" aria-selected="false">Subscription</a>
-            </li>
+            </li> --}}
         </ul>
         <div class="tab-content">
             <section id="customersettingpass" class="tab-pane fade show active" role="tabpanel">

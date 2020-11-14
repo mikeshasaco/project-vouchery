@@ -24,7 +24,7 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
             ->join('users', 'users.id', 'products.user_id')
-            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug','users.stripe_plan')
+            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug','users.stripe_plan', 'users.avatar')
             ->orderByRaw('advertboolean = 0', 'advertboolean')
             ->orderBy('products.created_at', 'DESC')
             ->paginate(15);
@@ -99,7 +99,7 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', '=', 'products.user_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan', 'users.avatar')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->where('categoriess.catslug', $slug)
@@ -199,8 +199,9 @@ class ProductsController extends Controller
         ],
         'currentprice' => 'required|numeric|between:0.01,9999.99|min:0.00',
         'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
-        'couponcode' => 'max:20',
+        'couponcode' => 'max:20| required_if:exclusive,=,nullable',
        // "url" => 'required|url',
+       'exclusive' => 'required_if:couponcode,=,nullable'
 
       ]);
         // limit the number of posts that a user can make which is set to 9
@@ -246,6 +247,21 @@ class ProductsController extends Controller
         return redirect('/account/'. Auth::user()->slug);
 
         // return redirect()->back();
+    }
+
+    public function show($slug, $id)
+    {
+        $userproduct = Product::join('users', 'users.id', 'products.user_id')
+                                ->join('categoriess', 'categoriess.id', 'products.category_id')
+                                ->where('products.id', $id)
+                                ->where('users.slug', $slug)
+                                ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug')
+                                ->firstorfail();
+        
+        // dd($userproduct);
+
+        return view('product.show', compact('userproduct'));
+
     }
 
 

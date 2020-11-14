@@ -99,6 +99,26 @@
     color: #CA3F3F;
     border: 1px solid #CA3F3F;
 }
+
+.show-button-product{
+        width: 100%;
+    display: inline-block;
+    background-color: #B35464;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.show-button-product:hover{
+      text-decoration: none;
+    color: #B35464;
+    border: 1px solid #B35464;
+    background-color:  #ca8792;
+}
+
 .subscribe_button{
     width: 100%;
     display: inline-block;
@@ -111,11 +131,14 @@
     text-decoration: none;
 }
 a.subscribe_button:hover{
-    background-color: white;
+    /* background-color: white;  original background color*/
     text-decoration: none;
     color: #B35464;
     border: 1px solid #B35464;
+    background-color:  #ca8792;
 }
+
+
 .secondinfo{
     border: 1px solid #DEE0E1;
     padding: 20px;
