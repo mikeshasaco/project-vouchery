@@ -23,20 +23,49 @@ Route::get('/deal/{user}/{id}', 'ProductsController@show');
 Route::get('/', 'PagesController@index')->name('homepage');
 
 Route::post('/product/{id}/click', 'ClicksController@postClicks');
+// businessess /all/ slugs
+Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
+Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
+// search controller
+Route::get('/search', 'SearchController@search')->name('search');
+
 
 Auth::routes();
+Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
+
+
+Route::get('/account/{slug}/follow', 'AccountsController@follow');
+Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
+
+Route::group(['middleware' => 'auth'], function(){
+
+    // account page
+    Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
+    Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
+    Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
+
+
+
+    Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
+    Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
+    Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
+
+    // delete post
+    Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
+
+    Route::post('product', 'ProductsController@store')->name('product.store');
+
+
+});
 
 Route::group(['middleware'=>'all'],function(){
 
 
 
-    // Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('product', 'ProductsController@store')->name('product.store');
-    Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
-    Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
+    Route::get('/home', 'HomeController@index')->name('home');
+  
 
     // search filter
-    Route::get('/search', 'SearchController@search')->name('search');
 
     // vue filter
     Route::post('/get', 'PagesController@getData');
@@ -49,25 +78,11 @@ Route::group(['middleware'=>'all'],function(){
     Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
     Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
 
-    // account page
-    Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
-    Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
-    Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
-    Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
-
-    Route::get('/account/{slug}/follow', 'AccountsController@follow');
-    Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
-
-    Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
-    Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
-    Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
-
-    // delete post
-    Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
 
     // welcome page
     Route::get('/welcome/voucheryhub', 'PagesController@loading')->middleware('auth');
+  
 });
 //old admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {

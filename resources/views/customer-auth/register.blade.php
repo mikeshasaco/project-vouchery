@@ -22,7 +22,9 @@
             <div class="logo">
                 <img src="/vouch.png" alt="logo" height="50px">
             </div>
-        <center>  <h5 style="color: black "> <b> Sign up your business, earn a monthly income and interact with your customers.</b></h5></center>
+            {{-- previous title when subscription on there --}}
+        {{-- <center>  <h5 style="color: black "> <b> Sign up your business, earn a monthly income and interact with your customers.</b></h5></center> --}}
+        <center>  <h6 style="color: black "> <b> Sign up your business, Track your products clicks, Grow an audience of customers.</b></h6></center>
 
          {{-- <center>  <h5 style="color: black ">Sign up to make money and interact with your customers!</h5></center> --}}
           {{-- <center>  <h5 style="color: black "><b> Earn up to: $500/month </b> </h5></center> --}}

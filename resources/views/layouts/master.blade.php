@@ -75,7 +75,7 @@ src="https://www.facebook.com/tr?id=387119268900181&ev=PageView
 
 
 	 @yield('styles')
-	<title>@yield('title') VoucheryHub: Coupons, Deals</title>
+	<title>@yield('title') VoucheryHub: Deals</title>
 </head>
 
 <body>

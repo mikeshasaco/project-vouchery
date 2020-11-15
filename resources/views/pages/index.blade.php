@@ -3,7 +3,7 @@
     <section id="banner-homepage" class="d-none d-lg-block">
         <div class="d-none d-lg-block container" >
             <div class="row">
-                <h1 style="color: black;"><b>Voucheryhub, Post your website Deals, Attract new Customers, Expand your business. </b></h1>                <form class="navbar-form" action="{{ route('search') }}" method="GET">
+                <h1 style="color: black;"><b>Voucheryhub Marketplace for businesses with Deals </b></h1>                <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
                         <div class="input-group  col-md-12">
                             <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search Through Deals... ">

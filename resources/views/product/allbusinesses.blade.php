@@ -5,7 +5,7 @@
 
 @endsection
 
-@section('title', 'All Coupons')
+@section('title', 'All Deals')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@
 
                 <div class="col-md-12 col-12">
                         <h3 class="titleallcategory"  > <b> All Categories</b></h3>
-                            <h5> <b>(Coupon Count <i>{{ $categorycountallbusy->count() }})</b> </i></h5>
+                            <h5> <b>(Deals Count <i>{{ $categorycountallbusy->count() }})</b> </i></h5>
                         
                     <div class="selectagcategory">
                     <select onchange="if (this.value) window.location.href=this.value" style="margin-top:5%; " class="media-select form-control">
