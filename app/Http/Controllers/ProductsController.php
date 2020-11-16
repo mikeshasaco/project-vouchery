@@ -238,7 +238,7 @@ class ProductsController extends Controller
         //     $location = public_path('/images/' . $filename);
         //     Image::make($image)->save($location);
         //     $product->image = $filename;
-        }
+        // }
         // using the storage
 
         //
