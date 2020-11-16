@@ -110,6 +110,15 @@ background-color: #B35464;
 
 }
 
+#listedbusiness{
+    margin-top: 38px;
+    padding-bottom: 17px;
+}
+
+#listedbusiness-customerandguest{
+    margin-top: 38px;
+    padding-bottom: 17px;
+}
 #recentlyuploaded .card-body .list-group-item .discounth5{
     font-weight: bold;
     float: left;
@@ -1227,6 +1236,16 @@ border-radius: 3px;
    }
 }
 @media(max-width:768px){
+
+#listedbusiness{
+    margin-top: 205px;
+    padding-bottom: 17px;
+}
+#listedbusiness-customerandguest{
+        margin-top: 166px;
+
+}
+
     .container-reset{
         margin-top: 21%;
         margin-bottom: 8%;
@@ -1234,7 +1253,7 @@ border-radius: 3px;
 
     
     #recentlyuploaded .card{
-        margin-top: 48%;
+        margin-top: 10px;
     }
 
     #albusysection {
@@ -1255,8 +1274,12 @@ border-radius: 3px;
         font-size: 18px;
     }
 
+    #listedbusiness{
+    margin-top: 197px;
+}
+
     #recentlyuploaded .card{
-        margin-top: 30%;
+        margin-top: 0px;
     }
     .searchonlinebusiness{
         margin-top: 23%;
@@ -1322,6 +1345,20 @@ border-radius: 3px;
       #recentlyuploaded{
         margin-top: 40px;;
     }
+
+       #listedbusiness{
+    margin-top: 173px;
+}
+
+
+
+#row-recentlyuploaded{
+    padding-bottom: 13px;
+}
+#listedbusiness-customerandguest{
+        margin-top: 143px;
+        padding-bottom: 19px;
+
 }
 @media (max-width: 400px){
   #albusysection{
@@ -1335,17 +1372,22 @@ border-radius: 3px;
         #recentlyuploaded{
         margin-top: 95px;
     }
+      #listedbusiness{
+    margin-top: 198px;
+}
+
 }
 
 @media (max-width: 375px) {
     #recentlyuploaded .card{
-        margin-top: 22%;
+        margin-top: 0;
     }
 
    .searchonlinebusiness{
            margin-top: 27%;
     }
   
+ 
 
   
 }
@@ -1363,4 +1405,8 @@ border-radius: 3px;
           #recentlyuploaded{
         margin-top: 116px;
     }
+
+    #listedbusiness{
+    margin-top: 175px;
+}
 }
