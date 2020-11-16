@@ -98,8 +98,8 @@
                 @forelse($products as $product)
                 <div class="col-md-6 col-lg-4 col-12" id="row-recentlyuploaded">
                     <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
-                        {{-- <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180"> --}}
-                            <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180">
+                        <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180">
+                            {{-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180"> --}}
                         <!-- <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li>
