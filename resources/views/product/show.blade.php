@@ -132,7 +132,8 @@ font-size: 20px;
             <div class="row">
             <div class="col-md-6">
                 <div class="show-image">
-                <img src="/images/{{$userproduct->image}}" class="userimageshow" alt="deal image">
+            <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$userproduct->image}}"  class="userimageshow" alt="deal image">
+                {{-- <img src="/images/{{$userproduct->image}}"  class="userimageshow" alt="deal image"> --}}
 
                 </div>
             </div>
