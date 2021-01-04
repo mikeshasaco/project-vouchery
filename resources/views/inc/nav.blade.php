@@ -76,8 +76,8 @@
                             @endif
                             <a class="dropdown-item" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a>
                             <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Edit Profile</a>
-                            {{-- <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a> --}}
-                            {{-- <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Earnings</a> --}}
+                             <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a> 
+                            <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Earnings</a> 
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

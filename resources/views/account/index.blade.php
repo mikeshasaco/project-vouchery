@@ -26,17 +26,15 @@
                                       <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit Profile</a>
                                 @endif
 
-                                    @if(Auth::guard('customer')->user())
-                                        @if(Auth::guard('customer')->user()->isfollowing($user))
+                                    @if(Auth::user()->slug != $user->slug)
+                                        @if(Auth::user()->isfollowing($user))
                                             <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
                                                  UNFOLLOW</a>
                                         @else
                                             <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
                                         @endif
-                                    @elseif (Auth::user())
-
                                     @else
-                                        <a href="/register" class="follow_button">FOLLOW</a>
+
                                     @endif
                         </div>
                         <div class="profileinfo">
@@ -48,14 +46,9 @@
                             </div>
                         </div>
                     </div>
-                @if(Auth::id() == $user->id)
-                    <div class="secondinfo">
-                        <label for="subscription"><b> POST YOUR WEBSITE DEAL</b></label>
-                    <a class="subscribe_button" data-toggle="modal" data-target="#productmodal" style="color: white; letter-spacing: 3px; cursor:pointer;">Create Deal</a>
-                    </div>
-                @endif
-                    {{-- @if(Auth::id() == $user->id)
-                        @if($user->subscription_price)
+             {{-- the merchant himself --}}
+                 @if(Auth::id() == $user->id)
+                      @if($user->subscription_price)
                         <div class="secondinfo">
                             <label for="subscription"><b> SUBSCRIPTION</b></label>
                             <p> <b> ${{ $user->subscription_price }} per month</b></p>
@@ -68,7 +61,14 @@
                         </div>
                         @endif
                     @endif
+                    {{-- this is for the customer who is now the merchant --}}
+                       <div class="secondinfo">
+                                <label for="subscription">SUBSCRIPTION</label>
+                                <p>${{ $user->subscription_price }} per month</p>
+                                <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                            </div>
                     @if($customer = Auth::guard('customer')->user())
+                    {{-- if customer and subscribed you see subscribed for price --}}
                         @if($user->subscription_price)
                             @if($customer->subscribedByPLan('main', $user->stripe_plan))
                             <div class="secondinfo">
@@ -77,6 +77,7 @@
                                 <p class="subscribe_button">SUBSCRIBED FOR ${{ $user->subscription_price }}</a>
                             </div>
                             @else
+                            {{-- if you a customer and not subscribed you see this --}}
                             <div class="secondinfo">
                                 <label for="subscription">SUBSCRIPTION</label>
                                 <p>${{ $user->subscription_price }} per month</p>
@@ -103,7 +104,7 @@
                             <p class="subscribe_button">Not Set Subscription</p>
                         </div>
                         @endif
-                    @endif --}}
+                    @endif
                 </div>
             </div>
         </div>
@@ -253,6 +254,7 @@
                     </div>
                 </div>
             </div>
+            {{-- subscription modal --}}
             <div class="modal fade form-prevent-multiple-submits" id="subscriptionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

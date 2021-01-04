@@ -14,7 +14,6 @@ class Click extends Model
     
     protected $fillable = [
         'click_product_id',
-        'click_customer_id',
         'click_user_id'
     ];
 

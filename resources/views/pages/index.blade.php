@@ -158,6 +158,9 @@
                                 @endif
                             </div>
                             <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
+                            @if($product->exclusive)
+                             <a href="{{ url('account' .'/'. $product->slug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:11px;" title="subscriptionprice">${{$product->subscription_price}}/ Month</small> </a>
+                            @endif
                         </div>
                         <div class="content-button" style="margin-left: 1px;">
                             <h6 style="font-weight:bold; font-size:12px;">View More Deals By: <a href="{{ url('account' .'/'. $product->slug) }}" style="text-transform: uppercase;" title="Company Name" >{{$product->company}}</a> </h6>  

@@ -194,10 +194,10 @@ class ProductsController extends Controller
         'title'=> 'required|max:60',
         'desc' => 'required|max:100',
         'newprice' => [
-          'required', 'numeric', 'between:0.00,9999.99', 'min:0.00',
+           'numeric', 'between:0.00,9999.99', 'min:0.00',
             new PriceRule($request->currentprice)
         ],
-        'currentprice' => 'required|numeric|between:0.01,9999.99|min:0.00',
+        'currentprice' => 'numeric|between:0.01,9999.99|min:0.00',
         'image' =>'image|mimes:png,jpg,jpeg,gif|max:10000|required',
         'couponcode' => 'max:20| required_if:exclusive,=,nullable',
        // "url" => 'required|url',
@@ -218,27 +218,28 @@ class ProductsController extends Controller
         $product->newprice = $request->newprice;
         $product->category_id = $request->category;
         $product->couponcode = $request->couponcode;
+        $product->producttype_id = $request->producttype_id;
         $product->url = $request->url;
         $product->expired_date = Carbon::now()->addDays(7);
         $product->user_id = Auth::user()->id;
         $product->expired_date = Carbon::now()->addDay(7);
 
-        if ( $request->hasFile('image')) {
+        // if ( $request->hasFile('image')) {
         
-            $image = $request->file('image');
-            $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
-            $o = Image::make($image)->orientate();
-            $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
-            $product->image = $filename;
-        }
-
-        //    if ($request->hasFile('image')) {
         //     $image = $request->file('image');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     $location = public_path('/images/' . $filename);
-        //     Image::make($image)->save($location);
+        //     $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
+        //     $o = Image::make($image)->orientate();
+        //     $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
         //     $product->image = $filename;
         // }
+
+           if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($image)->save($location);
+            $product->image = $filename;
+        }
         // using the storage
 
         //
@@ -262,6 +263,11 @@ class ProductsController extends Controller
 
         return view('product.show', compact('userproduct'));
 
+    }
+
+    public function create()
+    {
+        return view('product.created');
     }
 
 

@@ -26,14 +26,27 @@ class Product extends Model
         return $this->belongsTo('App\Category');
     }
 
+    // public function percentageoff()
+    // {
+    //     $newpercentage =   $this->currentprice - $this->newprice;
+
+    //     $final = $newpercentage/ $this->currentprice * 100;
+
+
+    //     return sprintf("%.0f%%", $final);
+    // }
+
     public function percentageoff()
     {
-        $newpercentage =   $this->currentprice - $this->newprice;
+        if ($this->currentprice || $this->newprice == null) {
+        } else {
+            $newpercentage =   $this->currentprice - $this->newprice;
 
-        $final = $newpercentage/ $this->currentprice * 100;
+            $final = $newpercentage / $this->currentprice * 100;
 
 
-        return sprintf("%.0f%%", $final);
+            return sprintf("%.0f%%", $final);
+        }
     }
 
     public function clicks()

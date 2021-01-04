@@ -22,7 +22,7 @@
                 <div class="col-md-12 col-sm-12">
                     <h3 class="titleallcategory" > <b>{{ $catbread->categoryname }}</b> </h3>
                     
-                    <h5> <b>(Coupon Count <i>{{ $categorycount->count() }})</i> </b> </h5>
+                    <h5> <b>(Deals Count <i>{{ $categorycount->count() }})</i> </b> </h5>
                     
                     <select name="record" style="margin-top:5%;"  class="media-select form-control">
                         @foreach($cats as $categoryselect)
@@ -117,7 +117,7 @@
     <section id="advert-section" class="d-none d-lg-block">
         <div class="container">
             <h3 style=" margin-bottom: 5%; margin-top: 4%;">
-                <center><b>Advertised Coupons</b></center></h3>
+                <center><b>Advertised Deals</b></center></h3>
 
             <div class="row">
                 @forelse($paidadvertisement as $product)
@@ -195,7 +195,7 @@
                         <thead>
                             <tr>
                                 <th>Company Name</th>
-                                <th>Coupons</th>
+                                <th>Number of Deals</th>
                                 <th>Company Page</th>
                             </tr>
                         </thead>
@@ -203,7 +203,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <td>{{$user->company}} </td>
-                                <td>{{$user->products}} Coupons</td>
+                                <td>{{$user->products}} Deals</td>
                                 <td><a href="{{ url('/account/'.$user->slug) }}" class=""> Visit Page</a> </td>
                             </tr>
                             @endforeach

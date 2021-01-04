@@ -16,18 +16,20 @@ class ClicksController extends Controller
         $product = Product::FindorFail($id);
         $product->increment('clicks');
         // $product->update();
-
+        Click::create([
+            'click_product_id' => $product->id,
+            'click_user_id' => $product->user_id,
+        ]);
 
 
         // store the create in an array
         // tracks clicks that are customers
-        if (!Auth::user()) {
-            Click::create([
-                'click_customer_id' => null,
-                'click_product_id' => $product->id,
-                'click_user_id' => $product->user_id,
-            ]);
-        }
+        // if (!Auth::user()) {
+        //     Click::create([
+        //         'click_product_id' => $product->id,
+        //         'click_user_id' => $product->user_id,
+        //     ]);
+        // }
         // tracks clicks that are guest
         //     elseif (!Auth::guard('customer')->user() && !Auth::user()) {
         //         Click::create(['click_customer_id' => null,
@@ -35,8 +37,8 @@ class ClicksController extends Controller
         //                     'click_user_id' => $product->user_id,
         // ]);
         //     }
-        else {
-        }
+        // else {
+        // }
         // this is from the product table and clicks section
     }
 }

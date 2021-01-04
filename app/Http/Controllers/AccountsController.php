@@ -19,6 +19,7 @@ use App\Customer;
 use App\Monthlyearning;
 use Illuminate\Http\Request;
 use App\Http\Requests\BankRequest;
+use App\Http\Requests\UserSubscriptionRequest;
 use Illuminate\Support\Facades\Storage;
 
 class AccountsController extends Controller
@@ -37,10 +38,12 @@ class AccountsController extends Controller
         $userproduct = User::join('accounts', 'accounts.user_id', 'users.id')
         ->join('products', 'products.user_id', 'users.id')
         ->join('categoriess', 'categoriess.id', 'products.category_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan', 'users.subscription_price')
         ->orderBy('products.created_at', 'DESC')
        ->where('slug', $slug)
        ->get();
+
+    //    dd($userproduct);
         $user_auth = Auth::user();
         $customer = $customer = Auth::guard('customer')->user();
         if($user_auth){
@@ -247,8 +250,8 @@ class AccountsController extends Controller
 
     public function follow(User $user, $slug){
         $user = User::where('slug', $slug)->first();
-        $customer = Auth::guard('customer')->user();
-        $customer->follow($user);
+        $customeruser = Auth::user();
+        $customeruser->follow($user);
         return redirect()->back()->with('success', 'You are now following user');
 
     }
@@ -256,8 +259,8 @@ class AccountsController extends Controller
     public function unfollow(User $user, $slug){
         $merchant = User::where('slug', $slug)->first();
 
-        $customer = Auth::guard('customer')->user();
-        $customer->unfollow($merchant);
+        $customeruser = Auth::user();
+        $customeruser->unfollow($merchant);
         return redirect()->back()->with('success', 'You have unfollowed merchant');
 
     }
@@ -319,5 +322,87 @@ class AccountsController extends Controller
         $customers = Customer::whereIn('stripe_id', $subscription_customer)->get();
         $monthlyearnings = Monthlyearning::where('user_id',$user->id)->get();
         return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings'));
+    }
+
+    public function followingpage($slug)
+    {
+        $user =
+
+            // $customerfollowing = User::join('followables', 'users.id', 'followables.user_id')
+            //     ->join('users', 'users.id', 'followables.followable_id')
+            // ->join('accounts', 'accounts.user_id', 'users.id')
+            // ->select('users.company', 'followables.*', 'users.id', 'users.slug', 'accounts.websitelink')
+            // ->where('slug', $slug)
+            //     ->get();
+
+            // DB::table('followables')->join('users')
+
+            // $test = User::join('followables','followables.followable_id','users.id')
+            //     ->join('users', 'users.id', 'followables.followable_id')
+            // ->select( 'users.*')
+            // ->where('slug', Auth::user()->slug)
+            // ->get();
+
+            // $test=   DB::table('followables')->join('users', 'users.id', 'followables.followable_id')
+            // ->join('users', Auth::user()->id, 'followables.followable_id')
+            // ->get();
+
+           $user =  User::where('slug', $slug)->firstOrFail();
+
+          $userfollowers=  $user->followers;
+        // dd($user->followers) 
+
+        $userfollowing = $user->join('products', 'users.id', 'products.user_id')->with('followers')->orderBy('products.created_at', 'DESC')->take(15)->get();
+
+        //    $userfollowing = User::join('products', 'users.id','products.user_id')->with('followers')->orderBy('products.created_at', 'DESC')->take(15)->get();
+        // dd($userfollowing);
+
+        // $customersubcoupons =  Customer::join('followables', 'customers.id', 'followables.customer_id')
+        // ->join('users', 'users.id', 'followables.followable_id')
+        // ->join('products', 'users.id', 'products.user_id')
+        // ->select('products.title', 'products.currentprice', 'products.newprice', 'users.company', 'products.url', 'users.slug', 'products.created_at')
+        // ->where('customerslug', $customerslug)
+        //     ->orderBy('products.created_at', 'DESC')
+        //     ->take(15)
+        //     ->get();
+
+
+        // $customerclicks = Click::join('customers', 'customers.id', 'clicks.click_customer_id')
+        // ->join('products', 'products.id', 'clicks.click_product_id')
+        // ->join('categoriess', 'categoriess.id', 'products.category_id')
+        // ->join('users', 'users.id', 'products.user_id')
+        // ->select('clicks.click_product_id', 'products.*', 'categoriess.categoryname', 'users.company', 'users.slug')
+        // ->groupBy('clicks.click_product_id')
+        // ->where('customerslug', $customerslug)
+        //     ->inRandomOrder()
+        //     ->take(10)
+        //     ->get();
+
+    
+    
+        return view('account.following',compact('userfollowers', 'userfollowing'));
+
+    }
+    public function subscribe(UserSubscriptionRequest $request, $slug)
+    {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = User::where('slug', $slug)->first();
+        if ($user->stripe_plan == null) {
+            Session::flash('successmessage', $user->company . ' did not set subscription yet');
+            return redirect()->back()->with('success', $user->company . ' did not set subscription yet');
+        }
+        $token = \Stripe\Token::create([
+            "card" => [
+                "number"    => $request->card_number,
+                "exp_month" => $request->exp_month,
+                "exp_year"  => $request->exp_year,
+                "cvc"       => $request->cv_code,
+                "name"      => $request->card_name
+            ]
+        ]);
+        $authuser = Auth::user();
+        $authuser->newSubscription('main', $user->stripe_plan)->create($token->id);
+        Session::flash('successmessage', 'You have set subscription to ' . $user->company);
+        return redirect()->back();
     }
 }

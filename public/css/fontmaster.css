@@ -1109,6 +1109,10 @@ border-radius: 3px;
 .tab-pan .wrapper-pan{
     max-width: 400px;
 }
+.tab-pan .wrapper-pan-productordiscountcode{
+        max-width: 800px;
+
+}
 .tab-pan .logo{
     margin: auto;
     width: fit-content;

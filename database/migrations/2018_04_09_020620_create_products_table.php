@@ -19,9 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('desc');
             $table->string('image');
-            $table->decimal('currentprice')->unsigned();
+            $table->decimal('currentprice')->unsigned()->nullable();
             $table->integer('category_id')->unsigned();
-            $table->decimal('newprice')->unsigned();
+            $table->integer('producttype_id')->unsigned();
+            $table->decimal('newprice')->unsigned()->nullable();
             $table->string('couponcode')->nullable();
             $table->boolean('advertboolean')->default(false);
             $table->integer('clicks')->unsigned()->default(false);

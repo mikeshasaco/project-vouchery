@@ -1,7 +1,5 @@
 <?php
 
-route::get('/analytics/tool','AdsController@index');
-
 route::get('/404', 'AskEmailController@pagenotfound')->name('notfound');
 
 // Route::get('/advertisement/createAd', 'AdvertisementsController@createAd');
@@ -13,8 +11,6 @@ Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');
 
-// landing page
-// Route::get('/home', 'PagesController@landingpage');
 
 //put that in the all middleware down below
 // Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
@@ -44,6 +40,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
     Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
 
+    Route::get('/account/{slug}/following', 'AccountsController@followingpage');
+
+    Route::get('/create/product', 'ProductsController@create')->name('name.create');
+
 
 
     Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
@@ -72,11 +72,15 @@ Route::group(['middleware'=>'all'],function(){
     Route::post('/filter', 'PagesController@filterData');
 
     // Subscribe
-    Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
+    // Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
     Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
     Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
     Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
     Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+
+
+    // user subscribe
+    Route::post('/account/{slug}/subscribe', 'AccountsController@subscribe')->name('account.subscribe');
 
 
 

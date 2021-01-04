@@ -117,7 +117,7 @@
 
     <section id="advert-section" class="d-none d-lg-block">
         <div class="container">
-            <h3 style=" margin-bottom: 5%; margin-top: 4%;"> <center><b>Advertised Coupons</b></center></h3>
+            <h3 style=" margin-bottom: 5%; margin-top: 4%;"> <center><b>Advertised Deals</b></center></h3>
 
             <div class="row">
 
@@ -190,7 +190,7 @@
                         <thead>
                             <tr>
                                 <th>Company Name</th>
-                                <th>Coupons</th>
+                                <th>Number of Deals</th>
                                 <th>Company Page</th>
                             </tr>
                         </thead>
@@ -198,7 +198,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <td>{{$user->company}} </td>
-                                <td>{{$user->products}} Coupons</td>
+                                <td>{{$user->products}} Deals</td>
                                 <td><a href="{{ url('/account/'.$user->slug) }}" class=""> Visit Page</a> </td>
                             </tr>
                             @endforeach
