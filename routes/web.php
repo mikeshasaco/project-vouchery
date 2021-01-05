@@ -95,7 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
     Route::post('/gender/create', 'GendersController@store')->name('create.gender');
 
     Route::get('/adtype/create', 'AdtypesController@create')->name('adtype.create');
-    Route::post('/ad/create', 'AdtypesController@store')->name('create.adtype');
+    Route::post('/adtype/create', 'AdtypesController@store')->name('create.adtype');
 
     Route::get('/detail-targeting/create', 'TagController@index')->name('tag.create');
     Route::post('/detail-targeting/create', 'TagController@store')->name('create.tag');
