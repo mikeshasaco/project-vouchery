@@ -15,8 +15,7 @@ class CreateClicksTable extends Migration
     {
         Schema::create('clicks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('click_customer_id')->nullable();
-            $table->integer('click_user_id')->unsigned();
+            $table->integer('click_user_id')->unsigned()->nullable();
             $table->integer('click_product_id')->unsigned();
             $table->timestamps();
         });

@@ -1,13 +1,12 @@
 @extends('layouts.master')
 @section('content')
     <section id="banner-homepage" class="d-none d-lg-block">
-        <div class="d-none d-sm-block container" >
+        <div class="d-none d-lg-block container" >
             <div class="row">
-                <h4><b>Add your Business to the Marketplace build your own subscription plan for customers</b></h4>
-                <form class="navbar-form" action="{{ route('search') }}" method="GET">
+                <h1 style="color: black;"><b>Voucheryhub Marketplace for businesses with Deals </b></h1>                <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
                         <div class="input-group  col-md-12">
-                            <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search Through ">
+                            <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search Through Deals... ">
                         </div>
                     </div>
                 </form>
@@ -84,12 +83,20 @@
             </div>
         </div>
     </section> --}}
-    <section id="recentlyuploaded" style="margin-bottom:90px;">
+    <section id="recentlyuploaded">
         <div class="container">
+            <div>
+                {{-- only reason i am doing this is becuase on mobile the margin is to expanded for merchant compared to customer & guests --}}
+                @if(Auth::user())
+            <h5 id="listedbusiness" style="font-weight: bold font-family:">Current Deals Listed By Businesses</h5>
+                @else 
+            <h5 id="listedbusiness-customerandguest" style="font-weight: bold font-family:">Current Deals Listed By Businesses</h5>
+                @endif
+            </div>
             <div class="row w-100" >
 
                 @forelse($products as $product)
-                <div class="col-md-6 col-lg-4 col-12">
+                <div class="col-md-6 col-lg-4 col-12" id="row-recentlyuploaded">
                     <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
                         <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180">
                             {{-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180"> --}}
@@ -108,9 +115,9 @@
                         </div> -->
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
+                                <a href="{{ url('deal' .'/'. $product->slug . '/'. $product->id) }}" title="Coupon Name" >{{$product->title}}</a>
                             </h4>
-                            <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description">{{$product->desc}}</p>
+                            <p class="card-text"style="margin:0; margin-top:-10px; font-weight:bold;" title="Coupon Description">{{$product->desc}}</p>
                             <ul class="list-group list-group-flush">
                                 <!-- <li class="list-group-item" style="clear:both;"> -->
                                     <div class="" style="display: flex;justify-content: space-between;">
@@ -120,12 +127,12 @@
                                             <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
                                         </div>
                                         
-                                        @if(auth::user() || auth::guard('customer')->user())
+                                        {{-- @if(auth::user() || auth::guard('customer')->user()) --}}
                                         <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal
                                         </a>
-                                        @else
+                                        {{-- @else
                                             <a href="/register" class="cardbutton-page">View Deal</a>
-                                        @endif
+                                        @endif --}}
                                     </div>
 
                                 <!-- </li> -->
@@ -151,6 +158,15 @@
                                 @endif
                             </div>
                             <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
+                            @if($product->exclusive)
+                             <a href="{{ url('account' .'/'. $product->slug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:11px;" title="subscriptionprice">${{$product->subscription_price}}/ Month</small> </a>
+                            @endif
+                        </div>
+                        <div class="content-button" style="margin-left: 1px;">
+                            <h6 style="font-weight:bold; font-size:12px;">View More Deals By: <a href="{{ url('account' .'/'. $product->slug) }}" style="text-transform: uppercase;" title="Company Name" >{{$product->company}}</a> </h6>  
+                               <div class="companyimage rounded-circle" style =" position:absolute; right:4px; bottom:2px; width:49px; height:45px; ;background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }})">
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -284,7 +300,7 @@
         <filter-products></filter-products>
     </section> --}}
 
-     @include('inc.signupblocker')
+     {{-- @include('inc.signupblocker') --}}
 @endsection
 @section('javascripts')
     <script type="text/javascript">

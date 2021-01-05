@@ -5,12 +5,16 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+
 use Illuminate\Support\Facades\Storage;
 // merchant is user
 class User extends Authenticatable
 {
     use Notifiable;
     use CanBeFollowed;
+    use CanFollow;
+
 
     /**
      * The attributes that are mass assignable.
@@ -59,12 +63,19 @@ class User extends Authenticatable
 
     public function percentageoff()
     {
-        $newpercentage =   $this->currentprice - $this->newprice;
+        if($this->currentprice || $this->newprice == null)
+        {
+            
+        }
+        else{
+            $newpercentage =   $this->currentprice - $this->newprice;
 
-        $final = $newpercentage/ $this->currentprice * 100;
+            $final = $newpercentage / $this->currentprice * 100;
 
 
-        return sprintf("%.0f%%", $final);
+            return sprintf("%.0f%%", $final);
+        }
+     
     }
 
     public function affiliates()

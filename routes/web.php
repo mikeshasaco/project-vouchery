@@ -1,7 +1,5 @@
 <?php
 
-route::get('/analytics/tool','AdsController@index');
-
 route::get('/404', 'AskEmailController@pagenotfound')->name('notfound');
 
 // Route::get('/advertisement/createAd', 'AdvertisementsController@createAd');
@@ -13,45 +11,40 @@ Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');
 
-// landing page
-// Route::get('/home', 'PagesController@landingpage');
 
 //put that in the all middleware down below
 // Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
 
+Route::get('/deal/{user}/{id}', 'ProductsController@show');
 Route::get('/', 'PagesController@index')->name('homepage');
+
+Route::post('/product/{id}/click', 'ClicksController@postClicks');
+// businessess /all/ slugs
+Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
+Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
+// search controller
+Route::get('/search', 'SearchController@search')->name('search');
 
 
 Auth::routes();
+Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
 
-Route::group(['middleware'=>'all'],function(){
-    // Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('product', 'ProductsController@store')->name('product.store');
-    Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
-    Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
 
-    // search filter
-    Route::get('/search', 'SearchController@search')->name('search');
+Route::get('/account/{slug}/follow', 'AccountsController@follow');
+Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
 
-    // vue filter
-    Route::post('/get', 'PagesController@getData');
-    Route::post('/filter', 'PagesController@filterData');
-
-    // Subscribe
-    Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
-    Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
-    Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
-    Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
-    Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+Route::group(['middleware' => 'auth'], function(){
 
     // account page
     Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
     Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
     Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
-    Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
 
-    Route::get('/account/{slug}/follow', 'AccountsController@follow');
-    Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
+    Route::get('/account/{slug}/following', 'AccountsController@followingpage');
+
+    Route::get('/create/product', 'ProductsController@create')->name('name.create');
+
+
 
     Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
     Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
@@ -60,10 +53,40 @@ Route::group(['middleware'=>'all'],function(){
     // delete post
     Route::DELETE('/account/{slug}/{id}', 'AccountsController@destroy');
 
-    Route::post('/product/{id}/click', 'ClicksController@postClicks');
+    Route::post('product', 'ProductsController@store')->name('product.store');
+
+
+});
+
+Route::group(['middleware'=>'all'],function(){
+
+
+
+    Route::get('/home', 'HomeController@index')->name('home');
+  
+
+    // search filter
+
+    // vue filter
+    Route::post('/get', 'PagesController@getData');
+    Route::post('/filter', 'PagesController@filterData');
+
+    // Subscribe
+    // Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
+    Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
+    Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
+    Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
+    Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+
+
+    // user subscribe
+    Route::post('/account/{slug}/subscribe', 'AccountsController@subscribe')->name('account.subscribe');
+
+
 
     // welcome page
     Route::get('/welcome/voucheryhub', 'PagesController@loading')->middleware('auth');
+  
 });
 //old admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {

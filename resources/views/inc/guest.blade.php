@@ -1,5 +1,5 @@
 {{-- fixed-top  guest navbar --}}
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom d-none d-lg-block " id="navbarfix" >
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom d-none d-lg-block " id="navbarfix" style="border: 0 !important">
         <div class="container">
         <a href="{{ route('homepage') }}" class="navbar-brand" style="cursor:pointer;"><img src="/vouch.png" alt="logo" height="32px"></a>
         {{-- <a class="navbar-brand" href="{{route('homepage')}}">VoucheryHub</a> --}}

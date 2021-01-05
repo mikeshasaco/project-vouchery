@@ -22,7 +22,7 @@
                 <div class="col-md-12 col-sm-12">
                     <h3 class="titleallcategory" > <b>{{ $catbread->categoryname }}</b> </h3>
                     
-                    <h5> <b>(Coupon Count <i>{{ $categorycount->count() }})</i> </b> </h5>
+                    <h5> <b>(Deals Count <i>{{ $categorycount->count() }})</i> </b> </h5>
                     
                     <select name="record" style="margin-top:5%;"  class="media-select form-control">
                         @foreach($cats as $categoryselect)
@@ -54,7 +54,7 @@
                                     </div> -->
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
+                                <a href="{{ url('deal' .'/'. $product->slug . '/'. $product->id) }}" title="Coupon Name" >{{$product->title}}</a>
                                         </h4>
                                         <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description">{{$product->desc}}</p>
                                         <ul class="list-group list-group-flush">
@@ -66,12 +66,12 @@
                                                         <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
                                                     </div>
                                                     
-                                                    @if(auth::user() || auth::guard('customer')->user())
+                                                    {{-- @if(auth::user() || auth::guard('customer')->user()) --}}
                                                     <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal
                                                     </a>
-                                                    @else
+                                                    {{-- @else
                                                         <a href="/register" class="cardbutton-page">View Deal</a>
-                                                    @endif
+                                                    @endif --}}
                                                 </div>
 
                                             <!-- </li> -->
@@ -97,6 +97,12 @@
                                         </div>
                                         <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
                                     </div>
+                                        <div class="content-button" style="margin-left: 1px;">
+                            <h6 style="font-weight:bold;">View More Deals By: <a href="{{ url('account' .'/'. $product->slug) }}" style="text-transform: uppercase;" title="Company Name" >{{$product->company}}</a> </h6>  
+                               <div class="companyimage rounded-circle" style =" position:absolute; right:4px; bottom:2px; width:49px; height:45px; ;background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }})">
+                            </div>
+
+                        </div>
                                 </div>
                             </div>
                             @endforeach
@@ -111,7 +117,7 @@
     <section id="advert-section" class="d-none d-lg-block">
         <div class="container">
             <h3 style=" margin-bottom: 5%; margin-top: 4%;">
-                <center><b>Advertised Coupons</b></center></h3>
+                <center><b>Advertised Deals</b></center></h3>
 
             <div class="row">
                 @forelse($paidadvertisement as $product)
@@ -120,7 +126,7 @@
                         <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
+                                <a href="{{ url('deal' .'/'. $product->slug . '/'. $product->id) }}" title="Coupon Name" >{{$product->title}}</a>
                             </h4>
                             <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description">{{$product->desc}}</p>
                             <ul class="list-group list-group-flush">
@@ -163,7 +169,13 @@
                                 @endif
                             </div>
                             <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"><small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
-                        </div>                        
+                        </div> 
+                         <div class="content-button" style="margin-left: 1px;">
+                            <h6 style="font-weight:bold;">View More Deals By: <a href="{{ url('account' .'/'. $product->slug) }}" style="text-transform: uppercase;" title="Company Name" >{{$product->company}}</a> </h6>  
+                               <div class="companyimage rounded-circle" style =" position:absolute; right:4px; bottom:2px; width:49px; height:45px; ;background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }})">
+                            </div>
+
+                        </div>                       
                     </div>
                 </div>
                 @empty
@@ -183,7 +195,7 @@
                         <thead>
                             <tr>
                                 <th>Company Name</th>
-                                <th>Coupons</th>
+                                <th>Number of Deals</th>
                                 <th>Company Page</th>
                             </tr>
                         </thead>
@@ -191,7 +203,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <td>{{$user->company}} </td>
-                                <td>{{$user->products}} Coupons</td>
+                                <td>{{$user->products}} Deals</td>
                                 <td><a href="{{ url('/account/'.$user->slug) }}" class=""> Visit Page</a> </td>
                             </tr>
                             @endforeach

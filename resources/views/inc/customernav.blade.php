@@ -1,5 +1,5 @@
 {{-- fixed-top Customer navbar --}}
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom sidebarNavigation" id="navbarfix">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom sidebarNavigation" id="navbarfix" style="border: 0 !important">
         <div class="container">
 
             <a href="{{ route('homepage') }}" class="navbar-brand" style="cursor:pointer;"><img src="/vouch.png" alt="logo" height="32px"></a>
@@ -71,7 +71,7 @@
                         @if(auth()->guard('customer')->check())
 
                             <a class="dropdown-item" href="{{ route('customerprofile', Auth()->guard('customer')->user()->customerslug) }}"> My Profile</a>
-                            <a class="dropdown-item" href="{{ route('subscription.coupons', Auth()->guard('customer')->user()->customerslug) }}">Subscription Coupons</a>
+                            {{-- <a class="dropdown-item" href="{{ route('subscription.coupons', Auth()->guard('customer')->user()->customerslug) }}">Subscription Coupons</a> --}}
                         @endif
 
                             <a class="dropdown-item" href="{{ route('customer.logout') }}" onclick="event.preventDefault();

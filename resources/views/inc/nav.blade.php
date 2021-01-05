@@ -1,5 +1,5 @@
 {{-- fixed-top  Merchant navbar--}}
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom d-none d-lg-block " id="navbarfix">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light border-bottom d-none d-lg-block " id="navbarfix" style="border: 0 !important">
     <div class="container">
         <a href="{{ route('homepage') }}" class="navbar-brand" style="cursor:pointer;"><img src="/vouch.png" alt="logo" height="32px"></a>
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +76,8 @@
                             @endif
                             <a class="dropdown-item" href="{{ route('myaccount', auth()->user()->slug) }}">My Account</a>
                             <a class="dropdown-item" href="{{ route('myads', auth()->user()->slug) }}">Edit Profile</a>
-                            <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
-                            <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Earnings</a>
+                             <a class="dropdown-item" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a> 
+                            <a class="dropdown-item" href="{{ route('subscription.statistic', auth()->user()->slug) }}">Earnings</a> 
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

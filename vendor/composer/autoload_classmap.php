@@ -7,8 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Account' => $baseDir . '/app/Account.php',
-    'App\\Ad' => $baseDir . '/app/Ad.php',
-    'App\\Adtype' => $baseDir . '/app/Adtype.php',
     'App\\Advertisement' => $baseDir . '/app/Advertisement.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Click' => $baseDir . '/app/Click.php',
@@ -21,8 +19,6 @@ return array(
     'App\\Gender' => $baseDir . '/app/Gender.php',
     'App\\Http\\Controllers\\AccountsController' => $baseDir . '/app/Http/Controllers/AccountsController.php',
     'App\\Http\\Controllers\\AdminsController' => $baseDir . '/app/Http/Controllers/AdminsController.php',
-    'App\\Http\\Controllers\\AdsController' => $baseDir . '/app/Http/Controllers/AdsController.php',
-    'App\\Http\\Controllers\\AdtypesController' => $baseDir . '/app/Http/Controllers/AdtypesController.php',
     'App\\Http\\Controllers\\AskEmailController' => $baseDir . '/app/Http/Controllers/AskEmailController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -42,6 +38,7 @@ return array(
     'App\\Http\\Controllers\\ProductsController' => $baseDir . '/app/Http/Controllers/ProductsController.php',
     'App\\Http\\Controllers\\SearchController' => $baseDir . '/app/Http/Controllers/SearchController.php',
     'App\\Http\\Controllers\\SubmissionsController' => $baseDir . '/app/Http/Controllers/SubmissionsController.php',
+    'App\\Http\\Controllers\\TagController' => $baseDir . '/app/Http/Controllers/TagController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
     'App\\Http\\Middleware\\All' => $baseDir . '/app/Http/Middleware/All.php',
