@@ -11,15 +11,10 @@ Route::get('help/FAQ', 'AskEmailController@FAQ')->name('faqroute');
 Route::get('/legal/privacypolicy', 'AskEmailController@privacypolicy')->name('privacy');
 Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('termsof');
 
-// landing page
-// Route::get('/home', 'PagesController@landingpage');
-
 //put that in the all middleware down below
 // Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
 
 Route::get('/', 'PagesController@index')->name('homepage');
-
-
 Auth::routes();
 
 Route::group(['middleware'=>'all'],function(){
@@ -36,11 +31,13 @@ Route::group(['middleware'=>'all'],function(){
     Route::post('/filter', 'PagesController@filterData');
 
     // Subscribe
-    Route::post('/account/{slug}/subscribe', 'CustomerController@subscribe')->name('account.subscribe');
-    Route::get('/account/{slug}/cancel', 'CustomerController@subscribecancel')->name('subscription.cancel');
+    Route::post('/account/{slug}/subscribe', 'AccountsController@subscribe')->name('account.subscribe');
+    Route::get('/account/{slug}/cancel', 'AccountsController@subscribecancel')->name('subscription.cancel');
     Route::get('/account/{slug}/setsubscription', 'AccountsController@setsubscription')->name('setsubscription')->middleware('auth');
     Route::post('/account/{slug}/setsubscription/setting', 'AccountsController@subscriptionsetting')->name('subscription.setting')->middleware('auth');
     Route::get('/account/{slug}/subscription/earnings', 'AccountsController@subscriptionstatistic')->name('subscription.statistic')->middleware('auth');
+    //subscription coupons
+    Route::get('/{slug}/subscriptioncoupons', 'AccountsController@subscriptioncoupons')->name('subscription.coupons');
 
     // account page
     Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
@@ -116,8 +113,6 @@ Route::group(['prefix'=> 'customer'], function () {
         Route::post('/{customerslug}/updatecustomer', 'CustomerController@update')->name('update.customer');
 
         Route::get('/{customerslug}/customerunfollow/{id}', 'CustomerController@customerunfollow');
-        //subscription coupons
-        Route::get('/{customerslug}/subscriptioncoupons', 'CustomerController@subscriptioncoupons')->name('subscription.coupons');
     });
 });
 

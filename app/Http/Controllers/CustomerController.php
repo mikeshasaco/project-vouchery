@@ -151,54 +151,54 @@ class CustomerController extends Controller
         return redirect()->back()->with('success', 'You have canceled subscription of '.$user->company); 
     }
 
-    public function subscriptioncoupons($customersulg){
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-        $customer = Auth::guard('customer')->user();
-        $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
-        if(!$customer->stripe_id||$subscriptions==[]){
-            $subscriptions_plan = [];
-        }else{
-            foreach($subscriptions as $subscription){
-                $subscriptions_plan[] = $subscription->plan->id;
-            }
+    // public function subscriptioncoupons($customersulg){
+    //     \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+    //     $customer = Auth::guard('customer')->user();
+    //     $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
+    //     if(!$customer->stripe_id||$subscriptions==[]){
+    //         $subscriptions_plan = [];
+    //     }else{
+    //         foreach($subscriptions as $subscription){
+    //             $subscriptions_plan[] = $subscription->plan->id;
+    //         }
             
-        }
-        $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
-        ->join('users', 'users.id', 'products.user_id')
-        ->select('products.*', 'users.company', 'users.slug', 'categoriess.categoryname'
-        , 'categoriess.catslug','users.stripe_plan')
-        ->orderByRaw('advertboolean = 0', 'advertboolean')
-        ->orderBy('products.created_at', 'DESC')
-        ->whereIn('users.stripe_plan', $subscriptions_plan)
-        ->where('products.exclusive', "on")
-        ->paginate(15);
-        $user = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
-        if($user){
-            foreach($products as $product){
-                if($product->user_id == $user->id){
-                    $product->coupon = true;
-                }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($products as $product){
-                if(!$product->exclusive){
-                    $product->coupon = true;
-                }else{
-                    if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
-                            $product->coupon = true;
-                        }
-                        else{
-                        $product->coupon = false;
-                        }
-                    }
-                }
-            }
-        }
-        return view('customer.subscriptioncoupons', compact('customer','products'));
-    }
+    //     }
+    //     $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+    //     ->join('users', 'users.id', 'products.user_id')
+    //     ->select('products.*', 'users.company', 'users.slug', 'categoriess.categoryname'
+    //     , 'categoriess.catslug','users.stripe_plan')
+    //     ->orderByRaw('advertboolean = 0', 'advertboolean')
+    //     ->orderBy('products.created_at', 'DESC')
+    //     ->whereIn('users.stripe_plan', $subscriptions_plan)
+    //     ->where('products.exclusive', "on")
+    //     ->paginate(15);
+    //     $user = Auth::user();
+    //     $customer = $customer = Auth::guard('customer')->user();
+    //     if($user){
+    //         foreach($products as $product){
+    //             if($product->user_id == $user->id){
+    //                 $product->coupon = true;
+    //             }else{
+    //             $product->coupon = false;
+    //             }
+    //         }
+    //     }
+    //     elseif($customer){
+    //         foreach($products as $product){
+    //             if(!$product->exclusive){
+    //                 $product->coupon = true;
+    //             }else{
+    //                 if($product->stripe_plan){
+    //                     if($customer->subscribedByPlan('main', $product->stripe_plan)){
+    //                         $product->coupon = true;
+    //                     }
+    //                     else{
+    //                     $product->coupon = false;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return view('customer.subscriptioncoupons', compact('customer','products'));
+    // }
 }

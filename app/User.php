@@ -4,13 +4,20 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use App\Notifications\CustomerResetPasswordNotification;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Laravel\Cashier\Billable;
 use Illuminate\Support\Facades\Storage;
-// merchant is user
+
 class User extends Authenticatable
 {
     use Notifiable;
     use CanBeFollowed;
+    use Notifiable;
+    use CanFollow;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -85,5 +92,26 @@ class User extends Authenticatable
 
     public function verifyUser(){
         return $this->hasOne('App\VerifyUser');
+    }
+
+    
+    public function subscriptionByPlan($subscription = 'default', $plan = null) {
+        if (!$plan)
+            return $this->subscription($subscription);
+
+        return $this->subscriptions->where('stripe_plan', $plan)->first();
+    }
+    public function subscribedByPlan($subscription = 'default', $plan = null) {
+        $subscription = $this->subscriptionByPlan($subscription, $plan);
+        if (is_null($subscription)) {
+            return false;
+        }
+
+        if (is_null($plan)) {
+            return $subscription->valid();
+        }
+
+        return $subscription->valid() &&
+               $subscription->stripe_plan === $plan;
     }
 }

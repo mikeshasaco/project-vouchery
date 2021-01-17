@@ -127,13 +127,13 @@
                                 <th>Discounted Price</th>
                             </tr>
 
-                            @foreach ($customersubcoupons as $subscribercoupons)
+                            @foreach ($customersubcoupons as $customersubcoupon)
                                 <tr>
-                                    <td><a href="/account/{{ $subscribercoupons->slug }}">{{ $subscribercoupons->company }}</a></td>
-                                    <td> {{ $subscribercoupons->title }}</a></td>
-                                    <td>{{ $subscribercoupons->currentprice }}</td>
-                                    <td style="color:red;">{{ $subscribercoupons->newprice }}</td>
-                                    {{-- <td> <a href="{{ $subscribercoupons->url }}" target="_blank"  class="custsubbutton">View Deal</a> </td> --}}
+                                    <td><a href="/account/{{ $customersubcoupon->slug }}">{{ $customersubcoupon->company }}</a></td>
+                                    <td> {{ $customersubcoupon->title }}</a></td>
+                                    <td>{{ $customersubcoupon->currentprice }}</td>
+                                    <td style="color:red;">{{ $customersubcoupon->newprice }}</td>
+                                    {{-- <td> <a href="{{ $customersubcoupon->url }}" target="_blank"  class="custsubbutton">View Deal</a> </td> --}}
                                 </tr>
 
                             @endforeach
@@ -143,7 +143,7 @@
             </section>
 
 
-            <section id="subscriptionstatistic" class="tab-pane fade" role="tabpanel">
+            {{-- <section id="subscriptionstatistic" class="tab-pane fade" role="tabpanel">
                 <div class="row">
                     <div class="col-md-12 col-12 table-responsive">
                         <h5 style="color:#b35464;"> <b>Subscription Statistic</b> <i>(This feature is mechants you subscribe)</i> </h5>
@@ -173,7 +173,7 @@
                         </table>
                     </div>
                 </div>
-            </section>
+            </section> --}}
         </div>
     </div>
 @endsection

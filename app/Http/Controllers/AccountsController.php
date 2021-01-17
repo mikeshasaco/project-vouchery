@@ -18,6 +18,7 @@ use App\Mail\AdReceipt;
 use App\Customer;
 use App\Monthlyearning;
 use Illuminate\Http\Request;
+use App\Http\Requests\CustomerSubscriptionRequest;
 use App\Http\Requests\BankRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -42,23 +43,15 @@ class AccountsController extends Controller
        ->where('slug', $slug)
        ->get();
         $user_auth = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
-        if($user_auth){
-            foreach($userproduct as $product){
-                if($product->user_id == $user_auth->id){
-                    $product->coupon = true;
-                }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($userproduct as $product){
+        foreach($userproduct as $product){
+            if($product->user_id == $user_auth->id){
+                $product->coupon = true;
+            }else{
                 if(!$product->exclusive){
                     $product->coupon = true;
                 }else{
                     if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        if($user_auth->subscribedByPlan('main', $product->stripe_plan)){
                             $product->coupon = true;
                         }
                         else{
@@ -68,6 +61,32 @@ class AccountsController extends Controller
                 }
             }
         }
+        // $customer = $customer = Auth::guard('customer')->user();
+        // if($user_auth){
+        //     foreach($userproduct as $product){
+        //         if($product->user_id == $user_auth->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($userproduct as $product){
+        //         if(!$product->exclusive){
+        //             $product->coupon = true;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
        $followercount = User::join('followables', 'users.id', 'followables.followable_id')
                     ->where('slug', $slug)->count();
 
@@ -262,6 +281,8 @@ class AccountsController extends Controller
 
     }
 
+    // as merchant
+    // subscription setting page
     public function setsubscription($slug)
     {
         $user = User::join('accounts', 'accounts.user_id', 'users.id')
@@ -269,6 +290,7 @@ class AccountsController extends Controller
         return view('account.subscription', compact('user'));
     }
 
+    // subscription setting
     public function subscriptionsetting(BankRequest $request){
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
@@ -299,10 +321,28 @@ class AccountsController extends Controller
         Session::flash('successmessage', 'You have set subscription');
         return redirect()->back()->with('success', 'You have set subscription');
     }
+
+    // subscription statistic 
     public function subscriptionstatistic($slug)
     {
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
+
+            if($user->stripe_id==null){
+                $customer_subscriptions = [];
+            }else{
+                $customer_subscriptions = \Stripe\Subscription::all(['customer'=>$user->stripe_id,'status'=>'active'])->data;
+                foreach($customer_subscriptions as $subscription){
+                    $merchant = User::where('stripe_plan', $subscription->plan->id)->first();
+                    $subscription->company = $merchant->company;
+                    $subscription->slug = $merchant->slug;
+                    if($user->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
+                        $subscription->end_date = date('m/d/Y', strtotime($user->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
+                    }
+                }
+            }
+
+
         $subscriptions = \Stripe\Subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
         if(!$user->stripe_plan||$subscriptions == []){
             $subscription_customer = [];
@@ -314,10 +354,120 @@ class AccountsController extends Controller
         }
         // $monthlyBalance 
         $firstofmonth = Carbon::now()->firstOfMonth()->addMonth(1)->format(' d F, Y');
-        // dd(Carbon::now()->firstOfMonth()->addMonth(-1)->format('Y-m'));
         $user->count = count($subscriptions);       
-        $customers = Customer::whereIn('stripe_id', $subscription_customer)->get();
+        $customers = User::whereIn('stripe_id', $subscription_customer)->get();
         $monthlyearnings = Monthlyearning::where('user_id',$user->id)->get();
-        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings'));
+        return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings','customer_subscriptions'));
+    }
+
+    //as customer
+    // subscribe to merchant
+    public function subscribe(CustomerSubscriptionRequest $request, $slug) {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = User::where('slug', $slug)->first();
+        if($user->stripe_plan == null){
+            Session::flash('successmessage', $user->company.' did not set subscription yet');
+            return redirect()->back()->with('success', $user->company.' did not set subscription yet');  
+        }
+        $token = \Stripe\Token::create([
+                "card" => [
+                   "number"    => $request->card_number,
+                   "exp_month" => $request->exp_month,
+                   "exp_year"  => $request->exp_year,
+                   "cvc"       => $request->cv_code,
+                   "name"      => $request->card_name
+                ]
+            ]
+        );
+        $customer = Auth::user();
+        $customer->newSubscription('main', $user->stripe_plan)->create($token->id);
+        Session::flash('successmessage', 'You have set subscription to '.$user->company);
+        return redirect()->back();        
+    }
+
+    // cancel subscribe
+    public function subscribecancel($slug) {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = User::where('slug', $slug)->first();
+        $customer = Auth::user();
+
+        $subscription = $customer->subscriptionByPlan('main', $user->stripe_plan);
+
+        if ($subscription->cancelled()) {
+            $end_date = date('d/m/Y', strtotime($subscription->ends_at));
+            return redirect()->back()->with('success', 'You already have canceled subscription of '.$user->company.'. It will cancel at '.$end_date);  
+        }
+        $subscription->cancel();
+        return redirect()->back()->with('success', 'You have canceled subscription of '.$user->company); 
+    }
+
+    // subscription coupons...
+    public function subscriptioncoupons($sulg){
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $customer = Auth::user();
+        $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
+        if(!$customer->stripe_id||$subscriptions==[]){
+            $subscriptions_plan = [];
+        }else{
+            foreach($subscriptions as $subscription){
+                $subscriptions_plan[] = $subscription->plan->id;
+            }
+            
+        }
+        $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+        ->join('users', 'users.id', 'products.user_id')
+        ->select('products.*', 'users.company', 'users.slug', 'categoriess.categoryname'
+        , 'categoriess.catslug','users.stripe_plan')
+        ->orderByRaw('advertboolean = 0', 'advertboolean')
+        ->orderBy('products.created_at', 'DESC')
+        ->whereIn('users.stripe_plan', $subscriptions_plan)
+        ->where('products.exclusive', "on")
+        ->paginate(15);
+        $user = Auth::user();
+        foreach($products as $product){
+            if($product->user_id == $user->id){
+                $product->coupon = true;
+            }else{
+                if(!$product->exclusive){
+                    $product->coupon = true;
+                }else{
+                    if($product->stripe_plan){
+                        if($user->subscribedByPlan('main', $product->stripe_plan)){
+                            $product->coupon = true;
+                        }
+                        else{
+                        $product->coupon = false;
+                        }
+                    }
+                }
+            }
+        }
+        // $customer = $customer = Auth::guard('customer')->user();
+        // if($user){
+        //     foreach($products as $product){
+        //         if($product->user_id == $user->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($products as $product){
+        //         if(!$product->exclusive){
+        //             $product->coupon = true;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        return view('customer.subscriptioncoupons', compact('customer','products'));
     }
 }

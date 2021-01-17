@@ -24,23 +24,16 @@ class PagesController extends Controller
         ->orderBy('products.created_at', 'DESC')
         ->paginate(15);
         $user = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
         if($user){
-            foreach($products as $product){
-                if($product->user_id == $user->id){
-                    $product->coupon = true;
-                }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($products as $product){
+        foreach($products as $product){
+            if($product->user_id == $user->id){
+                $product->coupon = true;
+            }else{
                 if(!$product->exclusive){
                     $product->coupon = true;
                 }else{
                     if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        if($user->subscribedByPlan('main', $product->stripe_plan)){
                             $product->coupon = true;
                         }
                         else{
@@ -50,6 +43,32 @@ class PagesController extends Controller
                 }
             }
         }
+    }
+        // if($user){
+        //     foreach($products as $product){
+        //         if($product->user_id == $user->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($products as $product){
+        //         if(!$product->exclusive){
+        //             $product->coupon = true;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         $submission = Submission::inRandomOrder()->take(4)->get();
 
         $productlower = Product::join('categoriess', 'categoriess.id', 'products.category_id')
@@ -98,7 +117,7 @@ class PagesController extends Controller
 
 
 
-        return view('pages.index', compact('products', 'submission', 'categoriess','customer'));
+        return view('pages.index', compact('products', 'submission', 'categoriess'));
     }
 
     public function getData()
@@ -109,23 +128,15 @@ class PagesController extends Controller
                         ->take(30)
                        ->get();
         $user = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
-        if($user){
-            foreach($productlower as $product){
-                if($product->user_id == $user->id){
-                    $product->coupon = true;
-                }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($productlower as $product){
+        foreach($productlower as $product){
+            if($product->user_id == $user->id){
+                $product->coupon = true;
+            }else{
                 if(!$product->exclusive){
                     $product->coupon = true;
                 }else{
                     if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        if($user->subscribedByPlan('main', $product->stripe_plan)){
                             $product->coupon = true;
                         }
                         else{
@@ -135,6 +146,32 @@ class PagesController extends Controller
                 }
             }
         }
+        // $customer = $customer = Auth::guard('customer')->user();
+        // if($user){
+        //     foreach($productlower as $product){
+        //         if($product->user_id == $user->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($productlower as $product){
+        //         if(!$product->exclusive){
+        //             $product->coupon = true;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         return $productlower;
     }
@@ -152,23 +189,15 @@ class PagesController extends Controller
                         ->inRandomOrder()
                        ->get();
         $user = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
-        if($user){
-            foreach($productlower as $product){
-                if($product->user_id == $user->id){
-                    $product->coupon = true;
-                }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($productlower as $product){
+        foreach($productlower as $product){
+            if($product->user_id == $user->id){
+                $product->coupon = true;
+            }else{
                 if(!$product->exclusive){
                     $product->coupon = true;
                 }else{
                     if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        if($user->subscribedByPlan('main', $product->stripe_plan)){
                             $product->coupon = true;
                         }
                         else{
@@ -178,6 +207,32 @@ class PagesController extends Controller
                 }
             }
         }
+        // $customer = $customer = Auth::guard('customer')->user();
+        // if($user){
+        //     foreach($productlower as $product){
+        //         if($product->user_id == $user->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($productlower as $product){
+        //         if(!$product->exclusive){
+        //             $product->coupon = true;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         return $productlower;
     }
 

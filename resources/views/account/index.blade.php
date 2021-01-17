@@ -19,25 +19,21 @@
                             <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$user->avatar }})">
                             </div>
                             @if(Auth::id() == $user->id)
-                                      <!-- Button trigger modal -->
-                                      {{-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="position:absolute; left:6%; bottom:34%;">
-                                          Edit Account
-                                      </button> --}}
-                                      <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit Profile</a>
+                                <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit Profile</a>
+                            @endif
+
+                            @if(Auth::guard('customer')->user())
+                                @if(Auth::guard('customer')->user()->isfollowing($user))
+                                    <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
+                                            UNFOLLOW</a>
+                                @else
+                                    <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
                                 @endif
+                            @elseif (Auth::user())
 
-                                    @if(Auth::guard('customer')->user())
-                                        @if(Auth::guard('customer')->user()->isfollowing($user))
-                                            <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
-                                                 UNFOLLOW</a>
-                                        @else
-                                            <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
-                                        @endif
-                                    @elseif (Auth::user())
-
-                                    @else
-                                        <a href="/register" class="follow_button">FOLLOW</a>
-                                    @endif
+                            @else
+                                <a href="/register" class="follow_button">FOLLOW</a>
+                            @endif
                         </div>
                         <div class="profileinfo">
                             <h4 class="profilecompany" > <b style="color:#b35464;"></b> <b> {{ $user->company }}</b></h4>
@@ -61,8 +57,29 @@
                             <a class="subscribe_button" href="{{ route('setsubscription', auth()->user()->slug) }}">Set Subscription</a>
                         </div>
                         @endif
+                    @else
+                        @if($user->subscription_price)
+                            @if(Auth::user()->subscribedByPLan('main', $user->stripe_plan))
+                            <div class="secondinfo">
+                                <label for="subscription">SUBSCRIPTION</label>
+                                <p>${{ $user->subscription_price }} per month</p>
+                                <p class="subscribe_button">SUBSCRIBED FOR ${{ $user->subscription_price }}</a>
+                            </div>
+                            @else
+                            <div class="secondinfo">
+                                <label for="subscription">SUBSCRIPTION</label>
+                                <p>${{ $user->subscription_price }} per month</p>
+                                <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                            </div>
+                            @endif
+                        @else
+                        <div class="secondinfo">
+                            <p >SUBSCRIPTION</p>
+                            <p class="subscribe_button">Not Set Subscription</p>
+                        </div>
+                        @endif
                     @endif
-                    @if($customer = Auth::guard('customer')->user())
+                    {{-- @if($customer = Auth::user())
                         @if($user->subscription_price)
                             @if($customer->subscribedByPLan('main', $user->stripe_plan))
                             <div class="secondinfo">
@@ -97,7 +114,7 @@
                             <p class="subscribe_button">Not Set Subscription</p>
                         </div>
                         @endif
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>

@@ -29,23 +29,15 @@ class ProductsController extends Controller
             ->orderBy('products.created_at', 'DESC')
             ->paginate(15);
         $user = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
-        if($user){
-            foreach($products as $product){
-                if($product->user_id == $user->id){
+        foreach($products as $product){
+            if($product->user_id == $user->id){
+                $product->coupon = true;
+            }else{
+                if(!$product->exclusive){
                     $product->coupon = true;
                 }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($products as $product){
-                if($product->exclusive){
-                    $product->coupon = false;
-                }else{
                     if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        if($user->subscribedByPlan('main', $product->stripe_plan)){
                             $product->coupon = true;
                         }
                         else{
@@ -55,6 +47,32 @@ class ProductsController extends Controller
                 }
             }
         }
+        // $customer = $customer = Auth::guard('customer')->user();
+        // if($user){
+        //     foreach($products as $product){
+        //         if($product->user_id == $user->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($products as $product){
+        //         if($product->exclusive){
+        //             $product->coupon = false;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         // this function responds to datatable
         $users = User::selectRaw('users.*, COUNT(products.id) AS products')
          ->join('products', 'users.id', '=', 'products.user_id')
@@ -105,23 +123,15 @@ class ProductsController extends Controller
         ->where('categoriess.catslug', $slug)
         ->paginate(15);
         $user = Auth::user();
-        $customer = $customer = Auth::guard('customer')->user();
-        if($user){
-            foreach($products as $product){
-                if($product->user_id == $user->id){
-                    $product->coupon = true;
-                }else{
-                $product->coupon = false;
-                }
-            }
-        }
-        elseif($customer){
-            foreach($products as $product){
+        foreach($products as $product){
+            if($product->user_id == $user->id){
+                $product->coupon = true;
+            }else{
                 if(!$product->exclusive){
                     $product->coupon = true;
                 }else{
                     if($product->stripe_plan){
-                        if($customer->subscribedByPlan('main', $product->stripe_plan)){
+                        if($user->subscribedByPlan('main', $product->stripe_plan)){
                             $product->coupon = true;
                         }
                         else{
@@ -131,6 +141,32 @@ class ProductsController extends Controller
                 }
             }
         }
+        // $customer = $customer = Auth::guard('customer')->user();
+        // if($user){
+        //     foreach($products as $product){
+        //         if($product->user_id == $user->id){
+        //             $product->coupon = true;
+        //         }else{
+        //         $product->coupon = false;
+        //         }
+        //     }
+        // }
+        // elseif($customer){
+        //     foreach($products as $product){
+        //         if(!$product->exclusive){
+        //             $product->coupon = true;
+        //         }else{
+        //             if($product->stripe_plan){
+        //                 if($customer->subscribedByPlan('main', $product->stripe_plan)){
+        //                     $product->coupon = true;
+        //                 }
+        //                 else{
+        //                 $product->coupon = false;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         // random products for the category that between 10 - 100 dollars
         $randomcat = Product::join('categoriess', 'categoriess.id', 'products.category_id')
                 ->join('users', 'users.id', '=', 'products.user_id')
@@ -178,8 +214,6 @@ class ProductsController extends Controller
         ->with('catbread', $catbread)
         ->with('paidadvertisement', $paidadvertisement);
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -238,15 +272,9 @@ class ProductsController extends Controller
         //     Image::make($image)->save($location);
         //     $product->image = $filename;
         // }
-        // using the storage
 
-        //
         $saved = $product->save();
         Session::flash('successmessage', 'Coupon Created Successfully');
         return redirect('/account/'. Auth::user()->slug);
-
-        // return redirect()->back();
     }
-
-
 }
