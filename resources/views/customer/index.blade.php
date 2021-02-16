@@ -143,7 +143,7 @@
             </section>
 
 
-            {{-- <section id="subscriptionstatistic" class="tab-pane fade" role="tabpanel">
+            <section id="subscriptionstatistic" class="tab-pane fade" role="tabpanel">
                 <div class="row">
                     <div class="col-md-12 col-12 table-responsive">
                         <h5 style="color:#b35464;"> <b>Subscription Statistic</b> <i>(This feature is mechants you subscribe)</i> </h5>
@@ -173,7 +173,7 @@
                         </table>
                     </div>
                 </div>
-            </section> --}}
+            </section>
         </div>
     </div>
 @endsection
