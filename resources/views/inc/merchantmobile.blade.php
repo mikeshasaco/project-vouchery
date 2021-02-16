@@ -55,7 +55,7 @@
      <div class="py-3 px-3" style="margin-top: 100px;">
         <div class="media d-flex align-items-start" id="user">
             
-            <img loading="lazy" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar }}" alt="profile" width="60" height="60" class="mr-3 rounded-circle img-thumbnail shadow-sm user-photo" />
+            <img loading="lazy" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar }}" alt="profile" id="user-merchant-ava-image" class="mr-3 rounded-circle img-thumbnail shadow-sm user-photo" />
             <div class="media-body mt-1">
                 <h5 class="m-0"> <a href="{{ route('myaccount', auth()->user()->slug) }}" style="color:#b35464;">{{Auth::user()->company}}  </a> </h5>
                 <p class="font-weight-normal text-muted mb-0 mt-1"> {{Auth::user()->company}}</p>
