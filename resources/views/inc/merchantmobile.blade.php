@@ -54,7 +54,7 @@
 
      <div class="py-3 px-3" style="margin-top: 100px;">
         <div class="media d-flex align-items-start" id="user">
-            <img class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar  }})" />
+            <img class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar  }})" width="60px" height="60px"/>
 
             {{-- <img loading="lazy" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar }}" alt="profile" width="60" height="60" class="mr-3 rounded-circle img-thumbnail shadow-sm user-photo" /> --}}
             <div class="media-body mt-1">
