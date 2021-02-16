@@ -37,10 +37,10 @@
      {{-- <h4 class="loginh1" style="margin-top: -9px" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4> --}}
             <div>
                 <ul class="tab-login">
-                    <div>
+                    {{-- <div>
                         <li rel="vouchpanel3" class=" vouchpanel3 "> <b> Customer</b></li>
-                    </div>
-                    <div>
+                    </div> --}}
+                    <div style="width: 100%;">
                         <li rel="vouchpanel4" class="vouchpanel4 active"> <b>Merchant</b> </li>
                     </div>
                 </ul>

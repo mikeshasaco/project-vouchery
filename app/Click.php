@@ -14,8 +14,8 @@ class Click extends Model
     
     protected $fillable = [
         'click_product_id',
-        'click_customer_id',
-        'click_user_id'
+        'click_auth_user_id',
+        'click_product_user_id'
     ];
 
     public function user()
@@ -23,10 +23,10 @@ class Click extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function customer()
-    {
-        return $this->belongsTo('App\Customer');
-    }
+    // public function customer()
+    // {
+    //     return $this->belongsTo('App\Customer');
+    // }
 
     public function product()
     {

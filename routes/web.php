@@ -14,14 +14,20 @@ Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('t
 //put that in the all middleware down below
 // Route::get('/', 'PagesController@index')->name('homepage')->middleware('all');
 
-Route::get('/', 'PagesController@index')->name('homepage');
 Auth::routes();
 
+Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
+
 Route::group(['middleware'=>'all'],function(){
+    Route::get('/', 'PagesController@index')->name('homepage');
+
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::post('product', 'ProductsController@store')->name('product.store');
-    Route::get('/businesses/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
+    Route::get('/businesses/categories/all', 'ProductsController@allbusinesses')->name('AllBusinesses');
     Route::get('/businesses/{slug}', 'ProductsController@catbusiness')->name('catBusinesses');
+
+    Route::get('product/create', 'ProductsController@generate')->name('generate.product');
+
 
     // search filter
     Route::get('/search', 'SearchController@search')->name('search');
@@ -43,13 +49,19 @@ Route::group(['middleware'=>'all'],function(){
     Route::get('/account/{slug}/setting/referral/{id}', 'AccountsController@adcart');
     Route::post('/edit/update', 'AccountsController@update')->name('update.edit');
     Route::post('/account/setting/updateaccount', 'AccountsController@update')->name('update.edit');
-    Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
 
     Route::get('/account/{slug}/follow', 'AccountsController@follow');
     Route::get('/account/{slug}/unfollow', 'AccountsController@unfollow');
 
     Route::post('/account/{slug}/{id}', 'AccountsController@store')->name('ad.store');
     Route::get('/account/{slug}/setting', 'AccountsController@adcart')->name('myads')->middleware('auth');
+    Route::get('/account/{slug}/advertise', 'AccountsController@advertise')->name('myadvertise')->middleware('auth');
+    Route::get('/account/{slug}/tracker', 'AccountsController@tracker')->name('mytracker')->middleware('auth');
+
+
+    Route::get('/account/{slug}/activity', 'AccountsController@followactivity')->name('myactivity');
+    Route::get('/account/{slug}/notifications', 'AccountsController@notifications')->name('mynotification');
+
     Route::post('/account/{slug}/setting/changepassword', 'AccountsController@changepassword');
 
     // delete post

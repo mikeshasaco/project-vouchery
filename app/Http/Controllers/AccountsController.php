@@ -43,6 +43,9 @@ class AccountsController extends Controller
        ->where('slug', $slug)
        ->get();
         $user_auth = Auth::user();
+
+    if(Auth::user()){
+
         foreach($userproduct as $product){
             if($product->user_id == $user_auth->id){
                 $product->coupon = true;
@@ -61,6 +64,8 @@ class AccountsController extends Controller
                 }
             }
         }
+     }
+
         // $customer = $customer = Auth::guard('customer')->user();
         // if($user_auth){
         //     foreach($userproduct as $product){
@@ -191,20 +196,20 @@ class AccountsController extends Controller
             $user = User::join('accounts', 'accounts.user_id', 'users.id')
             ->where('slug', $slug)->first();
             // this get all posts Running or Not Running
-            $userproduct = User::join('accounts', 'accounts.user_id', 'users.id')
-            ->join('products', 'products.user_id', 'users.id')
-            ->join('categoriess', 'categoriess.id', 'products.category_id')
-            ->select('products.*', 'users.company', 'categoriess.categoryname')
-           ->where('slug', $slug)
-           ->get();
+        //     $userproduct = User::join('accounts', 'accounts.user_id', 'users.id')
+        //     ->join('products', 'products.user_id', 'users.id')
+        //     ->join('categoriess', 'categoriess.id', 'products.category_id')
+        //     ->select('products.*', 'users.company', 'categoriess.categoryname')
+        //    ->where('slug', $slug)
+        //    ->get();
             // total count of like coupon per coupon
-            $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
-                                ->join('products', 'products.id', 'clicks.click_product_id')
-                                ->join('categoriess', 'categoriess.id', 'products.category_id')
-                                ->select('clicks.click_product_id', DB::raw('count(*) as total'), 'products.title', 'products.advertboolean', 'categoriess.categoryname')
-                                ->groupBY('clicks.click_product_id')
-                                ->where('slug', $slug)
-                                ->get();
+            // $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
+            //                     ->join('products', 'products.id', 'clicks.click_product_id')
+            //                     ->join('categoriess', 'categoriess.id', 'products.category_id')
+            //                     ->select('clicks.click_product_id', DB::raw('count(*) as total'), 'products.title', 'products.advertboolean', 'categoriess.categoryname')
+            //                     ->groupBY('clicks.click_product_id')
+            //                     ->where('slug', $slug)
+            //                     ->get();
 
             // $usertracker = Click::join('users', 'users.id', 'clicks.click_user_id')
             //                         ->join('products', 'products.id', 'clicks.click_product_id')
@@ -224,12 +229,53 @@ class AccountsController extends Controller
             $userinfo = User::join('accounts', 'accounts.user_id', 'users.id')
                                 ->select('users.*', 'accounts.accountinfo', 'accounts.websitelink')
                                 ->where('slug', $slug)->first();
-        } elseif (Auth::guard('customer')->user()) {
-            return redirect('/');
         } else {
             return redirect('/');
         }
-        return view('account.adcart', compact('user', 'userproduct', 'usertracker', 'userinfo'));
+        return view('account.adcart', compact('user', 'userinfo'));
+    }
+
+    public function advertise($slug)
+    {
+
+        if (Auth::user()->slug == $slug) {
+            $user = User::join('accounts', 'accounts.user_id', 'users.id')
+            ->where('slug', $slug)->first();
+
+            $userproduct = User::join('accounts', 'accounts.user_id', 'users.id')
+                ->join('products', 'products.user_id', 'users.id')
+                ->join('categoriess', 'categoriess.id', 'products.category_id')
+                ->select('products.*', 'users.company', 'categoriess.categoryname')
+                ->where('slug', $slug)
+                ->get();
+
+        } else{
+            return redirect('/');
+
+        }
+        return view('account.advertise', compact( 'userproduct', 'user'));
+    }
+
+    public function tracker($slug)
+    {
+        if (Auth::user()->slug == $slug) {
+            $user = User::join('accounts', 'accounts.user_id', 'users.id')
+                ->where('slug', $slug)->first();
+
+            $usertracker = Click::join('users', 'users.id', 'clicks.click_product_user_id')
+            ->join('products', 'products.id', 'clicks.click_product_id')
+            ->join('categoriess', 'categoriess.id', 'products.category_id')
+            ->select('clicks.click_product_id', DB::raw('count(*) as total'), 'products.title', 'products.advertboolean', 'categoriess.categoryname')
+            ->groupBY('clicks.click_product_id')
+            ->where('slug', $slug)
+                ->get();
+
+        }else{
+            return redirect('/');
+
+        }
+
+                return view('account.tracker', compact('usertracker', 'user'));
     }
     
     public function changepassword(Request $request)
@@ -266,17 +312,18 @@ class AccountsController extends Controller
 
     public function follow(User $user, $slug){
         $user = User::where('slug', $slug)->first();
-        $customer = Auth::guard('customer')->user();
-        $customer->follow($user);
+        $merchant = Auth::user();
+        // $customer = Auth::guard('customer')->user();
+        $merchant->follow($user);
         return redirect()->back()->with('success', 'You are now following user');
 
     }
 
     public function unfollow(User $user, $slug){
-        $merchant = User::where('slug', $slug)->first();
+        $user = User::where('slug', $slug)->first();
 
-        $customer = Auth::guard('customer')->user();
-        $customer->unfollow($merchant);
+        $merchant = Auth::user();
+        $merchant->unfollow($user);
         return redirect()->back()->with('success', 'You have unfollowed merchant');
 
     }
@@ -285,8 +332,14 @@ class AccountsController extends Controller
     // subscription setting page
     public function setsubscription($slug)
     {
+        if (Auth::user()->slug == $slug) {
+
         $user = User::join('accounts', 'accounts.user_id', 'users.id')
             ->where('slug', $slug)->first();
+        } else {
+            return redirect('/');
+
+        }
         return view('account.subscription', compact('user'));
     }
 
@@ -325,6 +378,7 @@ class AccountsController extends Controller
     // subscription statistic 
     public function subscriptionstatistic($slug)
     {
+        
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
 
@@ -352,10 +406,12 @@ class AccountsController extends Controller
 
             }
         }
+        // dd($subscriptions);
         // $monthlyBalance 
         $firstofmonth = Carbon::now()->firstOfMonth()->addMonth(1)->format(' d F, Y');
-        $user->count = count($subscriptions);       
+        $user->count = count($subscriptions);
         $customers = User::whereIn('stripe_id', $subscription_customer)->get();
+        // dd($customers);
         $monthlyearnings = Monthlyearning::where('user_id',$user->id)->get();
         return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings','customer_subscriptions'));
     }
@@ -402,7 +458,11 @@ class AccountsController extends Controller
     }
 
     // subscription coupons...
-    public function subscriptioncoupons($sulg){
+    public function subscriptioncoupons($slug){
+
+        if (Auth::user()->slug == $slug) {
+
+        
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $customer = Auth::user();
         $subscriptions = \Stripe\Subscription::all(['customer'=>$customer->stripe_id,'status'=>'active'])->data;
@@ -423,6 +483,7 @@ class AccountsController extends Controller
         ->whereIn('users.stripe_plan', $subscriptions_plan)
         ->where('products.exclusive', "on")
         ->paginate(15);
+       
         $user = Auth::user();
         foreach($products as $product){
             if($product->user_id == $user->id){
@@ -468,6 +529,111 @@ class AccountsController extends Controller
         //         }
         //     }
         // }
+
+        }
+        else{
+            return redirect('/');
+
+        }
         return view('customer.subscriptioncoupons', compact('customer','products'));
+    }
+
+    public function followactivity($slug)
+    {
+        if (Auth::user()->slug == $slug) {
+
+        $user =  User::where('slug', $slug)->firstOrFail();
+
+
+        $merchantfollowing = $user->followings;
+
+        // $merchantthatfollowingme = User::join('followables', 'users.id', 'followables.followable_id')
+        //                                         ->join('products', 'products.id', 'products.user_id')
+        //                                         ->where('slug', $slug)->with('followings')->get();
+
+        // $merchantthatfollowingme = User::where('slug', $slug)->with('followings')->with('products')->get();
+
+        // dd($merchantthatfollowingme);
+
+        //  dd($merchantfollowing);
+        // $user->followings()->count();
+        $merchantcount = $user->followings()->count();
+
+        $merchantfollowers = $user->followers;
+
+        $merchantcountfollowers = $user->followers()->count();
+        } else{
+            return redirect('/');
+
+        }
+
+
+    return view('account.activity', compact('merchantfollowing', 'merchantcount', 'merchantfollowers', 'merchantcountfollowers'));
+        
+    }
+
+    public function notifications($slug)
+    {
+        if (Auth::user()->slug == $slug) {
+
+
+        $user =  User::where('slug', $slug)->firstOrFail();
+        // $user = Auth::user();
+
+
+        // followers and following
+        $merchantfollowing = $user->followings;
+
+        $merchantcount = $user->followings()->count();
+
+        $merchantfollowers = $user->followers;
+
+        $merchantcountfollowers = $user->followers()->count();
+
+        // customer subscriptions
+
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+        if ($user->stripe_id == null) {
+            $customer_subscriptions = [];
+        } else {
+            $customer_subscriptions = \Stripe\Subscription::all(['customer' => $user->stripe_id, 'status' => 'active'])->data;
+            foreach ($customer_subscriptions as $subscription) {
+                $merchant = User::where('stripe_plan', $subscription->plan->id)->first();
+                $subscription->company = $merchant->company;
+                $subscription->slug = $merchant->slug;
+                if ($user->subscriptionByPlan('main', $subscription->plan->id)->cancelled()) {
+                    $subscription->end_date = date('m/d/Y', strtotime($user->subscriptionByPlan('main', $subscription->plan->id)->ends_at));
+                }
+            }
+        }
+
+
+        $subscriptions = \Stripe\Subscription::all(['plan' => $user->stripe_plan, 'status' => 'active'])->data;
+        if (!$user->stripe_plan || $subscriptions == []) {
+            $subscription_customer = [];
+        } else {
+            foreach ($subscriptions as $subscription) {
+                $subscription_customer[] = $subscription->customer;
+            }
+        }
+
+
+        // current subscription
+
+        $user->count = count($subscriptions);
+        $firstofmonth = Carbon::now()->firstOfMonth()->addMonth(1)->format(' d F, Y');
+
+        $customers = User::whereIn('stripe_id', $subscription_customer)->get();
+        // dd($customers);
+
+    } else {
+            return redirect('/');
+    }
+
+        
+
+        return view('account.notifications', compact('merchantfollowing', 'merchantcount', 'merchantfollowers', 'merchantcountfollowers', 'customer_subscriptions', 'customers', 'user', 'firstofmonth'));
+
     }
 }

@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\Account;
 use App\User;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use App\Rules\Captcha;
 use App\VerifyUser;
 use Mail;
@@ -83,6 +85,20 @@ class RegisterController extends Controller
             'avatar' => $avatarpath,
 
         ]);
+
+
+        DB::table('followables')->insert(
+            array(
+                'followable_id' => 1,
+                'user_id' => $user->id,
+                'followable_type' => 'App\User',
+                'relation' => 'follow',
+                'deleted_at' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => null
+            )
+        );
+
 
         Account::create(['user_id' => $user->id]);
             

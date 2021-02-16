@@ -8,7 +8,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, target-densityDpi=device-dpi" />
 	<script type="" src="/js/app.js"></script>
-	
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 {{--  tab icon--}}
@@ -56,6 +57,8 @@ src="https://www.facebook.com/tr?id=387119268900181&ev=PageView
 </noscript>
 <!-- End Facebook Pixel Code -->
 
+<
+
 
 	<!--bootstrap  -->
 	<link href="{{ asset('css/mobilenavbarcustom.css') }}" rel="stylesheet">
@@ -71,8 +74,10 @@ src="https://www.facebook.com/tr?id=387119268900181&ev=PageView
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
+		<link href="{{ asset('css/merchantnewbar.css') }}" rel="stylesheet">
+
 	 @yield('styles')
-	<title>@yield('title') VoucheryHub: Coupons, Deals</title>
+	<title>@yield('title') VoucheryHub | Online Marketplace For Small E-commerce Businesses Post Discount Codes.</title>
 </head>
 
 <body>
@@ -263,6 +268,24 @@ $('#overlay').modal('show');
 setTimeout(function() {
     $('#overlay').modal('show');
 }, 5000);
+</script>
+
+<script>
+// 	$(function() { 
+//   $('.sidebarCollapse').on('click', function() {
+//     $('#sidebar, #content').toggleClass('active');
+//   });
+// });
+
+$(function() { 
+  $('.sidebarCollapse').on('click', function() {
+    $('#sidebar, #content').toggleClass('active');
+  });
+});
+
+
+
+
 </script>
 
 	{{-- <script>$('.dropdown-toggle').dropdown();</script> --}}

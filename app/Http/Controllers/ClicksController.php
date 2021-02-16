@@ -18,24 +18,34 @@ class ClicksController extends Controller
 
             // check to see if in database
 
-            $clicks_registered = Click::where('click_customer_id', '=', Auth::guard('customer')->user()->id)
-                                ->where('click_product_id', '=', $product->id)
-                                ->first();
+            // $clicks_registered = Click::where('click_customer_id', '=', Auth::guard('customer')->user()->id)
+            //                     ->where('click_product_id', '=', $product->id)
+            //                     ->first();
+
+
+            // This works increments
+            $product->increment('clicks');
+            $product->update();
+            Click::create([
+            'click_auth_user_id' => Auth::user()->id,
+                'click_product_id' => $product->id,
+            'click_product_user_id' => $product->user_id,
+            ]);
 
            
 
             // store the create in an array
         // tracks clicks that are customers
-        if(Auth::guard('customer')->user() && is_null($clicks_registered)) {
-                // This works increments
-                $product->increment('clicks');
-                $product->update();
-                Click::create([
-                    'click_customer_id' => Auth::guard('customer')->user()->id,
-                    'click_product_id' => $product->id,
-                    'click_user_id' => $product->user_id,
-                ]);
-            }
+        // if(Auth::guard('customer')->user() && is_null($clicks_registered)) {
+        //         // This works increments
+        //         $product->increment('clicks');
+        //         $product->update();
+        //         Click::create([
+        //             'click_customer_id' => Auth::guard('customer')->user()->id,
+        //             'click_product_id' => $product->id,
+        //             'click_user_id' => $product->user_id,
+        //         ]);
+        //     }
   
         // tracks clicks that are guest
     //     elseif (!Auth::guard('customer')->user() && !Auth::user()) {
@@ -44,8 +54,7 @@ class ClicksController extends Controller
     //                     'click_user_id' => $product->user_id,
     // ]);
     //     }
-        else {
-        }
+     
         // this is from the product table and clicks section
     }
 }

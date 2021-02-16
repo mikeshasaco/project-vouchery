@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <section style="margin-top:120px;">
+    <section style="margin-top:100px; padding-bottom:50px;">
         <div class="container">
             <div class="row">
-                <h4 class="col-lg-8 offset-lg-2" style="margin-top:8%;"><center> Question or Concerns Email US!</center></h4>
+                <h4 class="col-lg-8 offset-lg-2"><center> Question or Concerns Email US!</center></h4>
 
                 <div class="col-lg-8 offset-lg-2 col-12" style="margin-top:2%;">
                     <div class="card-bodys">
@@ -41,7 +40,6 @@
             </div>
         </div>
     </section>
-</div>
 
 
 @endsection

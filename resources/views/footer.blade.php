@@ -1,4 +1,4 @@
-<footer class="border-top" id="footer">
+{{-- <footer class="border-top" id="footer">
     <div>
         <span style="">&copy; {{ date('Y') }} VoucheryHub - All Rights Reserved</span>
     </div>
@@ -9,4 +9,4 @@
         <a href="{{route('privacy')}}">Privacy</a>
     </div>
 </footer>
-
+ --}}

@@ -3,6 +3,8 @@
 
 @section('content')
 
+<section class="profile-editing-section">
+
     <div class="container">
         <h3 class="profile-edit"><b>Edit profile</b></h3>
         <ul class="nav nav-tabs responsive" role="tablist">
@@ -11,12 +13,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#merchantpassword" role="tab" aria-controls="password" aria-selected="false">Password</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#merchantcouponsetting" role="tab" aria-controls="advertisement" aria-selected="false">Advertisement</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#merchantclicksetting" role="tab" aria-controls="tracker" aria-selected="false">Tracker</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -122,60 +118,9 @@
                     </div>
             </section>
 
-            <section id="merchantcouponsetting" class="tab-pane fade" role="tabpanel">
-                <h5 style="color:#b35464;"><i class="fas fa-info-circle" title="Track your Coupons Advertisement Status"></i>  <b>My Coupon Advertisement Status</b></h5>
-                <div class="row">
-                    <div class="col-md-12 col-12">
-                        <table class="table">
-                            <tr>
-                                <th>Coupon Category</th>
-                                <th>Expiration Date</th>
-                                <th>Status</th>
-                            </tr>
-                            @foreach ($userproduct as $adproduct)
-                            <tr>
-                                <td>{{ $adproduct->title }}</td>
-                                <td> {{ Carbon\Carbon::parse($adproduct->expired_date)->format('F d, Y') }}</td>
-                                @if($adproduct->advertboolean == 1)
-                                <td><h6 style="color:#2edb2e;">Running</h6> </td>
-                                @else
-                                <td><h6 style="color:red;">Not Running</h6></td>
-                                @endif
-                            </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <section id="merchantclicksetting" class="tab-pane fade" role="tabpanel">
-                <h5 style="color:#b35464;"> <b> My Coupon Click Tracker</b></h5>
-                <div class="row">
-                    <div class="col-md-12 col-12">
-                        <table class="table">
-                            <tr>
-                                <th>Coupon Name</th>
-                                <th> Total Clicks Per Coupon</th>
-                                <th>Category Name</th>
-                            </tr>
-                            @foreach ($usertracker as $tracker)
-
-                            <tr>
-                                <td>{{ $tracker->title }}</td>
-
-                                <td>
-                                    <span style="font-size:14px; font-weight:bold;"> {{ $tracker->total  }}</span>
-
-                                    {{-- <span class="badge badge-danger badge-pill"> {{ $tracker->total  }}</span> --}}
-                                </td>
-                                <td>  <span class="badge badge-danger badge-pill"> {{ $tracker->categoryname  }}</span></td>
-
-                            </tr>
-                        @endforeach
-                        </table>
-                    </div>
-                </div>
-            </section>
+     
         </div>
     </div>
+</section>
 
 @endsection

@@ -1,9 +1,15 @@
 .customerprofile{
-    margin-top: 13%;
     color: #b35464;
 }
+.profile-editing-section{
+    margin-top: 100px;
+}
+.advertise-section-ad{
+    margin-top: 100px;
+}
+
 .profile-edit{
-    margin-top: 13%;
+    /* margin-top: 13%; */
     color: #b35464;
 }
 .nav-tabs{
@@ -15,10 +21,14 @@
     margin-bottom: 1em;
 }
 #subscriptionsetting{
-    margin-top: 13%;
+    margin-top: 100px;
+}
+.earning-information{
+    margin-top: 100px;
+    padding-bottom: 50px;
 }
 .earnings-statistics{
-    margin-top: 13%;
+ 
     color: #b35464;
 }
 .search-container .search{
@@ -33,19 +43,60 @@
 #subscriptionsetting span{
     color: red;
 }
+
+.couponmycontainer{
+    margin-top: 100px;
+}
+
+.titlesubscriptioncoupon{
+    font-size: 20px;
+    margin-left: 3px;
+    color: #b35464;
+}
+
+.notfy-section{
+    margin-top: 100px;
+}
+
+.dealsection{
+    margin-top: 100px; 
+}
+
+
+@media(max-height:950px){
+    .dealsection{
+        padding-bottom: 100px;
+
+    }
+}
+
+@media(max-height:830px){
+    .profile-editing-section{
+        padding-bottom: 100px;
+
+    }
+}
+
+@media(max-height:830px){
+    .click-tracer-section{
+        padding-bottom: 100px;
+
+    }
+
+    .advertise-section-ad{
+    padding-bottom: 100px;
+}
+}
+
 @media (max-width: 991px){
     .profile-edit{
-        margin-top: 30%;
+        /* margin-top: 30%; */
     }
     #subscriptionsetting{
-        margin-top: 30%;
+        /* margin-top: 30%; */
     }
-    .customerprofile{
-        margin-top: 30%;
-    }
-    .earnings-statistics{
-        margin-top: 30%;
-    }
+    
+ 
 }
 
 @media(max-width:768px){
@@ -57,17 +108,15 @@
 
 @media (max-width: 575px){
     .profile-edit{
-        margin-top: 40%;
+        /* margin-top: 40%; */
     }
     #subscriptionsetting{
-        margin-top: 40%;
+        /* margin-top: 40%; */
     }
     .customerprofile{
-        margin-top: 40%;
+        /* margin-top: 40%; */
     }
-    .earnings-statistics{
-        margin-top: 40%;
-    }
+  
     .search-container {
         margin-top: 21%;
     }
@@ -76,17 +125,13 @@
 
 @media (max-width: 430px){
     .profile-edit{
-        margin-top: 48%;
+        /* margin-top: 48%; */
     }
     #subscriptionsetting{
-        margin-top: 48%;
+        /* margin-top: 48%; */
     }
-    .customerprofile{
-        margin-top: 48%;
-    }
-    .earnings-statistics{
-        margin-top: 40%;
-    }
+  
+ 
 }
 
 @media (max-width: 360px){

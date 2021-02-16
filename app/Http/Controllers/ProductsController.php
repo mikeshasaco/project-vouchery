@@ -237,8 +237,8 @@ class ProductsController extends Controller
        // "url" => 'required|url',
 
       ]);
-        // limit the number of posts that a user can make which is set to 9
-        if (Auth::user()->products()->get()->count() == 9) {
+        // limit the number of posts that a user can make which is set to 12
+        if (Auth::user()->products()->get()->count() == 12) {
             session::flash('limit-count', 'You have reached the limit of coupons you can post!');
             return back();
         } else {
@@ -254,7 +254,6 @@ class ProductsController extends Controller
         $product->url = $request->url;
         $product->expired_date = Carbon::now()->addDays(7);
         $product->user_id = Auth::user()->id;
-        $product->expired_date = Carbon::now()->addDay(7);
 
         if ( $request->hasFile('image')) {
         
@@ -276,5 +275,10 @@ class ProductsController extends Controller
         $saved = $product->save();
         Session::flash('successmessage', 'Coupon Created Successfully');
         return redirect('/account/'. Auth::user()->slug);
+    }
+
+    public function generate()
+    {
+        return view('product.generate');
     }
 }

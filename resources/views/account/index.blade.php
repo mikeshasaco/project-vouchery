@@ -21,17 +21,25 @@
                             @if(Auth::id() == $user->id)
                                 <a href="{{ route('myads', auth()->user()->slug) }}" class="editaccount">Edit Profile</a>
                             @endif
-
-                            @if(Auth::guard('customer')->user())
-                                @if(Auth::guard('customer')->user()->isfollowing($user))
-                                    <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
-                                            UNFOLLOW</a>
-                                @else
-                                    <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
+                            {{-- auth user not equal to user id --}}
+                            @if(Auth::id() != $user->id)
+                                @if(Auth::user())
+                                        @if(Auth::user()->isfollowing($user))
+                                            <a href="{{ url('account/'.$user->slug.'/unfollow') }}" class="unfollow_button ">
+                                                    UNFOLLOW</a>
+                                        @else
+                                            <a href="{{ url('account/'.$user->slug.'/follow') }}" class="follow_button"> FOLLOW</a>
+                                        @endif
+                                 @else 
+                                     <a href="/register" class="follow_button">FOLLOW</a>
+                            
                                 @endif
-                            @elseif (Auth::user())
+
+                            {{-- auth user equal to user id --}}
+                            @elseif (Auth::id() == $user->id)
 
                             @else
+                            {{-- anything else --}}
                                 <a href="/register" class="follow_button">FOLLOW</a>
                             @endif
                         </div>
@@ -58,6 +66,14 @@
                         </div>
                         @endif
                     @else
+                    @if(Auth::guest())
+                                <div class="secondinfo">
+                                <label for="subscription">SUBSCRIPTION</label>
+                                <p>${{ $user->subscription_price }} per month</p>
+                                <a href="/register" class="subscribe_button"  >SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
+                            </div>
+
+                    @else 
                         @if($user->subscription_price)
                             @if(Auth::user()->subscribedByPLan('main', $user->stripe_plan))
                             <div class="secondinfo">
@@ -79,6 +95,7 @@
                         </div>
                         @endif
                     @endif
+                @endif
                     {{-- @if($customer = Auth::user())
                         @if($user->subscription_price)
                             @if($customer->subscribedByPLan('main', $user->stripe_plan))
@@ -122,7 +139,7 @@
     </div>
 
     
-    <section id="accountsection" style="margin-bottom:4%;margin-top: 2em;">
+    <section id="accountsection" style="margin-bottom: 100px; margin-top: 2em;">
 
         <div class="container">
             <h6 style="margin-bottom:3%;"> <b>{{ $user->company }} Coupon's ({{ $userproduct->count() }})</b></h6>
@@ -154,46 +171,59 @@
                              <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
                          </h4>
                         <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description"><b> {{$product->desc}}</b></p>
-                        <ul class="list-group list-group-flush">
-                            <!-- <li class="list-group-item" style="clear:both;"> -->
-                                <div class="" style="display: flex;justify-content: space-between;">
-                                    <div class="" style="display: flex;">
-                                        <h5 class="discounth5" title="Original Price" style="cursor:pointer;"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
-                                        <h5 class="newprice5" style="cursor:pointer;color: green;margin-left: 5px;" title="Discount Price"> ${{ number_format($product->newprice, 2) }}</h5>
-                                        <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
+                       <hr class="firsthr" style="margin-bottom:0.1rem; margin-top:10px;">
+
+                            <ul class="list-group list-group-flush">
+                                    <div class="" style="display: flex;justify-content: space-between; padding-top:12px;">
+                                        <div class="" style="display: flex;">
+                                            <h5 class="discounth5" title="Original Price" style="cursor:pointer;"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
+                                            <h5 class="newprice5" style="cursor:pointer;color: green;margin-left: 5px;" title="Discount Price"> ${{ number_format($product->newprice, 2) }}</h5>
+                                            <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
+                                        </div>
+                                        
+                                        @if(auth::user() || auth::guard('customer')->user())
+                                        <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal
+                                        </a>
+                                        @else
+                                            <a href="/register" class="cardbutton-page">View Deal</a>
+                                        @endif
                                     </div>
-                                    
-                                    @if(auth::user() || auth::guard('customer')->user())
-                                    <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal
-                                    </a>
-                                    @else
-                                        <a href="/register" class="cardbutton-page">View Deal</a>
-                                    @endif
-                                </div>
 
-                            <!-- </li> -->
-                        </ul>
+                            </ul>
 
-                        @if( empty($product->couponcode))
+                       
+                                <hr style="margin-top: 0.1rem; margin-bottom: 3px;">
+
+                            <p style="font-weight:bold; font-size:13px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
+
+                            @if(empty($product->couponcode))
+                            <i class="fas fa-tags" title="Discount Code"> </i>No Discount Code
                         @else
-                            @if($product->coupon)
-                                <p style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: {{$product->couponcode}} </p>
+                          @if($product->coupon)
+                            <i class="fas fa-tags" title="Discount Code"></i>Discount Code: {{$product->couponcode}}
                             @else
-                            <p style="font-weight:bold; font-size:12px; opacity:0.9; margin:0;">Coupon Code: ****** </p>
+                            <i class="fas fa-tags" title="Discount Code"> </i>Discount Code: ******
                             @endif
                         @endif
-                        <p style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
-                        <i class="far fa-clock" title="Expiration Date"></i> Expires: {{ Carbon\Carbon::parse($product->expired_date)->format('F d, Y') }} </p>
-                        <p  style="font-weight:bold; font-size:10px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
-                        <div style = "display:flex;">
-                            @if($product->advertboolean == 1)
-                            <p class="advertise">Promoted Ad</p>
-                            @endif
-                            @if($product->exclusive)
-                            <p  class="subscriberonly">Subscriber Only</p>
-                            @endif
-                        </div>
-                        <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:13px; margin-top:-5px;" title="Category">{{$product->categoryname}}</small> </a>
+
+                            </p>
+                        
+                            <p  style="font-weight:bold; font-size:13px; opacity:0.8; margin:0; cursor:pointer;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
+
+                            <hr style="margin-top: 0.1rem; margin-bottom:14px;">
+
+
+                       
+                            <a href="{{ route('catBusinesses', $product->catslug) }}" class="nav-link" style="color:#B35464;"> <small class="badges" style="position:absolute; left:0px; margin-top:-20px; font-size: 13px;" title="Category">{{$product->categoryname}}</small> </a>
+                                @if($product->exclusive)
+                                <p  class="subscriberonly" style=" margin-top: -10px;">Subscriber Only</p>
+                                @endif    
+
+                                
+                                   @if($product->advertboolean == 1)
+                                <hr style="margin-top: 1.8rem; margin-bottom: 0rem;">
+                                <p class="advertise">Promoted Ad</p>
+                                @endif
                     </div>
                     <div class="content-button">
                         {{-- Delete link --}}

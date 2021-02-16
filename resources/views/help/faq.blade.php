@@ -2,9 +2,9 @@
 @section('content')
 
 
-<section id="Vouch-help" style="background-color:white;" >
+<section id="Vouch-help" style="background-color:white; margin-top:100px;" >
     <div class="container">
-        <div class="row row-help">
+        <div class="row ">
             <div class="col-md-12">
                 <h2 class="vouch-merchant-customerh2">VoucheryHub Help Center</h2>
 

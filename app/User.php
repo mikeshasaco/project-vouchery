@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Auth;
 use App\Notifications\CustomerResetPasswordNotification;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use Overtrue\LaravelFollow\Traits\CanFollow;
@@ -113,5 +113,25 @@ class User extends Authenticatable
 
         return $subscription->valid() &&
                $subscription->stripe_plan === $plan;
+    }
+
+    public function subscribercount()
+    {
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $user = Auth::user();
+
+        $subscriptions = \Stripe\Subscription::all(['plan' => $user->stripe_plan, 'status' => 'active'])->data;
+        if (!$user->stripe_plan || $subscriptions == []) {
+            $subscription_customer = [];
+        } else {
+            foreach ($subscriptions as $subscription) {
+                $subscription_customer[] = $subscription->customer;
+            }
+        }
+
+      
+            return  count($subscriptions);
+
+
     }
 }

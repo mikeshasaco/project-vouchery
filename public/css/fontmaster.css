@@ -79,7 +79,7 @@ background-color: #B35464;
 
 
 #recentlyuploaded .card{
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -126,31 +126,36 @@ background-color: #B35464;
     overflow: hidden;
     }
 #recentlyuploaded .subscriberonly{
+    position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #recentlyuploaded .advertise{
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
+  
 }
 
 /* bottom of page home white randomly selected */
 #customerclicks .card {
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -190,7 +195,7 @@ background-color: #B35464;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
+    background-color: beige;
     border: 1px solid #e6e600;
 }
 
@@ -262,10 +267,12 @@ background-color: #B35464;
     margin-top: -1px;
     overflow: hidden;
     }
-
+#albusysection{
+    margin-top: 100px;
+}
 /* All businesses Section */
 #albusysection .card{
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -303,26 +310,30 @@ background-color: #B35464;
     overflow: hidden;
     }
 #albusysection .subscriberonly{
+    position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #albusysection .advertise{
-    font-weight: bold;
-    font-size: 10px;
+       font-weight: bold;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
 }
 
 
@@ -330,10 +341,11 @@ background-color: #B35464;
 #catbusysection{
     display: grid;
     /* grid-template-columns: repeat(3, 1 fr); */
+    margin-top: 100px;
 }
 
 #catbusysection .card{
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -371,30 +383,34 @@ background-color: #B35464;
     overflow: hidden;
 }
 #catbusysection .subscriberonly{
+    position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #catbusysection .advertise{
-    font-weight: bold;
-    font-size: 10px;
+   font-weight: bold;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
 }
     /* Advertise in cat busy page */
 #advert-section .card {
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -432,30 +448,34 @@ background-color: #B35464;
     overflow: hidden;
 }
 #advert-section .subscriberonly{
+    position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #advert-section .advertise{
-    font-weight: bold;
-    font-size: 10px;
+   font-weight: bold;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
 }
 /* subscription coupons Page */
 #subscriptioncoupons .card {
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -493,26 +513,30 @@ background-color: #B35464;
     overflow: hidden;
 }
 #subscriptioncoupons .subscriberonly{
+        position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #subscriptioncoupons .advertise{
-    font-weight: bold;
-    font-size: 10px;
+   font-weight: bold;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
 }
 
 /* User Account Page */
@@ -621,28 +645,30 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     overflow: hidden;
     }
 #accountsection .subscriberonly{
+    position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #accountsection .advertise{
-    font-weight: bold;
-    font-size: 10px;
+   font-weight: bold;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
-    /* border: 1px solid #ffff00;
-    color: #ffff00; */
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
 }
 /* setting page */
 .referral-icon i{
@@ -662,7 +688,7 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 
 /* search area coupons */
 #searchcoupon .card {
-    height: 33rem;
+    height: 32rem;
     margin-top: 4%;
     border: none;
     border-bottom: 1px solid #B4B6B8;
@@ -701,26 +727,30 @@ border:1px solid #8bcf54; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
     margin-top: -2px;
     }
 #searchcoupon .subscriberonly{
+    position: absolute;
+    right: 0px;
+    height: 23px;
+    width: 110px;
+
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     margin-left: 8px;
     border-radius: 4px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: red;
 }
 #searchcoupon .advertise{
-    font-weight: bold;
-    font-size: 10px;
+     font-weight: bold;
+    font-size: 12px;
     opacity: 0.9;
     margin: 0;
     padding: 2px;
     border-radius: 4px;
     color: black;
-    background-color: #EEE8AA;
-    border: 1px solid #e6e600;
+    background-color: beige;
 }
 /* profile  */
 /* vue filter products */
@@ -1030,7 +1060,7 @@ border-radius: 3px;
     color: #b35464;
 }
 .titleallcategory{
-    margin-top: 13%;
+    /* margin-top: 13%; */
     color: #b35464;
 }
 .registercontainer{
@@ -1193,7 +1223,7 @@ border-radius: 3px;
    }
    .titleallcategory {
        font-size: 20px;
-       margin-top: 24%;
+       /* margin-top: 24%; */
        margin-left: 3%;
    }
    .categorycount{
@@ -1233,7 +1263,7 @@ border-radius: 3px;
     }
     .titleallcategory {
         font-size: 20px;
-        margin-top: 40%;
+        /* margin-top: 40%; */
         margin-left: 3%;
     }
     .container-reset{

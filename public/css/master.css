@@ -126,7 +126,7 @@ body>div.container{
 #banner-homepage{
   background-image: url(/top_img.jpg);
   background-size: 100% 100%;
-  margin-top: 64px;
+  margin-top: 52px;
   display: block!important;
   text-align: center;
 }
@@ -258,7 +258,7 @@ body>div.container{
 }
 
 .navbar {
-  background-color: white !important;
+  background-color: #F8F9A !important;
 }
 
 
@@ -482,7 +482,7 @@ width: 100%;
 
 footer {
     width: 100%;
-    padding: 8px;
+    /* padding: 8px; */
     background-color: white;
     z-index: 100;
     display: flex;
@@ -490,9 +490,9 @@ footer {
     font-size: 0.9em;
     text-align: center;
 }
-footer div{
+/* footer div{
   margin: 1em 3em;
-}
+} */
 footer a{
   color: #000;
   padding: 0;
@@ -560,9 +560,9 @@ li:hover .listhover a {
   footer{
     display: block;
   }
-  footer div{
+  /* footer div{
     margin: 1em 2em;
-  }
+  } */
   footer a:after{
     content:"|";
     padding: 1em;

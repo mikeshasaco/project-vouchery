@@ -1,0 +1,156 @@
+  
+  .footer {
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+
+    border-top: 1px solid transparent;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .selectors, .block{
+      height:100%;
+      width:100%;
+  }
+  
+  .selectors button{
+      border: 0;
+      border-radius: 0;
+      background-color: #f8f9fa !important;
+      width:25%;
+      margin-left: 0;
+  }
+  
+  .selectors button:focus{
+      border:0;
+      outline: 0;
+      box-shadow: 0 0 0 0px;
+  }
+  
+  .active, .selector-holder{
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .inactive{
+      display: none;
+  }
+  
+  .selector-holder span{
+      font-size: 0.8rem;
+  }
+  
+  /* Colors of the buttons*/
+  .button-active, .selectors button:hover, .selectors button:active, .selectors button:focus{
+      color: #B35464;
+  }
+  
+  .button-inactive{
+      color: #8a96a3;
+  }
+  
+  .material-icons {
+      font-size: 29px!important;
+  }
+
+  button {
+      cursor: pointer;
+  }
+
+
+/* side bar */
+   .vertical-nav {
+    overflow: auto;
+    min-width: 17rem;
+    width: 17rem;     
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+    margin-right: -17rem;
+    z-index: 90;
+
+  }
+
+  /* .vertical-nav .overflow-sidebar{
+    overflow: auto;
+  } */
+
+  #sidebar.active {
+    margin-right: 0rem;
+  }
+  
+  #content.active {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .separator {
+    margin: 3rem 0;
+    border-bottom: 1px dashed #fff;
+  }
+  
+  .text-uppercase {
+    letter-spacing: 0.1em;
+  }
+  .text-gray {
+    color: #aaa;
+  }
+  .nav-link{
+      text-transform: capitalize;
+  }
+  .nav-link:hover{
+      background:#f3f2f2;
+  }
+  .text-primary{
+      color:#7579e7 !important;
+  }
+  @media (max-width: 768px) {
+    #sidebar {
+      margin-left: -17rem;
+    }
+    #sidebar.active {
+      margin-left: 0;
+    }
+    #content {
+      width: 100%;
+      margin: 0;
+    }
+    #content.active {
+      margin-left: 17rem;
+      width: calc(100% - 17rem);
+    }
+  }
+
+.user-photo {
+    overflow: hidden;
+}
+
+#user {
+    flex-direction: column;    
+}
+
+#list {
+    display: flex;
+    align-items: center; 
+    font-size: 14px;   
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
+}
+
+#list span {
+    margin-right: 7px;
+    font-size: 25px!important;    
+}
+
+#divider {
+  height: 1px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+  width: 100%;
+  margin: 5px 0 5px 0 ;
+}

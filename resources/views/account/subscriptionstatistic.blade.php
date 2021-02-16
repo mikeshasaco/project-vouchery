@@ -1,24 +1,27 @@
 @extends('layouts.master')
 
 @section('content')
+<section class="earning-information">
+
     <div class="container">
-    <h3 class="earnings-statistics"><b>Subscription Statistics</b></h3>
+    <h3 class="earnings-statistics"><b>Subscription Information</b></h3>
         <ul class="nav nav-tabs responsive" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#currentearning" role="tab" aria-controls="current" aria-selected="true">Current</a>
+                <a class="nav-link active" data-toggle="tab" href="#currentearning" role="tab" aria-controls="current" aria-selected="true">Subscribers</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#subscriptionstatistic" role="tab" aria-controls="subscription" aria-selected="false">Subscribed</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false">History</a>
+                <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false">Monthly History</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#subscriptionstatistic" role="tab" aria-controls="subscription" aria-selected="false">Subscription</a>
-            </li>
+          
         </ul>
         <div class="tab-content">
             <section id="currentearning" class="tab-pane fade show active" role="tabpanel">
                 <div class="row">
                     <div class="col-md-12 col-12 table-responsive">
-                        <h5 style="color:#b35464;"> <b>Current Earning Statistics</b></h5>
+                        <h5 style="color:#b35464;"> <b>Current Month Earning</b></h5>
                         <hr>
                         <h6> <b>Current Number Of Subscribers: {{$user->count}}</b> </h6>       
                         <h6>  <b> Payout Date: {{$firstofmonth}} </b></h6> 
@@ -94,5 +97,6 @@
             </section>
         </div>
     </div>
+    </section>
 
 @endsection
