@@ -26,7 +26,9 @@ class AddUserIdFollowTable extends Migration
      */
     public function down()
     {
-        $table->dropColumn('user_id');
+        Schema::table('followables', function ($table) {
+            $table->dropColumn('user_id');
+        });
 
     }
 }
