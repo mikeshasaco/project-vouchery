@@ -52,14 +52,24 @@
 <div class="vertical-nav bg-white" id="sidebar" >
     <div class="overflow-sidebar">
 
-     <div class="py-3 px-3" style="margin-top: 100px;">
+     <div class="py-3 px-3" style="margin-top: 75px;">
         <div class="media d-flex align-items-start" id="user">
             <img class="companyimage-sidenavbar rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar  }})"/>
 
             {{-- <img loading="lazy" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{ auth()->user()->avatar }}" alt="profile" width="60" height="60" class="mr-3 rounded-circle img-thumbnail shadow-sm user-photo" /> --}}
             <div class="media-body mt-1">
-                <h5 class="m-0"> <a href="{{ route('myaccount', auth()->user()->slug) }}" style="color:#b35464;">{{Auth::user()->company}}  </a> </h5>
-                <p class="font-weight-normal text-muted mb-0 mt-1"> {{Auth::user()->company}}</p>
+                {{-- <h5 class="m-0"> <a href="{{ route('myaccount', auth()->user()->slug) }}" style="color:#b35464;">{{Auth::user()->company}}  </a> </h5> --}}
+
+                <div class="followers mt-2" style="font-weight: 450;">
+                    <span id="fans"><a href="{{ route('subscription.statistic', auth()->user()->slug) }}" style="color: #b35464;"> {{Auth::user()->company}}</a> </span> |
+                    <span id="following"> <a style="color: black;"   href="{{ route('logout') }}"> {{ __('Logout') }}  </a></span> 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+                    {{-- <span id="following">{{Auth::user()->Followings()->count()}} <a  style="color: black;" href="{{ route('myactivity', auth()->user()->slug) }}"> Following  </a> </span> --}}
+
+                </div>
+                {{-- <p class="font-weight-normal text-muted mb-0 mt-1"> {{Auth::user()->company}}</p> --}}
                 <div class="followers mt-2" style="font-weight: 450;">
                     <span id="fans">{{Auth::user()->subscribercount()}} <a href="{{ route('subscription.statistic', auth()->user()->slug) }}" style="color: black;">Subscribers</a> </span>
                     <span id="following">{{Auth::user()->followers()->count()}} <a style="color: black;"  href="{{ route('myactivity', auth()->user()->slug) }}">Followers  </a></span> 
@@ -146,7 +156,7 @@
 
             <hr id="divider">
 
-                <li class="nav-item" style="margin-bottom: 80px;"> 
+                {{-- <li class="nav-item" style="margin-bottom: 80px;"> 
                   <a id="list" class="nav-link text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <span class="material-icons">             
                         logout
@@ -154,10 +164,8 @@
                      {{ __('Logout') }}
                     </a>
                 </li>
-   
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
+    --}}
+              
 
             {{-- <li class="nav-item" style="margin-bottom: 80px;">
                 <a id="list" href="" class="nav-link text-dark">
