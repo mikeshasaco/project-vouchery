@@ -62,7 +62,7 @@
 
                 <div class="followers mt-2" style="font-weight: 450;">
                     <span id="fans"><a href="{{ route('subscription.statistic', auth()->user()->slug) }}" style="color: #b35464;"> {{Auth::user()->company}}</a> </span> |
-                    <span id="following"> <a style="color: black;"   href="{{ route('logout') }}"> {{ __('Logout') }}  </a></span> 
+                    <span id="following"> <a style="color: black;"   href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();"> {{ __('Logout') }}  </a></span> 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
@@ -83,7 +83,7 @@
         <hr id="divider">
 
 
-        <ul class="nav flex-column bg-white mb-0" style="font-weight: 500;font-size: 15px;">
+        <ul class="nav flex-column bg-white mb-0" id="sidebar-nav-id" style="font-weight: 500;font-size: 15px;">
     @if(Auth::user()->admin== 'admin')
 
         <li class="nav-item">

@@ -71,7 +71,7 @@
 
 /* side bar */
    .vertical-nav {
-    overflow: auto;
+    overflow: scroll;
     min-width: 17rem;
     width: 17rem;     
     height: 100vh;
@@ -132,6 +132,12 @@
     #content.active {
       margin-left: 17rem;
       width: calc(100% - 17rem);
+    }
+  }
+
+  @media(max-height: 700px) {
+    #sidebar-nav-id {
+      padding-bottom: 125px;
     }
   }
 
