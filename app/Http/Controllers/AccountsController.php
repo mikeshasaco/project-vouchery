@@ -378,40 +378,42 @@ class AccountsController extends Controller
     // subscription statistic 
     public function subscriptionstatistic($slug)
     {
-        
+
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $user = Auth::user();
 
-            if($user->stripe_id==null){
-                $customer_subscriptions = [];
-            }else{
-                $customer_subscriptions = \Stripe\Subscription::all(['customer'=>$user->stripe_id,'status'=>'active'])->data;
-                foreach($customer_subscriptions as $subscription){
-                    $merchant = User::where('stripe_plan', $subscription->plan->id)->first();
-                    $subscription->company = $merchant->company;
-                    $subscription->slug = $merchant->slug;
-                    if($user->subscriptionByPlan('main', $subscription->plan->id)->cancelled()){
-                        $subscription->end_date = date('m/d/Y', strtotime($user->subscriptionByPlan('main',$subscription->plan->id)->ends_at));
-                    }
+        if ($user->stripe_id == null) {
+            $customer_subscriptions = [];
+        } else {
+            $customer_subscriptions = \Stripe\Subscription::all(['customer' => $user->stripe_id, 'status' => 'active'])->data;
+            foreach ($customer_subscriptions as $subscription) {
+                $merchant = User::where('stripe_plan', $subscription->plan->id)->first();
+                $subscription->company = $merchant->company;
+                $subscription->slug = $merchant->slug;
+                if ($user->subscriptionByPlan('main', $subscription->plan->id)->cancelled()) {
+                    $subscription->end_date = date('m/d/Y', strtotime($user->subscriptionByPlan('main', $subscription->plan->id)->ends_at));
                 }
             }
+        }
 
 
-        $subscriptions = \Stripe\Subscription::all(['plan'=>$user->stripe_plan,'status'=>'active'])->data;
-        if(!$user->stripe_plan||$subscriptions == []){
+        $subscriptions = \Stripe\Subscription::all(['plan' => $user->stripe_plan, 'status' => 'active'])->data;
+        // so if not the current user
+        if (!$user->stripe_plan || $subscriptions == []) {
             $subscription_customer = [];
-        }else{
-            foreach($subscriptions as $subscription){
+        } else {
+            foreach ($subscriptions as $subscription) {
                 $subscription_customer[] = $subscription->customer;
-
             }
         }
         // dd($subscriptions);
         // $monthlyBalance 
         $firstofmonth = Carbon::now()->firstOfMonth()->addMonth(1)->format(' d F, Y');
-        $user->count = count($subscriptions);
         $customers = User::whereIn('stripe_id', $subscription_customer)->get();
+
+        $user->count = count($customers);
         // dd($customers);
+
         $monthlyearnings = Monthlyearning::where('user_id',$user->id)->get();
         return view('account.subscriptionstatistic',  compact('user','customers','firstofmonth','monthlyearnings','customer_subscriptions'));
     }

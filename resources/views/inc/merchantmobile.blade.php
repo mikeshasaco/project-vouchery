@@ -71,7 +71,7 @@
                 </div>
                 {{-- <p class="font-weight-normal text-muted mb-0 mt-1"> {{Auth::user()->company}}</p> --}}
                 <div class="followers mt-2" style="font-weight: 450;">
-                    <span id="fans">{{Auth::user()->subscribercount()}} <a href="{{ route('subscription.statistic', auth()->user()->slug) }}" style="color: black;">Subscribers</a> </span>
+                    <span id="fans">{{Auth::user()->subscribercount()}} <a href="{{ route('subscription.statistic', auth()->user()->slug) }}" style="color: black;">Subscribers</a> </span> |
                     <span id="following">{{Auth::user()->followers()->count()}} <a style="color: black;"  href="{{ route('myactivity', auth()->user()->slug) }}">Followers  </a></span> 
                     {{-- <span id="following">{{Auth::user()->Followings()->count()}} <a  style="color: black;" href="{{ route('myactivity', auth()->user()->slug) }}"> Following  </a> </span> --}}
 
