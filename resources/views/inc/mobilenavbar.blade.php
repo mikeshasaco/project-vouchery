@@ -13,7 +13,7 @@
 
   <div class="nav__bottom">
     <ul>
-      <li><a href="{{ route('login') }}" class="active">Login</a></li>
+      <li><a href="{{ route('login') }}" >Login</a></li>
       <li><a  href="{{ route('register') }}">Register</a></li>
       <li><a href="{{ route('AllBusinesses') }}">Categories</a></li>
       <li><a class="nav-link" href="{{route('faqroute')}}"> Help</a></li>
