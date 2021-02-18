@@ -61,7 +61,7 @@
                 {{-- <h5 class="m-0"> <a href="{{ route('myaccount', auth()->user()->slug) }}" style="color:#b35464;">{{Auth::user()->company}}  </a> </h5> --}}
 
                 <div class="followers mt-2" style="font-weight: 450;">
-                    <span id="fans"><a href="{{ route('subscription.statistic', auth()->user()->slug) }}" style="color: #b35464;"> {{Auth::user()->company}}</a> </span> |
+                    <span id="fans"><a href="{{ route('myaccount', auth()->user()->slug) }}" style="color: #b35464;"> {{Auth::user()->company}}</a> </span> |
                     <span id="following"> <a style="color: black;"   href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();"> {{ __('Logout') }}  </a></span> 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf

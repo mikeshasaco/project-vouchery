@@ -20,6 +20,7 @@ class SearchController extends Controller
             ->orwhere('title', 'like', "%$query%")
             ->orwhere('company', 'like', "%$query%")
             ->paginate(15);
+            dd($products);
             $user = Auth::user();
             $customer = $customer = Auth::guard('customer')->user();
             if($user){

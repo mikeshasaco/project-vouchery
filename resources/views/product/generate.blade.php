@@ -39,7 +39,7 @@
             @if(empty(Auth::user()->subscription_price))
 
             <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}" id="subscriptiondiv">
-                <label for=""> <b> My Subscription Price</b> <b style="color: red;">( Coupon Codes will visible only to subscribers)</b> </label>
+                <label for=""> <b> My Subscription Price</b> <b style="color: red;">( Coupon Code will visible only to subscribers)</b> </label>
                 <input type="text" id="instruction"  class="form-control" placeholder="Please Setup your subscription price" disabled >
                 <a href="{{route('setsubscription', Auth::user()->slug)}}">Follow instructions setup your subscription price.</a>
              </div>

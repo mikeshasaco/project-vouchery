@@ -24,7 +24,7 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
             ->join('users', 'users.id', 'products.user_id')
-            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug','users.stripe_plan')
+            ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug','users.stripe_plan', 'users.avatar')
             ->orderByRaw('advertboolean = 0', 'advertboolean')
             ->orderBy('products.created_at', 'DESC')
             ->paginate(15);
@@ -83,7 +83,7 @@ class ProductsController extends Controller
         $alladproducts = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
                           ->join('users', 'users.id', 'products.user_id')
                           ->join('categoriess', 'categoriess.id', 'products.category_id')
-                          ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
+                          ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.avatar')
                           ->inRandomOrder()
                           ->take(3)
                           ->get();
@@ -117,7 +117,7 @@ class ProductsController extends Controller
 
         $products = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->join('users', 'users.id', '=', 'products.user_id')
-        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan')
+        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.stripe_plan', 'users.avatar')
         ->orderByRaw('advertboolean = 0', 'advertboolean')
         ->orderBy('products.created_at', 'DESC')
         ->where('categoriess.catslug', $slug)
@@ -180,7 +180,7 @@ class ProductsController extends Controller
         $paidadvertisement = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
                         ->join('users', 'users.id', 'products.user_id')
                         ->join('categoriess', 'categoriess.id', 'products.category_id')
-                        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug')
+                        ->select('products.*', 'users.company', 'categoriess.categoryname', 'users.slug', 'categoriess.catslug', 'users.avatar')
                         ->where('categoriess.catslug', $slug)
                         ->inRandomOrder()
                         ->take(3)
@@ -255,22 +255,22 @@ class ProductsController extends Controller
         $product->expired_date = Carbon::now()->addDays(7);
         $product->user_id = Auth::user()->id;
 
-        if ( $request->hasFile('image')) {
+        // if ( $request->hasFile('image')) {
         
-            $image = $request->file('image');
-            $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
-            $o = Image::make($image)->orientate();
-            $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
-            $product->image = $filename;
-        }
-
-        //    if ($request->hasFile('image')) {
         //     $image = $request->file('image');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     $location = public_path('/images/' . $filename);
-        //     Image::make($image)->save($location);
+        //     $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
+        //     $o = Image::make($image)->orientate();
+        //     $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
         //     $product->image = $filename;
         // }
+
+           if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($image)->save($location);
+            $product->image = $filename;
+        }
 
         $saved = $product->save();
         Session::flash('successmessage', 'Coupon Created Successfully');

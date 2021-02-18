@@ -94,8 +94,9 @@
                                 <hr style="margin-top: 1.8rem; margin-bottom: 0rem;">
                                 <p class="advertise">Promoted Ad</p>
                                 @endif
-                            
-                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" >View More: <b>{{$product->company}}</b> </a>
+                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0; color:black;" > <b>View More:</b>  <b style="  text-transform: capitalize;">{{$product->company}}</b> </a>
+
+                                {{-- <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" >View More: <b>{{$product->company}}</b> </a> --}}
 
                                     <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }}); position:absolute; bottom:0; right:8px; width:50px; height:50px; "></div>
                             
@@ -177,9 +178,10 @@
                                 <p class="advertise">Promoted Ad</p>
                                 @endif
                             
-                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" >View More: <b>{{$product->company}}</b> </a>
+                                {{-- <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" >View More: <b>{{$product->company}}</b> </a> --}}
+                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" > View More: <b style="  text-transform: uppercase;">{{$product->company}}</b> </a>
 
-                                    <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }}); position:absolute; bottom:0; right:8px; width:50px; height:50px; "></div>
+                                    {{-- <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }}); position:absolute; bottom:0; right:8px; width:50px; height:50px; "></div> --}}
                             
                         </div>                        
                     </div>

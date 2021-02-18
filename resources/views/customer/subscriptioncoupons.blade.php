@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section class="couponmycontainer">
+    <section class="couponmycontainer" style="margin-bottom: 90px;">
 
    
             <div class="container">
@@ -12,26 +12,19 @@
 
                     @forelse($products as $product)
                     <div class="col-md-6 col-lg-4 col-12">
-                                    <div class="card"  id="cardproduct" data-product-id="{{ $product->id }}">
-                                        <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" height="283" width="180">
-                                        <!-- <div class="card-header">
-                                            <ul class="nav nav-tabs card-header-tabs">
-                                                <li>
-                                                    <a href="{{ url('/account' .'/'. $product->user['slug']) }}" class="nav-link"> <small class="badges">  {{$product->user['company']}}</small></a>
-                                                </li>
-                                                @if($product->advertboolean == 1)
-                                                    <li>
-                                                        <span class="nav-link" style="position:absolute; right:4%;"> <small class="badge badge-warning"> Promoted Ad</small> </span>
-                                                    </li>
-                                                    @endif
-                                            </ul>
-                                        </div> -->
-                                        <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
-                                </h4>
-                                <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description">{{$product->desc}}</p>
-                          
+                    <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
+                        <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180">
+                            {{-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180"> --}}
+                      
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
+                            </h4>
+                            <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description"> <b>{{$product->desc}}</b> </p>
+
+
+                            
+
                              <hr class="firsthr" style="margin-bottom:0.1rem; margin-top:10px;">
 
                             <ul class="list-group list-group-flush">
@@ -51,8 +44,8 @@
                                     </div>
 
                             </ul>
-
-                                   <hr style="margin-top: 0.1rem; margin-bottom: 3px;">
+                           
+                            <hr style="margin-top: 0.1rem; margin-bottom: 3px;">
 
                             <p style="font-weight:bold; font-size:13px; opacity:0.8; margin:0; cursor:pointer;" title="Expiration Date">
                         
@@ -82,13 +75,13 @@
                                 <p class="advertise">Promoted Ad</p>
                                 @endif
                             
-                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" >View More: <b>{{$product->company}}</b> </a>
+                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:0; left:0" > View More: <b style="  text-transform: uppercase;">{{$product->company}}</b> </a>
 
-                                    <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }}); position:absolute; bottom:0; right:8px; width:50px; height:50px; "></div>
-                    
-                            </div>                        
+                                    {{-- <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }}); position:absolute; bottom:0; right:8px; width:50px; height:50px; "></div> --}}
+                            
                         </div>
                     </div>
+                </div>
                     @empty 
                      <div style="padding:185px 0 185px 0;">
                     <h4> <i>(You currently have yet to subscribe to businesses yet!) <a href="{{route('homepage')}}" style="color:#B35464; text-decoration:none;">Check out theses businesss deals!</a> </i> </h4>
