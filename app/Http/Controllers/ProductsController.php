@@ -255,22 +255,22 @@ class ProductsController extends Controller
         $product->expired_date = Carbon::now()->addDays(7);
         $product->user_id = Auth::user()->id;
 
-        // if ( $request->hasFile('image')) {
+        if ( $request->hasFile('image')) {
         
-        //     $image = $request->file('image');
-        //     $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
-        //     $o = Image::make($image)->orientate();
-        //     $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
-        //     $product->image = $filename;
-        // }
-
-           if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
-            Image::make($image)->save($location);
+            $filename = 'couponimage/' . time(). '.' . $image->getClientOriginalExtension();
+            $o = Image::make($image)->orientate();
+            $path = Storage::disk('do')->put('Coupon/'. $filename, $o->encode());
             $product->image = $filename;
         }
+
+        //    if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $location = public_path('/images/' . $filename);
+        //     Image::make($image)->save($location);
+        //     $product->image = $filename;
+        // }
 
         $saved = $product->save();
         Session::flash('successmessage', 'Coupon Created Successfully');
