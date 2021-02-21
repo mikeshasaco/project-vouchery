@@ -226,7 +226,7 @@ class ProductsController extends Controller
         $formInput=$request->except('image');
         $this->validate($request, [
         'title'=> 'required|max:60',
-        'desc' => 'required|max:100',
+        'desc' => 'required|max:110',
         'newprice' => [
           'required', 'numeric', 'between:0.00,9999.99', 'min:0.00',
             new PriceRule($request->currentprice)
