@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="notfy-section">
+<section class="notfy-section" style="margin-bottom: 70px;">
 
-    <div class="container">
+    <div class="container" >
         <h3 class="customerprofile"><b>Notifications</b></h3>
         <ul class="nav nav-tabs responsive" role="tablist">
           
@@ -24,7 +24,7 @@
             </li> 
         </ul>
         <div class="tab-content">
- <section id="subscription-names" class="tab-pane fade show active" role="tabpanel">
+ <section id="subscription-names" class="tab-pane fade show active" role="tabpanel" style="margin-bottom: 70px;">
                 {{-- <h5 style="color:#b35464;"> <b>Following</b></h5> --}}
                 <div class="row">
                     <div class="col-md-12 col-12 table-responsive">
@@ -66,7 +66,7 @@
                
             </section>
 
-             <section id="currentearning" class="tab-pane fade " role="tabpanel">
+             <section id="currentearning" class="tab-pane fade " role="tabpanel" style="margin-bottom: 70px;">
                 <div class="row">
                     <div class="col-md-12 col-12 table-responsive">
                         <h5 > <b>Current Month Earning </b></h5>
@@ -93,7 +93,7 @@
                 </div>
             </section>
 
-            <section id="subscriptionstatistic" class="tab-pane fade" role="tabpanel">
+            <section id="subscriptionstatistic" class="tab-pane fade" role="tabpanel" style="margin-bottom: 70px;">
                 <div class="row">
                     <div class="col-md-12 col-12 table-responsive">
                         <h5> <b>Subscribed</b> <i>(This feature is mechants you subscribe)</i> </h5>

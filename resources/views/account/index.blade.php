@@ -96,42 +96,7 @@
                         @endif
                     @endif
                 @endif
-                    {{-- @if($customer = Auth::user())
-                        @if($user->subscription_price)
-                            @if($customer->subscribedByPLan('main', $user->stripe_plan))
-                            <div class="secondinfo">
-                                <label for="subscription">SUBSCRIPTION</label>
-                                <p>${{ $user->subscription_price }} per month</p>
-                                <p class="subscribe_button">SUBSCRIBED FOR ${{ $user->subscription_price }}</a>
-                            </div>
-                            @else
-                            <div class="secondinfo">
-                                <label for="subscription">SUBSCRIPTION</label>
-                                <p>${{ $user->subscription_price }} per month</p>
-                                <a href="#" class="subscribe_button" data-toggle="modal" data-target="#subscriptionmodal">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
-                            </div>
-                            @endif
-                        @else
-                        <div class="secondinfo">
-                            <p >SUBSCRIPTION</p>
-                            <p class="subscribe_button">Not Set Subscription</p>
-                        </div>
-                        @endif
-                    @elseif (Auth::user())
-                    @else
-                        @if($user->subscription_price)
-                        <div class="secondinfo">
-                            <label for="subscription">SUBSCRIPTION</label>
-                            <p>${{ $user->subscription_price }} per month</p>
-                            <a href="/register" class="subscribe_button">SUBSCRIBE FOR ${{ $user->subscription_price }}</a>
-                        </div>
-                        @else
-                        <div class="secondinfo">
-                            <p >SUBSCRIPTION</p>
-                            <p class="subscribe_button">Not Set Subscription</p>
-                        </div>
-                        @endif
-                    @endif --}}
+               
                 </div>
             </div>
         </div>
@@ -153,19 +118,7 @@
                 <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
                     <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180">
                         {{-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180"> --}}
-                    <!-- <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs">
-                            <li>
-                                <a href="{{ url('/account' .'/'. $product->slug) }}" class="nav-link" style="color:#B35464;" title="Company Name"> <small class="badges">  {{$product->company}}</small></a>
-                            </li>
-                            @if($product->advertboolean == 1)
-                                <li>
-                                    <span class="nav-link" style="position:absolute;right:4%;"> <small class="badge badge-warning"> Promoted Ad</small> </span>
-                                </li>
-                            @endif
-
-                        </ul>
-                    </div> -->
+               
                     <div class="card-body">
                         <h4 class="card-title">
                              <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
