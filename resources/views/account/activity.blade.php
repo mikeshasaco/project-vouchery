@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="activity-section" style="margin-top: 100px;">
+<section class="activity-section" style="margin-top: 100px; margin-bottom:100px;">
 
     <div class="container">
         <h3 class="customerprofile"><b>Following</b></h3>
@@ -69,6 +69,6 @@
 
         </div>
     </div>
-    </section>
+</section>
 
 @endsection
