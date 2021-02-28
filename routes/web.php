@@ -17,9 +17,10 @@ Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('t
 Auth::routes();
 
 Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
+Route::get('/', 'PagesController@index')->name('homepage');
 
 Route::group(['middleware'=>'all'],function(){
-    Route::get('/', 'PagesController@index')->name('homepage');
+    // Route::get('/', 'PagesController@index')->name('homepage');
 
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::post('product', 'ProductsController@store')->name('product.store');
