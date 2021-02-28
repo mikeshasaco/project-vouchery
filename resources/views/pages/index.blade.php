@@ -3,7 +3,7 @@
     <section id="banner-homepage" class="d-none d-lg-block">
         <div class="d-none d-sm-block container" >
             <div class="row">
-                <h4> <b>Search Through Different  E-Commerce Businesses Within The Marketplace For The Best Deals On Products.</b> </h4>
+                <h4 > <b>Voucheryhub Marketplace For Small Businesses <br>To Grow, Thrive, And Earn More.</b> </h4>
                 {{-- <h4><b>Add your Business to the Marketplace build your own subscription plan for customers</b></h4> --}}
                 <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
@@ -13,7 +13,7 @@
                     </div>
                 </form>
                 <div class="trend">
-                    <h5> <b>Trending Categories</b></h5>
+                    <h5 style="font-weight: 800"> <b>Trending Categories</b></h5>
                     <ul class="topic">
                         @forelse($categoriess as $cattopic)
                         <li class="cat-topic" >

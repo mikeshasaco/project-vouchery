@@ -50,7 +50,7 @@
                                          <option value="8.00">$8.00</option>
                                          <option value="9.00">$9.00</option>
                                         <option value="10.00">$10.00</option>
-                                        <option value="11.00">$11.00</option>
+                                        {{-- <option value="11.00">$11.00</option>
                                         <option value="12.00">$12.00</option>
                                         <option value="13.00">$13.00</option>
                                         <option value="14.00">$14.00</option>
@@ -59,7 +59,7 @@
                                         <option value="17.00">$17.00</option>
                                         <option value="18.00">$18.00</option>
                                         <option value="19.00">$19.00</option>
-                                        <option value="20.00">$20.00</option>
+                                        <option value="20.00">$20.00</option> --}}
                                          {{-- <option value="30.00">$30.00</option> --}}
                                     </select>
                                         @if ($errors->has('subscription_price'))
