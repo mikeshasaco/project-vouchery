@@ -152,7 +152,7 @@ z-index: 1030;
       padding: 0 16px;
       display: flex;
       font-size: 9px;
-      margin-top: -3%;
+      margin-top: -6%;
     }
 
     #nav .nav__bottom ul li {
@@ -220,6 +220,6 @@ z-index: 1030;
           padding: 0 16px;
           display: flex;
           font-size: 7px;
-          margin-top: -3%;
+          margin-top: -6%;
         }
 }

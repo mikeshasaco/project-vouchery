@@ -30,11 +30,20 @@
     </section>
 
 <section>
+
+  
   <div class="container">
-        <h4 style="font-weight: 800; padding-top: 50px;
-    padding-bottom: 25px;">Popular Deals</h4>
+        @if(Auth::user())
+        <h4 style="font-weight: 800; padding-top: 50px;padding-bottom: 25px;">Popular Deals</h4>
+
+        @else
+        <h4 style="font-weight: 800; padding-top: 70px;padding-bottom: 25px;">Popular Deals</h4>
+
+        @endif
 
     </div>
+
+
 
 </section>
   
