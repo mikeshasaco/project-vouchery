@@ -37,7 +37,7 @@
         <h4 style="font-weight: 800; padding-top: 50px;padding-bottom: 25px;">Popular Deals</h4>
 
         @else
-        <h4 style="font-weight: 800; padding-top: 70px;padding-bottom: 25px;">Popular Deals</h4>
+        <h4 style="font-weight: 800; padding-top: 80px;padding-bottom: 25px;">Popular Deals</h4>
 
         @endif
 
