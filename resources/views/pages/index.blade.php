@@ -25,68 +25,22 @@
                         @endforelse
                     </ul>
                 </div>
-                <!-- <div class="col-md-9">
-                <h4 style="text-align:center;"><b> Weekly Deals From Online Businesses</b></h4>
-                    
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    
-                    <ol class="carousel-indicators">
-                    @foreach( $submission as $photo )
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
-                    @endforeach
-                    </ol>
-                    
-                    <div class="carousel-inner" role="listbox">
-                        @foreach( $submission as $photo )
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <a href="{{$photo->weblink}}" target="_blank"> <img  src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Banner/{{$photo->image}}" width="100%;" height="280px;" >
-                        </a>
-
-                        </div>
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    </div>
-                
-                </div>
-                -->
             </div>
         </div>
     </section>
-    {{-- <section id="h1title">
-        <div class="container">
-            <div class="row" style="margin-top:6%;">
-                <h5 class="mediah5 d-none d-lg-block" style="text-align:center;"> <b> Latest Deals From Online Businesses</b> <a href="{{ route('AllBusinesses') }}" style="color:#B35464; text-decoration:none;"> See All Online Businesses</a> </h5>
-            </div>
-        </div>
-    </section> --}}
-    {{--  onlt mobile view--}}
-    <?php $cats = DB::table('categoriess')->orderby('categoryname','ASC')->get(); ?>
 
-    {{-- <section id="mobile-category"  class="d-block d-lg-none">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <select onchange="if (this.value) window.location.href=this.value" class="media-select-page">
-                        <option value="{{ route('AllBusinesses') }}">Select Category</option>
-                        @foreach($cats as $categoryselect)
-                        <option value="{{ url('/businesses'.'/'. $categoryselect->catslug)  }}">{{ $categoryselect->categoryname }}</option>
-                    @endforeach
-                    </select>
+<section>
+  <div class="container">
+        <h4 style="font-weight: 800; padding-top: 50px;
+    padding-bottom: 25px;">Popular Deals</h4>
 
-                </div>
-            </div>
-        </div>
-    </section> --}}
+    </div>
+
+</section>
+  
   <section id="recentlyuploaded" style="margin-bottom:90px;">
         <div class="container">
+
             <div class="row w-100" >
 
                 @forelse($products as $product)
