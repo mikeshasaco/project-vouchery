@@ -200,7 +200,7 @@
              <button id="create" type="button" class="btn btn-secondary button-inactive" onclick=window.location='{{ route('generate.product') }}'>
               <div class="selector-holder">
                  <i class="material-icons">add_box</i>
-                  <h6>Create</h6>
+                  <h6>Create Deal</h6>
               </div>
            <button id="create" type="button" class="btn btn-secondary button-inactive" onclick=window.location='{{ route('mynotification', auth()->user()->slug) }}'>
               <div class="selector-holder">
