@@ -29,24 +29,41 @@
         </div>
     </section>
 
-<section>
+{{-- <section>
 
   
-  {{-- <div class="container"> --}}
         @if(Auth::user())
         <h4 style="font-weight: 800; padding-top: 50px;padding-bottom: 25px; text-align:center;">Popular Deals</h4>
 
         @else
         <h4 style="font-weight: 800; padding-top: 80px;padding-bottom: 25px; text-align:center;">Join Marketplace </h4>
-        {{-- style="background-color: #b35464; color: white; padding: 5px 10px; width:100%;" --}}
-
-        {{-- <a href="" class="btn btn-primary" id="marketplace-join" style="width: 100%;height:50px;" >Join Marketplace</a> --}}
+   
 
         @endif
 
-    {{-- </div> --}}
 
 
+
+</section> --}}
+
+<section class="d-block d-sm-none">
+
+        @if(Auth::user())
+        {{-- <h4 style="font-weight: 800; padding-top: 50px;padding-bottom: 25px; text-align:center;">Popular Deals</h4> --}}
+        <div style="margin-top: 76px;">
+            <img src="/Voucherhyhubbannerpurp.png" alt="" width="100%;" height="190px;"  >
+        </div>
+
+        @else
+        {{-- <h4 style="font-weight: 800; padding-top: 80px;padding-bottom: 25px; text-align:center;">Join Marketplace </h4> --}}
+
+        <div style="margin-top: 102px;">
+            <img src="/Voucherhyhubbannerpurp.png" alt="" width="100%;" height="190px;"  >
+        </div>
+   
+
+        @endif
+    
 
 </section>
   
