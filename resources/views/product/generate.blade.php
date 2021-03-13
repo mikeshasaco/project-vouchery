@@ -23,7 +23,7 @@
         {{ csrf_field() }}
 {{-- <center><p style="color:b35464;"> Expiration Date: {{  \Carbon\Carbon::now()->addDays(7)->format('l, d F, Y') }}</p> </center> --}}
 
-<h5 style="text-align: center; "> Create Deal</h5>
+<h5 style="text-align: center; font-weight:bold;color:#b35364; "> Create Deal</h5>
     
      <div class="panel panel-default">
          <div class="panel-body">
