@@ -4,7 +4,6 @@
         <div class="d-none d-sm-block container" >
             <div class="row">
                 <h4 > <b>Voucheryhub Marketplace For Small Businesses <br>To Grow, Thrive, And Earn More.</b> </h4>
-                {{-- <h4><b>Add your Business to the Marketplace build your own subscription plan for customers</b></h4> --}}
                 <form class="navbar-form" action="{{ route('search') }}" method="GET">
                     <div id="custom-search-input">
                         <div class="input-group  col-md-12">
@@ -28,6 +27,8 @@
             </div>
         </div>
     </section>
+
+    
 
 {{-- <section>
 
