@@ -242,12 +242,31 @@ class PagesController extends Controller
         return view('pages.loading');
     }
 
-    // public function landingpage()
-    // {
-    //     if (Auth::user() || Auth::guard('customer')->user()) {
-    //         return redirect('/');
-    //     } else {
-    //         return view('pages.landingpage');
-    //     }
-    // }
+    public function landingpage()
+    {
+
+        $productrecords = 
+
+        Product::join('categoriess', 'categoriess.id', 'products.category_id')
+        ->join('users', 'users.id', 'products.user_id')
+        ->select(
+            'products.*',
+            'users.company',
+            'users.slug',
+            'products.clicks',
+            'products.exclusive',
+            'categoriess.categoryname',
+            'categoriess.catslug',
+            'users.stripe_plan',
+            'users.avatar'
+        )->take(3)->get();
+     
+       
+        if (Auth::user()) {
+            return redirect('/Marketplace');
+        } else {
+            return view('pages.landingpage', compact('productrecords'));
+        }
+        
+    }
 }

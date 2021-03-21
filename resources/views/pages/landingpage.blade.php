@@ -83,6 +83,7 @@
                     </li> --}}
                 </ul>
                 <span class="nav-item">
+                    <a class="btn-outline-sm" href="{{ route('register') }}">REGISTER</a>
                     <a class="btn-outline-sm" href="{{ route('login') }}">LOG IN</a>
                 </span>
             </div>
@@ -98,16 +99,17 @@
                 <div class="row">
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
-                            <h1 style="font-size: 3rem">Grow your business, while earning extra income monthly.</h1>
+                            <h1 style="font-size: 2.6rem">Marketplace For Small Businesses, To Grow Customers, And Earn Money From There Promo Codes!  </h1>
                             {{-- <p class="p-large">Subscription base marketplace for online businesses to help earn extra income and expand</p> --}}
-                            <p class="p-large">Marketplace designed to connect small businesses with customers, while giving businesses an extra source on income.</p>
+                            {{-- <p class="p-large">Marketplace designed to connect small businesses with customers, while giving businesses an extra source on income.</p> --}}
                             <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">SIGN UP IS FREE</a>
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6 col-xl-7">
                         <div class="image-container">
                             <div class="img-wrapper">
-                                <img class="img-fluid" src="images/header-software-app.png" alt="alternative">
+                                
+                                <img class="img-fluid" src="logohomescreen.png" style="margin-top: 85px;" alt="alternative">
                             </div> <!-- end of img-wrapper -->
                         </div> <!-- end of image-container -->
                     </div> <!-- end of col -->
@@ -119,53 +121,13 @@
     <!-- end of header -->
 
 
-    <!-- Customers -->
-    <div class="slider-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                    <!-- Image Slider -->
-                    <div class="slider-container">
-                        <div class="swiper-container image-slider">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                        <img class="img-fluid" src="vouch.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-                                        <img class="img-fluid" src="images/customer-logo-2.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-                                        <img class="img-fluid" src="vouch.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-                                        <img class="img-fluid" src="images/customer-logo-4.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-                                        <img class="img-fluid" src="vouch.png" alt="alternative">
-                                </div>
-                                <div class="swiper-slide">
-                                        <img class="img-fluid" src="images/customer-logo-6.png" alt="alternative">
-                                </div>
-                            </div> <!-- end of swiper-wrapper -->
-                        </div> <!-- end of swiper container -->
-                    </div> <!-- end of slider-container -->
-                    <!-- end of image slider -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of slider-1 -->
-    <!-- end of customers -->
-
-
     <!-- Description -->
     <div class="cards-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="above-heading">Marketplace</div>
-                    <h2 class="h2-heading">Marketplace designed for businesses to interact with their customers.</h2>
+                    <div class="above-heading">Benefits</div>
+                    <h2 class="h2-heading">Our Goal is To Help Small Businesses!</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -174,11 +136,11 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-image">
-                            <img class="img-fluid" src="images/description-1.png" alt="alternative">
+                            <img class="img-fluid" src="online-shopping.png" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Register your Business</h4>
-                            <p>Once registered your business you have the ability to create your own subscription plan for your customers to subscribe to.</p>
+                            <h4 class="card-title">Drive Traffic From The Marketplace To Your <br> E-commerce Store</h4>
+                            <p>Businesses can post there products deals on the marketplace, to drive traffic to there online store!</p>
                             {{-- <p>Sign up your business, set your subscription prices for your customers.</p> --}}
                         </div>
                     </div>
@@ -187,11 +149,11 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-image">
-                            <img class="img-fluid" src="images/description-2.png" alt="alternative">
+                            <img class="img-fluid" src="money-coin.png" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Subscription Plan</h4>
-                            <p>Once you setup your subscription plan for your business you can create subscriber only deals on products for your customers to subscribe to.</p>
+                            <h4 class="card-title">Earn Monthly Income From Your Deals!</h4>
+                            <p>Businesses in the marketplace has the ablilty to create Subscription Plans for there discount codes to give to customers, in return customers recieve exclusive deals on that business products!</p>
                             {{-- <p>Once registered you can create a subscription for your business and create subscriber only deals for your customers.</p> --}}
                             {{-- <p>Create a subscription plan for your business that customers can subscribe to. You can give your customer deals on products.</p> --}}
                         </div>
@@ -201,12 +163,12 @@
                     <!-- Card -->
                     <div class="card">
                         <div class="card-image">
-                            <img class="img-fluid" src="images/description-3.png" alt="alternative">
+                            <img class="img-fluid" src="graph.png" alt="alternative">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Analytics Tool</h4>
+                            <h4 class="card-title">Analytic Tool</h4>
                             {{-- <p>You can track the number of clicks for each deal that you post on the marketplace.</p> --}}
-                            <p>Track your business analytical data within the marketplace to view results and drive traffic to your business.</p>
+                            <p>Businesses can track there products clicks on the marketplace to gain more customers interest!</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -218,192 +180,101 @@
     <!-- end of description -->
 
 
-    <!-- Features -->
-    <div id="features" class="tabs" style="background-color:   #f7edef">
+
+
+    <!-- Description -->
+    <div class="cards-1">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-12">
-                    <div class="above-heading">Benefits</div>
-                    <h2 class="h2-heading">Benefits of Marketplace</h2>
-                    <p class="p-heading">Voucheryhub marketplace main goal is for businesses to reach their customers efficiently, as well as provide a opportunity for businesses to earn extra income monthly. </p>
+                    <div class="above-heading">Marketplace</div>
+                    <h2 class="h2-heading">Latest Deals In Marketplace</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
-                <div class="col-lg-12">
+                     @foreach($productrecords as $product)
+ <div class="col-md-6 col-lg-4 col-12">
+                    <div class="card" id="cardproduct" data-product-id="{{ $product->id }}">
+                        <img class="card-img-bottom" src="https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Coupon/{{$product->image}}" alt="" height="283" width="180">
+                            {{-- <img class="card-img-bottom" src="/images/{{ $product->image }}" height="283" width="180"> --}}
+                      
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ url('account' .'/'. $product->slug) }}" title="Coupon Name" >{{$product->title}}</a>
+                            </h4>
+                            <p class="card-text"style="margin:0; margin-top:-10px;" title="Coupon Description"> <b>{{$product->desc}}</b> </p>
 
-                    <!-- Tabs Links -->
-                    <ul class="nav nav-tabs" id="argoTabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Register your Business</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Grow your Business</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Analytical Data</a>
-                        </li>
-                    </ul>
-                    <!-- end of tabs links -->
 
-                    <!-- Tabs Content -->
-                    <div class="tab-content" id="argoTabsContent">
+                            
 
-                        <!-- Tab -->
-                        <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="images/features-1.png" alt="alternative">
-                                    </div> <!-- end of image-container -->
-                                </div> <!-- end of col -->
-                                <div class="col-lg-6">
-                                    <div class="text-container">
-                                        <h3>Add your  business to the marketplace</h3>
-                                        <p>Register your business to the marketplace, you can link your website deals to the marketplace and drive traffic to your online business.</p>
-                                        <ul class="list-unstyled li-space-lg">
-                                            <li class="media">
-                                                <div class="media-body">Businesses in the marketplace can create subscription plans for their customers.</div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="media-body">Businesses can set there own subscription price for customers.</div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="media-body">Businesses can advertise there deals in the marketplace.</div>
-                                            </li>
-                                        </ul>
-                                      <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">SIGN UP IS FREE</a>
-                                    </div> <!-- end of text-container -->
-                                </div> <!-- end of col -->
-                            </div> <!-- end of row -->
-                        </div> <!-- end of tab-pane -->
-                        <!-- end of tab -->
+                             <hr class="firsthr" style="margin-bottom:0.1rem; margin-top:10px;">
 
-                        <!-- Tab -->
-                        <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="images/features-2.png" alt="alternative">
-                                    </div> <!-- end of image-container -->
-                                </div> <!-- end of col -->
-                                <div class="col-lg-6">
-                                    <div class="text-container">
-                                        <h3>Grow your business and increase website traffic!</h3>
-                                        <p>Expand your business and build a community of customers.</p>
-                                        <ul class="list-unstyled li-space-lg">
-                                            <li class="media">
-                                                <div class="media-body">Expand your business reach by advertising your company deals within the marketplace.</div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="media-body">Build a community within the marketplace to attract customers and to increase business sales.</div>
-                                            </li>
-                                        </ul>
-                                      <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">SIGN UP IS FREE</a>
-                                    </div> <!-- end of text-container -->
-                                </div> <!-- end of col -->
-                            </div> <!-- end of row -->
-                        </div> <!-- end of tab-pane -->
-                        <!-- end of tab -->
-
-                        <!-- Tab -->
-                        <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="image-container">
-                                        <img class="img-fluid" src="images/features-3.png" alt="alternative">
-                                    </div> <!-- end of image-container -->
-                                </div> <!-- end of col -->
-                                <div class="col-lg-6">
-                                    <div class="text-container">
-                                        <h3>Track Analytics</h3>
-                                        <p> Businesses can track different types of data in the marketplace that will help improve your results and drive traffic to your website.</p>
-                                        <ul class="list-unstyled li-space-lg">
-                                            <li class="media">
-                                                <div class="media-body">Businesses can track there product clicks to get a better understanding of how well there products are doing in the marketplace.</div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="media-body">Businesses can track subscribers and followers count in the marketplace.</div>
-                                            </li>
+                            <ul class="list-group list-group-flush">
+                                    <div class="" style="display: flex;justify-content: space-between; padding-top:12px;">
+                                        <div class="" style="display: flex;">
+                                            <h5 class="discounth5" title="Original Price" style="cursor:pointer;"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
+                                            <h5 class="newprice5" style="cursor:pointer;color: green;margin-left: 5px;" title="Discount Price"> ${{ number_format($product->newprice, 2) }}</h5>
+                                            <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
+                                        </div>
                                         
-                                        </ul>
-                                      <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">SIGN UP IS FREE</a>
-                                    </div> <!-- end of text-container -->
-                                </div> <!-- end of col -->
-                            </div> <!-- end of row -->
-                        </div> <!-- end of tab-pane -->
-                        <!-- end of tab -->
+                                        @if(auth::user() || auth::guard('customer')->user())
+                                        <a href="{{$product->url}}" target="_blank" class="cardbutton-page"> View Deal
+                                        </a>
+                                        @else
+                                            <a href="/register" class="cardbutton-page">View Deal</a>
+                                        @endif
+                                    </div>
+
+                            </ul>
+                           
+                            <hr style="margin-top: 0.1rem; margin-bottom: 3px;">
+
+                            <p style="font-weight:bold; font-size:13px; opacity:0.8; margin:0; margin-left:-121px; cursor:pointer;"  title="Expiration Date">
                         
-                    </div> <!-- end of tab content -->
-                    <!-- end of tabs content -->
+                    @if(empty($product->couponcode))
+                            <i class="fas fa-tags" title="Discount Code"> </i>No Discount Code
+                        @else
+                          @if($product->coupon)
+                            <i class="fas fa-tags" title="Discount Code"></i>Discount Code: {{$product->couponcode}}
+                            @else
+                            <i class="fas fa-tags" title="Discount Code" > </i>Discount Code: ******
+                            @endif
+                        @endif
+                        
+                            <p  style="font-weight:bold; font-size:13px; opacity:0.8; margin:0; cursor:pointer;     margin-top: -28px;
+    margin-left: 254px;"><i class="far fa-eye icon-battery-percent" title="Clicks/PerView"><b> {{$product->clicks}}</b></i></p>
 
-                </div> <!-- end of col -->
+                            <hr style="margin-top: 0.1rem; margin-bottom:14px;">
+
+
+                                
+
+
+                            
+                                <a href="{{ url('account' .'/'. $product->slug) }}" style="position: absolute; bottom:-10; left:0; color:black;" > <b>View More:</b>  <b style="  text-transform: capitalize;">{{$product->company}}</b> </a>
+
+                                    {{-- <div class="companyimage rounded-circle" style ="background-image: url(https://vouch.sfo2.digitaloceanspaces.com/home/forge/voucheryhub.com/storage/app/public/Avatar/{{$product->avatar }}); position:absolute; bottom:0; right:8px; width:50px; height:50px; "></div> --}}
+                            
+                        </div>
+                    </div>
+                </div>
+
+                @endforeach
             </div> <!-- end of row -->
         </div> <!-- end of container -->
-    </div> <!-- end of tabs -->
-    <!-- end of features -->
+    </div> <!-- end of cards-1 -->
+    <!-- end of description -->
 
 
-
-    <!-- Details -->
-    <div id="details" class="basic-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container">
-                        <h2>Join the marketplace</h2>
-                        <p>Marketplace provides a lot of benefits that keep your business active and growing with your customers.</p>
-                        <ul class="list-unstyled li-space-lg">
-                             <li class="media">
-                                <div class="media-body">VoucheryHub is an E-Commerce marketplace that focuses on online businesses to direct consumers to deals for their products & services.</div>
-                            </li>
-                            <li class="media">
-                                <div class="media-body">Voucheryhub marketplace is designed to put small businesses first to help them grow.</div>
-                            </li>                           
-                        </ul>
-                        <a class="btn-solid-reg page-scroll" href="{{ route('register') }}">SIGN UP IS FREE</a>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-6">
-                    <div class="image-container">
-                        <img class="img-fluid" src="images/details.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-1 -->
-    <!-- end of details -->
+  
 
 
-    <!-- Video -->
-    <div id="video" class="basic-2" style="background-color:  #f7edef">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- Video Preview -->
-                    <div class="image-container">
-                        <div class="video-wrapper">
-                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=GRNYgEpqNwE" data-effect="fadeIn">
-                                <img class="img-fluid" src="images/video-image.png" alt="alternative">
-                                <span class="video-play-button">
-                                    <span></span>
-                                </span>
-                            </a>
-                        </div> <!-- end of video-wrapper -->
-                    </div> <!-- end of image-container -->
-                    <!-- end of video preview -->
-
-                    <div class="p-heading">VoucheryHub is an E-Commerce marketplace that focuses on online businesses to direct consumers to deals for their products & services.</div>        
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-2 -->
-    <!-- end of video -->
+   
 
 
 
     <!-- Footer -->
-    <svg class="footer-frame" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 79"><defs><style>.cls-2{fill:#b35464;}</style></defs><title>footer-frame</title><path class="cls-2" d="M0,72.427C143,12.138,255.5,4.577,328.644,7.943c147.721,6.8,183.881,60.242,320.83,53.737,143-6.793,167.826-68.128,293-60.9,109.095,6.3,115.68,54.364,225.251,57.319,113.58,3.064,138.8-47.711,251.189-41.8,104.012,5.474,109.713,50.4,197.369,46.572,89.549-3.91,124.375-52.563,227.622-50.155A338.646,338.646,0,0,1,1920,23.467V79.75H0V72.427Z" transform="translate(0 -0.188)"/></svg>
     <div class="footer">
         <div class="container">
             <div class="row">
