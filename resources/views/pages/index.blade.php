@@ -47,16 +47,14 @@
 
 </section> --}}
 
-<section class="d-block d-sm-none">
+{{-- <section class="d-block d-sm-none">
 
         @if(Auth::user())
-        {{-- <h4 style="font-weight: 800; padding-top: 50px;padding-bottom: 25px; text-align:center;">Popular Deals</h4> --}}
         <div style="margin-top: 76px;">
             <img src="/Voucherhyhubbannerpurp.png" alt="" width="100%;" height="190px;"  >
         </div>
 
         @else
-        {{-- <h4 style="font-weight: 800; padding-top: 80px;padding-bottom: 25px; text-align:center;">Join Marketplace </h4> --}}
 
         <div style="margin-top: 102px;">
             <img src="/Voucherhyhubbannerpurp.png" alt="" width="100%;" height="190px;"  >
@@ -66,7 +64,7 @@
         @endif
     
 
-</section>
+</section> --}}
   
   <section id="recentlyuploaded" style="margin-bottom:90px;">
         <div class="container">

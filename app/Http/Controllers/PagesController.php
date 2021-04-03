@@ -260,12 +260,17 @@ class PagesController extends Controller
             'users.stripe_plan',
             'users.avatar'
         )->take(3)->get();
-     
+
+        $categoriess = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+        ->select('products.category_id', DB::raw('count(*) as total'),  'categoriess.categoryname', 'categoriess.catslug')
+        ->groupBy('category_id')
+        ->take(5)
+        ->get();
        
         if (Auth::user()) {
             return redirect('/Marketplace');
         } else {
-            return view('pages.landingpage', compact('productrecords'));
+            return view('pages.landingpage', compact('productrecords', 'categoriess'));
         }
         
     }

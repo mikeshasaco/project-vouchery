@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-xl-5">
                         <div class="text-container">
-                            <h1 style="font-size: 2.6rem">Marketplace For Small Businesses, To Grow Customers, And Earn Money From There Promo Codes!  </h1>
+                            <h1 style="font-size: 38px;">Marketplace For Small Businesses, To Grow Customers, And Earn Money From There Promo Codes!  </h1>
                             {{-- <p class="p-large">Subscription base marketplace for online businesses to help earn extra income and expand</p> --}}
                             {{-- <p class="p-large">Marketplace designed to connect small businesses with customers, while giving businesses an extra source on income.</p> --}}
                             <a class="btn-solid-lg page-scroll" href="{{ route('register') }}">SIGN UP IS FREE</a>
@@ -109,7 +109,7 @@
                         <div class="image-container">
                             <div class="img-wrapper">
                                 
-                                <img class="img-fluid" src="logohomescreen.png" style="margin-top: 85px;" alt="alternative">
+                                <img class="img-fluid" src="marketplaceimage.png" style="margin-top: 85px;" alt="alternative">
                             </div> <!-- end of img-wrapper -->
                         </div> <!-- end of image-container -->
                     </div> <!-- end of col -->

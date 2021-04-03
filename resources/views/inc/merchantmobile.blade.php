@@ -106,6 +106,12 @@
                     Edit Profile
                 </a>
             </li>
+               <li class="nav-item">
+                <a id="list" href="{{ route('mynotification', auth()->user()->slug) }}" class="nav-link text-dark">
+                    <span class="material-icons">notifications</span>
+                    Notifications
+                </a>
+            </li>
             <li class="nav-item">
                 <a id="list" href="{{ route('mytracker', auth()->user()->slug) }}" class="nav-link text-dark">
                     <span class="material-icons">visibility</span>
@@ -202,12 +208,12 @@
                  <i class="material-icons">add_box</i>
                   <h6>Create</h6>
               </div>
-           <button id="create" type="button" class="btn btn-secondary button-inactive" onclick=window.location='{{ route('mynotification', auth()->user()->slug) }}'>
+           {{-- <button id="create" type="button" class="btn btn-secondary button-inactive" onclick=window.location='{{ route('mynotification', auth()->user()->slug) }}'>
               <div class="selector-holder">
                  <i class="material-icons">notifications</i>
                     <h6>Notifications</h6>                
               </div>
-           </button>
+           </button> --}}
            <button id="account" type="button" class="btn btn-secondary button-inactive sidebarCollapse">
               <div class="selector-holder">
                  <i class="material-icons">account_circle</i> 
