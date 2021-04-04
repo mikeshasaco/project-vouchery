@@ -1,7 +1,36 @@
 @extends('layouts.master')
 @section('content')
-    <section id="banner-homepage" class="d-none d-lg-block">
+    {{-- <section id="banner-homepage" class="d-none d-lg-block">
         <div class="d-none d-sm-block container" >
+            <div class="row">
+                <h4 > <b>Voucheryhub Marketplace For Small Businesses <br>To Grow, Thrive, And Earn More.</b> </h4>
+                <form class="navbar-form" action="{{ route('search') }}" method="GET">
+                    <div id="custom-search-input">
+                        <div class="input-group  col-md-12">
+                            <input type="text"  name="query" id="query" value="{{ request()->input('query')}}" class="search-query form-control" placeholder="Search Voucheryhub ">
+                        </div>
+                    </div>
+                </form>
+                <div class="trend">
+                    <h5 style="font-weight: 800"> <b>Trending Categories</b></h5>
+                    <ul class="topic">
+                        @forelse($categoriess as $cattopic)
+                        <li class="cat-topic" >
+                            <a  href="businesses/{{$cattopic->catslug}}">{{ $cattopic->categoryname }}
+                            </a>
+                        </li>
+                        @empty
+                        <h6> <i> (No Categories Currently Trending)</i></h6>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section> --}}
+
+    
+        <section id="banner-homepage" >
+        <div class=" container" >
             <div class="row">
                 <h4 > <b>Voucheryhub Marketplace For Small Businesses <br>To Grow, Thrive, And Earn More.</b> </h4>
                 <form class="navbar-form" action="{{ route('search') }}" method="GET">
@@ -95,7 +124,7 @@
                                         <div class="" style="display: flex;">
                                             <h5 class="discounth5" title="Original Price" style="cursor:pointer;"> <strike> ${{ number_format($product->currentprice, 2) }}</h5></strike>
                                             <h5 class="newprice5" style="cursor:pointer;color: green;margin-left: 5px;" title="Discount Price"> ${{ number_format($product->newprice, 2) }}</h5>
-                                            <h5 class="badge badge-danger" title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
+                                            <h5 class="badge badge-danger"  title="Percentage Off" style=" cursor:pointer;">{{$product->percentageoff()}} OFF</h5>
                                         </div>
                                         
                                         @if(auth::user() || auth::guard('customer')->user())

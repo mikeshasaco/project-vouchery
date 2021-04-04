@@ -1286,6 +1286,8 @@ border-radius: 3px;
            margin-top: 27%;
     }
 }
+
+
 @media (max-width: 320px) {
     .subscriptioncouponstitle{
         margin-top: 50%;
@@ -1296,4 +1298,27 @@ border-radius: 3px;
         font-weight: 400;
         margin-left:0%;
     }
+    .discounth5{
+        font-size:12px;
+    }
+    .newprice5{
+        font-size: 12px;
+    }
+    .badge .badge-danger{
+        font-size: 12px;
+
+    }
+    .card-title{
+        font-size: 14px;
+    }
+    .card-text{
+        font-size: 11px;
+    }
+     .cardbutton-page{
+        font-size: 10px  !important;
+        height: 20px !important;
+    }
+  
 }
+
+
