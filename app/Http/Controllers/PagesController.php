@@ -242,36 +242,36 @@ class PagesController extends Controller
         return view('pages.loading');
     }
 
-    public function landingpage()
-    {
+    // public function landingpage()
+    // {
 
-        $productrecords = 
+    //     $productrecords = 
 
-        Product::join('categoriess', 'categoriess.id', 'products.category_id')
-        ->join('users', 'users.id', 'products.user_id')
-        ->select(
-            'products.*',
-            'users.company',
-            'users.slug',
-            'products.clicks',
-            'products.exclusive',
-            'categoriess.categoryname',
-            'categoriess.catslug',
-            'users.stripe_plan',
-            'users.avatar'
-        )->take(3)->get();
+    //     Product::join('categoriess', 'categoriess.id', 'products.category_id')
+    //     ->join('users', 'users.id', 'products.user_id')
+    //     ->select(
+    //         'products.*',
+    //         'users.company',
+    //         'users.slug',
+    //         'products.clicks',
+    //         'products.exclusive',
+    //         'categoriess.categoryname',
+    //         'categoriess.catslug',
+    //         'users.stripe_plan',
+    //         'users.avatar'
+    //     )->take(3)->get();
 
-        $categoriess = Product::join('categoriess', 'categoriess.id', 'products.category_id')
-        ->select('products.category_id', DB::raw('count(*) as total'),  'categoriess.categoryname', 'categoriess.catslug')
-        ->groupBy('category_id')
-        ->take(5)
-        ->get();
+    //     $categoriess = Product::join('categoriess', 'categoriess.id', 'products.category_id')
+    //     ->select('products.category_id', DB::raw('count(*) as total'),  'categoriess.categoryname', 'categoriess.catslug')
+    //     ->groupBy('category_id')
+    //     ->take(5)
+    //     ->get();
        
-        if (Auth::user()) {
-            return redirect('/Marketplace');
-        } else {
-            return view('pages.landingpage', compact('productrecords', 'categoriess'));
-        }
+    //     if (Auth::user()) {
+    //         return redirect('/Marketplace');
+    //     } else {
+    //         return view('pages.landingpage', compact('productrecords', 'categoriess'));
+    //     }
         
-    }
+    // }
 }

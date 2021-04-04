@@ -17,8 +17,8 @@ Route::get('/legal/termsofservice', 'AskEmailController@termofservice')->name('t
 Auth::routes();
 
 
-Route::get('/', 'PagesController@landingpage');
-Route::get('/Marketplace', 'PagesController@index')->name('homepage');
+// Route::get('/', 'PagesController@landingpage');
+Route::get('/', 'PagesController@index')->name('homepage');
 
 Route::get('/account/{slug}', 'AccountsController@index')->name('myaccount');
 
