@@ -108,7 +108,7 @@ class PagesController extends Controller
         $categoriess = Product::join('categoriess', 'categoriess.id', 'products.category_id')
         ->select('products.category_id', DB::raw('count(*) as total'),  'categoriess.categoryname', 'categoriess.catslug')
         ->groupBy('category_id')
-        ->take(5)
+        ->take(4)
         ->get();
         // $paidad = Advertisement::join('products', 'products.id', 'advertisements.prod_id')
         // ->join('categoriess', 'categoriess.id', 'products.category_id')
