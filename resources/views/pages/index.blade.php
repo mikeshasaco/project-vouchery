@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="trend">
+                {{-- <div class="trend">
                     <h5 style="font-weight: 800"> <b>Trending Categories</b></h5>
                     <ul class="topic">
                         @forelse($categoriess as $cattopic)
@@ -52,7 +52,7 @@
                         <h6> <i> (No Categories Currently Trending)</i></h6>
                         @endforelse
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
