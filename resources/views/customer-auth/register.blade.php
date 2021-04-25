@@ -40,9 +40,7 @@
      {{-- <h4 class="loginh1" style="margin-top: -9px" style="color: black"> <b> Sign Up To Enter Marketplace!</b> </h4> --}}
             <div>
                 <ul class="tab-login">
-                    {{-- <div>
-                        <li rel="vouchpanel3" class=" vouchpanel3 "> <b> Customer</b></li>
-                    </div> --}}
+                 
                     <div style="width: 100%;">
                         <li rel="vouchpanel4" class="vouchpanel4" style="background-color: #B8606E; color:white;"> <b>Merchant</b> </li>
                     </div>
@@ -114,21 +112,7 @@
                 </div>
             </div>
 
-            {{-- <div class="form-group row">
-                <div class="col-md-12">
-                    <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}">
-                        @if($errors->has('g-recaptcha-response'))
-                            <span class="invalid-feedback" style="display:block">
-                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-
-                            </span>
-                        @endif
-                    </div>
-
-
-                </div>
-
-            </div> --}}
+       
             <div class="col-md-12">
                 <label for="register-term">
                     By clicking an option below, I agree to the <a href="{{ route('termsof') }}">Term of Use</a> and the <a href="{{ route('privacy') }}">Privacy Statement</a>.
@@ -150,7 +134,7 @@
                 </div>
             </div>
         </form>
-                </div>
+    </div>
 
         <div id="vouchpanel4" class="pan vouchpanel4-content active" style="margin-top:8%;">
 
@@ -215,21 +199,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group row">
-                        <div class="col-md-12">
-                            <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}">
-                                @if($errors->has('g-recaptcha-response'))
-                                    <span class="invalid-feedback" style="display:block">
-                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-
-                                    </span>
-                                @endif
-                            </div>
-
-
-                        </div>
-
-                    </div> --}}
+         
 
                     <div class="col-md-12">
                         <label for="register-term">
